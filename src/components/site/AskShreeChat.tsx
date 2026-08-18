@@ -1,104 +1,88 @@
 import { useEffect, useState } from "react";
 import { Send, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ASK_SHREE_QUESTIONS, type AskShreeQuestionId } from "@/content/registry";
+import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
 
-export const SAMPLE_QUESTIONS = [
-  "What should I learn before pregnancy?",
-  "What is Garbh Samvad?",
-  "What should I learn during the 5th month?",
-  "What role can the father play?",
-  "Show me relevant learning resources.",
-];
-
-const MOCK_ANSWERS: Record<string, string> = {
-  "What should I learn before pregnancy?":
-    "Preconception learning usually begins three to six months ahead. Explore the Pre-Conception module in Learn: daily routine, sattvic diet, rest, gentle movement, and preparing the home environment together as a couple.",
-  "What is Garbh Samvad?":
-    "Garbh Samvad is the practice of conscious communication with the unborn child — speaking, reading, singing, or simply sitting in stillness each day. Our Knowledge Centre has a short guide with daily practices.",
-  "What should I learn during the 5th month?":
-    "Month five in our month-by-month guide covers hearing development, gentle music and mantra listening, iron- and calcium-rich sattvic food, restful sleep posture, and a short daily Garbh Samvad routine.",
-  "What role can the father play?":
-    "A great deal. Fathers shape the emotional environment: shared learning, reading aloud, calm conversation, help with daily work, and attending classes together. See Father & Family in Learn.",
-  "Show me relevant learning resources.":
-    "Start with the Foundation Course, the Knowledge Centre articles on Garbh Samvad and month-by-month learning, and the free weekly classes — all available in Hindi and English.",
-};
-
-const FALLBACK =
-  "Thank you for asking. In this demo, Shree AI responds to the example questions shown. In the full platform it will guide you to relevant lessons, articles and classes from our Knowledge Centre.";
-
-type Msg = { role: "user" | "shree"; text: string };
+type Message = { role: "user" | "shree"; text: string };
 
 export function AskShreeChat({
   className,
   externalQuestion,
 }: {
   className?: string;
-  externalQuestion?: string;
+  /** Question id raised from elsewhere on the page, e.g. the homepage prompt list. */
+  externalQuestion?: AskShreeQuestionId;
 }) {
-  const [messages, setMessages] = useState<Msg[]>([
-    {
-      role: "shree",
-      text: "Namaste 🙏 I am Shree, your educational companion for Garbh Sanskar. Ask me what to learn, or pick one of the questions below.",
-    },
-  ]);
+  const { t, lang } = useI18n();
+  const chat = t.askShree.chat;
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
 
+  // Reset the transcript when the language changes so no stale copy survives the switch.
+  useEffect(() => {
+    setMessages([{ role: "shree", text: chat.greeting }]);
+  }, [lang, chat.greeting]);
+
+  const answerFor = (question: string) =>
+    ASK_SHREE_QUESTIONS.map(({ id }) => t.askShree.questions[id]).find(
+      (entry) => entry.question === question,
+    )?.answer ?? chat.fallback;
+
   const ask = (question: string) => {
-    const q = question.trim();
-    if (!q) return;
+    const trimmed = question.trim();
+    if (!trimmed) return;
     setInput("");
-    setMessages((m) => [...m, { role: "user", text: q }]);
+    setMessages((current) => [...current, { role: "user", text: trimmed }]);
     window.setTimeout(() => {
-      setMessages((m) => [...m, { role: "shree", text: MOCK_ANSWERS[q] ?? FALLBACK }]);
+      setMessages((current) => [...current, { role: "shree", text: answerFor(trimmed) }]);
     }, 450);
   };
 
   useEffect(() => {
-    if (externalQuestion) {
-      ask(externalQuestion);
-    }
-  }, [externalQuestion]);
-
+    if (externalQuestion) ask(t.askShree.questions[externalQuestion].question);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [externalQuestion, lang]);
 
   return (
     <div className={cn("surface-card flex flex-col overflow-hidden p-0", className)}>
-      <div className="flex items-center gap-3 border-b border-border bg-secondary/60 px-5 py-4">
+      <div className="flex items-center gap-3 border-b border-border bg-accent/60 px-5 py-4">
         <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/12 text-primary">
           <Sparkles className="h-4 w-4" strokeWidth={1.5} />
         </span>
         <div>
-          <p className="text-sm text-ink">Ask Shree AI</p>
-          <p className="text-xs text-muted-foreground">Educational companion · demo</p>
+          <p className="text-sm text-ink">{chat.name}</p>
+          <p className="text-xs text-muted-foreground">{chat.role}</p>
         </div>
       </div>
 
       <div className="flex max-h-[26rem] min-h-[16rem] flex-1 flex-col gap-3 overflow-y-auto px-5 py-5">
-        {messages.map((m, i) => (
+        {messages.map((message, i) => (
           <div
             key={i}
             className={cn(
               "animate-rise max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed",
-              m.role === "user"
+              message.role === "user"
                 ? "self-end bg-primary text-primary-foreground"
-                : "self-start bg-secondary text-ink",
+                : "self-start bg-accent text-accent-foreground",
             )}
           >
-            {m.text}
+            {message.text}
           </div>
         ))}
       </div>
 
       <div className="border-t border-border px-5 py-4">
         <div className="flex flex-wrap gap-2">
-          {SAMPLE_QUESTIONS.map((q) => (
+          {ASK_SHREE_QUESTIONS.map(({ id }) => (
             <button
-              key={q}
+              key={id}
               type="button"
-              onClick={() => ask(q)}
+              onClick={() => ask(t.askShree.questions[id].question)}
               className="cursor-pointer rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground transition-colors duration-300 hover:border-primary/50 hover:text-primary"
             >
-              {q}
+              {t.askShree.questions[id].question}
             </button>
           ))}
         </div>
@@ -112,18 +96,15 @@ export function AskShreeChat({
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask about learning Garbh Sanskar…"
-            aria-label="Ask Shree AI a question"
+            placeholder={chat.placeholder}
+            aria-label={chat.inputLabel}
             className="h-11 flex-1 rounded-full border border-input bg-background px-4 text-sm outline-none transition-colors focus:border-primary/60"
           />
-          <Button type="submit" variant="hero" size="icon" aria-label="Send question">
+          <Button type="submit" variant="hero" size="icon" aria-label={chat.sendLabel}>
             <Send className="h-4 w-4" />
           </Button>
         </form>
-        <p className="mt-3 text-[0.7rem] leading-relaxed text-muted-foreground">
-          Shree AI provides educational guidance and does not replace professional medical
-          consultation.
-        </p>
+        <p className="mt-3 text-[0.7rem] leading-relaxed text-muted-foreground">{chat.disclaimer}</p>
       </div>
     </div>
   );

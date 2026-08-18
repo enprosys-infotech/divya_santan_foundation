@@ -1,8 +1,8 @@
-import { LANGUAGES, useLanguage } from "@/lib/i18n";
+import { LANGUAGES, useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
 
 export function LanguageSwitcher({ className }: { className?: string }) {
-  const { lang, setLang } = useLanguage();
+  const { lang, setLang, t } = useI18n();
 
   return (
     <div
@@ -11,22 +11,22 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         className,
       )}
       role="group"
-      aria-label="Select language"
+      aria-label={t.common.selectLanguage}
     >
-      {LANGUAGES.map((l) => (
+      {LANGUAGES.map((option) => (
         <button
-          key={l.code}
+          key={option.code}
           type="button"
-          onClick={() => setLang(l.code)}
-          aria-pressed={lang === l.code}
+          onClick={() => setLang(option.code)}
+          aria-pressed={lang === option.code}
           className={cn(
             "cursor-pointer rounded-full px-3 py-1 text-xs transition-colors duration-300",
-            lang === l.code
+            lang === option.code
               ? "bg-primary text-primary-foreground"
               : "text-muted-foreground hover:text-foreground",
           )}
         >
-          {l.label}
+          {option.label}
         </button>
       ))}
     </div>

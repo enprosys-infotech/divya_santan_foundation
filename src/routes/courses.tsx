@@ -1,74 +1,64 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CTASection, CourseCard, FeatureCard } from "@/components/site/Cards";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section, SectionHeading } from "@/components/site/SectionHeading";
-import { CourseCard, CTASection } from "@/components/site/Cards";
-import { courses } from "@/lib/content";
+import { COURSES, COURSE_STEPS } from "@/content/registry";
+import { getDictionary, seo, useI18n } from "@/i18n";
 
 export const Route = createFileRoute("/courses")({
-  head: () => ({
-    meta: [
-      { title: "Courses & Training — Divya Santan Foundation" },
-      {
-        name: "description",
-        content:
-          "Foundation course, couple education, Prerak training, recorded classes and educator certification in Garbh Sanskar.",
-      },
-      { property: "og:title", content: "Courses & Training — Divya Santan Foundation" },
-      {
-        property: "og:description",
-        content: "Structured Garbh Sanskar courses and training tracks for families and educators.",
-      },
-    ],
-  }),
+  head: () => seo(getDictionary().courses.meta),
   component: Courses,
 });
 
 function Courses() {
+  const { t } = useI18n();
+  const copy = t.courses;
+
   return (
     <>
-      <PageHeader
-        eyebrow="Courses & Training"
-        title="Structured learning tracks"
-        hindi="पाठ्यक्रम एवं प्रशिक्षण"
-        intro="Courses are educational programmes designed for families, volunteers and educators. Core community education always remains free."
-      />
+      <PageHeader {...copy.header} />
 
+      {/* ── Course tracks ────────────────────────────────────────── */}
       <Section>
-        <SectionHeading eyebrow="Programmes" title="Choose your track" />
+        <SectionHeading eyebrow={copy.programmes.eyebrow} title={copy.programmes.title} />
+
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {courses.map((c) => (
-            <CourseCard key={c.title} {...c} />
+          {COURSES.map((course) => (
+            <CourseCard key={course.id} {...t.content.courses[course.id]} />
           ))}
         </div>
       </Section>
 
-      <Section className="bg-secondary/45">
+      {/* ── How learning works ───────────────────────────────────── */}
+      <Section className="bg-warm">
         <SectionHeading
-          eyebrow="How learning works"
-          title="Simple, respectful, self-paced"
-          subtitle="Live sessions are recorded, material is bilingual, and no learner is turned away for want of means."
+          eyebrow={copy.how.eyebrow}
+          title={copy.how.title}
+          subtitle={copy.how.subtitle}
         />
-        <div className="mt-14 grid gap-6 sm:grid-cols-3">
-          {[
-            ["Enrol", "Register for a course or a free class in Hindi or English."],
-            ["Learn", "Attend live sessions or study recorded modules at your own pace."],
-            ["Practise & serve", "Apply learning at home, or train further to teach others."],
-          ].map(([title, body], i) => (
-            <div key={title} className="surface-card p-7">
-              <span className="text-xs text-primary">0{i + 1}</span>
-              <h3 className="mt-3 text-lg text-ink">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
+
+        <div className="mt-14 grid gap-8 sm:grid-cols-3">
+          {COURSE_STEPS.map((step, index) => (
+            <div key={step.id} className="flex flex-col items-start gap-4">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-lg font-semibold text-primary">
+                {index + 1}
+              </span>
+              <FeatureCard
+                title={copy.how.steps[step.id].title}
+                body={copy.how.steps[step.id].body}
+              />
             </div>
           ))}
         </div>
       </Section>
 
+      {/* ── CTA ──────────────────────────────────────────────────── */}
       <Section className="pt-0">
         <CTASection
-          title="Start with a free class"
-          body="Attend an introductory session before choosing a longer track."
-          primary={{ to: "/free-services", label: "Join Free Classes" }}
-          secondary={{ to: "/contact", label: "Ask a Question" }}
+          title={copy.cta.title}
+          body={copy.cta.body}
+          primary={{ to: "/free-services", label: copy.cta.primary }}
+          secondary={{ to: "/contact", label: copy.cta.secondary }}
         />
       </Section>
     </>

@@ -1,65 +1,64 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CTASection, FeatureCard } from "@/components/site/Cards";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section, SectionHeading } from "@/components/site/SectionHeading";
-import { CTASection, FeatureCard } from "@/components/site/Cards";
-import { joinRoles } from "@/lib/content";
+import { JOIN_PROCESS_STEPS, JOIN_ROLES } from "@/content/registry";
+import { getDictionary, seo, useI18n } from "@/i18n";
 
 export const Route = createFileRoute("/join")({
-  head: () => ({
-    meta: [
-      { title: "Join the Mission — Divya Santan Foundation" },
-      {
-        name: "description",
-        content:
-          "Become a Prerak, volunteer, faculty member or consultant, or collaborate with us as an institution or CSR partner.",
-      },
-      { property: "og:title", content: "Join the Mission — Divya Santan Foundation" },
-      {
-        property: "og:description",
-        content: "Ways to participate in a global Garbh Sanskar education movement.",
-      },
-    ],
-  }),
+  head: () => seo(getDictionary().join.meta),
   component: Join,
 });
 
 function Join() {
+  const { t } = useI18n();
+  const copy = t.join;
+
   return (
     <>
-      <PageHeader
-        eyebrow="Participate"
-        title="Join the mission"
-        hindi="अभियान से जुड़ें"
-        intro="This movement grows through people. Choose the role that fits your time, skill and intent."
-      />
+      <PageHeader {...copy.header} />
 
+      {/* ── Roles ────────────────────────────────────────────────── */}
       <Section>
-        <SectionHeading eyebrow="Roles" title="Ways to contribute" />
+        <SectionHeading eyebrow={copy.roles.eyebrow} title={copy.roles.title} />
+
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {joinRoles.map((r) => (
-            <FeatureCard key={r.title} {...r} />
+          {JOIN_ROLES.map((role) => (
+            <FeatureCard key={role.id} icon={role.icon} {...t.content.joinRoles[role.id]} />
           ))}
         </div>
       </Section>
 
-      <Section className="bg-secondary/45">
-        <SectionHeading eyebrow="Process" title="From interest to service" />
-        <div className="mt-14 grid gap-6 sm:grid-cols-4">
-          {["Express interest", "Orientation", "Training", "Serve your community"].map((s, i) => (
-            <div key={s} className="surface-card p-6 text-center">
-              <span className="text-xs text-primary">0{i + 1}</span>
-              <p className="mt-3 text-sm text-ink">{s}</p>
-            </div>
-          ))}
+      {/* ── Process ──────────────────────────────────────────────── */}
+      <Section className="bg-warm">
+        <SectionHeading eyebrow={copy.process.eyebrow} title={copy.process.title} />
+
+        <div className="relative mt-14">
+          {/* Horizontal connector on large screens */}
+          <div className="absolute inset-y-5 hidden w-full lg:block">
+            <div className="mx-auto h-px max-w-[70%] bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {JOIN_PROCESS_STEPS.map((step, index) => (
+              <div key={step.id} className="relative flex flex-col items-center text-center">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-primary bg-background text-sm font-semibold text-primary shadow">
+                  {index + 1}
+                </span>
+                <p className="mt-4 text-base text-ink">{copy.process.steps[step.id]}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 
+      {/* ── CTA ──────────────────────────────────────────────────── */}
       <Section className="pt-0">
         <CTASection
-          title="Tell us how you'd like to help"
-          body="Write to us with your role of interest and preferred language."
-          primary={{ to: "/contact", label: "Contact the Team" }}
-          secondary={{ to: "/courses", label: "See Training Tracks" }}
+          title={copy.cta.title}
+          body={copy.cta.body}
+          primary={{ to: "/contact", label: copy.cta.primary }}
+          secondary={{ to: "/courses", label: copy.cta.secondary }}
         />
       </Section>
     </>

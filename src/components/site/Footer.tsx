@@ -2,71 +2,27 @@ import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from "lucide-react";
 import dspImage from "@/assets/image.png";
 import bsvafImage from "@/assets/image1.png";
-import { useLanguage } from "@/lib/i18n";
+import { CONTACT_DETAILS, FOOTER_COLUMNS } from "@/content/navigation";
+import { useI18n } from "@/i18n";
 
-const COLUMNS: { title: string; links: { label: string; to: string }[] }[] = [
-  {
-    title: "Learn",
-    links: [
-      { label: "Learn Garbh Sanskar", to: "/learn" },
-      { label: "Learning Journeys", to: "/learn" },
-      { label: "Ask Shree AI", to: "/ask-shree" },
-    ],
-  },
-  {
-    title: "Knowledge",
-    links: [
-      { label: "Knowledge Centre", to: "/knowledge" },
-      { label: "Month-by-Month", to: "/knowledge" },
-      { label: "Garbh Samvad", to: "/knowledge" },
-    ],
-  },
-  {
-    title: "Courses",
-    links: [
-      { label: "Foundation Course", to: "/courses" },
-      { label: "Prerak Training", to: "/courses" },
-      { label: "Certification", to: "/courses" },
-    ],
-  },
-  {
-    title: "Free Services",
-    links: [
-      { label: "Free Classes", to: "/free-services" },
-      { label: "Educational Videos", to: "/free-services" },
-      { label: "Books & Publications", to: "/free-services" },
-    ],
-  },
-  {
-    title: "Research",
-    links: [
-      { label: "Research & Science", to: "/research" },
-      { label: "Research Topics", to: "/research" },
-      { label: "Collaboration", to: "/contact" },
-    ],
-  },
-  {
-    title: "Join Mission",
-    links: [
-      { label: "Become a Prerak", to: "/join" },
-      { label: "Volunteer", to: "/join" },
-      { label: "Institutional & CSR", to: "/join" },
-    ],
-  },
+const SOCIAL_LINKS = [
+  { id: "facebook", icon: Facebook, href: CONTACT_DETAILS.socialLinks.facebook },
+  { id: "instagram", icon: Instagram, href: CONTACT_DETAILS.socialLinks.instagram },
+  { id: "youtube", icon: Youtube, href: CONTACT_DETAILS.socialLinks.youtube },
 ];
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { t } = useI18n();
 
   return (
-    <footer className="mandala-veil border-t border-border bg-warm">
+    <footer className="mandala-veil border-t border-indigo/20 bg-indigo">
       <div className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.15fr_2fr]">
           <div>
             <div className="flex items-center gap-4">
               <img
                 src={dspImage}
-                alt="Divya Santan Prakalp, Indore"
+                alt={t.brand.logoAlt}
                 width={56}
                 height={56}
                 loading="lazy"
@@ -74,37 +30,35 @@ export function Footer() {
               />
               <img
                 src={bsvafImage}
-                alt="Balaji Sewarth Vinod Agarwal Foundation, Indore"
+                alt={t.brand.partnerLogoAlt}
                 width={48}
                 height={48}
                 loading="lazy"
                 className="h-12 w-12 rounded-sm object-contain"
               />
             </div>
-            <h3 className="mt-6 text-xl text-ink">{t("brand.name")}</h3>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              {t("brand.positioning")}. We educate, train, create awareness and support research so
-              that every family can nurture healthy, cultured and compassionate generations.
+            <h3 className="mt-6 text-xl text-indigo-foreground">{t.brand.name}</h3>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-indigo-foreground/80">
+              {t.brand.positioning}. {t.footer.about}
             </p>
-            <div className="mt-6 space-y-2 text-sm text-muted-foreground">
+            <div className="mt-6 space-y-2 text-sm text-indigo-foreground/80">
               <p className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-primary" /> contact@divyasantan.org
+                <Mail className="h-4 w-4 text-gold" /> {CONTACT_DETAILS.email}
               </p>
               <p className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-primary" /> +91 00000 00000
+                <Phone className="h-4 w-4 text-gold" /> {CONTACT_DETAILS.phone}
               </p>
               <p className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> Divya Santan Prakalp,
-                Indore, Madhya Pradesh, India
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" /> {t.footer.office}
               </p>
             </div>
             <div className="mt-6 flex gap-3">
-              {[Facebook, Instagram, Youtube].map((Icon, i) => (
+              {SOCIAL_LINKS.map(({ id, icon: Icon, href }) => (
                 <a
-                  key={i}
-                  href="#"
-                  aria-label="Social media"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors duration-300 hover:border-primary/50 hover:text-primary"
+                  key={id}
+                  href={href}
+                  aria-label={t.common.socialMedia}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-indigo-foreground/20 text-indigo-foreground/60 transition-colors duration-300 hover:border-gold/50 hover:text-gold"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -113,19 +67,19 @@ export function Footer() {
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
-            {COLUMNS.map((col) => (
-              <div key={col.title}>
-                <h4 className="text-[0.7rem] uppercase tracking-[0.22em] text-primary">
-                  {col.title}
+            {FOOTER_COLUMNS.map((column) => (
+              <div key={column.id}>
+                <h4 className="text-[0.7rem] uppercase tracking-[0.22em] text-gold">
+                  {t.footer.columnTitles[column.id]}
                 </h4>
                 <ul className="mt-4 space-y-2.5">
-                  {col.links.map((l) => (
-                    <li key={l.label}>
+                  {column.links.map((link) => (
+                    <li key={link.id}>
                       <Link
-                        to={l.to}
-                        className="text-sm text-muted-foreground transition-colors duration-300 hover:text-primary"
+                        to={link.to}
+                        className="text-sm text-indigo-foreground/60 transition-colors duration-300 hover:text-gold"
                       >
-                        {l.label}
+                        {t.footer.links[link.id]}
                       </Link>
                     </li>
                   ))}
@@ -135,14 +89,13 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center gap-3 border-t border-border pt-8 text-center">
-          <p className="font-deva text-lg text-primary">{t("brand.vasudhaiva")}</p>
-          <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
-            {t("brand.vasudhaiva.sub")}
+        <div className="mt-14 flex flex-col items-center gap-3 border-t border-indigo-foreground/10 pt-8 text-center">
+          <p className="font-deva text-lg text-gold">{t.brand.vasudhaiva}</p>
+          <p className="text-xs uppercase tracking-[0.24em] text-indigo-foreground/50">
+            {t.brand.vasudhaivaSub}
           </p>
-          <p className="mt-3 text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Divya Santan Foundation · Supported by Balaji Sewarth Vinod
-            Agarwal Foundation · Demo website
+          <p className="mt-3 text-xs text-indigo-foreground/50">
+            © {new Date().getFullYear()} {t.footer.copyright}
           </p>
         </div>
       </div>

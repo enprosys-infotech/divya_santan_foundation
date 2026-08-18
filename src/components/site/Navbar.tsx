@@ -4,49 +4,12 @@ import { ChevronDown, Menu, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandLock } from "./Brand";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { useLanguage } from "@/lib/i18n";
+import { NAV_ITEMS } from "@/content/navigation";
+import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
 
-/* ── Nav structure ───────────────────────────────────────────────── */
-type NavChild = { label: string; hindi?: string; to: string; note: string };
-type NavGroup = { label: string; children: NavChild[] };
-type NavItem =
-  | { kind: "link"; label: string; to: string }
-  | { kind: "mega"; label: string; groups: NavGroup[] };
-
-const NAV: NavItem[] = [
-  { kind: "link", label: "Home", to: "/" },
-
-  {
-    kind: "mega",
-    label: "Explore",
-    groups: [
-      {
-        label: "Learn",
-        children: [
-          { label: "Garbh Sanskar", hindi: "गर्भ संस्कार", to: "/learn", note: "Foundations of conscious nurturing" },
-          { label: "Knowledge Centre", hindi: "ज्ञान केंद्र", to: "/knowledge", note: "Articles & month-by-month guides" },
-          { label: "Free Services", hindi: "नि:शुल्क सेवाएँ", to: "/free-services", note: "Classes, videos & books — always free" },
-        ],
-      },
-      {
-        label: "Grow",
-        children: [
-          { label: "Courses & Training", hindi: "पाठ्यक्रम", to: "/courses", note: "Foundation course, Prerak training" },
-          { label: "Join the Mission", hindi: "अभियान से जुड़ें", to: "/join", note: "Volunteer, Prerak or faculty" },
-          { label: "Research & Science", hindi: "अनुसंधान", to: "/research", note: "Epigenetics, prenatal psychology" },
-        ],
-      },
-    ],
-  },
-
-  { kind: "link", label: "About", to: "/about" },
-  { kind: "link", label: "Contact", to: "/contact" },
-];
-
-/* ── Component ───────────────────────────────────────────────────── */
 export function Navbar() {
-  const { t } = useLanguage();
+  const { t } = useI18n();
   const [openKey, setOpenKey] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
@@ -66,12 +29,9 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mega on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) {
-        setOpenKey(null);
-      }
+      if (navRef.current && !navRef.current.contains(e.target as Node)) setOpenKey(null);
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -90,48 +50,45 @@ export function Navbar() {
         ref={navRef}
         className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-4 py-2 sm:px-6"
       >
-        {/* Brand */}
         <BrandLock />
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
-          {NAV.map((item) => {
+        <nav className="hidden items-center gap-0.5 lg:flex" aria-label={t.common.primaryNavigation}>
+          {NAV_ITEMS.map((item) => {
             if (item.kind === "link") {
               const active = pathname === item.to;
               return (
                 <Link
-                  key={item.to}
+                  key={item.id}
                   to={item.to}
                   className={cn(
                     "rounded-full px-3.5 py-2 text-[0.82rem] transition-colors duration-300",
-                    active ? "text-primary" : "text-ink/75 hover:text-primary",
+                    active ? "text-secondary" : "text-ink/75 hover:text-secondary",
                   )}
                 >
-                  {item.label}
+                  {t.nav.links[item.id]}
                 </Link>
               );
             }
 
-            // Mega dropdown
-            const open = openKey === item.label;
+            const open = openKey === item.id;
             return (
               <div
-                key={item.label}
+                key={item.id}
                 className="relative"
-                onMouseEnter={() => setOpenKey(item.label)}
+                onMouseEnter={() => setOpenKey(item.id)}
                 onMouseLeave={() => setOpenKey(null)}
               >
                 <button
                   type="button"
                   aria-expanded={open}
                   aria-haspopup="true"
-                  onClick={() => setOpenKey(open ? null : item.label)}
+                  onClick={() => setOpenKey(open ? null : item.id)}
                   className={cn(
                     "flex cursor-pointer items-center gap-1 rounded-full px-3.5 py-2 text-[0.82rem] transition-colors duration-300",
-                    open ? "text-primary" : "text-ink/75 hover:text-primary",
+                    open ? "text-secondary" : "text-ink/75 hover:text-secondary",
                   )}
                 >
-                  {item.label}
+                  {t.nav.mega[item.id]}
                   <ChevronDown
                     className={cn(
                       "h-3.5 w-3.5 transition-transform duration-300",
@@ -145,30 +102,33 @@ export function Navbar() {
                     <div className="surface-card animate-rise w-[38rem] p-4">
                       <div className="grid grid-cols-2 gap-2">
                         {item.groups.map((group) => (
-                          <div key={group.label}>
-                            <p className="mb-2 px-2 text-[0.6rem] uppercase tracking-[0.22em] text-primary">
-                              {group.label}
+                          <div key={group.id}>
+                            <p className="mb-2 px-2 text-[0.6rem] uppercase tracking-[0.22em] text-secondary/70">
+                              {t.nav.groups[group.id]}
                             </p>
                             <div className="flex flex-col gap-0.5">
-                              {group.children.map((c) => (
-                                <Link
-                                  key={c.label}
-                                  to={c.to}
-                                  className="group/item rounded-xl px-3 py-2.5 transition-colors hover:bg-secondary"
-                                >
-                                  <span className="block text-sm font-medium text-ink group-hover/item:text-primary">
-                                    {c.label}
-                                  </span>
-                                  {c.hindi && (
-                                    <span className="font-deva block text-[0.72rem] text-primary/70">
-                                      {c.hindi}
+                              {group.children.map((child) => {
+                                const copy = t.nav.children[child.id];
+                                return (
+                                  <Link
+                                    key={child.id}
+                                    to={child.to}
+                                    className="group/item rounded-xl px-3 py-2.5 transition-colors hover:bg-accent"
+                                  >
+                                    <span className="block text-sm font-medium text-ink group-hover/item:text-secondary">
+                                      {copy.label}
                                     </span>
-                                  )}
-                                  <span className="mt-0.5 block text-[0.72rem] leading-snug text-muted-foreground">
-                                    {c.note}
-                                  </span>
-                                </Link>
-                              ))}
+                                    {copy.native && (
+                                      <span className="font-deva block text-[0.72rem] text-secondary/70">
+                                        {copy.native}
+                                      </span>
+                                    )}
+                                    <span className="mt-0.5 block text-[0.72rem] leading-snug text-muted-foreground">
+                                      {copy.note}
+                                    </span>
+                                  </Link>
+                                );
+                              })}
                             </div>
                           </div>
                         ))}
@@ -181,23 +141,21 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Right actions */}
         <div className="flex items-center gap-2">
           <LanguageSwitcher className="hidden sm:inline-flex" />
           <Button asChild variant="outline" size="sm" className="hidden lg:inline-flex">
             <Link to="/ask-shree">
               <Sparkles className="h-3.5 w-3.5" />
-              {t("cta.askShree")}
+              {t.cta.askShree}
             </Link>
           </Button>
           <Button asChild variant="hero" size="sm" className="hidden sm:inline-flex">
-            <Link to="/free-services">{t("cta.joinFree")}</Link>
+            <Link to="/free-services">{t.cta.joinFree}</Link>
           </Button>
-          {/* Mobile hamburger */}
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
-            aria-label={t("nav.menu")}
+            aria-label={t.nav.menu}
             aria-expanded={mobileOpen}
             className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-border text-ink lg:hidden"
           >
@@ -206,32 +164,31 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="animate-rise max-h-[80vh] overflow-y-auto border-t border-border bg-background px-4 pb-8 pt-3 lg:hidden">
-          <nav className="flex flex-col" aria-label="Mobile navigation">
-            {NAV.map((item) => {
+          <nav className="flex flex-col" aria-label={t.common.mobileNavigation}>
+            {NAV_ITEMS.map((item) => {
               if (item.kind === "link") {
                 return (
                   <Link
-                    key={item.to}
+                    key={item.id}
                     to={item.to}
                     className="border-b border-border/60 py-3 text-[0.95rem] text-ink"
                   >
-                    {item.label}
+                    {t.nav.links[item.id]}
                   </Link>
                 );
               }
 
-              const expanded = mobileExpanded === item.label;
+              const expanded = mobileExpanded === item.id;
               return (
-                <div key={item.label} className="border-b border-border/60">
+                <div key={item.id} className="border-b border-border/60">
                   <button
                     type="button"
-                    onClick={() => setMobileExpanded(expanded ? null : item.label)}
+                    onClick={() => setMobileExpanded(expanded ? null : item.id)}
                     className="flex w-full items-center justify-between py-3 text-[0.95rem] text-ink"
                   >
-                    {item.label}
+                    {t.nav.mega[item.id]}
                     <ChevronDown
                       className={cn(
                         "h-4 w-4 text-muted-foreground transition-transform duration-300",
@@ -242,22 +199,17 @@ export function Navbar() {
                   {expanded && (
                     <div className="mb-3 flex flex-col gap-3 pl-3">
                       {item.groups.map((group) => (
-                        <div key={group.label}>
-                          <p className="mb-1 text-[0.6rem] uppercase tracking-[0.2em] text-primary">
-                            {group.label}
+                        <div key={group.id}>
+                          <p className="mb-1 text-[0.6rem] uppercase tracking-[0.2em] text-secondary/70">
+                            {t.nav.groups[group.id]}
                           </p>
-                          {group.children.map((c) => (
+                          {group.children.map((child) => (
                             <Link
-                              key={c.label}
-                              to={c.to}
-                              className="block py-1.5 text-sm text-muted-foreground hover:text-primary"
+                              key={child.id}
+                              to={child.to}
+                              className="block py-1.5 text-sm text-muted-foreground hover:text-secondary"
                             >
-                              {c.label}
-                              {c.hindi && (
-                                <span className="font-deva ml-2 text-xs text-primary/60">
-                                  {c.hindi}
-                                </span>
-                              )}
+                              {t.nav.children[child.id].label}
                             </Link>
                           ))}
                         </div>
@@ -271,15 +223,15 @@ export function Navbar() {
               to="/ask-shree"
               className="border-b border-border/60 py-3 text-[0.95rem] text-ink"
             >
-              {t("nav.ask")}
+              {t.cta.askShree}
             </Link>
           </nav>
           <div className="mt-5 flex flex-col gap-3">
             <Button asChild variant="hero" size="lg">
-              <Link to="/free-services">{t("cta.joinFree")}</Link>
+              <Link to="/free-services">{t.cta.joinFree}</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link to="/contact">{t("cta.guidance")}</Link>
+              <Link to="/contact">{t.cta.guidance}</Link>
             </Button>
             <LanguageSwitcher className="self-start sm:hidden" />
           </div>

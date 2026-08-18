@@ -1,121 +1,141 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, MapPin, Phone } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/SectionHeading";
 import { Button } from "@/components/ui/button";
+import {
+  CONTACT_DETAIL_FIELDS,
+  CONTACT_TOPICS,
+} from "@/content/registry";
+import { CONTACT_DETAILS } from "@/content/navigation";
+import { getDictionary, seo, useI18n } from "@/i18n";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact & Guidance — Divya Santan Foundation" },
-      {
-        name: "description",
-        content:
-          "Reach the Divya Santan Foundation team for free educational guidance, class registration, volunteering or collaboration.",
-      },
-      { property: "og:title", content: "Contact & Guidance — Divya Santan Foundation" },
-      {
-        property: "og:description",
-        content: "Free educational guidance, class registration and collaboration enquiries.",
-      },
-    ],
-  }),
+  head: () => seo(getDictionary().contact.meta),
   component: Contact,
 });
 
-const details = [
-  { icon: Mail, label: "Email", value: "contact@divyasantan.org" },
-  { icon: Phone, label: "Phone", value: "+91 00000 00000" },
-  { icon: MapPin, label: "Office", value: "Indore, Madhya Pradesh, India" },
-];
+const CONTACT_VALUES: Record<string, string> = {
+  email: CONTACT_DETAILS.email,
+  phone: CONTACT_DETAILS.phone,
+  office: "Indore, Madhya Pradesh, India",
+};
 
 function Contact() {
-  const [sent, setSent] = useState(false);
+  const { t } = useI18n();
+  const copy = t.contact;
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
 
   return (
     <>
-      <PageHeader
-        eyebrow="Contact"
-        title="Get guidance"
-        hindi="संपर्क एवं मार्गदर्शन"
-        intro="Ask about classes, courses, volunteering or collaboration. Educational guidance is always free."
-      />
+      <PageHeader {...copy.header} />
 
-      <Section className="pt-0">
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <form
-            className="surface-card space-y-5 p-8"
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSent(true);
-            }}
-          >
-            <div className="grid gap-5 sm:grid-cols-2">
-              <label className="block text-sm text-ink">
-                Name
-                <input
-                  required
-                  className="mt-2 h-11 w-full rounded-xl border border-input bg-background px-3.5 text-sm outline-none focus:border-primary/60"
-                />
-              </label>
-              <label className="block text-sm text-ink">
-                Email or phone
-                <input
-                  required
-                  className="mt-2 h-11 w-full rounded-xl border border-input bg-background px-3.5 text-sm outline-none focus:border-primary/60"
-                />
-              </label>
-            </div>
-            <label className="block text-sm text-ink">
-              I am writing about
-              <select className="mt-2 h-11 w-full rounded-xl border border-input bg-background px-3.5 text-sm outline-none focus:border-primary/60">
-                <option>Free classes</option>
-                <option>Courses & training</option>
-                <option>Volunteering / Prerak</option>
-                <option>Research collaboration</option>
-                <option>Something else</option>
-              </select>
-            </label>
-            <label className="block text-sm text-ink">
-              Message
-              <textarea
-                rows={5}
-                required
-                className="mt-2 w-full rounded-xl border border-input bg-background px-3.5 py-3 text-sm outline-none focus:border-primary/60"
-              />
-            </label>
-            <Button type="submit" variant="hero" size="lg">
-              Send message
-            </Button>
-            {sent && (
-              <p className="text-sm text-primary">
-                Thank you — this is a demo form, so nothing was sent. In the live site our team
-                replies within two working days.
-              </p>
-            )}
-          </form>
-
-          <div className="grid content-start gap-6">
-            <div className="surface-card p-8">
-              {details.map(({ icon: Icon, label, value }) => (
-                <div key={label} className="flex items-start gap-3.5 py-3">
-                  <Icon className="mt-0.5 h-4 w-4 text-primary" strokeWidth={1.5} />
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                      {label}
-                    </p>
-                    <p className="mt-1 text-sm text-ink">{value}</p>
-                  </div>
+      <Section>
+        <div className="grid gap-12 lg:grid-cols-[1fr_360px]">
+          {/* ── Contact form ─────────────────────────────────────── */}
+          <div className="surface-card p-8">
+            {submitted ? (
+              <p className="text-sm leading-relaxed text-muted-foreground">{copy.form.success}</p>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                {/* Name */}
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="name" className="text-xs uppercase tracking-[0.18em] text-primary">
+                    {copy.form.name}
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    className="h-11 rounded-xl border border-input bg-background px-4 text-sm outline-none transition-colors focus:border-primary/60"
+                  />
                 </div>
-              ))}
+
+                {/* Contact point */}
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="contact" className="text-xs uppercase tracking-[0.18em] text-primary">
+                    {copy.form.contactPoint}
+                  </label>
+                  <input
+                    id="contact"
+                    name="contact"
+                    type="text"
+                    required
+                    className="h-11 rounded-xl border border-input bg-background px-4 text-sm outline-none transition-colors focus:border-primary/60"
+                  />
+                </div>
+
+                {/* Subject / topic */}
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="subject" className="text-xs uppercase tracking-[0.18em] text-primary">
+                    {copy.form.subject}
+                  </label>
+                  <select
+                    id="subject"
+                    name="subject"
+                    className="h-11 rounded-xl border border-input bg-background px-4 text-sm text-foreground outline-none transition-colors focus:border-primary/60"
+                  >
+                    {CONTACT_TOPICS.map((topic) => (
+                      <option key={topic.id} value={topic.id}>
+                        {copy.form.topics[topic.id]}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Message */}
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="message" className="text-xs uppercase tracking-[0.18em] text-primary">
+                    {copy.form.message}
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    className="rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-primary/60"
+                  />
+                </div>
+
+                <Button type="submit" variant="hero" size="lg">
+                  {copy.form.submit}
+                </Button>
+              </form>
+            )}
+          </div>
+
+          {/* ── Contact details & note ───────────────────────────── */}
+          <div className="flex flex-col gap-8">
+            <div className="surface-card p-6">
+              <div className="flex flex-col gap-4">
+                {CONTACT_DETAIL_FIELDS.map((field) => {
+                  const Icon = field.icon;
+                  return (
+                    <div key={field.id} className="flex items-start gap-3">
+                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                        <Icon className="h-4 w-4" strokeWidth={1.5} />
+                      </span>
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.18em] text-primary">
+                          {copy.details[field.id]}
+                        </p>
+                        <p className="mt-0.5 text-sm text-ink">{CONTACT_VALUES[field.id]}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-            <div className="surface-card p-8">
-              <h2 className="text-lg text-ink">A note on guidance</h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Our guidance is educational. For any medical question or concern during pregnancy,
-                please consult your doctor or a qualified healthcare professional.
-              </p>
+
+            {/* Advisory note */}
+            <div className="surface-card border-l-2 border-l-gold p-6">
+              <p className="text-sm font-medium text-ink">{copy.note.title}</p>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{copy.note.body}</p>
             </div>
           </div>
         </div>

@@ -6,7 +6,9 @@
 
 /*
  * Divya Santan Foundation design system.
- * Warm Indian heritage palette: terracotta #B65329, ivory, cream, deep brown, gold.
+ * Palette: primary orange #EF6905 · secondary maroon #8B2626 · gold (temple amber) ·
+ *          indigo (night-sky) · cream #F1E5A1 · green #486C2F (wellness/growth).
+ * Colour hierarchy: orange 50-60% accent · maroon next · gold ceremonial · indigo rarest.
  * All colors use oklch. Never hardcode colors in components.
  */
 
@@ -35,6 +37,9 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-gold: var(--gold);
   --color-gold-foreground: var(--gold-foreground);
+  --color-green: var(--green);
+  --color-indigo: var(--indigo);
+  --color-indigo-foreground: var(--indigo-foreground);
   --color-ink: var(--ink);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
@@ -49,52 +54,73 @@
 :root {
   --radius: 0.75rem;
 
-  --background: oklch(0.985 0.008 85);
-  --foreground: oklch(0.26 0.032 45);
-  --ink: oklch(0.31 0.045 45);
+  /* Background: warm cream tinted with #F1E5A1 hue */
+  --background: oklch(0.972 0.022 94);
+  --foreground: oklch(0.22 0.028 30);
+  --ink: oklch(0.26 0.038 25);
 
-  --card: oklch(0.995 0.005 90);
-  --card-foreground: oklch(0.26 0.032 45);
-  --popover: oklch(0.995 0.005 90);
-  --popover-foreground: oklch(0.26 0.032 45);
+  --card: oklch(0.985 0.014 95);
+  --card-foreground: oklch(0.22 0.028 30);
+  --popover: oklch(0.985 0.014 95);
+  --popover-foreground: oklch(0.22 0.028 30);
 
-  /* #B65329 */
-  --primary: oklch(0.545 0.132 44.5);
-  --primary-foreground: oklch(0.985 0.008 85);
-  --primary-soft: oklch(0.93 0.033 60);
+  /* Primary: #EF6905 (orange) */
+  --primary: oklch(0.648 0.182 48.5);
+  --primary-foreground: oklch(0.99 0.005 90);
+  --primary-soft: oklch(0.935 0.048 72);
 
-  --secondary: oklch(0.955 0.017 75);
-  --secondary-foreground: oklch(0.33 0.05 45);
+  /* Secondary: #8B2626 (dark red) — rich, authoritative */
+  --secondary: oklch(0.375 0.115 22.5);
+  --secondary-foreground: oklch(0.97 0.008 85);
 
-  --muted: oklch(0.955 0.014 80);
-  --muted-foreground: oklch(0.52 0.028 55);
+  --muted: oklch(0.945 0.020 88);
+  --muted-foreground: oklch(0.50 0.032 50);
 
-  --accent: oklch(0.94 0.028 65);
-  --accent-foreground: oklch(0.36 0.06 45);
+  /* Accent: cream-tinted warm (#F1E5A1 family) */
+  --accent: oklch(0.930 0.058 94);
+  --accent-foreground: oklch(0.30 0.05 35);
 
-  --gold: oklch(0.72 0.088 78);
-  --gold-foreground: oklch(0.28 0.04 45);
+  /* Gold: true temple amber — warm metallic, sacred/ceremonial accents */
+  --gold: oklch(0.78 0.14 75);
+  /* Dark warm brown on gold background — WCAG AA contrast ~5.5:1 */
+  --gold-foreground: oklch(0.20 0.04 40);
 
-  --destructive: oklch(0.55 0.19 27);
-  --destructive-foreground: oklch(0.985 0.008 85);
+  /* Green: wellness/growth (was the former mislabeled --gold, #486C2F) */
+  --green: oklch(0.462 0.104 134);
 
-  --border: oklch(0.9 0.018 72);
-  --input: oklch(0.9 0.018 72);
-  --ring: oklch(0.545 0.132 44.5);
+  /* Indigo: deep night-sky blue — used sparingly as a dark section anchor */
+  --indigo: oklch(27.605% 0.09592 284.856);
+  /* Near-white on indigo — WCAG AA contrast ~10:1 */
+  --indigo-foreground: oklch(0.96 0.008 85);
 
+  --destructive: oklch(0.50 0.185 22);
+  --destructive-foreground: oklch(0.99 0.005 90);
+
+  --border: oklch(0.890 0.028 86);
+  --input: oklch(0.890 0.028 86);
+  --ring: oklch(0.648 0.182 48.5);
+
+  /* Warm gradient using cream palette tones */
   --gradient-warm: linear-gradient(
     160deg,
-    oklch(0.985 0.012 85) 0%,
-    oklch(0.965 0.024 68) 55%,
-    oklch(0.945 0.032 58) 100%
+    oklch(0.975 0.018 96) 0%,
+    oklch(0.955 0.036 88) 55%,
+    oklch(0.935 0.048 78) 100%
   );
+  /* Brand gradient: secondary maroon → primary orange (hero CTA) */
   --gradient-primary: linear-gradient(
     135deg,
-    oklch(0.545 0.132 44.5) 0%,
-    oklch(0.63 0.115 55) 100%
+    oklch(0.648 0.182 48.5) 0%,
+    oklch(0.648 0.182 48.5) 100%
   );
-  --shadow-soft: 0 1px 2px oklch(0.4 0.05 45 / 0.04), 0 12px 32px -18px oklch(0.45 0.08 45 / 0.3);
-  --shadow-lift: 0 2px 4px oklch(0.4 0.05 45 / 0.05), 0 24px 48px -24px oklch(0.45 0.09 45 / 0.4);
+  /* Indigo gradient: footer / dark section anchor */
+  --gradient-indigo: linear-gradient(
+    -45deg,
+    oklch(0.648 0.182 48.5) 0%,
+    oklch(29.829% 0.10642 24.868) 70%
+  );
+  --shadow-soft: 0 1px 2px oklch(0.35 0.06 30 / 0.05), 0 12px 32px -18px oklch(0.40 0.09 30 / 0.28);
+  --shadow-lift: 0 2px 4px oklch(0.35 0.06 30 / 0.06), 0 24px 48px -24px oklch(0.40 0.10 30 / 0.38);
   --transition-slow: 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -150,7 +176,8 @@
   &:hover {
     box-shadow: var(--shadow-lift);
     transform: translateY(-3px);
-    border-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
+    /* Gold shimmer on hover — sacred, not a commercial orange flash */
+    border-color: color-mix(in oklab, var(--color-gold) 45%, transparent);
   }
 }
 
@@ -160,6 +187,10 @@
 
 @utility bg-brand {
   background-image: var(--gradient-primary);
+}
+
+@utility bg-indigo {
+  background-image: var(--gradient-indigo);
 }
 
 @utility text-balance-pretty {

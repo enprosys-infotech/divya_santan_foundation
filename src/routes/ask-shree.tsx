@@ -1,68 +1,52 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BookOpen, Compass, ShieldCheck } from "lucide-react";
-import { PageHeader } from "@/components/site/PageHeader";
-import { Section } from "@/components/site/SectionHeading";
-import { AskShreeChat } from "@/components/site/AskShreeChat";
 import { CTASection, FeatureCard } from "@/components/site/Cards";
+import { AskShreeChat } from "@/components/site/AskShreeChat";
+import { PageHeader } from "@/components/site/PageHeader";
+import { Section, SectionHeading } from "@/components/site/SectionHeading";
+import { ASK_SHREE_FEATURES } from "@/content/registry";
+import { getDictionary, seo, useI18n } from "@/i18n";
 
 export const Route = createFileRoute("/ask-shree")({
-  head: () => ({
-    meta: [
-      { title: "Ask Shree AI — Divya Santan Foundation" },
-      {
-        name: "description",
-        content:
-          "Shree AI is an educational companion for Garbh Sanskar — ask what to learn, when to learn it, and where to find guidance.",
-      },
-      { property: "og:title", content: "Ask Shree AI — Divya Santan Foundation" },
-      {
-        property: "og:description",
-        content: "An educational Garbh Sanskar companion. Guidance for learning, not medical advice.",
-      },
-    ],
-  }),
-  component: AskShree,
+  head: () => seo(getDictionary().askShree.meta),
+  component: AskShreePage,
 });
 
-function AskShree() {
+function AskShreePage() {
+  const { t } = useI18n();
+  const copy = t.askShree;
+
   return (
     <>
-      <PageHeader
-        eyebrow="Learning companion"
-        title="Ask Shree AI"
-        hindi="श्री से पूछें"
-        intro="Shree helps you find your next lesson. It answers educational questions about Garbh Sanskar and points you to relevant classes, articles and modules."
-      />
+      <PageHeader {...copy.header} />
 
-      <Section className="pt-0">
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <AskShreeChat />
-          <div className="grid content-start gap-6">
+      {/* ── Chat widget ──────────────────────────────────────────── */}
+      <Section>
+        <AskShreeChat className="mx-auto max-w-2xl" />
+      </Section>
+
+      {/* ── Feature highlights ───────────────────────────────────── */}
+      <Section className="bg-warm">
+        <SectionHeading title={copy.header.title} align="left" />
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-3">
+          {ASK_SHREE_FEATURES.map((feature) => (
             <FeatureCard
-              icon={Compass}
-              title="Guides your learning path"
-              body="Suggests where to begin based on your stage — pre-conception, pregnancy or postnatal."
+              key={feature.id}
+              icon={feature.icon}
+              title={copy.features[feature.id].title}
+              body={copy.features[feature.id].body}
             />
-            <FeatureCard
-              icon={BookOpen}
-              title="Connects you to resources"
-              body="Links questions to Knowledge Centre articles, free classes and learning modules."
-            />
-            <FeatureCard
-              icon={ShieldCheck}
-              title="Educational, not medical"
-              body="Shree never diagnoses or prescribes. For medical concerns, always consult your doctor."
-            />
-          </div>
+          ))}
         </div>
       </Section>
 
+      {/* ── CTA ──────────────────────────────────────────────────── */}
       <Section className="pt-0">
         <CTASection
-          title="Prefer speaking to a person?"
-          body="Our educators offer free guidance sessions in Hindi and English."
-          primary={{ to: "/contact", label: "Get Guidance" }}
-          secondary={{ to: "/knowledge", label: "Browse Knowledge Centre" }}
+          title={copy.cta.title}
+          body={copy.cta.body}
+          primary={{ to: "/contact", label: copy.cta.primary }}
+          secondary={{ to: "/knowledge", label: copy.cta.secondary }}
         />
       </Section>
     </>

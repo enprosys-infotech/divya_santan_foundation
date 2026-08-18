@@ -2,8 +2,14 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/i18n";
 
-type LinkTo = { to: string; label?: string };
+/**
+ * Presentational cards. They receive copy that is already resolved for the active
+ * language, so they never branch on the language themselves.
+ */
+
+type LinkTo = { to: string; label: string };
 
 function CardShell({
   children,
@@ -18,45 +24,56 @@ function CardShell({
     "surface-card surface-card-hover block h-full p-6 sm:p-7 active:scale-[0.98] transition-all duration-200 touch-manipulation",
     className,
   );
-  if (to) {
-    return (
-      <Link to={to} className={cls}>
-        {children}
-      </Link>
-    );
-  }
-  return <div className={cls}>{children}</div>;
-}
 
+  return to ? (
+    <Link to={to} className={cls}>
+      {children}
+    </Link>
+  ) : (
+    <div className={cls}>{children}</div>
+  );
+}
 
 export function FeatureCard({
   icon: Icon,
   title,
-  hindi,
+  native,
   body,
   to,
   className,
+  iconVariant,
 }: {
   icon?: LucideIcon;
   title: string;
-  hindi?: string;
+  /** Devanagari accent shown beneath the title; empty in the Hindi locale. */
+  native?: string;
   body?: string;
   to?: string;
   className?: string;
+  /** Semantic variant for the icon background circle. Defaults to "primary" (orange). */
+  iconVariant?: "primary" | "secondary" | "gold";
 }) {
+  const { t } = useI18n();
+
+  const iconClasses = {
+    primary: "bg-primary/10 text-primary",
+    secondary: "bg-secondary/10 text-secondary",
+    gold: "bg-gold/15 text-gold",
+  };
+
   return (
     <CardShell to={to} className={className}>
       {Icon && (
-        <span className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 text-primary">
+        <span className={cn("mb-5 inline-flex h-11 w-11 items-center justify-center rounded-full", iconClasses[iconVariant || "primary"])}>
           <Icon className="h-5 w-5" strokeWidth={1.5} />
         </span>
       )}
       <h3 className="text-lg text-ink">{title}</h3>
-      {hindi && <p className="font-deva mt-1 text-sm text-primary/80">{hindi}</p>}
+      {native && <p className="font-deva mt-1 text-sm text-primary/80">{native}</p>}
       {body && <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>}
       {to && (
         <span className="mt-5 inline-flex items-center gap-1.5 text-sm text-primary">
-          Explore <ArrowRight className="h-3.5 w-3.5" />
+          {t.common.explore} <ArrowRight className="h-3.5 w-3.5" />
         </span>
       )}
     </CardShell>
@@ -71,25 +88,25 @@ export function JourneyCard({
 }: {
   title: string;
   body: string;
-  steps?: string[];
+  steps: string[];
   to: string;
 }) {
+  const { t } = useI18n();
+
   return (
     <CardShell to={to} className="flex flex-col">
       <h3 className="text-lg text-ink">{title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
-      {steps && (
-        <ul className="mt-4 flex flex-wrap gap-x-2 gap-y-1.5 text-[0.72rem] text-muted-foreground">
-          {steps.map((s, i) => (
-            <li key={s} className="flex items-center gap-2">
-              <span className="rounded-full bg-secondary px-2.5 py-1">{s}</span>
-              {i < steps.length - 1 && <span className="text-gold">›</span>}
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className="mt-4 flex flex-wrap gap-x-2 gap-y-1.5 text-[0.72rem] text-muted-foreground">
+        {steps.map((step, i) => (
+          <li key={step} className="flex items-center gap-2">
+            <span className="rounded-full bg-accent px-2.5 py-1">{step}</span>
+            {i < steps.length - 1 && <span className="text-gold">›</span>}
+          </li>
+        ))}
+      </ul>
       <span className="mt-6 inline-flex items-center gap-1.5 text-sm text-primary">
-        Start learning <ArrowRight className="h-3.5 w-3.5" />
+        {t.common.startLearning} <ArrowRight className="h-3.5 w-3.5" />
       </span>
     </CardShell>
   );
@@ -99,14 +116,14 @@ export function CourseCard({
   title,
   format,
   duration,
-  body,
   level,
+  body,
 }: {
   title: string;
   format: string;
   duration: string;
-  body: string;
   level: string;
+  body: string;
 }) {
   return (
     <CardShell className="flex flex-col">
@@ -116,7 +133,7 @@ export function CourseCard({
       </div>
       <h3 className="mt-4 text-lg text-ink">{title}</h3>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{body}</p>
-      <p className="mt-5 border-t border-border pt-4 text-xs text-primary">{level}</p>
+      <p className="mt-5 border-t border-border pt-4 text-xs text-secondary">{level}</p>
     </CardShell>
   );
 }
@@ -134,7 +151,7 @@ export function KnowledgeCard({
 }) {
   return (
     <CardShell className="flex flex-col">
-      <p className="text-[0.65rem] uppercase tracking-[0.22em] text-primary">{category}</p>
+      <p className="text-[0.65rem] uppercase tracking-[0.22em] text-secondary">{category}</p>
       <h3 className="mt-3 text-lg leading-snug text-ink">{title}</h3>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{body}</p>
       <p className="mt-5 text-xs text-muted-foreground">{readTime}</p>
@@ -143,13 +160,13 @@ export function KnowledgeCard({
 }
 
 export function ResearchCard({
+  field,
   topic,
   summary,
-  field,
 }: {
+  field: string;
   topic: string;
   summary: string;
-  field: string;
 }) {
   return (
     <CardShell className="border-l-2 border-l-primary/40">
@@ -161,19 +178,19 @@ export function ResearchCard({
 }
 
 export function TestimonialCard({
+  group,
   quote,
   name,
   role,
-  group,
 }: {
+  group: string;
   quote: string;
   name: string;
   role: string;
-  group: string;
 }) {
   return (
     <CardShell className="flex h-full flex-col">
-      <p className="text-[0.62rem] uppercase tracking-[0.24em] text-primary">{group}</p>
+      <p className="text-[0.62rem] uppercase tracking-[0.24em] text-gold-foreground">{group}</p>
       <p className="mt-4 flex-1 text-sm leading-relaxed text-ink/90 italic">“{quote}”</p>
       <div className="mt-6 border-t border-border pt-4">
         <p className="text-sm text-ink">{name}</p>
@@ -205,17 +222,15 @@ export function CTASection({
     >
       <h2 className="text-2xl text-ink sm:text-3xl">{title}</h2>
       {body && (
-        <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
-          {body}
-        </p>
+        <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">{body}</p>
       )}
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Button asChild variant="hero" size="lg">
-          <Link to={primary.to}>{primary.label ?? "Continue"}</Link>
+          <Link to={primary.to}>{primary.label}</Link>
         </Button>
         {secondary && (
           <Button asChild variant="outline" size="lg">
-            <Link to={secondary.to}>{secondary.label ?? "Learn more"}</Link>
+            <Link to={secondary.to}>{secondary.label}</Link>
           </Button>
         )}
       </div>

@@ -1,16 +1,25 @@
 import { cn } from "@/lib/utils";
 
+const EYEBROW_VARIANTS = {
+  primary: "text-primary",
+  secondary: "text-secondary",
+  gold: "text-gold-foreground",
+} as const;
+
 export function SectionHeading({
   eyebrow,
   title,
   subtitle,
   align = "center",
+  eyebrowVariant = "secondary",
   className,
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
   align?: "center" | "left";
+  /** Colour of the small uppercase eyebrow label. Defaults to maroon (secondary). */
+  eyebrowVariant?: keyof typeof EYEBROW_VARIANTS;
   className?: string;
 }) {
   return (
@@ -22,7 +31,7 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <p className="mb-3 text-[0.68rem] uppercase tracking-[0.28em] text-primary">{eyebrow}</p>
+        <p className={cn("mb-3 text-[0.68rem] uppercase tracking-[0.28em]", EYEBROW_VARIANTS[eyebrowVariant])}>{eyebrow}</p>
       )}
       <h2 className="text-3xl leading-tight text-ink sm:text-4xl">{title}</h2>
       <span

@@ -1,67 +1,60 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CTASection, FeatureCard, JourneyCard } from "@/components/site/Cards";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section, SectionHeading } from "@/components/site/SectionHeading";
-import { CTASection, FeatureCard, JourneyCard } from "@/components/site/Cards";
-import { journeys, learnTopics } from "@/lib/content";
+import { JOURNEYS, LEARN_TOPICS } from "@/content/registry";
+import { getDictionary, seo, useI18n } from "@/i18n";
 
 export const Route = createFileRoute("/learn")({
-  head: () => ({
-    meta: [
-      { title: "Learn Garbh Sanskar — Divya Santan Foundation" },
-      {
-        name: "description",
-        content:
-          "Structured learning on Garbh Sanskar: pre-conception, pregnancy journey, Garbh Samvad, father and family, Ayurveda and postnatal care.",
-      },
-      { property: "og:title", content: "Learn Garbh Sanskar — Divya Santan Foundation" },
-      {
-        property: "og:description",
-        content:
-          "Pre-conception, pregnancy journey, Garbh Samvad, family, lifestyle and postnatal learning modules.",
-      },
-    ],
-  }),
+  head: () => seo(getDictionary().learn.meta),
   component: Learn,
 });
 
 function Learn() {
+  const { t } = useI18n();
+  const copy = t.learn;
+
   return (
     <>
-      <PageHeader
-        eyebrow="Learn"
-        title="Learn Garbh Sanskar"
-        hindi="गर्भ संस्कार सीखें"
-        intro="A calm, structured learning path for couples, families, educators and volunteers. Study at your own pace, in Hindi or English."
-      />
+      <PageHeader {...copy.header} />
 
+      {/* ── Learning modules ─────────────────────────────────────── */}
       <Section>
-        <SectionHeading eyebrow="Learning modules" title="Where would you like to begin?" />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {learnTopics.map((topic) => (
-            <FeatureCard key={topic.title} {...topic} />
+        <SectionHeading eyebrow={copy.modules.eyebrow} title={copy.modules.title} />
+
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {LEARN_TOPICS.map((topic) => (
+            <FeatureCard
+              key={topic.id}
+              icon={topic.icon}
+              {...t.content.learnTopics[topic.id]}
+            />
           ))}
         </div>
       </Section>
 
-      <Section className="bg-secondary/45">
+      {/* ── Learning journeys ────────────────────────────────────── */}
+      <Section className="bg-warm">
         <SectionHeading
-          eyebrow="Journeys"
-          title="Learn by your journey"
-          subtitle="Each journey is a sequence of learning steps — not a service package."
+          eyebrow={copy.journeys.eyebrow}
+          title={copy.journeys.title}
+          subtitle={copy.journeys.subtitle}
         />
+
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {journeys.map((j) => (
-            <JourneyCard key={j.title} {...j} />
+          {JOURNEYS.map((journey) => (
+            <JourneyCard key={journey.id} to={journey.to} {...t.content.journeys[journey.id]} />
           ))}
         </div>
       </Section>
 
+      {/* ── CTA ──────────────────────────────────────────────────── */}
       <Section className="pt-0">
         <CTASection
-          title="Not sure where to start?"
-          body="Ask Shree AI for a suggested learning path, or join a free introductory class."
-          primary={{ to: "/ask-shree", label: "Ask Shree AI" }}
-          secondary={{ to: "/free-services", label: "Join Free Classes" }}
+          title={copy.cta.title}
+          body={copy.cta.body}
+          primary={{ to: "/ask-shree", label: copy.cta.primary }}
+          secondary={{ to: "/free-services", label: copy.cta.secondary }}
         />
       </Section>
     </>
