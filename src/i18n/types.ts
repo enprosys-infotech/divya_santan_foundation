@@ -53,6 +53,13 @@ export interface VideoCopy {
   category: string;
 }
 
+export interface InstaReelCopy {
+  title: string;
+  native: string;
+  description: string;
+  category: string;
+}
+
 export interface SynergyCopy {
   category: string;
   ancientTitle: string;

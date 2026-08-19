@@ -16,6 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { SYNERGY_PILLARS, type SynergyPillarId } from "@/content/registry";
+import { getIconByPillarId, SPIRITUAL_ICONS } from "@/content/spiritual-icons";
 import { format, useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
 
@@ -63,18 +64,16 @@ export function AncientScienceBridge() {
 
   return (
     <section className="mandala-veil relative overflow-hidden bg-warm py-16 sm:py-24">
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-20 -top-20 select-none text-[22rem] leading-none text-primary/4 blur-[1px]"
-      >
-        ॐ
-      </span>
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-20 -left-20 select-none text-[22rem] leading-none text-gold/6 blur-[1px]"
-      >
-        🪷
-      </span>
+      <img
+        src={SPIRITUAL_ICONS.om.src}
+        alt={SPIRITUAL_ICONS.om.alt}
+        className="pointer-events-none absolute -right-20 -top-20 select-none h-80 w-80 leading-none text-primary/4 blur-[1px] opacity-20"
+      />
+      <img
+        src={SPIRITUAL_ICONS.lotus.src}
+        alt={SPIRITUAL_ICONS.lotus.alt}
+        className="pointer-events-none absolute -bottom-20 -left-20 select-none h-80 w-80 leading-none text-gold/6 blur-[1px] opacity-25"
+      />
 
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading eyebrow={copy.eyebrow} title={copy.title} subtitle={copy.subtitle} />
@@ -99,31 +98,46 @@ export function AncientScienceBridge() {
         </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-2">
-          {SYNERGY_PILLARS.map((pillar, index) => (
-            <button
-              key={pillar.id}
-              type="button"
-              onClick={() => selectPillar(index)}
-              className={cn(
-                "inline-flex min-h-[40px] cursor-pointer items-center gap-2 rounded-xl border px-3.5 py-2 text-xs font-medium transition-all duration-300 active:scale-95",
-                selectedIndex === index
-                  ? "border-secondary/50 bg-secondary/8 text-secondary ring-1 ring-secondary/30"
-                  : "border-border/60 bg-background/80 text-muted-foreground hover:border-secondary/30 hover:bg-background hover:text-ink",
-              )}
-            >
-              <span className="text-base leading-none">{pillar.symbol}</span>
-              <span>{pillarCopy(pillar.id).category}</span>
-              {selectedIndex === index && <Sparkles className="h-3 w-3 text-gold" />}
-            </button>
-          ))}
+          {SYNERGY_PILLARS.map((pillar, index) => {
+            const iconData = getIconByPillarId(pillar.id);
+            return (
+              <button
+                key={pillar.id}
+                type="button"
+                onClick={() => selectPillar(index)}
+                className={cn(
+                  "inline-flex min-h-[40px] cursor-pointer items-center gap-2 rounded-xl border px-3.5 py-2 text-xs font-medium transition-all duration-300 active:scale-95",
+                  selectedIndex === index
+                    ? "border-secondary/50 bg-secondary/8 text-secondary ring-1 ring-secondary/30"
+                    : "border-border/60 bg-background/80 text-muted-foreground hover:border-secondary/30 hover:bg-background hover:text-ink",
+                )}
+              >
+                {iconData && (
+                  <img
+                    src={iconData.src}
+                    alt={iconData.alt}
+                    className="h-4 w-4 object-contain"
+                  />
+                )}
+                <span>{pillarCopy(pillar.id).category}</span>
+                {selectedIndex === index && <Sparkles className="h-3 w-3 text-gold" />}
+              </button>
+            );
+          })}
         </div>
 
         <div className="mt-10 rounded-3xl border border-primary/20 bg-background/90 p-6 shadow-[var(--shadow-lift)] backdrop-blur-md sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border/80 pb-5">
             <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary/8 text-2xl text-secondary shadow-xs">
-                {selectedPillar.symbol}
-              </span>
+              {getIconByPillarId(selectedPillar.id) && (
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary/8 shadow-xs overflow-hidden">
+                  <img
+                    src={getIconByPillarId(selectedPillar.id)!.src}
+                    alt={getIconByPillarId(selectedPillar.id)!.alt}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              )}
               <div>
                 <span className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-secondary">
                   {format(copy.pillarCounter, { current: selectedIndex + 1, total })}:{" "}
@@ -144,46 +158,6 @@ export function AncientScienceBridge() {
           </div>
 
           <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_auto_1fr]">
-            <div
-              className={cn(
-                "flex flex-col rounded-2xl border p-6 transition-all duration-300",
-                activeTab === "science"
-                  ? "border-border bg-accent/20 opacity-60"
-                  : "border-primary/30 bg-gradient-to-br from-primary/5 via-background to-accent/30 shadow-sm",
-              )}
-            >
-              <div className="flex items-center justify-between">
-                <span className="inline-flex items-center gap-1.5 rounded-md bg-gold/10 px-2.5 py-1 text-[0.68rem] font-medium uppercase tracking-[0.16em] text-gold-foreground">
-                  <BookOpen className="h-3 w-3" />
-                  {copy.ancientBadge}
-                </span>
-                <span className="text-3xl leading-none">{selectedPillar.symbol}</span>
-              </div>
-
-              <h4 className="mt-4 text-lg font-medium text-ink">{selected.ancientTitle}</h4>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                {selected.ancientDesc}
-              </p>
-
-              <div className="mt-6 border-t border-border/60 pt-4">
-                <p className="text-[0.7rem] uppercase tracking-[0.18em] text-primary/90">
-                  {copy.ancientFootnote}
-                </p>
-                <p className="font-deva mt-1 text-xs text-ink/80">{copy.ancientFootnoteNative}</p>
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center justify-center py-2 lg:py-0">
-              <div className="hidden h-full w-px bg-gradient-to-b from-gold/10 via-gold/40 to-gold/10 lg:block" />
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-gold/15 text-gold shadow-sm">
-                <Sparkles className="h-5 w-5 animate-pulse" />
-              </div>
-              <span className="mt-2 text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-primary">
-                {copy.bridgeLabel}
-              </span>
-              <div className="hidden h-full w-px bg-gradient-to-b from-gold/10 via-gold/40 to-gold/10 lg:block" />
-            </div>
-
             <div
               className={cn(
                 "flex flex-col rounded-2xl border p-6 transition-all duration-300",
@@ -221,6 +195,46 @@ export function AncientScienceBridge() {
                     </span>
                   ))}
                 </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center justify-center py-2 lg:py-0">
+              <div className="hidden h-full w-px bg-gradient-to-b from-gold/10 via-gold/40 to-gold/10 lg:block" />
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-gold/40 bg-gold/15 text-gold shadow-sm">
+                <Sparkles className="h-5 w-5 animate-pulse" />
+              </div>
+              <span className="mt-2 text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-primary">
+                {copy.bridgeLabel}
+              </span>
+              <div className="hidden h-full w-px bg-gradient-to-b from-gold/10 via-gold/40 to-gold/10 lg:block" />
+            </div>
+
+            <div
+              className={cn(
+                "flex flex-col rounded-2xl border p-6 transition-all duration-300",
+                activeTab === "science"
+                  ? "border-border bg-accent/20 opacity-60"
+                  : "border-primary/30 bg-gradient-to-br from-primary/5 via-background to-accent/30 shadow-sm",
+              )}
+            >
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-gold/10 px-2.5 py-1 text-[0.68rem] font-medium uppercase tracking-[0.16em] text-gold-foreground">
+                  <BookOpen className="h-3 w-3" />
+                  {copy.ancientBadge}
+                </span>
+                <span className="text-3xl leading-none">{selectedPillar.symbol}</span>
+              </div>
+
+              <h4 className="mt-4 text-lg font-medium text-ink">{selected.ancientTitle}</h4>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                {selected.ancientDesc}
+              </p>
+
+              <div className="mt-6 border-t border-border/60 pt-4">
+                <p className="text-[0.7rem] uppercase tracking-[0.18em] text-primary/90">
+                  {copy.ancientFootnote}
+                </p>
+                <p className="font-deva mt-1 text-xs text-ink/80">{copy.ancientFootnoteNative}</p>
               </div>
             </div>
           </div>

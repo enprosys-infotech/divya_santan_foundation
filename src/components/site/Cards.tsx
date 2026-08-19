@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/i18n";
 
+export { MobileAppCTA } from "./MobileAppCTA";
+
 /**
  * Presentational cards. They receive copy that is already resolved for the active
  * language, so they never branch on the language themselves.

@@ -81,7 +81,7 @@
   --accent-foreground: oklch(0.30 0.05 35);
 
   /* Gold: true temple amber — warm metallic, sacred/ceremonial accents */
-  --gold: oklch(0.78 0.14 75);
+  --gold: #eba941;
   /* Dark warm brown on gold background — WCAG AA contrast ~5.5:1 */
   --gold-foreground: oklch(0.20 0.04 40);
 

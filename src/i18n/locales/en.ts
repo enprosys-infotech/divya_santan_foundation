@@ -19,6 +19,7 @@ import type {
   FreeServiceId,
   GarbhBasicId,
   GlobalStatId,
+  InstaReelId,
   JoinProcessStepId,
   JoinRoleId,
   JourneyId,
@@ -46,6 +47,7 @@ import type {
   AccentedCopy,
   ArticleCopy,
   CourseCopy,
+  InstaReelCopy,
   JourneyCopy,
   NavLinkCopy,
   ResearchTopicCopy,
@@ -241,15 +243,20 @@ export const en = {
       subtitle:
         "Everything in one interactive place — watch reference video lessons, access free classes, browse accredited courses, or read research articles.",
       tabs: {
-        videos: "🎥 Reference YouTube Videos",
-        free: "🎁 Free Education & Services",
-        courses: "🎓 Courses & Training",
-        knowledge: "📖 Knowledge Articles",
+        videos: " Youtube & Instagram",
+        free: "Free Education & Services",
+        courses: " Courses & Training",
+        knowledge: " Knowledge Articles",
       },
       videos: {
         description:
           "Educational Garbh Sanskar reference YouTube videos. Click any video card to play directly in-page.",
         cta: "Watch All Videos",
+        instagramDescription:
+          "Follow our Instagram reels for short, inspiring Garbh Sanskar moments. Click any card to watch.",
+        instagramCta: "Follow on Instagram",
+        youtubeHeading: "YouTube Videos",
+        instagramHeading: "Instagram Reels",
       },
       free: {
         description:
@@ -280,10 +287,10 @@ export const en = {
       subtitle:
         "Discover how educators, researchers, volunteers, and institutions build the Garbh Sanskar ecosystem together.",
       tabs: {
-        join: "🤝 Join the Mission",
-        global: "🌍 Global Reach",
-        research: "🔬 Research & Evidence",
-        testimonials: "💬 Testimonials",
+        join: "Join the Mission",
+        global: "Global Reach",
+        research: "Research & Evidence",
+        testimonials: " Testimonials",
       },
     },
     global: {
@@ -306,13 +313,37 @@ export const en = {
       primary: "Join Free Classes",
       secondary: "Get Guidance",
     },
+    mobileApp: {
+      eyebrow: "Access Garbh Sanskar Anywhere",
+      title: "Take the Journey",
+      titleAccent: "in Your Pocket",
+      native: "गर्भ संस्कार ऐप",
+      description: "Access free classes, Ask Shree AI, month-by-month guides, and your personal learning journey — all in Hindi and English.",
+      downloadLabel: "Download the app:",
+      features: {
+        classes: "Free classes and educational videos on the go",
+        askShree: "Ask Shree AI anytime, anywhere",
+        reminders: "Personalized reminders for daily Garbh Samvad",
+        tracking: "Track your learning journey, week by week",
+      },
+      info: {
+        free: "100% Free Forever",
+        languages: "Available in Hindi, English & more languages",
+        offline: "Works offline once downloaded",
+      },
+      stats: {
+        users: "Active Users",
+        rating: "App Rating",
+        languages: "Languages",
+      },
+    },
   },
 
   synergy: {
     eyebrow: "Convergence of Traditions & Research",
-    title: "Where Ancient Wisdom Synchronizes with Modern Science",
+    title: "Where Science Guides the Way to Ancient Wisdom",
     subtitle:
-      "Garbh Sanskar is a timeless Vedic science of intra-uterine nurturing, validated step-by-step by 21st-century epigenetics, auditory neuroscience, and prenatal psychology.",
+      "21st-century epigenetics, auditory neuroscience, and prenatal psychology directly confirm the timeless Vedic science of intra-uterine nurturing.",
     tabs: {
       matrix: "Unified Synergy Matrix",
       ancient: "Sacred Vedic Wisdom",
@@ -328,7 +359,7 @@ export const en = {
     bridgeLabel: "Synthesized",
     takeawayLabel: "Key Takeaway:",
     takeaway:
-      "Ancient Ayurvedic rules for Garbh Sanskar directly align with modern epigenetics — proving early environment shapes cellular and neural trajectories.",
+      "Modern neuroscience and epigenetics directly validate ancient Ayurvedic rules for Garbh Sanskar — proving that early environment shapes cellular and neural trajectories.",
     researchCta: "View Full Research Papers",
     carouselTitle: "All {total} Synergy Pillars",
     slingBadge: "Swipe / Sling Enabled",
@@ -946,6 +977,27 @@ export const en = {
         category: "Wellness",
       },
     } satisfies Record<VideoId, VideoCopy>,
+
+    instagramReels: {
+      reelGarbhSanskar: {
+        title: "Quick Guide to Garbh Sanskar",
+        native: "",
+        description: "Short overview of how to start your Garbh Sanskar journey.",
+        category: "Foundations",
+      },
+      reelMantras: {
+        title: "Mantras for Pregnancy",
+        native: "",
+        description: "Calming mantras you can practice daily during pregnancy.",
+        category: "Practice",
+      },
+      reelNutrition: {
+        title: "Sattvic Nutrition Tips",
+        native: "",
+        description: "Simple dietary tips for a healthy pregnancy rooted in Ayurveda.",
+        category: "Nutrition",
+      },
+    } satisfies Record<InstaReelId, InstaReelCopy>,
 
     courses: {
       foundation: {

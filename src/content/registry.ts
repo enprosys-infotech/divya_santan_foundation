@@ -133,6 +133,17 @@ export type VideoId = (typeof VIDEOS)[number]["id"];
 
 export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@DivyaSantanPrakalp";
 
+/* ── Instagram Reels library ────────────────────────────────────────────── */
+
+export const INSTAGRAM_REELS = defineItems([
+  { id: "reelGarbhSanskar", reelId: "C0example001", duration: "0:58" },
+  { id: "reelMantras", reelId: "C0example002", duration: "1:02" },
+  { id: "reelNutrition", reelId: "C0example003", duration: "0:45" },
+]);
+export type InstaReelId = (typeof INSTAGRAM_REELS)[number]["id"];
+
+export const INSTAGRAM_PROFILE_URL = "https://www.instagram.com/divyasantanprakalp/";
+
 /* ── Courses ────────────────────────────────────────────────────────────── */
 
 export const COURSES = defineItems([
