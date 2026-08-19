@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link } from "@tanstack/react-router";
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero-womb-to-world.jpg";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import hero1 from "@/assets/Hero-1.png";
+import hero2 from "@/assets/Hero-2.png";
+import hero3 from "@/assets/hero-3.png";
+import hero4 from "@/assets/hero-4.png";
+import hero5 from "@/assets/hero-5.png";
 import { AncientScienceBridge } from "@/components/site/AncientScienceBridge";
 import { AskShreeChat } from "@/components/site/AskShreeChat";
 import { CTASection, FeatureCard, JourneyCard, KnowledgeCard, CourseCard, TestimonialCard } from "@/components/site/Cards";
@@ -36,6 +40,9 @@ export const Route = createFileRoute("/")({
 type HubTab = "videos" | "free" | "courses" | "knowledge";
 type EcosystemTab = "join" | "global" | "research" | "testimonials";
 
+const HERO_SLIDES = [hero1, hero2, hero3, hero4, hero5];
+const SLIDE_INTERVAL = 10000;
+
 function Home() {
   const { t } = useI18n();
   const copy = t.home;
@@ -43,6 +50,34 @@ function Home() {
   const [hubTab, setHubTab] = useState<HubTab>("videos");
   const [ecosystemTab, setEcosystemTab] = useState<EcosystemTab>("join");
   const [externalQuestion, setExternalQuestion] = useState<AskShreeQuestionId | undefined>();
+
+  // Carousel state
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const goToSlide = useCallback((index: number) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveSlide(index);
+      setIsTransitioning(false);
+    }, 300);
+  }, [isTransitioning]);
+
+  const prevSlide = useCallback(() => {
+    goToSlide((activeSlide - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  }, [activeSlide, goToSlide]);
+
+  const nextSlide = useCallback(() => {
+    goToSlide((activeSlide + 1) % HERO_SLIDES.length);
+  }, [activeSlide, goToSlide]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, SLIDE_INTERVAL);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
@@ -107,14 +142,62 @@ function Home() {
             </div>
           </div>
 
-          {/* Hero image */}
+          {/* Hero image carousel */}
           <div className="relative hidden overflow-hidden rounded-3xl shadow-[var(--shadow-lift)] lg:block">
-            <img
-              src={heroImage}
-              alt={copy.hero.imageAlt}
-              className="h-full w-full object-cover"
-              loading="eager"
-            />
+            {/* Slides */}
+            <div className="relative h-[480px] w-full">
+              {HERO_SLIDES.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={`${copy.hero.imageAlt} ${i + 1}`}
+                  className={cn(
+                    "absolute inset-0 h-full w-full object-cover transition-opacity duration-700",
+                    i === activeSlide ? "opacity-100" : "opacity-0",
+                  )}
+                  loading={i === 0 ? "eager" : "lazy"}
+                />
+              ))}
+
+              {/* Gradient overlay at bottom */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background/40 to-transparent rounded-b-3xl" />
+            </div>
+
+            {/* Prev / Next arrows */}
+            <button
+              type="button"
+              onClick={prevSlide}
+              aria-label="Previous slide"
+              className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-background/70 text-ink shadow backdrop-blur-sm transition-all hover:bg-background/90 hover:scale-110"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onClick={nextSlide}
+              aria-label="Next slide"
+              className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-background/70 text-ink shadow backdrop-blur-sm transition-all hover:bg-background/90 hover:scale-110"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+
+            {/* Dot indicators */}
+            <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+              {HERO_SLIDES.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => goToSlide(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                  className={cn(
+                    "h-2 rounded-full transition-all duration-300",
+                    i === activeSlide
+                      ? "w-6 bg-primary"
+                      : "w-2 bg-background/70 hover:bg-background",
+                  )}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

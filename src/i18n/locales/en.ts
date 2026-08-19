@@ -137,7 +137,7 @@ export const en = {
   footer: {
     about:
       "We educate, train, create awareness and support research so that every family can nurture healthy, cultured and compassionate generations.",
-    office: "Divya Santan Prakalp, Indore, Madhya Pradesh, India",
+    office: "Divya Santan Foundation, Indore, Madhya Pradesh, India",
     copyright:
       "Divya Santan Foundation · Supported by Balaji Sewarth Vinod Agarwal Foundation · Demo website",
     columnTitles: {
@@ -187,7 +187,7 @@ export const en = {
 
   home: {
     meta: {
-      title: "Divya Santan Foundation — From Womb to World",
+      title: "Divya Santan Foundation — ONE STEP TOWARD DIVINE BABY",
       description:
         "A global Garbh Sanskar education, training, awareness and research movement nurturing healthy, cultured and compassionate generations.",
       ogDescription:
@@ -195,7 +195,7 @@ export const en = {
     },
     hero: {
       eyebrow: "A global education & awareness movement for Garbh Sanskar",
-      title: "From Womb to World",
+      title: "ONE STEP TOWARD DIVINE BABY",
       subtitle: "Nurturing Healthy, Cultured & Compassionate Generations",
       native: "",
       support: "Education • Training • Awareness • Guidance • Research",
@@ -446,7 +446,7 @@ export const en = {
       milestones: {
         conceptualisation: {
           title: "Conceptualisation",
-          body: "Divya Santan Prakalp is formed in Indore with an educational and cultural framework.",
+          body: "Divya Santan Foundation is formed in Indore with an educational and cultural framework.",
         },
         framework: {
           title: "Framework",
