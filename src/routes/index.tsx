@@ -9,14 +9,17 @@ import hero4 from "@/assets/hero-4.png";
 import hero5 from "@/assets/hero-5.png";
 import { AncientScienceBridge } from "@/components/site/AncientScienceBridge";
 import { AskShreeChat } from "@/components/site/AskShreeChat";
-import { CTASection, FeatureCard, JourneyCard, KnowledgeCard, CourseCard, TestimonialCard } from "@/components/site/Cards";
+import { CTASection, FeatureCard, JourneyCard, KnowledgeCard, CourseCard, TestimonialCard, MobileAppCTA } from "@/components/site/Cards";
 import { Section, SectionHeading } from "@/components/site/SectionHeading";
 import { VideoCard } from "@/components/site/VideoCard";
+import { InstaReelCard } from "@/components/site/InstaReelCard";
 import { Button } from "@/components/ui/button";
 import {
   AUDIENCE_PILLS,
   GARBH_BASICS,
   GLOBAL_STATS,
+  INSTAGRAM_PROFILE_URL,
+  INSTAGRAM_REELS,
   JOURNEYS,
   KNOWLEDGE_ARTICLES,
   PILLARS,
@@ -224,9 +227,23 @@ function Home() {
         />
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {GARBH_BASICS.map((basic) => (
-            <FeatureCard key={basic.id} icon={basic.icon} iconVariant={basic.iconVariant} {...t.content.basics[basic.id]} />
-          ))}
+          {GARBH_BASICS.map((basic) => {
+            // Map spiritual icons to basics
+            const iconMap: Record<string, any> = {
+              preConception: "leaf",
+              pregnancyJourney: "lotus",
+              garbhSamvad: "om",
+              familyEnvironment: "sun",
+            };
+            const spiritualIconKey = iconMap[basic.id];
+            return (
+              <FeatureCard 
+                key={basic.id} 
+                spiritualIcon={spiritualIconKey as any}
+                {...t.content.basics[basic.id]} 
+              />
+            );
+          })}
         </div>
 
         <p className="mx-auto mt-16 mb-6 max-w-xs text-center text-[0.68rem] uppercase tracking-[0.26em] text-gold-foreground">
@@ -272,25 +289,58 @@ function Home() {
         <div className="mt-10">
           {hubTab === "videos" && (
             <>
-              <p className="mb-8 text-center text-sm text-muted-foreground">
-                {copy.hub.videos.description}
-              </p>
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {VIDEOS.slice(0, 3).map((v) => (
-                  <VideoCard
-                    key={v.id}
-                    youtubeId={v.youtubeId}
-                    duration={v.duration}
-                    {...t.content.videos[v.id]}
-                  />
-                ))}
+              {/* YouTube Videos Section */}
+              <div className="mb-12">
+                <h3 className="mb-4 text-center text-xl font-medium text-ink">
+                  {copy.hub.videos.youtubeHeading}
+                </h3>
+                <p className="mb-8 text-center text-sm text-muted-foreground">
+                  {copy.hub.videos.description}
+                </p>
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {VIDEOS.slice(0, 3).map((v) => (
+                    <VideoCard
+                      key={v.id}
+                      youtubeId={v.youtubeId}
+                      duration={v.duration}
+                      {...t.content.videos[v.id]}
+                    />
+                  ))}
+                </div>
+                <div className="mt-8 text-center">
+                  <Button asChild variant="outline" size="lg">
+                    <a href={YOUTUBE_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
+                      {copy.hub.videos.cta} <ArrowRight className="ml-1.5 h-4 w-4" />
+                    </a>
+                  </Button>
+                </div>
               </div>
-              <div className="mt-8 text-center">
-                <Button asChild variant="outline" size="lg">
-                  <a href={YOUTUBE_CHANNEL_URL} target="_blank" rel="noopener noreferrer">
-                    {copy.hub.videos.cta} <ArrowRight className="ml-1.5 h-4 w-4" />
-                  </a>
-                </Button>
+
+              {/* Instagram Reels Section */}
+              <div className="border-t border-border pt-12">
+                <h3 className="mb-4 text-center text-xl font-medium text-ink">
+                  {copy.hub.videos.instagramHeading}
+                </h3>
+                <p className="mb-8 text-center text-sm text-muted-foreground">
+                  {copy.hub.videos.instagramDescription}
+                </p>
+                <div className="mx-auto grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {INSTAGRAM_REELS.slice(0, 3).map((r) => (
+                    <InstaReelCard
+                      key={r.id}
+                      reelId={r.reelId}
+                      duration={r.duration}
+                      {...t.content.instagramReels[r.id]}
+                    />
+                  ))}
+                </div>
+                <div className="mt-8 text-center">
+                  <Button asChild variant="outline" size="lg">
+                    <a href={INSTAGRAM_PROFILE_URL} target="_blank" rel="noopener noreferrer">
+                      {copy.hub.videos.instagramCta} <ArrowRight className="ml-1.5 h-4 w-4" />
+                    </a>
+                  </Button>
+                </div>
               </div>
             </>
           )}
@@ -473,13 +523,23 @@ function Home() {
                 </Button>
               </div>
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {RESEARCH_TOPICS.slice(0, 3).map((rt) => (
-                  <FeatureCard
-                    key={rt.id}
-                    title={t.content.researchTopics[rt.id].topic}
-                    body={t.content.researchTopics[rt.id].summary}
-                  />
-                ))}
+                {RESEARCH_TOPICS.slice(0, 3).map((rt, idx) => {
+                  // Map research topics to spiritual icons
+                  const iconMap: Record<number, any> = {
+                    0: "om",
+                    1: "yoga",
+                    2: "leaf",
+                  };
+                  const spiritualIconKey = iconMap[idx];
+                  return (
+                    <FeatureCard
+                      key={rt.id}
+                      spiritualIcon={spiritualIconKey}
+                      title={t.content.researchTopics[rt.id].topic}
+                      body={t.content.researchTopics[rt.id].summary}
+                    />
+                  );
+                })}
               </div>
             </div>
           )}
@@ -494,14 +554,9 @@ function Home() {
         </div>
       </Section>
 
-      {/* ── Final CTA ────────────────────────────────────────────────── */}
+      {/* ── Final CTA: Mobile App Download ─────────────────────────── */}
       <Section>
-        <CTASection
-          title={copy.finalCta.title}
-          body={copy.finalCta.body}
-          primary={{ to: "/free-services", label: copy.finalCta.primary }}
-          secondary={{ to: "/contact", label: copy.finalCta.secondary }}
-        />
+        <MobileAppCTA />
       </Section>
     </>
   );
