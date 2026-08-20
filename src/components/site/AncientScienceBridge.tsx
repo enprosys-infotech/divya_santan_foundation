@@ -177,7 +177,7 @@ export function AncientScienceBridge() {
               </div>
 
               <h4 className="mt-4 text-lg font-medium text-ink">{selected.scienceTitle}</h4>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-3 flex-1 text-base leading-relaxed text-muted-foreground">
                 {selected.scienceDesc}
               </p>
 
@@ -226,7 +226,7 @@ export function AncientScienceBridge() {
               </div>
 
               <h4 className="mt-4 text-lg font-medium text-ink">{selected.ancientTitle}</h4>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-3 flex-1 text-base leading-relaxed text-muted-foreground">
                 {selected.ancientDesc}
               </p>
 
@@ -242,7 +242,7 @@ export function AncientScienceBridge() {
           <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-border bg-accent/30 px-6 py-4">
             <div className="flex items-center gap-3">
               <CheckCircle2 className="h-5 w-5 shrink-0 text-primary" />
-              <p className="text-xs text-ink/90 sm:text-sm">
+              <p className="text-sm text-ink/90 sm:text-base">
                 <strong>{copy.takeawayLabel}</strong> {copy.takeaway}
               </p>
             </div>

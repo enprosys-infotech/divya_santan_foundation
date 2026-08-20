@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SPIRITUAL_ICONS, type SpiritualIconKey } from "@/content/spiritual-icons";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/i18n";
 
@@ -38,6 +39,7 @@ function CardShell({
 
 export function FeatureCard({
   icon: Icon,
+  spiritualIcon,
   title,
   native,
   body,
@@ -46,6 +48,7 @@ export function FeatureCard({
   iconVariant,
 }: {
   icon?: LucideIcon;
+  spiritualIcon?: SpiritualIconKey;
   title: string;
   /** Devanagari accent shown beneath the title; empty in the Hindi locale. */
   native?: string;
@@ -63,16 +66,26 @@ export function FeatureCard({
     gold: "bg-gold/15 text-gold",
   };
 
+  const spiritualIconData = spiritualIcon ? SPIRITUAL_ICONS[spiritualIcon] : null;
+
   return (
     <CardShell to={to} className={className}>
-      {Icon && (
+      {spiritualIconData ? (
+        <div className={cn("mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full p-2", iconClasses[iconVariant || "primary"])}>
+          <img
+            src={spiritualIconData.src}
+            alt={spiritualIconData.alt}
+            className="h-full w-full object-contain"
+          />
+        </div>
+      ) : Icon ? (
         <span className={cn("mb-5 inline-flex h-11 w-11 items-center justify-center rounded-full", iconClasses[iconVariant || "primary"])}>
           <Icon className="h-5 w-5" strokeWidth={1.5} />
         </span>
-      )}
+      ) : null}
       <h3 className="text-lg text-ink">{title}</h3>
       {native && <p className="font-deva mt-1 text-sm text-primary/80">{native}</p>}
-      {body && <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>}
+      {body && <p className="mt-3 text-base leading-relaxed text-muted-foreground">{body}</p>}
       {to && (
         <span className="mt-5 inline-flex items-center gap-1.5 text-sm text-primary">
           {t.common.explore} <ArrowRight className="h-3.5 w-3.5" />
@@ -98,7 +111,7 @@ export function JourneyCard({
   return (
     <CardShell to={to} className="flex flex-col">
       <h3 className="text-lg text-ink">{title}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
+      <p className="mt-2 text-base leading-relaxed text-muted-foreground">{body}</p>
       <ul className="mt-4 flex flex-wrap gap-x-2 gap-y-1.5 text-[0.72rem] text-muted-foreground">
         {steps.map((step, i) => (
           <li key={step} className="flex items-center gap-2">
@@ -134,7 +147,7 @@ export function CourseCard({
         <span className="rounded-full border border-border px-2.5 py-1">{duration}</span>
       </div>
       <h3 className="mt-4 text-lg text-ink">{title}</h3>
-      <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{body}</p>
+      <p className="mt-2 flex-1 text-base leading-relaxed text-muted-foreground">{body}</p>
       <p className="mt-5 border-t border-border pt-4 text-xs text-secondary">{level}</p>
     </CardShell>
   );
@@ -155,7 +168,7 @@ export function KnowledgeCard({
     <CardShell className="flex flex-col">
       <p className="text-[0.65rem] uppercase tracking-[0.22em] text-secondary">{category}</p>
       <h3 className="mt-3 text-lg leading-snug text-ink">{title}</h3>
-      <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{body}</p>
+      <p className="mt-2 flex-1 text-base leading-relaxed text-muted-foreground">{body}</p>
       <p className="mt-5 text-xs text-muted-foreground">{readTime}</p>
     </CardShell>
   );
@@ -174,7 +187,7 @@ export function ResearchCard({
     <CardShell className="border-l-2 border-l-primary/40">
       <p className="text-[0.62rem] uppercase tracking-[0.24em] text-muted-foreground">{field}</p>
       <h3 className="mt-2.5 text-base text-ink">{topic}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{summary}</p>
+      <p className="mt-2 text-base leading-relaxed text-muted-foreground">{summary}</p>
     </CardShell>
   );
 }
@@ -224,7 +237,7 @@ export function CTASection({
     >
       <h2 className="text-2xl text-ink sm:text-3xl">{title}</h2>
       {body && (
-        <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">{body}</p>
+        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">{body}</p>
       )}
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Button asChild variant="hero" size="lg">

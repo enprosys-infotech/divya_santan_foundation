@@ -41,7 +41,7 @@ export function SectionHeading({
         )}
       />
       {subtitle && (
-        <p className="mt-5 text-balance-pretty text-base leading-relaxed text-muted-foreground">
+        <p className="mt-5 text-balance-pretty text-base-readable text-muted-foreground">
           {subtitle}
         </p>
       )}

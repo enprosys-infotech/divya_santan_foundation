@@ -72,25 +72,25 @@ export const PILLARS = defineItems([
 ]);
 export type PillarId = (typeof PILLARS)[number]["id"];
 
-/* ── Audience journeys ──────────────────────────────────────────────────── */
+/* ── Audience journeys — exactly 5, matching the client's user categories ── */
 
 export const JOURNEYS = defineItems([
-  { id: "planning", to: "/learn" },
-  { id: "pregnant", to: "/knowledge" },
-  { id: "fathers", to: "/learn" },
-  { id: "educators", to: "/courses" },
-  { id: "socialWorkers", to: "/join" },
-  { id: "researchers", to: "/research" },
+  { id: "planningCouple", to: "/learn" },
+  { id: "pregnantWoman", to: "/knowledge" },
+  { id: "socialWorker", to: "/join" },
+  { id: "academicPerson", to: "/research" },
+  { id: "consultant", to: "/join" },
 ]);
 export type JourneyId = (typeof JOURNEYS)[number]["id"];
 
-/* ── Hero audience pills ────────────────────────────────────────────────── */
+/* ── Hero audience pills — same 5 categories, linked to #who-can-benefit ── */
 
 export const AUDIENCE_PILLS = defineItems([
-  { id: "planning", to: "/learn" },
-  { id: "pregnant", to: "/knowledge" },
-  { id: "father", to: "/learn" },
-  { id: "educator", to: "/courses" },
+  { id: "planningCouple", to: "/#who-can-benefit" },
+  { id: "pregnantWoman", to: "/#who-can-benefit" },
+  { id: "socialWorker", to: "/#who-can-benefit" },
+  { id: "academicPerson", to: "/#who-can-benefit" },
+  { id: "consultant", to: "/#who-can-benefit" },
 ]);
 export type AudiencePillId = (typeof AUDIENCE_PILLS)[number]["id"];
 

@@ -38,7 +38,7 @@ export function Footer() {
               />
             </div>
             <h3 className="mt-6 text-xl text-indigo-foreground">{t.brand.name}</h3>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-indigo-foreground/80">
+            <p className="mt-3 max-w-sm text-base leading-relaxed text-indigo-foreground/80">
               {t.brand.positioning}. {t.footer.about}
             </p>
             <div className="mt-6 space-y-2 text-sm text-indigo-foreground/80">
