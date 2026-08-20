@@ -5,7 +5,7 @@ import { Section, SectionHeading } from "@/components/site/SectionHeading";
 import { JOURNEYS, LEARN_TOPICS } from "@/content/registry";
 import { getDictionary, seo, useI18n } from "@/i18n";
 
-export const Route = createFileRoute("/learn")({
+export const Route = createFileRoute("/garbh-sanskar")({
   head: () => seo(getDictionary().learn.meta),
   component: Learn,
 });

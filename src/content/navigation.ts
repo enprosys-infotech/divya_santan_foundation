@@ -5,29 +5,44 @@
 
 export const NAV_ITEMS = [
   { kind: "link", id: "home", to: "/" },
+  { kind: "link", id: "about", to: "/about" },
+  { kind: "link", id: "garbhSanskar", to: "/garbh-sanskar" },
   {
     kind: "mega",
     id: "explore",
     groups: [
       {
-        id: "learn",
+        id: "knowledge",
         children: [
-          { id: "garbhSanskar", to: "/learn" },
           { id: "knowledgeCentre", to: "/knowledge" },
+        ],
+      },
+      {
+        id: "training",
+        children: [
+          { id: "courses", to: "/courses" },
+        ],
+      },
+      {
+        id: "freeServices",
+        children: [
           { id: "freeServices", to: "/free-services" },
         ],
       },
       {
-        id: "grow",
+        id: "research",
         children: [
-          { id: "courses", to: "/courses" },
-          { id: "join", to: "/join" },
-          { id: "research", to: "/research" },
+          { id: "researchScience", to: "/research" },
+        ],
+      },
+      {
+        id: "joinMission",
+        children: [
+          { id: "joinMission", to: "/join" },
         ],
       },
     ],
   },
-  { kind: "link", id: "about", to: "/about" },
   { kind: "link", id: "contact", to: "/contact" },
 ] as const;
 
