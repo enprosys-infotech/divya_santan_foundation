@@ -97,41 +97,43 @@ export const en = {
     menu: "Menu",
     links: {
       home: "Home",
-      about: "About",
-      contact: "Contact",
+      about: "About Us",
+      garbhSanskar: "Garbh Sanskar",
+      contact: "Contact Us",
     } satisfies Record<NavLinkId, string>,
     mega: { explore: "Explore" },
-    groups: { learn: "Learn", grow: "Grow" } satisfies Record<NavGroupId, string>,
+    groups: { 
+      knowledge: "Knowledge", 
+      training: "Training",
+      freeServices: "Free Services",
+      research: "Research",
+      joinMission: "Join the Mission"
+    } satisfies Record<NavGroupId, string>,
     children: {
-      garbhSanskar: {
-        label: "Garbh Sanskar",
-        native: "",
-        note: "Foundations of conscious nurturing",
-      },
       knowledgeCentre: {
-        label: "Knowledge Centre",
+        label: "Knowledge Center",
         native: "",
         note: "Articles & month-by-month guides",
-      },
-      freeServices: {
-        label: "Free Services",
-        native: "",
-        note: "Classes, videos & books — always free",
       },
       courses: {
         label: "Courses & Training",
         native: "",
         note: "Foundation course, Prerak training",
       },
-      join: {
-        label: "Join the Mission",
+      freeServices: {
+        label: "Free Services",
         native: "",
-        note: "Volunteer, Prerak or faculty",
+        note: "Classes, videos, books & AI guidance",
       },
-      research: {
+      researchScience: {
         label: "Research & Science",
         native: "",
         note: "Epigenetics, prenatal psychology",
+      },
+      joinMission: {
+        label: "Join the Mission",
+        native: "",
+        note: "Events, testimonials & volunteer opportunities",
       },
     } satisfies Record<NavChildId, NavLinkCopy>,
   },
@@ -688,6 +690,99 @@ export const en = {
       body: "Researchers and institutions are invited to study, document and publish with the Foundation.",
       primary: "Propose a Collaboration",
       secondary: "Read Our Articles",
+    },
+  },
+
+  videos: {
+    meta: {
+      title: "Videos & Lectures — Divya Santan Foundation",
+      description:
+        "Watch our Garbh Sanskar educational video series - lectures, workshops, and guided practices available in Hindi and English.",
+    },
+    header: {
+      eyebrow: "Videos & Lectures",
+      title: "Learn through video",
+      native: "वीडियो के माध्यम से सीखें",
+      intro:
+        "Access our comprehensive video library covering Garbh Sanskar fundamentals, month-by-month guidance, and expert lectures.",
+    },
+    featured: {
+      eyebrow: "Featured Videos",
+      title: "Free Educational Videos",
+      subtitle:
+        "Watch our Garbh Sanskar video series on YouTube — available in Hindi and English, free for every family.",
+      playlistCta: "View Full Playlist on YouTube",
+    },
+    cta: {
+      title: "Want structured learning?",
+      body: "Explore our comprehensive courses with structured curriculum and certification.",
+      primary: "Get Personal Guidance",
+      secondary: "Explore Free Services",
+    },
+  },
+
+  events: {
+    meta: {
+      title: "Events & Activities — Divya Santan Foundation",
+      description:
+        "Join our workshops, seminars, and community gatherings focused on Garbh Sanskar education and awareness.",
+    },
+    header: {
+      eyebrow: "Events & Activities",
+      title: "Join our community",
+      native: "हमारे समुदाय से जुड़ें",
+      intro:
+        "Participate in workshops, seminars, and community events to deepen your Garbh Sanskar practice and connect with like-minded families.",
+    },
+    upcoming: {
+      eyebrow: "Upcoming Events",
+      title: "What's coming next",
+      subtitle:
+        "Stay tuned for upcoming workshops, webinars, and community gatherings.",
+    },
+    past: {
+      eyebrow: "Past Events",
+      title: "Our activities",
+    },
+    cta: {
+      title: "Want to organize an event?",
+      body: "Connect with us to host a Garbh Sanskar workshop or awareness program in your community.",
+      primary: "Contact Us",
+      secondary: "Join as Volunteer",
+    },
+  },
+
+  testimonials: {
+    meta: {
+      title: "Testimonials — Divya Santan Foundation",
+      description:
+        "Success stories and experiences from families who practiced Garbh Sanskar with our guidance.",
+    },
+    header: {
+      eyebrow: "Success Stories",
+      title: "Families share their journey",
+      native: "परिवार अपनी यात्रा साझा करते हैं",
+      intro:
+        "Read heartfelt testimonials from parents who experienced the transformative practice of Garbh Sanskar.",
+    },
+    stories: {
+      eyebrow: "Real Stories",
+      title: "Testimonials from families",
+      subtitle:
+        "Discover how Garbh Sanskar has impacted the lives of families across the world.",
+    },
+    impact: {
+      eyebrow: "Our Impact",
+      title: "Making a difference",
+      families: "Families Guided",
+      births: "Healthy Births",
+      satisfaction: "Satisfaction Rate",
+    },
+    cta: {
+      title: "Ready to begin your journey?",
+      body: "Join thousands of families who are nurturing conscious, healthy generations through Garbh Sanskar.",
+      primary: "Get Started",
+      secondary: "Join the Mission",
     },
   },
 

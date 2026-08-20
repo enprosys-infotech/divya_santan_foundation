@@ -11,13 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as AskShreeRouteImport } from './routes/ask-shree'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as FreeServicesRouteImport } from './routes/free-services'
+import { Route as GarbhSanskarRouteImport } from './routes/garbh-sanskar'
 import { Route as JoinRouteImport } from './routes/join'
 import { Route as KnowledgeRouteImport } from './routes/knowledge'
-import { Route as LearnRouteImport } from './routes/learn'
 import { Route as ResearchRouteImport } from './routes/research'
 
 const IndexRoute = IndexRouteImport.update({
@@ -28,11 +27,6 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AskShreeRoute = AskShreeRouteImport.update({
-  id: '/ask-shree',
-  path: '/ask-shree',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -50,6 +44,11 @@ const FreeServicesRoute = FreeServicesRouteImport.update({
   path: '/free-services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GarbhSanskarRoute = GarbhSanskarRouteImport.update({
+  id: '/garbh-sanskar',
+  path: '/garbh-sanskar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const JoinRoute = JoinRouteImport.update({
   id: '/join',
   path: '/join',
@@ -58,11 +57,6 @@ const JoinRoute = JoinRouteImport.update({
 const KnowledgeRoute = KnowledgeRouteImport.update({
   id: '/knowledge',
   path: '/knowledge',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LearnRoute = LearnRouteImport.update({
-  id: '/learn',
-  path: '/learn',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResearchRoute = ResearchRouteImport.update({
@@ -74,38 +68,35 @@ const ResearchRoute = ResearchRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/ask-shree': typeof AskShreeRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/free-services': typeof FreeServicesRoute
+  '/garbh-sanskar': typeof GarbhSanskarRoute
   '/join': typeof JoinRoute
   '/knowledge': typeof KnowledgeRoute
-  '/learn': typeof LearnRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/ask-shree': typeof AskShreeRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/free-services': typeof FreeServicesRoute
+  '/garbh-sanskar': typeof GarbhSanskarRoute
   '/join': typeof JoinRoute
   '/knowledge': typeof KnowledgeRoute
-  '/learn': typeof LearnRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/ask-shree': typeof AskShreeRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/free-services': typeof FreeServicesRoute
+  '/garbh-sanskar': typeof GarbhSanskarRoute
   '/join': typeof JoinRoute
   '/knowledge': typeof KnowledgeRoute
-  '/learn': typeof LearnRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRouteTypes {
@@ -113,50 +104,46 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
-    | '/ask-shree'
     | '/contact'
     | '/courses'
     | '/free-services'
+    | '/garbh-sanskar'
     | '/join'
     | '/knowledge'
-    | '/learn'
     | '/research'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/ask-shree'
     | '/contact'
     | '/courses'
     | '/free-services'
+    | '/garbh-sanskar'
     | '/join'
     | '/knowledge'
-    | '/learn'
     | '/research'
   id:
     | '__root__'
     | '/'
     | '/about'
-    | '/ask-shree'
     | '/contact'
     | '/courses'
     | '/free-services'
+    | '/garbh-sanskar'
     | '/join'
     | '/knowledge'
-    | '/learn'
     | '/research'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AskShreeRoute: typeof AskShreeRoute
   ContactRoute: typeof ContactRoute
   CoursesRoute: typeof CoursesRoute
   FreeServicesRoute: typeof FreeServicesRoute
+  GarbhSanskarRoute: typeof GarbhSanskarRoute
   JoinRoute: typeof JoinRoute
   KnowledgeRoute: typeof KnowledgeRoute
-  LearnRoute: typeof LearnRoute
   ResearchRoute: typeof ResearchRoute
 }
 
@@ -174,13 +161,6 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ask-shree': {
-      id: '/ask-shree'
-      path: '/ask-shree'
-      fullPath: '/ask-shree'
-      preLoaderRoute: typeof AskShreeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -204,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FreeServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/garbh-sanskar': {
+      id: '/garbh-sanskar'
+      path: '/garbh-sanskar'
+      fullPath: '/garbh-sanskar'
+      preLoaderRoute: typeof GarbhSanskarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/join': {
       id: '/join'
       path: '/join'
@@ -216,13 +203,6 @@ declare module '@tanstack/react-router' {
       path: '/knowledge'
       fullPath: '/knowledge'
       preLoaderRoute: typeof KnowledgeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/learn': {
-      id: '/learn'
-      path: '/learn'
-      fullPath: '/learn'
-      preLoaderRoute: typeof LearnRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/research': {
@@ -238,13 +218,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AskShreeRoute: AskShreeRoute,
   ContactRoute: ContactRoute,
   CoursesRoute: CoursesRoute,
   FreeServicesRoute: FreeServicesRoute,
+  GarbhSanskarRoute: GarbhSanskarRoute,
   JoinRoute: JoinRoute,
   KnowledgeRoute: KnowledgeRoute,
-  LearnRoute: LearnRoute,
   ResearchRoute: ResearchRoute,
 }
 export const routeTree = rootRouteImport
