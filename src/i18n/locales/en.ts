@@ -1,4 +1,4 @@
-﻿/**
+/**
  * English locale — the reference dictionary.
  *
  * Its shape defines the `Dictionary` type, so every other locale must provide exactly the
@@ -736,6 +736,11 @@ export const en = {
       intro:
         "Ask about classes, courses, volunteering or collaboration. Educational guidance is always free.",
     },
+    intro: {
+      title: "Let's Connect",
+      subtitle: "Have a question, want to learn more, or wish to be part of the movement? We'd love to hear from you.",
+      support: "Learn • Participate • Collaborate • Grow",
+    },
     form: {
       name: "Name",
       contactPoint: "Email or phone",
@@ -761,6 +766,13 @@ export const en = {
     note: {
       title: "A note on guidance",
       body: "Our guidance is educational. For any medical question or concern during pregnancy, please consult your doctor or a qualified healthcare professional.",
+    },
+    movement: {
+      title: "Be Part of the Movement",
+      description: "Whether you are a parent, educator, practitioner, researcher, volunteer, or someone curious about Garbh Sanskar, there is a place for you in this journey.",
+      ctaExplore: "Explore Education",
+      ctaJoin: "Join the Community",
+      ctaResources: "Explore Resources",
     },
   },
 
@@ -1298,5 +1310,363 @@ export const en = {
         tags: ["Auditory Encoding", "Phoneme Recognition", "Cognitive Priming"],
       },
     } satisfies Record<SynergyPillarId, SynergyCopy>,
+  },
+  
+  aboutPage: {
+    labels: {
+      tabs: {
+        vision: "About DSF & Vision",
+        pillars: "Five Pillars",
+        journey: "History & Journey",
+        leadership: "Leadership & Patrons",
+      },
+      keyObjectivesTitle: "Our Key Objectives",
+      pillarsEyebrow: "20-Year Strategic Pillars",
+      pillarsTitle: "Five Pillars of Divya Santan Prakalp",
+      historyEyebrow: "History",
+      historyTitle: "The Journey of Divya Santan Foundation",
+      patronsEyebrow: "Divine Blessings",
+      patronsTitle: "Chief Patrons & Patrons",
+      patronsSubtitle: "Their blessings and spiritual support are the foundation of this mission.",
+      foundersEyebrow: "Governance",
+      foundersTitle: "Founders & Board of Directors",
+      foundersSubtitle: "The driving force behind the global vision.",
+      advisorsEyebrow: "Advisory Council",
+      advisorsTitle: "Guided by Wisdom",
+      advisorsSubtitle: "Driven by Values. Committed to Nation.",
+      councilEyebrow: "Executive Council",
+      councilTitle: "Operational Leadership",
+      councilSubtitle: "Leading the movement across communities."
+    },
+    vision: {
+      intro: "A step to divine world having Love, Compassion, and Peace.",
+      title: "20-Year Vision & Global Roadmap for Garbh Sanskar",
+      paragraphs: [
+        "Our efforts are dedicated to empowering families, cultivating a cultured society, and filling the world with love, compassion, and peace.",
+        "We have complete faith that through Garbh Sanskar, we can nurture divine, cultured, and conscious generations.",
+        "Through our thoughts, conduct, and spirit of service, we can make this world more humane, harmonious, and divine.",
+        "Modern society is witnessing a rapid rise in congenital disorders, neurodevelopmental conditions such as Autism Spectrum Disorder (ASD) and Attention Deficit Hyperactivity Disorder (ADHD), learning disabilities, emotional instability, anxiety, depression, and lifestyle-related health challenges in children. Scientific evidence increasingly confirms that many of these conditions originate during the prenatal period, influenced by maternal stress, nutrition, emotional state, hormonal balance, lifestyle, and environmental factors.",
+        "Despite advances in medical treatment, contemporary healthcare systems primarily address disease after birth, leaving a critical gap in preventive, prenatal, and holistic human development. There is an urgent need for an integrated approach that focuses on conscious conception, prenatal care, and early neuro-psychological nurturing.",
+        "Garbh Sanskar is a scientifically aligned, culturally rooted, and holistic life science that addresses this need. It integrates modern medical understanding of fetal development, epigenetics, neuroendocrinology, and mental health with time-tested practices of yoga, meditation, music therapy, positive cognition, ethical values, and lifestyle regulation. This approach supports the physical, mental, emotional, social, and spiritual development of the unborn child while enhancing maternal well-being.",
+        "The Divya Santan Foundation (DSF) envisions Garbh Sanskar as a global preventive health and social transformation initiative. Its objective is to nurture healthier progeny, strengthen families, reduce long-term healthcare burdens, and build compassionate, emotionally stable, and value-based societies.",
+        "By shifting the focus from disease management to conscious human creation, Garbh Sanskar offers a sustainable solution for public health, mental well-being, and societal harmony. It represents not merely a program, but a transformative movement toward a healthier, more humane, and peaceful world."
+      ],
+      coreObjectiveTitle: "Core Objective",
+      coreObjectiveList: [
+        "Healthy progeny",
+        "Strong families",
+        "Harmonious societies",
+        "A compassionate and peaceful world"
+      ],
+      coreObjectiveDesc: "To scientifically, spiritually, and socially establish Garbh Sanskar as a global discipline that nurtures. The core objective of Garbh Sanskar is to establish it as a global discipline that is recognized and valued across scientific, spiritual, and social dimensions. The aim is to nurture and support the growth of healthy progeny, ensuring that children are born with optimal physical, mental, and emotional well-being. By doing so, Garbh Sanskar also seeks to build strong families that serve as the foundation for a harmonious society. Ultimately, these efforts are directed toward creating a compassionate and peaceful world, where the values of love, understanding, and harmony prevail."
+    },
+    section8: {
+      title: "Divya Santan Foundation - A Section 8 Non-Profit Organization",
+      description: "Divya Santan Foundation is a Section 8 non-profit organization dedicated to promoting the science and practice of Garbh Sanskar, conscious parenthood, maternal well-being, and holistic development of future generations.",
+      vision: "The Foundation works with a vision of bringing together modern medical science and the wisdom of Ayurveda, Yoga, psychology, neuroscience, epigenetics, and traditional Vedic knowledge to develop Garbh Sanskar as a responsible, evidence-based, ethical, and accessible approach to preconception and prenatal care.",
+      whatIsSection8: {
+        title: "What is a Section 8 Non-Profit Organization?",
+        paragraphs: [
+          "A Section 8 Company, established under the Companies Act, 2013, is created to serve charitable, scientific, educational, research, social-welfare, and other public-benefit objectives rather than for private commercial profit.",
+          "Any income or surplus generated by such an organization is utilized for advancing its mission and charitable objectives and is not distributed as dividend among its members.",
+          "Thus, Divya Santan Foundation is committed to working for public benefit, education, research, healthcare awareness, and social development."
+        ]
+      },
+      keyObjectives: [
+        "Promote scientific research and evidence-based understanding of Garbh Sanskar and prenatal development.",
+        "Create awareness among couples and families about preconception care, healthy pregnancy, conscious parenting, and maternal and child well-being.",
+        "Organize scientific conferences, workshops, educational programs, professional training, and community outreach activities.",
+        "Develop structured certificate, diploma, postgraduate, research, and professional training programs in collaboration with universities and academic institutions.",
+        "Establish Garbh Sanskar Centres and Prenatal Wellness Clinics providing affordable and accessible guidance to families.",
+        "Train Garbh Sanskar counsellors, healthcare professionals, Yoga teachers, nutritionists, psychologists, ASHA workers, Anganwadi workers, volunteers, and community educators.",
+        "Develop books, publications, research resources, online courses, mobile applications, tele-consultation, and AI-enabled digital platforms to make authentic knowledge accessible globally.",
+        "Preserve and scientifically explore the valuable principles of Vedic wisdom, Ayurveda, Yoga, meditation, music, and traditional Indian knowledge systems.",
+        "Promote collaboration among hospitals, universities, research institutions, government bodies, NGOs, and national and international organizations.",
+        "Support maternal emotional health, family strengthening, early childhood wellness, and the creation of healthy, compassionate, value-oriented future generations."
+      ],
+      largerPurpose: {
+        title: "Our Larger Purpose",
+        paragraphs: [
+          "Divya Santan Foundation believes that nation-building begins with the child, and the nurturing of the child begins even before birth.",
+          "Our endeavor is therefore not limited to pregnancy care. It is a movement towards creating healthy children, harmonious families, a cultured and compassionate society, a strong nation, and ultimately a more peaceful world.",
+          "Healthy Child → Healthy Family → Healthy Society → Strong Nation → Peaceful World",
+          "From Garbh Sanskar to Rashtra Sanskar"
+        ]
+      }
+    },
+    fivePillars: [
+      {
+        id: "awareness",
+        title: "A. Awareness & Education of Target Audience",
+        sections: [
+          {
+            subtitle: "1. General Population",
+            points: [
+              "Collaboration with spiritual leaders, saints, katha vachaks, gurus, and religious organizations.",
+              "Dissemination of Garbh Sanskar knowledge through religious discourses, spiritual gatherings, and cultural platforms.",
+              "Integration of scientific explanations with spiritual wisdom for mass acceptance."
+            ],
+            body: "Promoting awareness and education about Garbh Sanskar among various segments of society is a key pillar in achieving its core objective. This involves strategic collaboration to facilitate widespread dissemination. The combination of science and spirituality bridges the gap between tradition and modernity."
+          },
+          {
+            subtitle: "2. Students – Future Parents",
+            points: [
+              "Lectures and workshops in Colleges, Universities, and Educational institutions.",
+              "Objective: Sensitize youth early about conscious parenthood and introduce Garbh Sanskar as a life science."
+            ]
+          },
+          {
+            subtitle: "3. Expectant Parents",
+            points: [
+              "Regular Garbh Sanskar classes, meetings, and counseling sessions.",
+              "Focus on: Practical guidance, Emotional well-being, and Lifestyle correction.",
+              "Simultaneous data collection for scientific evaluation and program refinement."
+            ]
+          },
+          {
+            subtitle: "4. Community-Based Organizational Structure",
+            points: [
+              "Development of a structured propagation model based on Religion, Community, and Region.",
+              "Hierarchical framework: City In-charge, State In-charge, National In-charge."
+            ]
+          },
+          {
+            subtitle: "5. Central DSP Body – Role",
+            points: [
+              "Preparation and distribution of printed materials, digital content, videos and training modules.",
+              "Providing trained speakers, mentors and master trainers.",
+              "Training volunteers and educators to ensure uniform, authentic, and scientific delivery of Garbh Sanskar knowledge."
+            ]
+          }
+        ]
+      },
+      {
+        id: "training",
+        title: "B. Educating & Training Concerned Specialists",
+        sections: [
+          {
+            subtitle: "1. Professional Training Programs",
+            points: [
+              "Workshops, lectures, and online courses for Doctors, Yoga therapists, Music therapists, Psychologists, Counselors, and Spiritual practitioners."
+            ],
+            body: "To ensure that Garbh Sanskar knowledge is effectively imparted by qualified professionals, a variety of professional training programs are organized to provide hands-on experience and deep theoretical understanding."
+          },
+          {
+            subtitle: "2. Academic Integration",
+            points: [
+              "Introduction of Diploma courses, Degree programs, and Fellowship programs.",
+              "Allied subjects: Yoga, Music therapy, Psychology, Astrology (research-based), and Spiritual sciences."
+            ]
+          },
+          {
+            subtitle: "3. University & Government Collaboration",
+            points: [
+              "Engagement with Universities, Vice Chancellors, Governors, and Government bodies.",
+              "Long-term goal: Inclusion of Garbh Sanskar concepts in medical and paramedical curricula."
+            ]
+          }
+        ]
+      },
+      {
+        id: "centres",
+        title: "C. Garbh Sanskar Treatment Centres",
+        sections: [
+          {
+            subtitle: "1. Establishment Phase",
+            points: [
+              "Creation of Garbh Sanskar centres in major cities.",
+              "Centres to provide: Guidance, Counseling, and Structured Garbh Sanskar programs."
+            ]
+          },
+          {
+            subtitle: "2. Expansion Plan",
+            points: [
+              "Next 10 years: Expansion across India.",
+              "By 20 years: Global presence."
+            ]
+          },
+          {
+            subtitle: "3. Global Outreach",
+            points: [
+              "Establishment of centres in USA, UK, Europe, and other global regions.",
+              "Adaptation to local cultures while maintaining core principles."
+            ]
+          }
+        ]
+      },
+      {
+        id: "research",
+        title: "D. Research, Data Collection & Scientific Validation",
+        sections: [
+          {
+            subtitle: "1. Research Centres",
+            points: [
+              "Establishment of dedicated Garbh Sanskar research centres.",
+              "Multidisciplinary research involving Medical science, Neuroscience, Psychology, Epigenetics, and Spiritual sciences."
+            ]
+          },
+          {
+            subtitle: "2. Academic Research",
+            points: [
+              "Introduction of PhD programs and Post-doctoral research.",
+              "Encouraging evidence-based validation of Garbh Sanskar principles."
+            ]
+          },
+          {
+            subtitle: "3. Centralized Data System",
+            points: [
+              "Creation of a central data repository.",
+              "Longitudinal studies for outcome analysis, program improvement, and global publication."
+            ]
+          }
+        ]
+      },
+      {
+        id: "association",
+        title: "E. International Association of Garbh Sanskar",
+        sections: [
+          {
+            subtitle: "1. Formation",
+            points: [
+              "Establishment of a global umbrella organization to connect Institutions, Practitioners, Researchers, and Educators."
+            ]
+          },
+          {
+            subtitle: "2. Scientific Exchange",
+            points: [
+              "Organization of Regional conferences, National conventions, and International congresses.",
+              "Knowledge sharing, collaboration, and innovation."
+            ]
+          },
+          {
+            subtitle: "3. Standardization & SOP Development",
+            points: [
+              "Development of Standard Operating Procedures (SOPs) and uniform program structures.",
+              "Ensuring authenticity, quality, and global consistency."
+            ]
+          }
+        ]
+      }
+    ],
+    history: [
+      {
+        title: "From Garbh Sanskar to Rashtra Sanskar",
+        body: "Divya Santan Prakalp, now institutionalized as Divya Santan Foundation, a “Section 8 non-profit organization”, was born from a simple yet powerful thought: if we wish to build a better society and a stronger nation, we must begin with the child—even before birth."
+      },
+      {
+        title: "The Beginning of a New Journey",
+        body: "After more than three decades of professional and academic work in medicine, surgery, research, and teaching, Dr. Anil Kumar Garg and Dr. Seema Garg felt an increasing desire to contribute more deeply to society and to the well-being of future generations. A turning point came when Dr. Anil Garg attended an HSSF workshop in Mumbai, guided by Shri Gunwant Kothari Ji. The inspiring thoughts of Shri Bhaiyyaji Joshi Ji gave direction to a long-standing inner desire to work for social transformation. Subsequently, Shri Gunwant Kothari Ji encouraged Dr. Garg to work in the field of Garbh Sanskar. Dr. Hitesh Jani, Director of Garbhopnishad Foundation, Jamnagar and Dr. Karishma Nirvani played a major role in scientifically teaching and guiding us."
+      },
+      {
+        title: "Community & Leadership Support",
+        body: "Multiple meetings, detailed discussions, and extensive planning sessions were conducted with senior leaders and functionaries associated with RSS, HSSF, IMCTF, and allied organizations. Among those who contributed their valuable time, guidance, and deep thinking were Shri Yogendra Mahant, Shri Vinod Birla, Shri C. Chandramohan Dubey, Shri Rakesh Dubey, Shri Pranjal, Shri Vikas Mishra, Shri Manish Nigam, Dr. Jagdish Joshi, Mrs. Anu Purohit, Dr. Radhika Maheshwari, Shri Vinod Bandy, Mrs. Romsa Sirkanungo, Mrs. Priyanka Vedi, and many other dedicated well-wishers."
+      },
+      {
+        title: "From Interest to Academic Commitment",
+        body: "To understand Garbh Sanskar in depth and present it in a responsible and scientific manner, Dr. Anil Garg and Dr. Seema Garg completed a Post Graduate Diploma in Garbh Sanskar from Lucknow University. Now others have also done the diploma from Indore (Dr. Romsha Sirkanongo, Mrs. Milli Chouhan, Mrs. Laxmi Pastariya). Mrs. Anu Purohit has done a one-year post graduate diploma in music therapy from Kashi university. They studied ancient Indian wisdom, prenatal development, modern scientific literature, maternal health, psychology, lifestyle, yoga, meditation, and the various influences that may shape the intrauterine environment."
+      },
+      {
+        title: "Understanding Society Before Starting the Mission",
+        body: "Before proceeding further, a grassroots survey was undertaken to understand whether society was ready to accept Garbh Sanskar through a scientific and structured approach. The team travelled through Indore, Rajasthan, villages, tehsils, and different social and cultural communities. The response was overwhelming. Families showed a deep interest in understanding Garbh Sanskar in a practical, scientific, and accessible form."
+      },
+      {
+        title: "Birth of Divya Santan Foundation",
+        body: "On 19 May 2024, Divya Santan Prakalp was formally launched with a long-term vision of taking the knowledge and practice of Garbh Sanskar to families across India and eventually throughout the world. Its guiding principle became: “Nation Building Begins in the Womb.”"
+      },
+      {
+        title: "Taking Garbh Sanskar to Society",
+        body: "Numerous awareness programs and workshops were subsequently conducted. A major milestone came during the HSSF Lalbagh Mela in December 2024, where approximately 3,000 pregnant mothers and more than 2,000 other participants attended. Around 20,000 Garbh Sanskar booklets were distributed at the grassroots level, and approximately 2,200 Anganwadi workers were trained."
+      },
+      {
+        title: "From Awareness to Service",
+        body: "Garbh Sanskar OPD services were started at Geeta Bhawan Hospital, Indore, where trained specialists provide guidance to pregnant women and couples. Services have also been initiated at RK Hospital, Indore. Alongside this, free online Garbh Sanskar classes are being conducted regularly."
+      },
+      {
+        title: "Support and Leadership of Shri Vinod Ji Agarwal",
+        body: "An important milestone in the journey of Divya Santan Foundation was the association and support of renowned businessman, entrepreneur, philanthropist, and donor Shri Vinod Ji Agarwal. His guidance, vision, financial support, and provision of essential infrastructure played a significant role in strengthening and expanding the initiative."
+      },
+      {
+        title: "Garbh Sanskar Ka Vigyan",
+        body: "To make the subject available in a comprehensive, structured, and scientifically explained form, Dr. Anil Kumar Garg and Dr. Seema Garg authored the book 'Garbh Sanskar Ka Vigyan', a nearly 400-page, full-colour publication integrating ancient Indian wisdom with contemporary scientific understanding. It was formally launched at a grand event at Daly College Auditorium, Indore, graced by Shri Bhaiyyaji Joshi Ji and the Hon'ble Chief Minister of Madhya Pradesh, Dr. Mohan Yadav Ji."
+      },
+      {
+        title: "Technology for a Global Reach",
+        body: "To make Garbh Sanskar guidance available irrespective of geography, Divya Santan Foundation is developing a strong digital ecosystem. This includes an online consultation platform, digital educational resources, named as “Divyankur” and an AI-based personalized guidance system 'Ask Shree' for free guidance to pregnant mothers."
+      }
+    ],
+    leadership: {
+      patrons: [
+        {
+          name: "Pujya Swami Avdheshanand Giri Ji Maharaj",
+          role: "Chief Patron",
+          img: "Avdheshanand-maharaj.png",
+          contributions: ["Spiritual Patronage", "National Awareness Support", "Cultural Preservation"],
+        },
+        {
+          name: "Shree Pundrik Goswami Ji Maharaj",
+          role: "Patron",
+          img: "Pundrik-ji-maharaj.png",
+          contributions: ["Spiritual Patronage", "Guidance", "Cultural Preservation"],
+        },
+        {
+          name: "Shreemati Renuka Ji Pundrik",
+          role: "Patron",
+          img: "Renuka-Ji.png",
+          contributions: ["Spiritual Patronage", "Guidance", "National Awareness"],
+        }
+      ],
+      founders: [
+        {
+          name: "Shree Vinod Agarwal",
+          role: "Founder & Chairman",
+          img: "vinod-sir.png",
+          desc: "Philanthropist and visionary driving the financial and institutional foundation of this national movement.",
+        },
+        {
+          name: "Dr. Anil Kumar Garg",
+          role: "Founder & Managing Director",
+          credentials: "MBBS, MS, MCh Plastic Surgery, MA-Yog, ABHRS, ISHRS, Diploma in Garbh Sanskar",
+          img: "doctor-anil.png",
+          desc: "Medical visionary integrating clinical expertise with ancient Garbh Sanskar wisdom for a comprehensive prenatal system.",
+        },
+        {
+          name: "Shree Radhyshyam Sharma (Guruji)",
+          role: "Founder & Executive Director",
+          img: "sharma-sir.png",
+          desc: "Spiritual guide and value-based leadership anchor for the entire movement and its programs.",
+        },
+        {
+          name: "Shree Yogendra Ji Mehant",
+          role: "Founder & Executive Director",
+          img: "yogendra-sir.png",
+          desc: "Operational leader ensuring seamless execution of the strategic plan across all regions of India.",
+        },
+        {
+          name: "Dr. Hitesh Jani",
+          role: "Stake Holder",
+          img: "hitesh-sir.png",
+          desc: "Medical and academic advisor ensuring evidence-based rigor in every program and curriculum.",
+        }
+      ],
+      advisors: [
+        {
+          name: "Shree Gunwant Kothari",
+          role: "National Coordinator, HSSF",
+          img: "kothari-ji.png",
+          contributions: ["Spiritual Guidance", "Advisory Support", "National Outreach Support"],
+        },
+        {
+          name: "Shree K.E.N. Raghwan",
+          role: "All India Go Seva Head",
+          img: "raghvan-ji.png",
+          contributions: ["Spiritual Guidance", "Advisory Support", "National Outreach Support"],
+        }
+      ],
+      executiveCouncil: [
+        "Shri Vinod Birla", "Shri C. Chandramohan Dubey", "Shri Rakesh Dubey", "Shri Pranjal", 
+        "Shri Vikas Mishra", "Shri Manish Nigam", "Dr. Jagdish Joshi", "Mrs. Anu Purohit", 
+        "Dr. Radhika Maheshwari", "Shri Vinod Bandy", "Mrs. Romsa Sirkanungo", "Mrs. Priyanka Vedi"
+      ]
+    }
   },
 };
