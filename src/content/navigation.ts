@@ -13,33 +13,23 @@ export const NAV_ITEMS = [
     groups: [
       {
         id: "knowledge",
-        children: [
-          { id: "knowledgeCentre", to: "/knowledge" },
-        ],
+        children: [{ id: "knowledgeCentre", to: "/knowledge" }],
       },
       {
         id: "training",
-        children: [
-          { id: "courses", to: "/courses" },
-        ],
+        children: [{ id: "courses", to: "/courses" }],
       },
       {
         id: "freeServices",
-        children: [
-          { id: "freeServices", to: "/free-services" },
-        ],
+        children: [{ id: "freeServices", to: "/free-services" }],
       },
       {
         id: "research",
-        children: [
-          { id: "researchScience", to: "/research" },
-        ],
+        children: [{ id: "researchScience", to: "/research" }],
       },
       {
         id: "joinMission",
-        children: [
-          { id: "joinMission", to: "/join" },
-        ],
+        children: [{ id: "joinMission", to: "/join" }],
       },
     ],
   },

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/i18n";
@@ -32,7 +32,7 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
   const [animKey, setAnimKey] = useState(0);
 
   // Content for currently selected journey
-  const journeysCopy = (t.content.journeys as Record<string, JourneyCopy>);
+  const journeysCopy = t.content.journeys as Record<string, JourneyCopy>;
   const active = journeys.find((j) => j.id === activeId)!;
   const copy = journeysCopy[activeId];
 
@@ -69,9 +69,7 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
                 // dividers between items
                 idx > 0 && "border-l border-border lg:border-l-0 lg:border-t",
                 // active state
-                isActive
-                  ? "bg-primary/[0.06]"
-                  : "hover:bg-primary/[0.03]",
+                isActive ? "bg-primary/[0.06]" : "hover:bg-primary/[0.03]",
               )}
             >
               {/* Active left accent bar (desktop) / top accent bar (mobile) */}
@@ -86,9 +84,7 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
               <span
                 className={cn(
                   "absolute bottom-0 left-0 block h-[3px] w-full transition-all duration-300 lg:hidden",
-                  isActive
-                    ? "bg-primary"
-                    : "bg-transparent group-hover:bg-primary/20",
+                  isActive ? "bg-primary" : "bg-transparent group-hover:bg-primary/20",
                 )}
               />
 
@@ -167,7 +163,6 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
 
         {/* Animated content — key forces re-mount = re-animation */}
         <div key={animKey} className="journey-panel-content relative z-10 flex flex-col gap-6">
-
           {/* Header */}
           <div>
             <p className="mb-2 text-[0.68rem] font-medium uppercase tracking-[0.28em] text-primary">
@@ -177,16 +172,12 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
               {copy.title}
             </h3>
             {copy.native && (
-              <p className="font-deva mt-1.5 text-lg text-secondary/80">
-                {copy.native}
-              </p>
+              <p className="font-deva mt-1.5 text-lg text-secondary/80">{copy.native}</p>
             )}
           </div>
 
           {/* Body */}
-          <p className="max-w-lg text-base leading-relaxed text-muted-foreground">
-            {copy.body}
-          </p>
+          <p className="max-w-lg text-base leading-relaxed text-muted-foreground">{copy.body}</p>
 
           {/* Step flow — arrow chain, not pill tags */}
           <div className="flex flex-wrap items-center gap-x-1.5 gap-y-2">
@@ -195,9 +186,7 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
                 <span className="rounded-full border border-primary/25 bg-primary/8 px-3.5 py-1.5 text-[0.72rem] font-medium text-secondary">
                   {step}
                 </span>
-                {i < copy.steps.length - 1 && (
-                  <ArrowRight className="h-3 w-3 shrink-0 text-gold" />
-                )}
+                {i < copy.steps.length - 1 && <ArrowRight className="h-3 w-3 shrink-0 text-gold" />}
               </span>
             ))}
           </div>

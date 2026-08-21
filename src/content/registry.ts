@@ -286,11 +286,7 @@ export type MissionPointId = (typeof MISSION_POINTS)[number]["id"];
 
 /* ── Courses page: how learning works ───────────────────────────────────── */
 
-export const COURSE_STEPS = defineItems([
-  { id: "enrol" },
-  { id: "learn" },
-  { id: "practise" },
-]);
+export const COURSE_STEPS = defineItems([{ id: "enrol" }, { id: "learn" }, { id: "practise" }]);
 export type CourseStepId = (typeof COURSE_STEPS)[number]["id"];
 
 /* ── Research page: editorial commitments ───────────────────────────────── */

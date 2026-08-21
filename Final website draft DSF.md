@@ -207,6 +207,7 @@ structured support during preconception and pregnancy. Download the
 Divyankur App and begin your guided Garbh Sanskar journey. \[Click here
 to download the app\]
 -----------------------------------------------------------------------------------------------------------------
+
 2. About Us Subtabs: About Divya Santan Foundation-- B. Patrons of GSF
 
 Our Vision & Mission ABOUT DIVYA SANTAN FOUNDATION (DSF) A step to
@@ -785,98 +786,99 @@ Bandy, Mrs.Romsa Sirkanungo Mrs.Priyanka Vedi Activities &
 Achievements---this has been included in journey so what to do ?---we
 will do this in gallery
 -----------------------------------------------------------------------------------------------------------------
+
 3. Learn Garbh Sanskar This should be one of the most important tabs.
-Subtabs: What is Garbh Sanskar? \# What is Garbh Sanskar? Garbh Sanskar
-is derived from two Sanskrit words --- Garbh, meaning womb, and Sanskar,
-meaning refinement, cultivation, purification, and positive
-transformation. Together, these words express the idea of consciously
-nurturing and refining the environment in which a new life develops. \##
-Garbh --- The Sacred Womb In Vedic philosophy, Garbh is considered much
-more than a biological space. It is regarded as a sacred and nurturing
-environment where a new life develops physically, mentally, emotionally,
-and spiritually. During pregnancy, the mother provides not only
-nutrition to the growing baby but also an entire intrauterine
-environment shaped by her health, thoughts, emotions, lifestyle, daily
-routine, surroundings, relationships, and spiritual practices. Vedic
-wisdom therefore gives great importance to the conduct, diet, thoughts,
-prayers, lifestyle, and emotional state of the mother and family during
-pregnancy. Practices such as prayer, mantra chanting, meditation, yoga,
-music, havan, positive thinking, and disciplined living have
-traditionally been used to create a peaceful and sattvic environment for
-the mother and the developing baby. Modern science also recognizes the
-importance of maternal nutrition, physical health, stress, emotional
-well-being, lifestyle, and environmental influences in fetal growth and
-development. \## Sanskar --- Refinement and Positive Transformation The
-word Sanskar signifies refinement --- the process through which
-thoughts, behaviour, emotions, habits, values, and consciousness are
-gradually elevated and transformed. As described in the classical
-Ayurvedic tradition: \### "संस्कारो हि गुणान्तराधानमुच्यते।" \### "Sanskāro hi
-guṇāntarādhānam uchyate." Sanskar is the process through which qualities
-are refined and transformed into higher and better qualities. Just as
-gold is purified and refined through a carefully controlled process,
-human personality can also be nurtured through positive thoughts,
-behaviour, environment, education, discipline, and spiritual values. A
-Sanskarit child is therefore not merely an educated or intelligent
-child. It refers to a child nurtured toward qualities such as
-compassion, kindness, discipline, courage, emotional stability, respect,
-responsibility, love, wisdom, and spiritual awareness. \## Garbh Sanskar
---- Nurturing Begins Before Birth Garbh Sanskar is therefore the process
-of creating the most favourable physical, nutritional, mental,
-emotional, social, and spiritual environment for the unborn child. It is
-a holistic approach that encourages parents, particularly the mother, to
-consciously adopt healthy and positive practices during pregnancy. These
-may include: Nutritious food • Healthy lifestyle • Positive thoughts •
-Yoga • Meditation • Prayer • Mantra • Music • Baby Talk • Good
-literature • Family harmony • Good conduct • Spiritual practices •
-Appropriate Vedic Sanskars The purpose is not merely to support the
-physical growth of the fetus, but to create an environment conducive to
-the holistic development of the future child. \## A Simple Principle of
-Garbh Sanskar One of the simplest ways to understand Garbh Sanskar is:
-\### "The baby is not merely in the mother's womb --- the baby is with
-the mother every moment." The mother's food, emotions, daily routine,
-surroundings, conversations, learning, relationships, and experiences
-collectively form the environment in which the unborn child develops.
-Therefore, during pregnancy, parents are encouraged to consciously
-surround the mother and baby with health, happiness, harmony, knowledge,
-positive emotions, good values, prayer, and loving relationships. This
-is the essence of conscious prenatal nurturing. \## Garbh Sanskar Is
-Also a Sanskar of the Parents Garbh Sanskar does not begin with trying
-to change the child alone. It begins with the self-transformation of the
-parents. If parents wish to nurture particular qualities in their child,
-they must first try to develop and practise those qualities in their own
-lives. Their thoughts, habits, behaviour, relationships, discipline, and
-values create the atmosphere in which the next generation grows.
-Therefore, Garbh Sanskar can also be understood as a process of "Sanskar
-of the parents for the Sanskar of the child." The mother, father,
-family, and home environment all become active participants in the
-journey. \## From Intrauterine Care to Intrauterine Education Garbh
-Sanskar may be understood as a comprehensive process of: \###
-Intrauterine Care • Intrauterine Nurturing • Intrauterine Education •
-Value-Based Parenting It encourages parents to communicate lovingly with
-the unborn baby, maintain a positive emotional environment, read and
-listen to inspiring material, practise meditation and prayer, adopt
-healthy nutrition and lifestyle, and consciously cultivate the qualities
-they wish to see in their future child. In this sense, Garbh Sanskar is
-not merely a ritual or a collection of traditional practices. It is a
-way of conscious living during the preconception and pregnancy period.
-\## The Essence of Garbh Sanskar "Garbh Sanskar is the process through
-which the unborn child is cared for, nurtured with positive values, and
-provided a favourable environment for the development of a healthy,
-balanced, compassionate, and well-cultured personality even before
-birth." Its larger purpose is to nurture a child who is physically
-healthy, mentally strong, emotionally balanced, socially responsible,
-morally cultured, and spiritually aware. Garbh Sanskar brings together
-ancient Vedic wisdom, healthy lifestyle practices, conscious parenthood,
-and relevant principles of modern science with the aspiration of
-creating healthier and more harmonious future generations. \## Garbh
-Sanskar Complements Modern Medicine Garbh Sanskar is complementary to
-modern obstetric and medical care and is not a substitute for it. Every
-couple should remain in regular consultation with their gynecologist and
-follow all recommended medical examinations, investigations, medicines,
-vaccinations, and treatments throughout pregnancy. Garbh Sanskar adds a
-holistic dimension to pregnancy care by focusing on the physical,
-nutritional, mental, emotional, social, and spiritual well-being of the
-mother, baby, and family.
+   Subtabs: What is Garbh Sanskar? \# What is Garbh Sanskar? Garbh Sanskar
+   is derived from two Sanskrit words --- Garbh, meaning womb, and Sanskar,
+   meaning refinement, cultivation, purification, and positive
+   transformation. Together, these words express the idea of consciously
+   nurturing and refining the environment in which a new life develops. \##
+   Garbh --- The Sacred Womb In Vedic philosophy, Garbh is considered much
+   more than a biological space. It is regarded as a sacred and nurturing
+   environment where a new life develops physically, mentally, emotionally,
+   and spiritually. During pregnancy, the mother provides not only
+   nutrition to the growing baby but also an entire intrauterine
+   environment shaped by her health, thoughts, emotions, lifestyle, daily
+   routine, surroundings, relationships, and spiritual practices. Vedic
+   wisdom therefore gives great importance to the conduct, diet, thoughts,
+   prayers, lifestyle, and emotional state of the mother and family during
+   pregnancy. Practices such as prayer, mantra chanting, meditation, yoga,
+   music, havan, positive thinking, and disciplined living have
+   traditionally been used to create a peaceful and sattvic environment for
+   the mother and the developing baby. Modern science also recognizes the
+   importance of maternal nutrition, physical health, stress, emotional
+   well-being, lifestyle, and environmental influences in fetal growth and
+   development. \## Sanskar --- Refinement and Positive Transformation The
+   word Sanskar signifies refinement --- the process through which
+   thoughts, behaviour, emotions, habits, values, and consciousness are
+   gradually elevated and transformed. As described in the classical
+   Ayurvedic tradition: \### "संस्कारो हि गुणान्तराधानमुच्यते।" \### "Sanskāro hi
+   guṇāntarādhānam uchyate." Sanskar is the process through which qualities
+   are refined and transformed into higher and better qualities. Just as
+   gold is purified and refined through a carefully controlled process,
+   human personality can also be nurtured through positive thoughts,
+   behaviour, environment, education, discipline, and spiritual values. A
+   Sanskarit child is therefore not merely an educated or intelligent
+   child. It refers to a child nurtured toward qualities such as
+   compassion, kindness, discipline, courage, emotional stability, respect,
+   responsibility, love, wisdom, and spiritual awareness. \## Garbh Sanskar
+   --- Nurturing Begins Before Birth Garbh Sanskar is therefore the process
+   of creating the most favourable physical, nutritional, mental,
+   emotional, social, and spiritual environment for the unborn child. It is
+   a holistic approach that encourages parents, particularly the mother, to
+   consciously adopt healthy and positive practices during pregnancy. These
+   may include: Nutritious food • Healthy lifestyle • Positive thoughts •
+   Yoga • Meditation • Prayer • Mantra • Music • Baby Talk • Good
+   literature • Family harmony • Good conduct • Spiritual practices •
+   Appropriate Vedic Sanskars The purpose is not merely to support the
+   physical growth of the fetus, but to create an environment conducive to
+   the holistic development of the future child. \## A Simple Principle of
+   Garbh Sanskar One of the simplest ways to understand Garbh Sanskar is:
+   \### "The baby is not merely in the mother's womb --- the baby is with
+   the mother every moment." The mother's food, emotions, daily routine,
+   surroundings, conversations, learning, relationships, and experiences
+   collectively form the environment in which the unborn child develops.
+   Therefore, during pregnancy, parents are encouraged to consciously
+   surround the mother and baby with health, happiness, harmony, knowledge,
+   positive emotions, good values, prayer, and loving relationships. This
+   is the essence of conscious prenatal nurturing. \## Garbh Sanskar Is
+   Also a Sanskar of the Parents Garbh Sanskar does not begin with trying
+   to change the child alone. It begins with the self-transformation of the
+   parents. If parents wish to nurture particular qualities in their child,
+   they must first try to develop and practise those qualities in their own
+   lives. Their thoughts, habits, behaviour, relationships, discipline, and
+   values create the atmosphere in which the next generation grows.
+   Therefore, Garbh Sanskar can also be understood as a process of "Sanskar
+   of the parents for the Sanskar of the child." The mother, father,
+   family, and home environment all become active participants in the
+   journey. \## From Intrauterine Care to Intrauterine Education Garbh
+   Sanskar may be understood as a comprehensive process of: \###
+   Intrauterine Care • Intrauterine Nurturing • Intrauterine Education •
+   Value-Based Parenting It encourages parents to communicate lovingly with
+   the unborn baby, maintain a positive emotional environment, read and
+   listen to inspiring material, practise meditation and prayer, adopt
+   healthy nutrition and lifestyle, and consciously cultivate the qualities
+   they wish to see in their future child. In this sense, Garbh Sanskar is
+   not merely a ritual or a collection of traditional practices. It is a
+   way of conscious living during the preconception and pregnancy period.
+   \## The Essence of Garbh Sanskar "Garbh Sanskar is the process through
+   which the unborn child is cared for, nurtured with positive values, and
+   provided a favourable environment for the development of a healthy,
+   balanced, compassionate, and well-cultured personality even before
+   birth." Its larger purpose is to nurture a child who is physically
+   healthy, mentally strong, emotionally balanced, socially responsible,
+   morally cultured, and spiritually aware. Garbh Sanskar brings together
+   ancient Vedic wisdom, healthy lifestyle practices, conscious parenthood,
+   and relevant principles of modern science with the aspiration of
+   creating healthier and more harmonious future generations. \## Garbh
+   Sanskar Complements Modern Medicine Garbh Sanskar is complementary to
+   modern obstetric and medical care and is not a substitute for it. Every
+   couple should remain in regular consultation with their gynecologist and
+   follow all recommended medical examinations, investigations, medicines,
+   vaccinations, and treatments throughout pregnancy. Garbh Sanskar adds a
+   holistic dimension to pregnancy care by focusing on the physical,
+   nutritional, mental, emotional, social, and spiritual well-being of the
+   mother, baby, and family.
 
 Reference: Chapter 4 --- "Introduction to Garbh Sanskar" The Science of
 Garbh Sanskar Dr. Anil Kumar Garg & Dr. Seema Garg
@@ -1053,11 +1055,9 @@ comprehensive detox protocol should only be done under expert
 supervision and helps eliminate toxins that hinder fertility. 7.
 Spiritual Purification-Spiritual balance is just as important as
 physical purification. Positive energy, peace, and higher consciousness
-enhance reproductive readiness and influence the soul that incarnates.
-8. Health Check-ups (Allopathic) (details explained in previous
+enhance reproductive readiness and influence the soul that incarnates. 8. Health Check-ups (Allopathic) (details explained in previous
 chapter)-Both partners should undergo for Blood tests for Hemoglobin,
-Blood sugar, Thyroid function, Vitamin B12, Vitamin D, Serum Ferritin.
-9. Positive Thinking-A positive outlook on life, relationships,
+Blood sugar, Thyroid function, Vitamin B12, Vitamin D, Serum Ferritin. 9. Positive Thinking-A positive outlook on life, relationships,
 challenges, and parenting fosters emotional stability and a nurturing
 environment. Avoid greed, envy, and anger, which disrupt mental peace.
 Four Essential Elements for Conception-as per ayurvedic science there
@@ -1151,8 +1151,7 @@ during pregnancy: a systematic review and meta-analysis. Reprod Health.
 2021 Jul 28;18(1):162. doi: 10.1186/s12978-021-01209-5. PMID: 34321040;
 PMCID: PMC8320195. Feldman DE. Timing-based LTP and LTD at vertical
 inputs to layer II/III pyramidal cells in rat barrel cortex. Neuron.
-2000 Jul;27(1):45-56. doi: 10.1016/s0896-6273(00)00008-8. PMID:
-10939330. Federenko IS, Nagamine M, Hellhammer DH, Wadhwa PD, Wüst S.
+2000 Jul;27(1):45-56. doi: 10.1016/s0896-6273(00)00008-8. PMID: 10939330. Federenko IS, Nagamine M, Hellhammer DH, Wadhwa PD, Wüst S.
 The heritability of hypothalamus pituitary adrenal axis responses to
 psychosocial stress is context dependent. J Clin Endocrinol Metab. 2004
 Dec;89(12):6244-50. doi: 10.1210/jc.2004-0981. PMID: 15579784.
@@ -2610,11 +2609,9 @@ comprehensive detox protocol should only be done under expert
 supervision and helps eliminate toxins that hinder fertility. 7.
 Spiritual Purification-Spiritual balance is just as important as
 physical purification. Positive energy, peace, and higher consciousness
-enhance reproductive readiness and influence the soul that incarnates.
-8. Health Check-ups (Allopathic) (details explained in previous
+enhance reproductive readiness and influence the soul that incarnates. 8. Health Check-ups (Allopathic) (details explained in previous
 chapter)-Both partners should undergo for Blood tests for Hemoglobin,
-Blood sugar, Thyroid function, Vitamin B12, Vitamin D, Serum Ferritin.
-9. Positive Thinking-A positive outlook on life, relationships,
+Blood sugar, Thyroid function, Vitamin B12, Vitamin D, Serum Ferritin. 9. Positive Thinking-A positive outlook on life, relationships,
 challenges, and parenting fosters emotional stability and a nurturing
 environment. Avoid greed, envy, and anger, which disrupt mental peace.
 Four Essential Elements for Conception-as per ayurvedic science there
@@ -2706,8 +2703,7 @@ during pregnancy: a systematic review and meta-analysis. Reprod Health.
 2021 Jul 28;18(1):162. doi: 10.1186/s12978-021-01209-5. PMID: 34321040;
 PMCID: PMC8320195. Feldman DE. Timing-based LTP and LTD at vertical
 inputs to layer II/III pyramidal cells in rat barrel cortex. Neuron.
-2000 Jul;27(1):45-56. doi: 10.1016/s0896-6273(00)00008-8. PMID:
-10939330. Federenko IS, Nagamine M, Hellhammer DH, Wadhwa PD, Wüst S.
+2000 Jul;27(1):45-56. doi: 10.1016/s0896-6273(00)00008-8. PMID: 10939330. Federenko IS, Nagamine M, Hellhammer DH, Wadhwa PD, Wüst S.
 The heritability of hypothalamus pituitary adrenal axis responses to
 psychosocial stress is context dependent. J Clin Endocrinol Metab. 2004
 Dec;89(12):6244-50. doi: 10.1210/jc.2004-0981. PMID: 15579784.

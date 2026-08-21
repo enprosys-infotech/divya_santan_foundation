@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SPIRITUAL_ICONS, type SpiritualIconKey } from "@/content/spiritual-icons";
@@ -71,7 +71,12 @@ export function FeatureCard({
   return (
     <CardShell to={to} className={className}>
       {spiritualIconData ? (
-        <div className={cn("mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full p-2", iconClasses[iconVariant || "primary"])}>
+        <div
+          className={cn(
+            "mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full p-2",
+            iconClasses[iconVariant || "primary"],
+          )}
+        >
           <img
             src={spiritualIconData.src}
             alt={spiritualIconData.alt}
@@ -79,7 +84,12 @@ export function FeatureCard({
           />
         </div>
       ) : Icon ? (
-        <span className={cn("mb-5 inline-flex h-11 w-11 items-center justify-center rounded-full", iconClasses[iconVariant || "primary"])}>
+        <span
+          className={cn(
+            "mb-5 inline-flex h-11 w-11 items-center justify-center rounded-full",
+            iconClasses[iconVariant || "primary"],
+          )}
+        >
           <Icon className="h-5 w-5" strokeWidth={1.5} />
         </span>
       ) : null}
@@ -237,7 +247,9 @@ export function CTASection({
     >
       <h2 className="text-2xl text-ink sm:text-3xl">{title}</h2>
       {body && (
-        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">{body}</p>
+        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+          {body}
+        </p>
       )}
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Button asChild variant="hero" size="lg">

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandLock } from "./Brand";
@@ -14,7 +14,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { pathname } = useLocation();
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -52,7 +52,10 @@ export function Navbar() {
       >
         <BrandLock />
 
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label={t.common.primaryNavigation}>
+        <nav
+          className="hidden items-center gap-0.5 lg:flex"
+          aria-label={t.common.primaryNavigation}
+        >
           {NAV_ITEMS.map((item) => {
             if (item.kind === "link") {
               const active = pathname === item.to;

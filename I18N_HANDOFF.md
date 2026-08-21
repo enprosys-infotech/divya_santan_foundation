@@ -26,7 +26,7 @@ Result: switching to Hindi still showed English in many places. **Not end-to-end
 
 ### Decision made (and why)
 
-We evaluated a runtime translation API (Google/Azure) and **rejected it**: per-visit cost, flash of untranslated content, no SEO indexing, and unreliable handling of domain terms (*Garbh Sanskar*, *Prerak*, *Garbh Samvad*). Instead we use **static locale files with a compile-time completeness guarantee**.
+We evaluated a runtime translation API (Google/Azure) and **rejected it**: per-visit cost, flash of untranslated content, no SEO indexing, and unreliable handling of domain terms (_Garbh Sanskar_, _Prerak_, _Garbh Samvad_). Instead we use **static locale files with a compile-time completeness guarantee**.
 
 ---
 
@@ -88,9 +88,9 @@ PILLARS.map((p) => <FeatureCard key={p.id} icon={p.icon} {...t.content.pillars[p
 ```ts
 import { useI18n, getDictionary, seo, format, LANGUAGES } from "@/i18n";
 
-const { t, lang, setLang } = useI18n();   // `t` is the whole typed dictionary object
-t.home.hero.title                          // dot access, full autocomplete, no string keys
-format(t.synergy.pillarCounter, { current: 1, total: 8 })   // "{placeholder}" substitution
+const { t, lang, setLang } = useI18n(); // `t` is the whole typed dictionary object
+t.home.hero.title; // dot access, full autocomplete, no string keys
+format(t.synergy.pillarCounter, { current: 1, total: 8 }); // "{placeholder}" substitution
 ```
 
 For TanStack Router `head()` (runs outside React, no hooks):
@@ -104,6 +104,7 @@ head: () => seo(getDictionary().about.meta),
 ### The `native` field convention
 
 Several English headings show a Devanagari accent line underneath (design feature).
+
 - In `en.ts`: `native: "गर्भ संस्कार"`.
 - In `hi.ts`: `native: ""` (redundant when the page is already Hindi).
 - Components render it conditionally: `{native && <p className="font-deva">{native}</p>}`.
@@ -142,30 +143,30 @@ about: {
 
 ### ✅ Done
 
-| Area | State |
-|---|---|
-| `src/i18n/*` (config, types, dictionary, provider, seo, index) | Complete |
-| `src/i18n/locales/en.ts` | Complete — reference locale |
-| `src/i18n/locales/hi.ts` | Complete — typechecks clean against `Dictionary` |
-| `src/content/registry.ts` | Complete |
-| `src/content/navigation.ts` | Complete |
-| `src/components/site/Cards.tsx` | Migrated — props are plain pre-localized strings |
-| `src/components/site/PageHeader.tsx` | Migrated (`eyebrow, title, native?, intro`) |
-| `src/components/site/LanguageSwitcher.tsx` | Migrated |
-| `src/components/site/Brand.tsx` | Migrated |
-| `src/components/site/Navbar.tsx` | Migrated — driven by `NAV_ITEMS` + `t.nav.*` |
-| `src/components/site/Footer.tsx` | Migrated — driven by `FOOTER_COLUMNS` + `t.footer.*` |
-| `src/components/site/AskShreeChat.tsx` | Migrated — Q&A from `t.askShree.questions[id]` |
-| `src/components/site/VideoCard.tsx` | Migrated — flat props, no `VideoItem` object |
-| `src/components/site/AncientScienceBridge.tsx` | Migrated — uses `SYNERGY_PILLARS` + `t.synergy` + `format()` |
-| `src/components/site/SectionHeading.tsx` | Unchanged (pure presentational, already fine) |
-| Old files deleted | `src/lib/i18n.tsx`, `src/lib/content.ts`, `src/hooks/use-bilingual-content.ts` |
+| Area                                                           | State                                                                          |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `src/i18n/*` (config, types, dictionary, provider, seo, index) | Complete                                                                       |
+| `src/i18n/locales/en.ts`                                       | Complete — reference locale                                                    |
+| `src/i18n/locales/hi.ts`                                       | Complete — typechecks clean against `Dictionary`                               |
+| `src/content/registry.ts`                                      | Complete                                                                       |
+| `src/content/navigation.ts`                                    | Complete                                                                       |
+| `src/components/site/Cards.tsx`                                | Migrated — props are plain pre-localized strings                               |
+| `src/components/site/PageHeader.tsx`                           | Migrated (`eyebrow, title, native?, intro`)                                    |
+| `src/components/site/LanguageSwitcher.tsx`                     | Migrated                                                                       |
+| `src/components/site/Brand.tsx`                                | Migrated                                                                       |
+| `src/components/site/Navbar.tsx`                               | Migrated — driven by `NAV_ITEMS` + `t.nav.*`                                   |
+| `src/components/site/Footer.tsx`                               | Migrated — driven by `FOOTER_COLUMNS` + `t.footer.*`                           |
+| `src/components/site/AskShreeChat.tsx`                         | Migrated — Q&A from `t.askShree.questions[id]`                                 |
+| `src/components/site/VideoCard.tsx`                            | Migrated — flat props, no `VideoItem` object                                   |
+| `src/components/site/AncientScienceBridge.tsx`                 | Migrated — uses `SYNERGY_PILLARS` + `t.synergy` + `format()`                   |
+| `src/components/site/SectionHeading.tsx`                       | Unchanged (pure presentational, already fine)                                  |
+| Old files deleted                                              | `src/lib/i18n.tsx`, `src/lib/content.ts`, `src/hooks/use-bilingual-content.ts` |
 
 ### ❌ Remaining work
 
 1. **`src/routes/__root.tsx`** — still imports the deleted `LanguageProvider` from `@/lib/i18n`. **This currently breaks the build.**
    - Swap to `import { I18nProvider } from "@/i18n"` and wrap with `<I18nProvider>`.
-   - `NotFoundComponent` and `ErrorComponent` have hardcoded English → use `t.errors.notFound.*` and `t.errors.generic.*`. Note: these render *inside* the provider tree, so hooks are available.
+   - `NotFoundComponent` and `ErrorComponent` have hardcoded English → use `t.errors.notFound.*` and `t.errors.generic.*`. Note: these render _inside_ the provider tree, so hooks are available.
 
 2. **All 10 route files were deleted and must be rewritten** against the new API:
    `index.tsx`, `about.tsx`, `learn.tsx`, `courses.tsx`, `knowledge.tsx`, `free-services.tsx`, `research.tsx`, `join.tsx`, `contact.tsx`, `ask-shree.tsx`
@@ -290,6 +291,7 @@ bun run dev
 ```
 
 Then manually:
+
 1. Toggle EN ↔ हिन्दी in the navbar on **every** route.
 2. Confirm zero English text remains while Hindi is active (and vice versa) — including nav, mega-menu notes, footer columns, tab labels, card CTAs (“Explore”, “Start learning”), form labels, select options, chat bot messages, 404/error pages, `aria-label`s and `alt` text.
 3. Reload the page — language must persist (`localStorage` → `dsf-lang`).

@@ -1,6 +1,6 @@
 /**
  * Spiritual Icon Registry
- * 
+ *
  * Maps Sanatan/Spiritual symbols to their PNG asset paths.
  * These icons represent ancient Vedic wisdom integrated with modern science.
  * Using high-quality yellow-colored spiritual icons for enhanced visual impact.
@@ -71,10 +71,7 @@ export type SpiritualIconKey = keyof typeof SPIRITUAL_ICONS;
 /**
  * Map synergy pillar IDs to their corresponding spiritual icons
  */
-export const SYNERGY_ICON_MAP: Record<
-  string,
-  SpiritualIconKey
-> = {
+export const SYNERGY_ICON_MAP: Record<string, SpiritualIconKey> = {
   soundNeuroscience: "om",
   epigeneticsLotus: "lotus",
   triadEndocrinology: "trident",

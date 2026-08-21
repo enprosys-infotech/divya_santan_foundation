@@ -31,7 +31,14 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <p className={cn("mb-3 text-[0.68rem] uppercase tracking-[0.28em]", EYEBROW_VARIANTS[eyebrowVariant])}>{eyebrow}</p>
+        <p
+          className={cn(
+            "mb-3 text-[0.68rem] uppercase tracking-[0.28em]",
+            EYEBROW_VARIANTS[eyebrowVariant],
+          )}
+        >
+          {eyebrow}
+        </p>
       )}
       <h2 className="text-3xl leading-tight text-ink sm:text-4xl">{title}</h2>
       <span

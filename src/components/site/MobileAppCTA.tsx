@@ -47,9 +47,7 @@ export function MobileAppCTA({ className }: { className?: string }) {
             </h2>
 
             {/* Devanagari Accent (only in English locale) */}
-            {copy.native && (
-              <p className="font-deva mt-3 text-lg text-primary/80">{copy.native}</p>
-            )}
+            {copy.native && <p className="font-deva mt-3 text-lg text-primary/80">{copy.native}</p>}
 
             {/* Description */}
             <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground lg:max-w-none">
@@ -87,9 +85,7 @@ export function MobileAppCTA({ className }: { className?: string }) {
 
           {/* Download Badges Side */}
           <div className="flex flex-col items-center justify-center lg:items-start">
-            <p className="mb-5 text-sm font-medium tracking-wide text-ink">
-              {copy.downloadLabel}
-            </p>
+            <p className="mb-5 text-sm font-medium tracking-wide text-ink">{copy.downloadLabel}</p>
 
             <div className="flex flex-col gap-4">
               {/* Android Badge */}

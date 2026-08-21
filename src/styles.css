@@ -73,17 +73,17 @@
   --secondary: oklch(0.375 0.115 22.5);
   --secondary-foreground: oklch(0.97 0.008 85);
 
-  --muted: oklch(0.945 0.020 88);
-  --muted-foreground: oklch(0.50 0.032 50);
+  --muted: oklch(0.945 0.02 88);
+  --muted-foreground: oklch(0.5 0.032 50);
 
   /* Accent: cream-tinted warm (#F1E5A1 family) */
-  --accent: oklch(0.930 0.058 94);
-  --accent-foreground: oklch(0.30 0.05 35);
+  --accent: oklch(0.93 0.058 94);
+  --accent-foreground: oklch(0.3 0.05 35);
 
   /* Gold: true temple amber — warm metallic, sacred/ceremonial accents */
   --gold: #eba941;
   /* Dark warm brown on gold background — WCAG AA contrast ~5.5:1 */
-  --gold-foreground: oklch(0.20 0.04 40);
+  --gold-foreground: oklch(0.2 0.04 40);
 
   /* Green: wellness/growth (was the former mislabeled --gold, #486C2F) */
   --green: oklch(0.462 0.104 134);
@@ -93,11 +93,11 @@
   /* Near-white on indigo — WCAG AA contrast ~10:1 */
   --indigo-foreground: oklch(0.96 0.008 85);
 
-  --destructive: oklch(0.50 0.185 22);
+  --destructive: oklch(0.5 0.185 22);
   --destructive-foreground: oklch(0.99 0.005 90);
 
-  --border: oklch(0.890 0.028 86);
-  --input: oklch(0.890 0.028 86);
+  --border: oklch(0.89 0.028 86);
+  --input: oklch(0.89 0.028 86);
   --ring: oklch(0.648 0.182 48.5);
 
   /* Warm gradient using cream palette tones */
@@ -119,8 +119,8 @@
     oklch(0.648 0.182 48.5) 0%,
     oklch(29.829% 0.10642 24.868) 70%
   );
-  --shadow-soft: 0 1px 2px oklch(0.35 0.06 30 / 0.05), 0 12px 32px -18px oklch(0.40 0.09 30 / 0.28);
-  --shadow-lift: 0 2px 4px oklch(0.35 0.06 30 / 0.06), 0 24px 48px -24px oklch(0.40 0.10 30 / 0.38);
+  --shadow-soft: 0 1px 2px oklch(0.35 0.06 30 / 0.05), 0 12px 32px -18px oklch(0.4 0.09 30 / 0.28);
+  --shadow-lift: 0 2px 4px oklch(0.35 0.06 30 / 0.06), 0 24px 48px -24px oklch(0.4 0.1 30 / 0.38);
   --transition-slow: 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -153,7 +153,6 @@
       scroll-behavior: auto !important;
     }
   }
-
 
   h1,
   h2,
@@ -320,4 +319,3 @@
   font-size: 1rem;
   line-height: 1.65;
 }
-

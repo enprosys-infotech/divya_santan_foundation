@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import {
   ArrowRight,
@@ -113,11 +113,7 @@ export function AncientScienceBridge() {
                 )}
               >
                 {iconData && (
-                  <img
-                    src={iconData.src}
-                    alt={iconData.alt}
-                    className="h-4 w-4 object-contain"
-                  />
+                  <img src={iconData.src} alt={iconData.alt} className="h-4 w-4 object-contain" />
                 )}
                 <span>{pillarCopy(pillar.id).category}</span>
                 {selectedIndex === index && <Sparkles className="h-3 w-3 text-gold" />}
@@ -253,7 +249,6 @@ export function AncientScienceBridge() {
             </Button>
           </div>
         </div>
-
       </div>
     </section>
   );

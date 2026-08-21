@@ -104,7 +104,9 @@ export function AskShreeChat({
             <Send className="h-4 w-4" />
           </Button>
         </form>
-        <p className="mt-3 text-[0.7rem] leading-relaxed text-muted-foreground">{chat.disclaimer}</p>
+        <p className="mt-3 text-[0.7rem] leading-relaxed text-muted-foreground">
+          {chat.disclaimer}
+        </p>
       </div>
     </div>
   );

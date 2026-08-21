@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from "lucide-react";
 import dspImage from "@/assets/image.png";
 import bsvafImage from "@/assets/image1.png";
@@ -94,7 +94,18 @@ export function Footer() {
           <p className="text-xs uppercase tracking-[0.24em] text-indigo-foreground/50">
             {t.brand.vasudhaivaSub}
           </p>
-          <p className="mt-3 text-xs text-indigo-foreground/50">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-indigo-foreground/60">
+            <Link to="/privacy-policy" className="transition-colors hover:text-gold">
+              Privacy Policy
+            </Link>
+            <span aria-hidden="true" className="text-indigo-foreground/30">
+              •
+            </span>
+            <Link to="/terms-and-conditions" className="transition-colors hover:text-gold">
+              Terms & Conditions
+            </Link>
+          </div>
+          <p className="mt-2 text-xs text-indigo-foreground/50">
             © {new Date().getFullYear()} {t.footer.copyright}
           </p>
         </div>
