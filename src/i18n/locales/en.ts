@@ -407,7 +407,7 @@ export const en = {
           bio: "Spiritual guidance & cultural preservation",
         },
         anil: {
-          name: "Dr. Anil Agrawal",
+          name: "Dr. Anil Garg",
           role: "Founder & Managing Director",
           bio: "MBBS, MS, MCh · Integrating medicine with ancient wisdom",
         },

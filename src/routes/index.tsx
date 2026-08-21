@@ -232,9 +232,6 @@ function Home() {
               <Button asChild variant="hero" size="lg">
                 <Link to="/free-services">{t.cta.joinFree}</Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link to="/ask-shree">{t.cta.askShree}</Link>
-              </Button>
               <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
                 <Link to="/contact">{t.cta.needGuidance}</Link>
               </Button>
