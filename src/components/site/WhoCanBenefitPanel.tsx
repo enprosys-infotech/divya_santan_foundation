@@ -48,7 +48,7 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
       {/* ── Left: Identity selector tabs ───────────────────────────────── */}
       <nav
         aria-label="Who can benefit — select your journey"
-        className="flex flex-row overflow-x-auto lg:w-[38%] lg:flex-col lg:overflow-x-visible lg:border-r lg:border-border"
+        className="grid grid-cols-2 border-b border-border sm:grid-cols-3 lg:grid-cols-1 lg:w-[38%] lg:border-b-0 lg:border-r"
       >
         {journeys.map((j, idx) => {
           const Icon = icons[j.id];
@@ -64,15 +64,24 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
               aria-controls="journey-panel"
               onClick={() => selectJourney(j.id)}
               className={cn(
-                // base
-                "group relative flex min-w-[160px] flex-shrink-0 cursor-pointer items-center gap-4 px-6 py-5 text-left transition-all duration-200 focus-visible:outline-2 focus-visible:outline-primary lg:min-w-0 lg:px-7 lg:py-6",
-                // dividers between items
-                idx > 0 && "border-l border-border lg:border-l-0 lg:border-t",
+                // base — stacked (icon above text) on mobile, side-by-side on desktop
+                "group relative flex cursor-pointer flex-col items-center gap-2 px-3 py-4 text-center transition-all duration-200 focus-visible:outline-2 focus-visible:outline-primary sm:flex-row sm:gap-4 sm:px-5 sm:text-left lg:min-w-0 lg:flex-row lg:px-7 lg:py-6 lg:text-left",
+                // grid cell borders — right border for left column items, bottom for all but last row
+                idx % 2 === 0 && "border-r border-border sm:border-r-0 lg:border-r-0",
+                idx < journeys.length - 2 && "border-b border-border sm:border-b-0 lg:border-b-0",
+                idx < journeys.length - 1 && "sm:border-b sm:border-border lg:border-b-0 lg:border-t",
+                idx === 0 && "sm:border-t-0 lg:border-t-0",
                 // active state
                 isActive ? "bg-primary/[0.06]" : "hover:bg-primary/[0.03]",
               )}
             >
-              {/* Active left accent bar (desktop) / top accent bar (mobile) */}
+              {/* Active indicator — bottom bar on mobile, left bar on desktop */}
+              <span
+                className={cn(
+                  "absolute bottom-0 left-0 block h-[3px] w-full transition-all duration-300 lg:hidden",
+                  isActive ? "bg-primary" : "bg-transparent group-hover:bg-primary/20",
+                )}
+              />
               <span
                 className={cn(
                   "absolute left-0 top-0 hidden transition-all duration-300 lg:block",
@@ -81,30 +90,24 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
                     : "h-full w-[3px] bg-transparent group-hover:bg-primary/20",
                 )}
               />
-              <span
-                className={cn(
-                  "absolute bottom-0 left-0 block h-[3px] w-full transition-all duration-300 lg:hidden",
-                  isActive ? "bg-primary" : "bg-transparent group-hover:bg-primary/20",
-                )}
-              />
 
               {/* Icon bubble */}
               <span
                 className={cn(
-                  "flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-all duration-200",
+                  "flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all duration-200 sm:h-10 sm:w-10",
                   isActive
                     ? "bg-primary text-primary-foreground shadow-md"
                     : "bg-primary/10 text-primary group-hover:bg-primary/20",
                 )}
               >
-                {Icon && <Icon className="h-5 w-5" strokeWidth={1.75} />}
+                {Icon && <Icon className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.75} />}
               </span>
 
               {/* Text */}
               <span className="flex min-w-0 flex-col gap-0.5">
                 <span
                   className={cn(
-                    "text-sm font-medium leading-snug transition-colors duration-200",
+                    "text-xs font-medium leading-snug transition-colors duration-200 sm:text-sm",
                     isActive ? "text-ink" : "text-ink/70 group-hover:text-ink/90",
                   )}
                 >
@@ -141,7 +144,7 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
         id="journey-panel"
         role="tabpanel"
         aria-labelledby={`journey-tab-${activeId}`}
-        className="relative flex flex-1 flex-col justify-between gap-8 overflow-hidden px-8 py-10 sm:px-10 sm:py-12 lg:px-12"
+        className="relative flex flex-1 flex-col justify-between gap-6 overflow-hidden px-5 py-7 sm:gap-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12"
       >
         {/* Decorative background glow — unique to this panel */}
         <div
@@ -168,7 +171,7 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
             <p className="mb-2 text-[0.68rem] font-medium uppercase tracking-[0.28em] text-primary">
               Your Path
             </p>
-            <h3 className="font-display text-3xl leading-tight text-ink sm:text-4xl">
+            <h3 className="font-display text-2xl leading-tight text-ink sm:text-3xl lg:text-4xl">
               {copy.title}
             </h3>
             {copy.native && (
@@ -183,7 +186,7 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
           <div className="flex flex-wrap items-center gap-x-1.5 gap-y-2">
             {copy.steps.map((step, i) => (
               <span key={step} className="flex items-center gap-1.5">
-                <span className="rounded-full border border-primary/25 bg-primary/8 px-3.5 py-1.5 text-[0.72rem] font-medium text-secondary">
+                <span className="rounded-full border border-primary/25 bg-primary/8 px-3 py-1 text-[0.7rem] font-medium text-secondary sm:px-3.5 sm:py-1.5 sm:text-[0.72rem]">
                   {step}
                 </span>
                 {i < copy.steps.length - 1 && <ArrowRight className="h-3 w-3 shrink-0 text-gold" />}
