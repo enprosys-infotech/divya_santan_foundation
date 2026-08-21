@@ -175,13 +175,13 @@ export default function HomePage() {
   return (
     <>
       {/* ── Hero ────────────────────────────────────────────────────── */}
-      <section className="mandala-veil relative overflow-hidden border-b border-border bg-warm px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24">
+      <section className="mandala-veil relative overflow-hidden border-b border-border bg-warm px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-15">
         <div className="mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-[1fr_420px] lg:items-center">
           <div>
             <p className="text-[0.68rem] uppercase tracking-[0.3em] text-secondary">
               {copy.hero.eyebrow}
             </p>
-            <h1 className="animate-rise mt-5 text-5xl leading-tight text-ink sm:text-6xl lg:text-7xl">
+            <h1 className="animate-rise mt-5 text-5xl leading-tight text-ink sm:text-5xl lg:text-6xl">
               {copy.hero.title}
             </h1>
             <p className="font-deva mt-4 text-lg text-primary/85">{copy.hero.native}</p>

@@ -192,7 +192,7 @@ export const en = {
 
   home: {
     meta: {
-      title: "Divya Santan Foundation — ONE STEP TOWARD DIVINE BABY",
+      title: "Divya Santan Foundation — ONE STEP TOWARDS DIVINE BABY",
       description:
         "A global Garbh Sanskar education, training, awareness and research movement nurturing healthy, cultured and compassionate generations.",
       ogDescription:
@@ -200,7 +200,7 @@ export const en = {
     },
     hero: {
       eyebrow: "A global education & awareness movement for Garbh Sanskar",
-      title: "ONE STEP TOWARD DIVINE BABY",
+      title: "ONE STEP TOWARDS DIVINE BABY",
       subtitle: "Nurturing Healthy, Cultured & Compassionate Generations",
       native: "",
       support: "Education • Training • Awareness • Guidance • Research",
@@ -1599,7 +1599,7 @@ export const en = {
         "Despite advances in medical treatment, contemporary healthcare systems primarily address disease after birth, leaving a critical gap in preventive, prenatal, and holistic human development. There is an urgent need for an integrated approach that focuses on conscious conception, prenatal care, and early neuro-psychological nurturing.",
         "Garbh Sanskar is a scientifically aligned, culturally rooted, and holistic life science that addresses this need. It integrates modern medical understanding of fetal development, epigenetics, neuroendocrinology, and mental health with time-tested practices of yoga, meditation, music therapy, positive cognition, ethical values, and lifestyle regulation. This approach supports the physical, mental, emotional, social, and spiritual development of the unborn child while enhancing maternal well-being.",
         "The Divya Santan Foundation (DSF) envisions Garbh Sanskar as a global preventive health and social transformation initiative. Its objective is to nurture healthier progeny, strengthen families, reduce long-term healthcare burdens, and build compassionate, emotionally stable, and value-based societies.",
-        "By shifting the focus from disease management to conscious human creation, Garbh Sanskar offers a sustainable solution for public health, mental well-being, and societal harmony. It represents not merely a program, but a transformative movement toward a healthier, more humane, and peaceful world.",
+        "By shifting the focus from disease management to conscious human creation, Garbh Sanskar offers a sustainable solution for public health, mental well-being, and societal harmony. It represents not merely a program, but a transformative movement towards a healthier, more humane, and peaceful world.",
       ],
       coreObjectiveTitle: "Core Objective",
       coreObjectiveList: [
