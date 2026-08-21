@@ -63,6 +63,7 @@ export const en = {
   brand: {
     name: "Balaji Sewarth Vinod Agarwal Foundation",
     prakalp: "Divya Santan Foundation",
+    supportedBy: "supported by",
     positioning: "A Global Garbh Sanskar Education, Training & Awareness Platform",
     vasudhaiva: "",
     vasudhaivaSub: "One World, One Family",
@@ -1930,6 +1931,298 @@ export const en = {
         "Mrs. Romsa Sirkanungo",
         "Mrs. Priyanka Vedi",
       ],
+    },
+  },
+
+  learnPage: {
+    hero: {
+      eyebrow: "Learn Garbh Sanskar",
+      nativeEyebrow: "गर्भ संस्कार",
+      headline1: "Nurturing begins",
+      headline2: "before birth.",
+      intro:
+        "Garbh Sanskar is the ancient, scientifically aligned practice of consciously creating the most favourable environment for an unborn child — encompassing physical health, emotional calm, spiritual awareness, and family harmony.",
+      paths: {
+        planning: { label: "Planning Pregnancy", sub: "Pre-conception guidance" },
+        pregnant: { label: "I Am Pregnant", sub: "Month-by-month guidance" },
+        science: { label: "Understand the Science", sub: "Ritual, epigenetics & research" },
+      },
+    },
+    philosophy: {
+      eyebrow: "What is Garbh Sanskar?",
+      headline1: "Two Sanskrit words.",
+      headline2: "One transformative idea.",
+      intro:
+        "Garbh (गर्भ) means womb. Sanskar (संस्कार) means refinement, cultivation, and positive transformation. Together they describe a holistic way of consciously nurturing the unborn child through healthy lifestyle, positive thoughts, prayer, mantra, meditation, yoga, music, good conduct, and family harmony.",
+      principleQuote:
+        "The baby is not merely in the mother's womb — the baby is with the mother every moment.",
+      principleLabel: "Core principle of Garbh Sanskar",
+      disclaimer:
+        "Garbh Sanskar is complementary to modern medical care, not a substitute. Always remain under the guidance of your gynecologist.",
+      tabs: {
+        garbh: { label: "Garbh", native: "गर्भ" },
+        sanskar: { label: "Sanskar", native: "संस्कार" },
+        together: { label: "Together", native: "मिलकर" },
+      },
+      content: {
+        garbh: {
+          title: "The Sacred Womb",
+          body: "In Vedic philosophy, Garbh is more than a biological space. It is a sacred environment where a new life develops physically, mentally, emotionally, and spiritually. The mother's health, thoughts, emotions, daily routine, and spiritual practices all shape the intrauterine world the child inhabits.",
+          quote: "The womb is the first classroom. The mother is the first teacher.",
+        },
+        sanskar: {
+          title: "Refinement & Transformation",
+          body: "Sanskar signifies the refinement of thoughts, behaviour, emotions, habits, values, and consciousness. The classical Ayurvedic tradition states: Sansk\u0101ro hi gu\u1e47\u0101ntar\u0101dh\u0101nam uchyate — Sanskar is the process through which qualities are refined and elevated. Just as gold is purified, human personality can be nurtured toward compassion, courage, and spiritual awareness.",
+          quote: "\u0938\u0902\u0938\u094d\u0915\u093e\u0930\u094b \u0939\u093f \u0917\u0941\u0923\u093e\u0928\u094d\u0924\u0930\u093e\u0927\u093e\u0928\u092e\u0941\u091a\u094d\u092f\u0924\u0947 \u2014 Sanskar transforms qualities into higher qualities.",
+        },
+        together: {
+          title: "Nurturing Before Birth",
+          body: "Garbh Sanskar is the conscious creation of the most favourable physical, nutritional, mental, emotional, social, and spiritual environment for the unborn child. It includes nutritious food, healthy lifestyle, positive thoughts, yoga, meditation, prayer, mantra, music, baby talk, family harmony, and appropriate Vedic practices. It is a way of conscious living — not merely a ritual.",
+          quote:
+            "The baby is not merely in the mother's womb — the baby is with the mother every moment.",
+        },
+      },
+      reference:
+        'Reference: Chapter 4 — "Introduction to Garbh Sanskar" · The Science of Garbh Sanskar · Dr. Anil Kumar Garg & Dr. Seema Garg',
+    },
+    science: {
+      eyebrow: "Ritual or Science?",
+      headline1: "Both — and that is the point.",
+      intro:
+        "Garbh Sanskar is not exclusively ritual or science. It is a holistic approach that blends cultural traditions with scientific insights. Ancient descriptions, once considered symbolic, are now being validated by research.",
+      keyFindingLabel: "Key Finding",
+      tabs: {
+        epigenetics: { label: "Epigenetics" },
+        bonding: { label: "Bonding" },
+        stress: { label: "Stress & Brain" },
+        sound: { label: "Sound & OM" },
+      },
+      content: {
+        epigenetics: {
+          title: "Epigenetics & Gene Expression",
+          body: "Research has shown that a mother's emotions, nutrition, and environment can influence gene expression in the fetus — without altering the genetic code itself. Such changes can even be inherited across generations.",
+          finding: "Maternal environment shapes which genes are expressed in the developing child.",
+          source: "Modern epigenetic research, multiple peer-reviewed studies",
+        },
+        bonding: {
+          title: "Maternal\u2013Fetal Bonding",
+          body: "By the second trimester, the fetus responds to the mother's voice, emotions, and external sounds. Newborns can recognise sounds they heard during gestation, confirming that prenatal communication has real neurological basis.",
+          finding: "Fetuses begin hearing and responding to external sounds around weeks 18\u201324.",
+          source: "Developmental neuroscience, fetal auditory research",
+        },
+        stress: {
+          title: "Maternal Stress & Brain Development",
+          body: "Maternal stress leads to the release of cortisol, which can negatively affect fetal brain development. Garbh Sanskar's emphasis on emotional calm, meditation, and family harmony directly addresses this scientifically established pathway.",
+          finding:
+            "Elevated cortisol during pregnancy is associated with altered fetal neurodevelopment.",
+          source: "Federenko et al. (2004), Journal of Clinical Endocrinology & Metabolism",
+        },
+        sound: {
+          title: "OM Chanting & Neurological Effects",
+          body: "Research using fMRI has shown that chanting OM decreases activity in the limbic system — including the amygdala, hippocampus, and orbitofrontal cortex — areas associated with stress and anxiety. It increases parasympathetic activity, inducing calm.",
+          finding:
+            "OM chanting produces bilateral deactivation of limbic regions, similar to vagal nerve stimulation.",
+          source:
+            "Kalyani et al. (2011), International Journal of Yoga; Bernardi et al. (2001), BMJ",
+        },
+      },
+      reference:
+        'Reference: Chapter 5 — "Garbh Sanskar: Is it Ritual or Science?" · The Science of Garbh Sanskar · Dr. Anil Kumar Garg & Dr. Seema Garg',
+    },
+    preConception: {
+      eyebrow: "Before Conception",
+      headline1: "Preparation is the",
+      headline2: "first Sanskar.",
+      intro:
+        "A couple should ideally begin a minimum of 3 months of disciplined preparation before conception. Conception is not merely a biological act — it is a sacred spiritual process, a form of penance, a divine calling where a soul descends to earth.",
+      devoteQuote:
+        "If one desires to bring forth a noble and elevated soul, the couple must prepare with the same devotion a farmer gives to his land — choosing the best seeds, enriching the soil, and sowing at the right time.",
+      fourElementsLabel: "Four Essentials for Healthy Conception (Ayurveda)",
+      stepsLabel: "Beej Shuddhi \u2014 9 Preparation Steps",
+      reference:
+        'Reference: Chapter 13 — "Pre-Conception Counseling" · The Science of Garbh Sanskar',
+      elements: {
+        ritukala: { native: "\u0943\u0924\u0941\u0915\u093e\u0932", desc: "Healthy Ovulation", detail: "Regular menstrual cycles" },
+        kshetra: { native: "\u0915\u094d\u0937\u0947\u0924\u094d\u0930", desc: "Healthy Uterus", detail: "Optimal uterine environment" },
+        ambu: { native: "\u0905\u092e\u094d\u092c\u0941", desc: "Proper Nutrition", detail: "Nourishment for all nine months" },
+        beej: { native: "\u092c\u0940\u091c", desc: "Healthy Seeds", detail: "High-quality ovum and sperm" },
+      },
+      steps: {
+        physical: {
+          title: "Physical Purification",
+          body: "Panchakarma detox, eliminating toxins, balancing doshas. Supports healthy sperm and ovum quality.",
+        },
+        diet: {
+          title: "Diet & Ahara",
+          body: "Women: pumpkin seeds, fenugreek, turmeric, milk, ghee. Men: walnuts, almonds, dates, fresh fruits.",
+        },
+        lifestyle: {
+          title: "Lifestyle (Vichar & Vyavahar)",
+          body: "Stress-free, regular sleep, loving relationships, no addictions, daily yoga and walking.",
+        },
+        yoga: {
+          title: "Yoga & Meditation",
+          body: "Enhances flexibility and reproductive health. Promotes emotional stability and reduces stress.",
+        },
+        spiritual: {
+          title: "Spiritual Purification",
+          body: "Positive energy, peace, and higher consciousness enhance reproductive readiness and influence the incoming soul.",
+        },
+        health: {
+          title: "Health Check-ups",
+          body: "Blood tests for hemoglobin, blood sugar, thyroid, Vitamin B12, Vitamin D, and Serum Ferritin for both partners.",
+        },
+      },
+    },
+    sanskars: {
+      eyebrow: "Pregnancy Sanskars",
+      headline: "Three sacred rites of pregnancy",
+      intro:
+        "Classical Indian tradition prescribes three Sanskars during pregnancy — each addressing a different dimension of the child's development.",
+      timingLabel: "Timing",
+      purposeLabel: "Purpose",
+      stages: {
+        garbhadhan: {
+          label: "Garbhadhana",
+          native: "\u0917\u0930\u094d\u092d\u093e\u0927\u093e\u0928",
+          subtitle: "The Divine Process of Conception",
+          timing: "At the time of conception",
+          purpose: "Inviting a conscious soul",
+          body: "Garbhadhana Sanskar treats conception not as a mere biological act but as a sacred spiritual practice \u2014 a form of tapasya through which a divine soul descends to earth. Parents prepare consciously with prayer, positive intention, and emotional harmony. The mental state, environment, and circumstances at conception directly influence the body and soul of the child.",
+          highlight:
+            "The pregnancy should not occur by coincidence, but as the result of a conscious decision and sacred intention \u2014 not by chance, but by choice.",
+        },
+        punswan: {
+          label: "Punsavana",
+          native: "\u092a\u0941\u0902\u0938\u0935\u0928",
+          subtitle: "For the Physical Well-being of the Fetus",
+          timing: "2\u20133 months after conception",
+          purpose: "Physical health and protection",
+          body: "Punsavana Sanskar is performed two to three months after conception with the intention that the child will emerge strong, healthy, disease-free, long-lived, intelligent, and beautiful. The Caraka Samhit\u0101 provides detailed guidance on what the mother should avoid and what she should embrace: joyful disposition, peaceful thoughts, and sattvic nourishment.",
+          highlight:
+            "Everything the mother does shapes the child's constitution. The fetus shares in the mother's physical experiences.",
+        },
+        simantonayan: {
+          label: "Simantonnayana",
+          native: "\u0938\u0940\u092e\u0928\u094d\u0924\u094b\u0928\u094d\u0928\u092f\u0928",
+          subtitle: "For the Mental Development of the Unborn Child",
+          timing: "Later months of pregnancy",
+          purpose: "Cognitive and emotional nurturing",
+          body: "S\u012bmant means the mind; Unnayana means upliftment. This Sanskar focuses the mother's attention on nurturing the baby's brain and mental growth. The husband applies fragrant oil to his wife's scalp, combs her hair, and accompanies her to a sacred ceremony \u2014 symbolising his love, commitment, and the couple's united intention to create a joyful, nurturing environment.",
+          highlight:
+            "The child's mind blossoms in harmony with the mother's intellect and lifestyle. The husband's support is not ceremonial \u2014 it is essential.",
+        },
+      },
+    },
+    monthJourney: {
+      eyebrow: "Month-by-Month Guidance",
+      headline1: "Every month has its",
+      headline2: "own Garbh Sanskar.",
+      intro:
+        "Each of the nine months of pregnancy has specific guidance for diet, yoga, meditation, music, Garbh Samvad, and lifestyle. This is a month-specific, stage-aware system drawn from both classical Ayurvedic texts and modern prenatal science.",
+      nineMonthsLabel: "Nine Months \xb7 One Journey",
+      joinClassesCta: "Join Free Pregnancy Classes",
+      practices: {
+        diet: { label: "Diet & Nutrition", desc: "Sattvic, nourishing foods by trimester" },
+        yoga: { label: "Yoga & Pranayama", desc: "Breath and movement for mother and baby" },
+        meditation: { label: "Meditation", desc: "Mindfulness and emotional calm" },
+        music: { label: "Music & Mantra", desc: "Healing sound for fetal development" },
+        garbhSamvad: { label: "Garbh Samvad", desc: "Loving communication with the unborn child" },
+        surya: { label: "Surya Sadhana", desc: "Solar practices and morning rituals" },
+        family: { label: "Family\u2019s Role", desc: "Father, family, and home environment" },
+        ayurveda: { label: "Ayurveda & Lifestyle", desc: "Daily regimen aligned with classical texts" },
+      },
+      months: [
+        { focus: "Foundation", desc: "Sattvic diet, rest, positive thoughts. Fetal organs begin forming." },
+        { focus: "Nourishment", desc: "Nutrition intensive. Gentle yoga begins. Emotional bonding." },
+        { focus: "Punsavana Sanskar", desc: "Second Sanskar performed. Fetal heartbeat present." },
+        { focus: "Music & Mantra", desc: "Baby begins to hear. Garbh Samvad (talking to baby) begins." },
+        { focus: "Movement & Bonding", desc: "Baby moves. Father's role intensifies. Family harmony essential." },
+        { focus: "Simantonnayana", desc: "Third Sanskar. Mental development focus. Mind-body practices." },
+        { focus: "Strength & Calm", desc: "Rest increases. Pranayama and meditation for birth preparation." },
+        { focus: "Preparation", desc: "Gentle movement. Positive affirmations. Preparation for birth." },
+        { focus: "Welcome", desc: "Peace, prayer, and readiness. The soul prepares to arrive." },
+      ],
+    },
+    family: {
+      eyebrow: "The Role of the Family",
+      headline1: "Garbh Sanskar is not",
+      headline2: "a mother\u2019s task alone.",
+      intro:
+        "The responsibility of bringing a child into the world does not rest solely with the mother. The husband's care, the family's harmony, and the home environment together shape the life of the unborn child. All family members should commit to creating a positive, supportive, stress-free environment throughout pregnancy.",
+      familyQuote:
+        "The child is not just the son or daughter of the parents \u2014 he or she belongs to the entire family. A new life is entering that will redefine all relationships.",
+      roles: {
+        husband: {
+          role: "The Husband",
+          desc: "Emotional security, understanding her fluctuations, standing by her always. His words, actions, and feelings create the child\u2019s first emotional world.",
+        },
+        family: {
+          role: "The Family",
+          desc: "Protect the mother from harsh words, mistreatment, and stress. Support her diet, physical needs, and mental well-being. A pregnant woman is in a sacred state.",
+        },
+        mother: {
+          role: "The Mother",
+          desc: "Follow a sattvic lifestyle. Avoid anger, jealousy, and arguments. Remain peaceful, kind-hearted, gentle in speech, and loving toward all.",
+        },
+      },
+    },
+    extraTopics: {
+      postnatal: {
+        tag: "After Birth",
+        label: "Postnatal Care",
+        desc: "Guidance for the first weeks and months after birth \u2014 continuing the Garbh Sanskar journey for the newborn.",
+      },
+      surya: {
+        tag: "Daily Practice",
+        label: "Surya Sadhana",
+        desc: "Solar-based practices for mother and child \u2014 morning rituals, gratitude, and connection with natural rhythms.",
+      },
+      ayurveda: {
+        tag: "Ancient Wisdom",
+        label: "Ayurveda & Lifestyle",
+        desc: "Classical dietary regimens, seasonal practices, and dosha-balancing guidance throughout pregnancy.",
+      },
+      dreamChild: {
+        tag: "From the Book",
+        label: "Dream-Child Chart",
+        desc: "A unique tool from 'Garbh Sanskar Ka Vigyan' \u2014 helps couples consciously identify qualities they wish to nurture.",
+      },
+    },
+    faq: {
+      eyebrow: "Common Questions",
+      headline: "Before you begin",
+      subtitle: "Quick answers for those just discovering Garbh Sanskar.",
+      items: [
+        {
+          q: "Is Garbh Sanskar a substitute for medical care?",
+          a: "No. Garbh Sanskar is complementary to modern obstetric and medical care. Every pregnant woman should remain in regular consultation with her gynecologist and follow all recommended medical examinations, vaccinations, and treatments.",
+        },
+        {
+          q: "When should we start?",
+          a: "Ideally, 3 months before conception \u2014 during pre-conception preparation. The practices become increasingly important from the first day of pregnancy onwards. But it is never too late to begin.",
+        },
+        {
+          q: "Is there scientific evidence for these practices?",
+          a: "Yes, for several key elements. Epigenetics confirms that maternal emotions and lifestyle influence gene expression. Fetal auditory research confirms prenatal learning. fMRI studies validate the neurological effects of mantra chanting. The Foundation\u2019s book provides detailed scientific references for each practice.",
+        },
+        {
+          q: "What about single mothers?",
+          a: "In cases of single motherhood, maternal emotional well-being, psychosocial support, and stress-buffering play a decisive role. Evidence shows that positive maternal\u2013fetal bonding, emotional stability, and access to supportive networks contribute significantly to optimal fetal neurodevelopment, independent of family structure.",
+        },
+        {
+          q: "Is Garbh Sanskar only for Hindu families?",
+          a: "No. Garbh Sanskar principles are rooted in universal human wisdom. Jainism has its own rich tradition of conception and pregnancy rites. The core principles \u2014 conscious parenthood, positive environment, maternal well-being \u2014 are universal.",
+        },
+      ],
+    },
+    cta: {
+      headline: "Ready to begin your Garbh Sanskar journey?",
+      body: "Join free classes, ask Shree AI for a personalised path, or explore courses designed for couples, families, and educators.",
+      freeClasses: "Join Free Classes",
+      courses: "Explore Courses",
+      guidance: "Get Guidance",
+      note: "Core community education is always free \xb7 Available in Hindi and English",
     },
   },
 };

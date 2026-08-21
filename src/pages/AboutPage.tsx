@@ -46,6 +46,7 @@ export default function AboutPage() {
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
+  
 
   return (
     <>

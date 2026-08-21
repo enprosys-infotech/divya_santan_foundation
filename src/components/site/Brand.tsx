@@ -24,27 +24,27 @@ export function BrandLock({
       />
 
       <span className="flex flex-col justify-center leading-tight">
-        <span className="font-display text-[0.88rem] text-center tracking-wide text-ink sm:text-[0.93rem]">
+        <span className="font-display text-[0.88rem] tracking-wide text-ink sm:text-[0.93rem]">
           {t.brand.prakalp}
         </span>
-        <span className=" text-[0.88rem] text-center tracking-wide text-ink sm:text-[0.45rem]">
-          supported by
+        <span className="text-[0.5rem] tracking-wide text-muted-foreground/70 sm:text-[0.52rem]">
+          {t.brand.supportedBy}
         </span>
         {!compact && (
-          <span className="text-[0.47rem] uppercase tracking-[0.15em] text-center text-muted-foreground">
+          <span className="text-[0.53rem] uppercase tracking-[0.15em] text-muted-foreground">
             {t.brand.name}
           </span>
         )}
       </span>
 
-      <span className="hidden h-6 w-px bg-border lg:block" />
+      <span className="h-6 w-px bg-border" />
 
       <img
         src={bsvafImage}
         alt={t.brand.partnerLogoAlt}
         width={44}
         height={44}
-        className="hidden h-11 w-11 shrink-0 rounded-sm object-contain opacity-85 lg:block"
+        className="h-10 w-10 shrink-0 rounded-sm object-contain opacity-85 sm:h-11 sm:w-11"
       />
     </Link>
   );
