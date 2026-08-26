@@ -752,16 +752,127 @@ export const en = {
     meta: {
       title: "Free Education & Services — Divya Santan Foundation",
       description:
-        "Free online classes, educational videos, guidance sessions, community awareness programmes and bilingual publications.",
+        "Free online Garbh Sanskar classes twice every month and free OPD guidance at charitable hospitals — Divya Santan Foundation's commitment to every family.",
     },
     header: {
-      eyebrow: "Free Education",
-      title: "Knowledge should never carry a price",
+      eyebrow: "Free Services",
+      title: "Our gift to every expectant family",
       native: "",
       intro:
-        "Our core education is free, always. Guidance and courses exist to support learning — never to gate it.",
+        "Divya Santan Foundation is committed to making authentic Garbh Sanskar guidance accessible and free to every pregnant family, irrespective of their socio-economic background.",
     },
-    whatIsFree: { eyebrow: "What is free", title: "Open to every family" },
+    mainTabs: {
+      content: "Free Service Content",
+      videos: "Videos & Lectures",
+    },
+    subtabs: {
+      onlineClasses: "Free Online Classes",
+      opd: "Free Garbh Sanskar OPD",
+    },
+    heroPills: [
+      { label: "Free Online Classes" },
+      { label: "Free OPD Guidance" },
+      { label: "Open to All Families" },
+      { label: "Expanding Nationwide" },
+    ],
+    heroStats: [
+      { value: "2x", label: "Monthly Classes", sub: "Every month, consistently" },
+      { value: "100%", label: "Free of Cost", sub: "No registration fee ever" },
+      { value: "1", label: "Hospital OPD", sub: "Geeta Bhawan, Indore" },
+      { value: "∞", label: "Families Served", sub: "Growing every month" },
+    ],
+    onlineClasses: {
+      eyebrow: "Twice every month · Free · Open to all",
+      title: "Free Online Garbh Sanskar Classes",
+      intro:
+        "To provide continuous guidance and support to pregnant couples and expectant families, Divya Santan Foundation conducts free online Garbh Sanskar classes twice every month.",
+      sessionInfo:
+        "These interactive sessions are conducted by our team of Garbh Sanskar specialists and subject experts, who provide practical guidance on healthy pregnancy, nutrition, lifestyle, yoga, meditation, emotional well-being, Baby Talk, and other important aspects of Garbh Sanskar.",
+      qAndA:
+        "Couples can also directly ask questions, discuss their concerns, and seek clarification from the experts during the sessions.",
+      free: "Participation is completely free of cost.",
+      contact:
+        "For upcoming class dates, timings, and joining details, please contact our office through the Contact Us section. Our team will get back to you with complete information.",
+      contactCta: "Contact Us",
+      topicsHeading: "Topics Covered in Every Session",
+      alwaysFreeLabel: "❖ Always Free",
+      qrScan:
+        "You may also scan the QR code below to connect with Divya Santan Foundation and receive updates about upcoming online classes.",
+      qrSectionLabel: "Scan & Connect",
+      qrSteps: [
+        {
+          title: "Scan the QR Code",
+          body: "Open your phone camera and scan the QR code on this page or the flyer.",
+        },
+        {
+          title: "Connect on WhatsApp",
+          body: "Send a WhatsApp message to +91 94257 93409 to connect with our team.",
+        },
+        {
+          title: "Get Class Details",
+          body: "Our team will share upcoming class dates, timings, and joining link.",
+        },
+      ],
+      contactOffice: "Contact Office",
+      topics: [
+        { icon: "nutrition", label: "Healthy Nutrition" },
+        { icon: "yoga", label: "Yoga & Meditation" },
+        { icon: "babyTalk", label: "Baby Talk" },
+        { icon: "lifestyle", label: "Lifestyle Guidance" },
+        { icon: "emotional", label: "Emotional Well-being" },
+        { icon: "pregnancy", label: "Pregnancy Health" },
+      ],
+    },
+    opd: {
+      eyebrow: "At charitable hospitals · Expanding nationwide",
+      title: "Free Garbh Sanskar OPD & Guidance",
+      intro:
+        "Divya Santan Foundation is working to provide free Garbh Sanskar OPD and guidance services for pregnant women and couples through charitable hospitals and partner organizations in different cities.",
+      currentlyAt:
+        "At present, this service is running regularly and successfully at Geeta Bhawan Charitable Hospital, Indore, where a team of trained Garbh Sanskar specialists provides guidance to expectant mothers on healthy pregnancy, lifestyle, nutrition, emotional well-being, yoga, meditation, Baby Talk, and other important aspects of Garbh Sanskar.",
+      expansion:
+        "The Foundation is actively working to connect with more charitable hospitals, healthcare institutions, and social organizations so that these free services can gradually be expanded to other cities.",
+      aim:
+        "Our aim is to make authentic and practical Garbh Sanskar guidance accessible and affordable to every pregnant family, irrespective of their socio-economic background.",
+      currentCity: "Indore",
+      hospital: "Geeta Bhawan Charitable Hospital",
+      hospitalLabel: "Currently Running At",
+      runningStatus: "✓ Running regularly & successfully",
+      expandingLabel: "Expanding To More Cities",
+      charitableHospitals: "Charitable hospitals across India",
+      aimLabel: "Our Aim",
+      servicesLabel: "Services Provided at OPD",
+      services: [
+        { label: "Pregnancy Health Guidance" },
+        { label: "Lifestyle & Nutrition" },
+        { label: "Yoga & Meditation" },
+        { label: "Emotional Well-being" },
+        { label: "Baby Talk Practice" },
+        { label: "Garbh Samvad" },
+      ],
+      commitmentEyebrow: "Our Social Commitment",
+      commitmentTitle: "Garbh Sanskar for Every Mother, Regardless of Background",
+      visionCards: [
+        {
+          title: "Current: Indore",
+          body: "Free Garbh Sanskar OPD running at Geeta Bhawan Charitable Hospital.",
+        },
+        {
+          title: "Connecting Partners",
+          body: "Actively partnering with charitable hospitals and social organizations.",
+        },
+        {
+          title: "Vision: Nationwide",
+          body: "Every pregnant family in every city deserves free Garbh Sanskar guidance.",
+        },
+      ],
+    },
+    askShree: {
+      eyebrow: "AI Companion",
+      title: "Have questions? Ask Shree AI",
+      body: "Our educational AI companion guides you to the right resources — from Knowledge Centre articles to free classes — based on your stage of learning.",
+      cta: "Chat with Shree AI",
+    },
     videos: {
       eyebrow: "Watch & Learn",
       title: "Free Educational Videos",
@@ -796,9 +907,9 @@ export const en = {
       } satisfies Record<ClassScheduleId, ScheduleCopy>,
     },
     cta: {
-      title: "Register for a free class",
-      body: "Share your details and we will send joining instructions in your preferred language.",
-      primary: "Register Now",
+      title: "Connect with us to join a free class",
+      body: "Contact our office for upcoming class dates, timings, and joining details. Our team will get back to you with complete information.",
+      primary: "Contact Us",
       secondary: "See Courses",
     },
   },
