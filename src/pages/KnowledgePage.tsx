@@ -5,11 +5,13 @@ import { Section, SectionHeading } from "@/components/site/SectionHeading";
 import { KNOWLEDGE_ARTICLES, KNOWLEDGE_CATEGORIES } from "@/content/registry";
 import { getDictionary, useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
+import { useChatWidget } from "@/hooks/useChatWidget";
 
 export default function KnowledgePage() {
   const { t } = useI18n();
   const copy = t.knowledge;
   const [activeCategory, setActiveCategory] = useState("all");
+  const { open: openChat } = useChatWidget();
 
   useEffect(() => {
     const meta = getDictionary().knowledge.meta;
@@ -68,7 +70,7 @@ export default function KnowledgePage() {
         <CTASection
           title={copy.cta.title}
           body={copy.cta.body}
-          primary={{ to: "/ask-shree", label: copy.cta.primary }}
+          primary={{ onClick: openChat, label: copy.cta.primary }}
           secondary={{ to: "/learn", label: copy.cta.secondary }}
         />
       </Section>

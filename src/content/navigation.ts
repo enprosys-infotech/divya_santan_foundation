@@ -51,7 +51,7 @@ export const FOOTER_COLUMNS = [
     links: [
       { id: "learnGarbhSanskar", to: "/learn" },
       { id: "journeys", to: "/learn" },
-      { id: "askShree", to: "/ask-shree" },
+      { id: "askShree", to: "#ask-shree-widget" },
     ],
   },
   {

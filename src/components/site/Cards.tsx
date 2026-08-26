@@ -225,6 +225,8 @@ export function TestimonialCard({
   );
 }
 
+type ButtonAction = { label: string; to?: string; onClick?: () => void };
+
 export function CTASection({
   title,
   body,
@@ -234,8 +236,8 @@ export function CTASection({
 }: {
   title: string;
   body?: string;
-  primary: LinkTo;
-  secondary?: LinkTo;
+  primary: ButtonAction;
+  secondary?: ButtonAction;
   className?: string;
 }) {
   return (
@@ -252,15 +254,28 @@ export function CTASection({
         </p>
       )}
       <div className="mt-8 flex flex-wrap justify-center gap-3">
-        <Button asChild variant="hero" size="lg">
-          <Link to={primary.to}>{primary.label}</Link>
-        </Button>
-        {secondary && (
-          <Button asChild variant="outline" size="lg">
-            <Link to={secondary.to}>{secondary.label}</Link>
+        {primary.onClick ? (
+          <Button variant="hero" size="lg" onClick={primary.onClick} className="cursor-pointer">
+            {primary.label}
           </Button>
+        ) : (
+          <Button asChild variant="hero" size="lg">
+            <Link to={primary.to ?? "#"}>{primary.label}</Link>
+          </Button>
+        )}
+        {secondary && (
+          secondary.onClick ? (
+            <Button variant="outline" size="lg" onClick={secondary.onClick} className="cursor-pointer">
+              {secondary.label}
+            </Button>
+          ) : (
+            <Button asChild variant="outline" size="lg">
+              <Link to={secondary.to ?? "#"}>{secondary.label}</Link>
+            </Button>
+          )
         )}
       </div>
     </div>
   );
 }
+

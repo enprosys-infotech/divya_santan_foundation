@@ -20,6 +20,8 @@ import {
   Brain,
   Eye,
   HandHeart,
+  CheckCircle2,
+  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/site/SectionHeading";
@@ -31,6 +33,7 @@ import { getDictionary, useI18n } from "@/i18n";
 type PhilosophyTab = "garbh" | "sanskar" | "together";
 type ScienceTab = "epigenetics" | "bonding" | "stress" | "sound";
 type StageTab = "garbhadhan" | "punswan" | "simantonayan";
+type JourneyDeepTab = "premarital" | "dreamChild" | "astrology";
 
 // ─── Icon maps (icon objects don't need translation) ─────────────────────────
 
@@ -40,7 +43,7 @@ function getIcon(arr: React.ElementType[], i: number): React.ElementType {
   return arr[i % arr.length] ?? Heart;
 }
 
-const STEP_ICONS: React.ElementType[] = [Leaf, Apple, Sun, Wind, Flame, FlaskConical];
+const STEP_ICONS: React.ElementType[] = [Leaf, Apple, Sun, Wind, Flame, FlaskConical, Leaf, Wind, Sparkles];
 const PRACTICE_ICONS: React.ElementType[] = [Apple, Wind, Brain, Music, Heart, Sun, Users, Leaf];
 const ELEMENT_ICONS: React.ElementType[] = [Sun, Heart, Leaf, Sparkles];
 const EXTRA_ICONS: React.ElementType[] = [Baby, Sun, Eye, Star];
@@ -86,6 +89,7 @@ export default function GarbhSanskarPage() {
   const [philosophyTab, setPhilosophyTab] = useState<PhilosophyTab>("garbh");
   const [scienceTab, setScienceTab] = useState<ScienceTab>("epigenetics");
   const [stageTab, setStageTab] = useState<StageTab>("garbhadhan");
+  const [journeyDeepTab, setJourneyDeepTab] = useState<JourneyDeepTab>("premarital");
   const [openFaq, setOpenFaq] = useState<string | null>(null);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
 
@@ -139,7 +143,7 @@ export default function GarbhSanskarPage() {
   }));
 
   const preConceptionSteps = (
-    ["physical", "diet", "lifestyle", "yoga", "spiritual", "health"] as const
+    ["physical", "diet", "lifestyle", "yoga", "ayurvedic", "panchakarma", "spiritual", "health", "positiveThinking"] as const
   ).map((id, i) => ({
     Icon: getIcon(STEP_ICONS, i),
     ...copy.preConception.steps[id],
@@ -492,6 +496,274 @@ export default function GarbhSanskarPage() {
                   {copy.preConception.reference}
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4b. STEPS TO FOLLOW GARBH SANSKAR ─────────────────────── */}
+      <section
+        id="steps-to-follow"
+        className="border-b border-border px-5 py-16 sm:px-8 sm:py-24"
+        style={{
+          background:
+            "linear-gradient(160deg, oklch(0.975 0.018 96) 0%, oklch(0.950 0.040 85) 50%, oklch(0.930 0.055 75) 100%)",
+        }}
+      >
+        <div className="mx-auto w-full max-w-6xl">
+          {/* Heading */}
+          <div className="text-center">
+            <p className="text-[0.68rem] uppercase tracking-[0.3em] text-secondary">
+              {copy.stepsToFollow.eyebrow}
+            </p>
+            <h2 className="mt-4 text-3xl leading-tight text-ink sm:text-4xl">
+              {copy.stepsToFollow.headline1}
+              <br />
+              <span className="text-primary">{copy.stepsToFollow.headline2}</span>
+            </h2>
+            <div className="mx-auto mt-5 h-px w-14 bg-gold/60" />
+            <p className="mx-auto mt-5 max-w-2xl text-base-readable text-muted-foreground">
+              {copy.stepsToFollow.intro}
+            </p>
+          </div>
+
+          {/* ── Six-stage timeline ── */}
+          <div className="mt-14">
+            <p className="mb-8 text-center text-[0.65rem] uppercase tracking-[0.28em] text-gold-foreground">
+              {copy.stepsToFollow.stagesLabel}
+            </p>
+
+            {/* Desktop: 3-col grid — Mobile: stacked */}
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {copy.stepsToFollow.stages.map((stage, i) => {
+                const colorMap = {
+                  primary: {
+                    num: "bg-primary/15 text-primary border-primary/25",
+                    border: "border-primary/20",
+                    dot: "bg-primary",
+                  },
+                  secondary: {
+                    num: "bg-secondary/15 text-secondary border-secondary/25",
+                    border: "border-secondary/20",
+                    dot: "bg-secondary",
+                  },
+                  gold: {
+                    num: "bg-gold/20 text-gold-foreground border-gold/30",
+                    border: "border-gold/25",
+                    dot: "bg-gold",
+                  },
+                } as const;
+                const c = colorMap[stage.color as keyof typeof colorMap] ?? colorMap.primary;
+
+                return (
+                  <div
+                    key={i}
+                    className={cn(
+                      "surface-card flex flex-col gap-3 p-5 transition-all duration-200 hover:shadow-md",
+                      c.border,
+                    )}
+                  >
+                    {/* Stage number badge + label */}
+                    <div className="flex items-start gap-3">
+                      <div
+                        className={cn(
+                          "flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-xs font-bold",
+                          c.num,
+                        )}
+                      >
+                        {stage.number}
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium leading-snug text-ink">{stage.label}</p>
+                        <p className="mt-0.5 text-[0.65rem] uppercase tracking-[0.16em] text-muted-foreground/70">
+                          {stage.sub}
+                        </p>
+                      </div>
+                    </div>
+                    {/* Description */}
+                    <p className="pl-12 text-xs leading-relaxed text-muted-foreground">
+                      {stage.desc}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* ── Deep-dive tabbed section ── */}
+          <div className="mt-16">
+            <p className="mb-6 text-center text-[0.65rem] uppercase tracking-[0.28em] text-secondary">
+              {copy.stepsToFollow.deepDiveLabel}
+            </p>
+
+            {/* Tab strip */}
+            <div
+              role="tablist"
+              className="mx-auto flex max-w-2xl gap-1 overflow-x-auto rounded-2xl border border-border bg-background/70 p-1.5 sm:overflow-visible"
+            >
+              {(["premarital", "dreamChild", "astrology"] as JourneyDeepTab[]).map((id) => (
+                <button
+                  key={id}
+                  type="button"
+                  role="tab"
+                  aria-selected={journeyDeepTab === id}
+                  onClick={() => setJourneyDeepTab(id)}
+                  className={cn(
+                    "flex shrink-0 flex-1 flex-col items-center gap-0.5 rounded-xl px-3 py-2.5 text-center text-xs font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+                    journeyDeepTab === id
+                      ? "bg-background text-ink shadow-sm"
+                      : "text-muted-foreground hover:text-ink",
+                  )}
+                >
+                  <span>{copy.stepsToFollow.tabs[id].label}</span>
+                  <span className="font-deva text-[0.65rem] text-primary/70">
+                    {copy.stepsToFollow.tabs[id].native}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {/* Tab panels */}
+            <div className="mx-auto mt-6 max-w-3xl">
+
+              {/* ── Premarital Counselling panel ── */}
+              {journeyDeepTab === "premarital" && (
+                <div className="surface-card overflow-hidden">
+                  <div className="border-b border-border bg-secondary/5 px-6 py-5">
+                    <h3 className="text-xl text-ink">
+                      {copy.stepsToFollow.content.premarital.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {copy.stepsToFollow.content.premarital.body}
+                    </p>
+                  </div>
+                  <div className="grid gap-6 px-6 py-6 sm:grid-cols-2">
+                    {/* Medical checklist */}
+                    <div>
+                      <p className="mb-3 text-[0.65rem] uppercase tracking-[0.22em] text-secondary">
+                        {copy.stepsToFollow.content.premarital.medicalLabel}
+                      </p>
+                      <ul className="space-y-2">
+                        {copy.stepsToFollow.content.premarital.medical.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2.5 text-xs leading-relaxed text-muted-foreground">
+                            <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-secondary/70" strokeWidth={1.75} />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* GS perspective */}
+                    <div>
+                      <p className="mb-3 text-[0.65rem] uppercase tracking-[0.22em] text-primary">
+                        {copy.stepsToFollow.content.premarital.gsLabel}
+                      </p>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        {copy.stepsToFollow.content.premarital.gs}
+                      </p>
+                      <div className="mt-4 rounded-xl border border-border bg-warm/60 px-4 py-3">
+                        <p className="text-[0.65rem] italic leading-relaxed text-muted-foreground/80">
+                          {copy.stepsToFollow.content.premarital.note}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ── Dream-Child panel ── */}
+              {journeyDeepTab === "dreamChild" && (
+                <div className="surface-card overflow-hidden">
+                  <div className="border-b border-border bg-gold/8 px-6 py-5">
+                    <h3 className="text-xl text-ink">
+                      {copy.stepsToFollow.content.dreamChild.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {copy.stepsToFollow.content.dreamChild.body}
+                    </p>
+                  </div>
+                  <div className="px-6 py-6">
+                    {/* Four dimensions grid */}
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {copy.stepsToFollow.content.dreamChild.dimensions.map((dim, i) => {
+                        const dimColors = [
+                          "border-primary/20 bg-primary/6",
+                          "border-secondary/20 bg-secondary/6",
+                          "border-gold/25 bg-gold/8",
+                          "border-primary/20 bg-primary/6",
+                        ] as const;
+                        return (
+                          <div
+                            key={i}
+                            className={cn(
+                              "rounded-xl border px-4 py-3",
+                              dimColors[i % dimColors.length],
+                            )}
+                          >
+                            <p className="text-sm font-medium text-ink">{dim.label}</p>
+                            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{dim.desc}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Quote */}
+                    <blockquote className="mt-6 rounded-2xl border border-gold/30 bg-accent/50 px-5 py-4">
+                      <p className="text-sm italic leading-relaxed text-ink/80">
+                        "{copy.stepsToFollow.content.dreamChild.quote}"
+                      </p>
+                    </blockquote>
+
+                    {/* Practice guidance */}
+                    <div className="mt-5">
+                      <p className="mb-2 text-[0.65rem] uppercase tracking-[0.22em] text-gold-foreground">
+                        {copy.stepsToFollow.content.dreamChild.practiceLabel}
+                      </p>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        {copy.stepsToFollow.content.dreamChild.practice}
+                      </p>
+                    </div>
+
+                    <p className="mt-4 text-[0.62rem] italic text-muted-foreground/60">
+                      {copy.stepsToFollow.content.dreamChild.source}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* ── Astrology panel ── */}
+              {journeyDeepTab === "astrology" && (
+                <div className="surface-card overflow-hidden">
+                  <div className="border-b border-border bg-primary/5 px-6 py-5">
+                    <h3 className="text-xl text-ink">
+                      {copy.stepsToFollow.content.astrology.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {copy.stepsToFollow.content.astrology.body}
+                    </p>
+                  </div>
+                  <div className="px-6 py-6">
+                    <div className="space-y-4">
+                      {copy.stepsToFollow.content.astrology.points.map((pt, i) => (
+                        <div key={i} className="flex gap-4">
+                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                            <MapPin className="h-4 w-4" strokeWidth={1.75} />
+                          </div>
+                          <div>
+                            <p className="text-sm font-medium text-ink">{pt.label}</p>
+                            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{pt.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-6 rounded-xl border border-border bg-warm/60 px-4 py-3">
+                      <p className="text-[0.65rem] italic leading-relaxed text-muted-foreground/80">
+                        {copy.stepsToFollow.content.astrology.note}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
             </div>
           </div>
         </div>

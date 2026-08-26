@@ -46,6 +46,7 @@ import hero4 from "@/assets/hero-4.png";
 import hero5 from "@/assets/hero-5.png";
 import { AncientScienceBridge } from "@/components/site/AncientScienceBridge";
 import { AskShreeChat } from "@/components/site/AskShreeChat";
+import { useChatWidget } from "@/hooks/useChatWidget";
 import {
   FeatureCard,
   KnowledgeCard,
@@ -130,6 +131,7 @@ const SLIDE_INTERVAL = 10000;
 export default function HomePage() {
   const { t } = useI18n();
   const copy = t.home;
+  const { open: openChat } = useChatWidget();
 
   const [hubTab, setHubTab] = useState<HubTab>("freeServices");
   const [ecosystemTab, setEcosystemTab] = useState<EcosystemTab>("join");
@@ -971,8 +973,8 @@ export default function HomePage() {
               ))}
             </div>
             <div className="mt-4 flex flex-col gap-2">
-              <Button asChild variant="hero" size="lg">
-                <Link to="/ask-shree">{copy.ai.openFull}</Link>
+              <Button variant="hero" size="lg" onClick={openChat} className="cursor-pointer">
+                {copy.ai.openFull}
               </Button>
               <Button asChild variant="outline" size="lg">
                 <Link to="/contact">{t.cta.guidance}</Link>

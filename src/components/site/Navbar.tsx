@@ -7,9 +7,11 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { NAV_ITEMS } from "@/content/navigation";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
+import { useChatWidget } from "@/hooks/useChatWidget";
 
 export function Navbar() {
   const { t } = useI18n();
+  const { open: openChat } = useChatWidget();
   const [openKey, setOpenKey] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
@@ -146,11 +148,15 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <LanguageSwitcher className="hidden sm:inline-flex" />
-          <Button asChild variant="outline" size="sm" className="hidden lg:inline-flex">
-            <Link to="/ask-shree">
-              <Sparkles className="h-3.5 w-3.5" />
-              {t.cta.askShree}
-            </Link>
+          <Button
+            variant="outline"
+            size="sm"
+            className="hidden lg:inline-flex cursor-pointer"
+            onClick={openChat}
+            aria-label="Open Ask Shree AI chat"
+          >
+            <Sparkles className="h-3.5 w-3.5" />
+            {t.cta.askShree}
           </Button>
           <Button asChild variant="hero" size="sm" className="hidden sm:inline-flex">
             <Link to="/free-services">{t.cta.joinFree}</Link>
@@ -222,12 +228,14 @@ export function Navbar() {
                 </div>
               );
             })}
-            <Link
-              to="/ask-shree"
-              className="border-b border-border/60 py-3 text-[0.95rem] text-ink"
+            <button
+              type="button"
+              onClick={() => { setMobileOpen(false); openChat(); }}
+              className="cursor-pointer border-b border-border/60 py-3 text-left text-[0.95rem] text-ink flex items-center gap-2 w-full"
             >
+              <Sparkles className="h-4 w-4 text-primary" />
               {t.cta.askShree}
-            </Link>
+            </button>
           </nav>
           <div className="mt-5 flex flex-col gap-3">
             <Button asChild variant="hero" size="lg">

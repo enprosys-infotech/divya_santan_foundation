@@ -144,7 +144,7 @@ export const en = {
       "We educate, train, create awareness and support research so that every family can nurture healthy, cultured and compassionate generations.",
     office: "Divya Santan Foundation, Indore, Madhya Pradesh, India",
     copyright:
-      "Divya Santan Foundation · Supported by Balaji Sewarth Vinod Agarwal Foundation · Demo website",
+      "Divya Santan Foundation · Supported by Balaji Sewarth Vinod Agarwal Foundation",
     columnTitles: {
       learn: "Learn",
       knowledge: "Knowledge",
@@ -2038,7 +2038,7 @@ export const en = {
       devoteQuote:
         "If one desires to bring forth a noble and elevated soul, the couple must prepare with the same devotion a farmer gives to his land — choosing the best seeds, enriching the soil, and sowing at the right time.",
       fourElementsLabel: "Four Essentials for Healthy Conception (Ayurveda)",
-      stepsLabel: "Beej Shuddhi \u2014 9 Preparation Steps",
+      stepsLabel: "Beej Shuddhi \u2014 9 Preparation Steps (Ayurveda)",
       reference:
         'Reference: Chapter 13 — "Pre-Conception Counseling" · The Science of Garbh Sanskar',
       elements: {
@@ -2064,6 +2064,14 @@ export const en = {
           title: "Yoga & Meditation",
           body: "Enhances flexibility and reproductive health. Promotes emotional stability and reduces stress.",
         },
+        ayurvedic: {
+          title: "Ayurvedic Consultation",
+          body: "An Ayurvedic physician diagnoses through pulse, tongue, and appearance to offer personalised detox and herbal treatments to improve reproductive potential.",
+        },
+        panchakarma: {
+          title: "Panchakarma",
+          body: "Comprehensive detox protocol under expert supervision — Vaman, Virechana, Basti, Nasya — to eliminate toxins that hinder fertility.",
+        },
         spiritual: {
           title: "Spiritual Purification",
           body: "Positive energy, peace, and higher consciousness enhance reproductive readiness and influence the incoming soul.",
@@ -2071,6 +2079,10 @@ export const en = {
         health: {
           title: "Health Check-ups",
           body: "Blood tests for hemoglobin, blood sugar, thyroid, Vitamin B12, Vitamin D, and Serum Ferritin for both partners.",
+        },
+        positiveThinking: {
+          title: "Positive Thinking",
+          body: "A positive outlook on life, relationships, challenges, and parenting fosters emotional stability. Avoid greed, envy, and anger, which disrupt mental peace.",
         },
       },
     },
@@ -2214,7 +2226,130 @@ export const en = {
           q: "Is Garbh Sanskar only for Hindu families?",
           a: "No. Garbh Sanskar principles are rooted in universal human wisdom. Jainism has its own rich tradition of conception and pregnancy rites. The core principles \u2014 conscious parenthood, positive environment, maternal well-being \u2014 are universal.",
         },
+        {
+          q: "What is the importance of Mantra during pregnancy?",
+          a: "The word Mantra refers to a structured combination of sounds, syllables, and words used for spiritual practice, meditation, and mental concentration. Regular chanting involves rhythm, repetition, controlled breathing, attention, and concentration \u2014 features that may help create calmness, relaxation, and emotional stability. Studies on OM chanting and mantra meditation have explored their effects on relaxation, autonomic regulation, and mental well-being. Mantra should be regarded as a supportive practice and does not replace medical or psychological treatment when such treatment is required.",
+        },
+        {
+          q: "Is there a role for astrology in planning conception?",
+          a: "In some traditions, couples may consult an astrologer for guidance on auspicious timing (muhurat) for conception. This is not universally accepted or scientifically proven. Families who value astrology for cultural or spiritual reasons may include it as one aspect of their journey, but medical decisions should always be based on appropriate professional healthcare advice. Astrological consultation is optional and depends on personal belief and tradition.",
+        },
+        {
+          q: "When and whom should I consult to plan Garbh Sanskar?",
+          a: "You may consult a trained Garbh Sanskar counsellor for lifestyle, diet, and emotional guidance; an Ayurvedic physician for detox and herbal support; a prenatal yoga instructor; your obstetrician/gynecologist for medical preconception care; and if needed, a psychologist for emotional well-being. Before consulting any professional, check their qualifications and experience. Both partners should discuss their intentions together so the journey of conscious conception is shared.",
+        },
       ],
+    },
+    stepsToFollow: {
+      eyebrow: "When & How to Begin",
+      headline1: "Six stages of the",
+      headline2: "Garbh Sanskar journey.",
+      intro:
+        "Garbh Sanskar is a very simple yet profound process. Where you begin depends on where you are right now. Below are the six key stages — each with its own guidance and practices.",
+      stagesLabel: "The Six Stages",
+      stages: [
+        {
+          number: "I",
+          label: "Pre-marriage: Self Preparation",
+          sub: "Partner not yet chosen",
+          desc: "Focus on physical, mental, emotional, and spiritual self-preparation. Adopt nutritious diet, yoga, meditation, and freedom from addictions. Ayurvedic detoxification may also be considered.",
+          color: "primary",
+        },
+        {
+          number: "II",
+          label: "Partner Chosen, Marriage Not Fixed",
+          sub: "Prospective couple identified",
+          desc: "Begin aligning lifestyles. This is the ideal time for subtle practices of purification and readiness. A minimum 3\u20134 month gap between engagement and wedding is advised for preparation.",
+          color: "secondary",
+        },
+        {
+          number: "III",
+          label: "Pre-Conception Counselling",
+          sub: "Planning to conceive",
+          desc: "Conception is a sacred spiritual process — a form of tapasya. Prepare for a minimum of 3 months through disciplined diet, yoga, no addictions, and Beej Shuddhi practices.",
+          color: "gold",
+        },
+        {
+          number: "IV",
+          label: "Consciously Planning Conception",
+          sub: "Decided to invite a child",
+          desc: "Garbhadhana Sanskar — the sacred rite of conscious conception. Parents prepare through prayer, positive intention, and emotional harmony. Not by chance, but by choice.",
+          color: "primary",
+        },
+        {
+          number: "V",
+          label: "Pregnancy Confirmed",
+          sub: "Antenatal period",
+          desc: "Garbh Sanskar becomes a daily way of life — music, mantras, affirmations, yoga, nutrition, and Garbh Samvad. Any month of pregnancy is a good time to begin. You are never late.",
+          color: "secondary",
+        },
+        {
+          number: "VI",
+          label: "Post-Delivery Care",
+          sub: "After the child is born",
+          desc: "Continue the Garbh Sanskar environment for the newborn. Focus shifts to postnatal care of mother and holistic nurturing — sustaining the physical health and emotional bond.",
+          color: "gold",
+        },
+      ],
+      deepDiveLabel: "Essential Guidance at Each Stage",
+      tabs: {
+        premarital: { label: "Premarital Counselling", native: "\u0935\u093f\u0935\u093e\u0939 \u092a\u0942\u0930\u094d\u0935" },
+        dreamChild: { label: "Dream-Child Resolve", native: "\u0938\u094d\u0935\u092a\u094d\u0928-\u0936\u093f\u0936\u0941" },
+        astrology: { label: "Astrological Guidance", native: "\u091c\u094d\u092f\u094b\u0924\u093f\u0937" },
+      },
+      content: {
+        premarital: {
+          title: "A Medical & Garbh Sanskar Perspective",
+          body: "Premarital counselling helps couples build a healthy, harmonious, and fulfilling life together. It incorporates medical, psychological, and spiritual dimensions to minimise future conflicts and ensure the well-being of future offspring.",
+          medicalLabel: "Medical Tests to Consider",
+          medical: [
+            "Blood Group & Rh Factor compatibility",
+            "Genetic screening for hereditary conditions (Thalassemia, Sickle Cell, etc.)",
+            "Infectious disease screening — HIV, Hepatitis B & C, Rubella, TORCH",
+            "Fertility & hormonal assessment — Thyroid, FSH, LH, Pelvic Ultrasound",
+            "Vitamin D, B12, Iron, and general health evaluation",
+            "PCOS screening for women due to its impact on fertility",
+          ],
+          gsLabel: "Garbh Sanskar Perspective",
+          gs: "A child\u2019s health and personality begin to take shape even before conception. Therefore, it is essential for the couple to prepare physically, mentally, and spiritually. Seek a partner who is emotionally stable, spiritually inclined, and culturally rooted \u2014 these qualities promote the birth of a virtuous child and marital harmony.",
+          note: "Medical decisions should always be based on professional healthcare advice. Astrological consultation is optional and based on personal belief and tradition.",
+        },
+        dreamChild: {
+          title: "Your Dream-Child Resolution",
+          body: "Before conception, consciously decide what kind of child you wish to bring into the world. True health extends across four dimensions: Physical, Mental & Emotional, Social, and Spiritual. This resolve \u2014 your Sankalpa \u2014 becomes the guiding intention for all Garbh Sanskar practices.",
+          quote:
+            "What you repeatedly see, think, and feel \u2014 you attract into your life. The dream you nurture today will illuminate your child\u2019s tomorrow.",
+          dimensions: [
+            { label: "Physically Healthy", desc: "Strong body, disease-free, high immunity and endurance." },
+            { label: "Mentally & Emotionally Balanced", desc: "Calm, confident, creative, free from anxiety." },
+            { label: "Socially Healthy", desc: "Respectful, compassionate, connected, responsible citizen." },
+            { label: "Spiritually Aware", desc: "Rooted in values, gratitude, inner peace, and purpose." },
+          ],
+          practiceLabel: "How to Practice",
+          practice:
+            "Place an inspiring image of your dream child in your bedroom or meditation space. Each day, visualize your child with those qualities. Write a short paragraph describing your dream child \u2014 appearance, mind, heart, and future. This is your personal Sankalpa.",
+          source: "From: Dream-Child Questionnaire \xb7 The Science of Garbh Sanskar \xb7 Dr. Anil Garg & Dr. Seema Garg",
+        },
+        astrology: {
+          title: "Astrological Guidance in Garbh Sanskar",
+          body: "Traditional Garbh Sanskar recommends astrological consultation at key stages \u2014 matching birth charts (Kundali), identifying auspicious marriage and conception dates (Shubh Muhurat), and suggesting remedial practices when needed.",
+          points: [
+            {
+              label: "Kundali Matching",
+              desc: "Birth chart compatibility helps assess likelihood of a harmonious married life and potential for a healthy child.",
+            },
+            {
+              label: "Auspicious Timing (Muhurat)",
+              desc: "Certain planetary configurations \u2014 strong positions of Venus and Moon \u2014 are considered beneficial for conception and the well-being of mother and child.",
+            },
+            {
+              label: "Remedial Measures",
+              desc: "If horoscopes are incompatible, rituals, mantra chanting, and gemstones may be prescribed to balance planetary influences.",
+            },
+          ],
+          note: "Astrological consultation is optional and depends on personal belief and tradition. Medical decisions must always be based on appropriate professional healthcare advice.",
+        },
+      },
     },
     cta: {
       headline: "Ready to begin your Garbh Sanskar journey?",
