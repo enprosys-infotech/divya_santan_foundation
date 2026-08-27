@@ -467,7 +467,7 @@ export default function HomePage() {
           title={copy.whoBenefits.title}
           subtitle={copy.whoBenefits.subtitle}
         />
-        <WhoCanBenefitPanel journeys={JOURNEYS} icons={AUDIENCE_PILL_ICONS} />
+        <WhoCanBenefitPanel journeys={JOURNEYS as unknown as any} icons={AUDIENCE_PILL_ICONS} />
       </Section>
 
       {/* ── 5. Our Social Mission ────────────────────────────────────── */}

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { ChatWidgetContext } from "@/hooks/useChatWidget";
 import { useLocation } from "react-router-dom";
 import { streamShreeAI, type ChatMessage } from "@/lib/shree-ai";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type MessageStatus = "done" | "streaming" | "error";
@@ -119,6 +120,7 @@ export function AskShreeChatWidget({ children }: { children: React.ReactNode }) 
   const { t, lang } = useI18n();
   const chat = t.askShree.chat;
   const { pathname } = useLocation();
+  const isMobile = useIsMobile();
 
   // ── State ─────────────────────────────────────────────────────────────────
   const [isOpen, setIsOpen] = useState(false);
@@ -292,30 +294,32 @@ export function AskShreeChatWidget({ children }: { children: React.ReactNode }) 
     <ChatWidgetContext.Provider value={ctx}>
       {children}
 
-      {/* ── Floating trigger button ─────────────────────────────────────── */}
-      <button
-        id="ask-shree-widget-trigger"
-        type="button"
-        aria-label="Open Ask Shree AI chat"
-        aria-expanded={isOpen}
-        onClick={() => setIsOpen(true)}
-        className={cn(
-          "group fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full px-5 py-3.5",
-          "bg-gradient-to-r from-secondary to-primary text-primary-foreground",
-          "shadow-[0_4px_24px_-4px_oklch(0.648_0.182_48.5/0.55)]",
-          "transition-all duration-300 hover:shadow-[0_6px_32px_-4px_oklch(0.648_0.182_48.5/0.7)]",
-          "hover:scale-105 active:scale-100",
-          isOpen && "opacity-0 pointer-events-none scale-90",
-        )}
-      >
-        {/* Pulse ring */}
-        <span className="absolute inset-0 rounded-full bg-primary/30 animate-ping [animation-duration:2.4s]" />
-        <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/20">
-          <Sparkles className="h-3.5 w-3.5" strokeWidth={1.8} />
-        </span>
-        <span className="relative text-sm font-medium tracking-wide">{t.cta.askShree}</span>
-        <ChevronRight className="relative h-3.5 w-3.5 opacity-70 transition-transform duration-300 group-hover:translate-x-0.5" />
-      </button>
+      {/* ── Floating trigger button (mobile only) ─────────────────────── */}
+      {isMobile && (
+        <button
+          id="ask-shree-widget-trigger"
+          type="button"
+          aria-label="Open Ask Shree AI chat"
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen(true)}
+          className={cn(
+            "group fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full px-5 py-3.5",
+            "bg-gradient-to-r from-secondary to-primary text-primary-foreground",
+            "shadow-[0_4px_24px_-4px_oklch(0.648_0.182_48.5/0.55)]",
+            "transition-all duration-300 hover:shadow-[0_6px_32px_-4px_oklch(0.648_0.182_48.5/0.7)]",
+            "hover:scale-105 active:scale-100",
+            isOpen && "opacity-0 pointer-events-none scale-90",
+          )}
+        >
+          {/* Pulse ring */}
+          <span className="absolute inset-0 rounded-full bg-primary/30 animate-ping [animation-duration:2.4s]" />
+          <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/20">
+            <Sparkles className="h-3.5 w-3.5" strokeWidth={1.8} />
+          </span>
+          <span className="relative text-sm font-medium tracking-wide">{t.cta.askShree}</span>
+          <ChevronRight className="relative h-3.5 w-3.5 opacity-70 transition-transform duration-300 group-hover:translate-x-0.5" />
+        </button>
+      )}
 
       {/* ── Backdrop ────────────────────────────────────────────────────── */}
       <div
