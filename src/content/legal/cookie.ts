@@ -22,12 +22,12 @@ export const cookieContent: LocalizedLegalContent = {
     title: "Cookie Policy",
     subtitle:
       "This Cookie Policy explains what cookies and similar tracking technologies are, how and why we use them, and your rights under applicable Indian law.",
-    preamble: `This Cookie Policy is issued by Divya Santan Prakalp Foundation ("we," "us," "our," "Foundation"), operating the website divyasantanfoundation.com (the "Platform"), through which we provide Garbh Sanskar programs, prenatal guidance, spiritual and wellness consultations, and related services (collectively, the "Services") to expecting parents and their families.\n\nThis Policy explains what cookies and similar tracking technologies are, how and why we use them, and the rights available to you under applicable Indian law, including the Information Technology Act, 2000, the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011 ("SPDI Rules"), and the Digital Personal Data Protection Act, 2023 ("DPDP Act") together with the Digital Personal Data Protection Rules, 2025 ("DPDP Rules").\n\nThis Cookie Policy forms an integral part of the Foundation's Privacy Framework and should be read together with the Privacy Policy and the Terms of Service & User Agreement.`,
+    preamble: `This Cookie Policy is issued by Divya Santan Prakalp Foundation (“we,” “us,” “our,” “Foundation”), operating the website https://divyasantanfoundation.com/ (the “Platform”), through which we provide Garbh Sanskar programs, prenatal guidance, spiritual and wellness consultations, and related services (collectively, the “Services”) to expecting parents and their families.\n\nThis Policy explains what cookies and similar tracking technologies are, how and why we use them, and the rights available to you under applicable Indian law, including the Information Technology Act, 2000, the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011 (“SPDI Rules”), and the Digital Personal Data Protection Act, 2023 (“DPDP Act”) together with the Digital Personal Data Protection Rules, 2025 (“DPDP Rules”).\n\nThis Cookie Policy forms an integral part of the Foundation's Privacy Framework and should be read together with the Privacy Policy and the Terms of Service & User Agreement. Capitalised terms used but not defined in this Policy shall have the meanings assigned to them in the Terms of Service & User Agreement. This Policy supplements the Privacy Policy and the Terms of Service & User Agreement in relation to cookies and similar technologies. It should be read harmoniously with those documents.`,
     sections: [
       {
         icon: Cookie,
         title: "1. What Are Cookies and Similar Technologies?",
-        content: `Cookies are small text files containing small amounts of information which are downloaded to your computer or mobile device when you visit our Website and allow the Website to recognize your device. Cookies we place ourselves are called "first-party cookies," and cookies placed by other companies on our behalf are called "third-party cookies."\n\nSimilar technologies include web beacons/conversion pixels (small graphics used in emails and web pages to track whether a message was opened or a page visited) and local storage, which work alongside cookies for the same purposes described below.\n\nDepending on your settings, cookies and similar technologies may collect: your device identifier, IP address, browser/operating system information, and general location information (to the extent permitted under applicable Indian law).`,
+        content: `Cookies are small text files containing small amounts of information which are downloaded to your computer or mobile device when you visit our Website and allow the Website to recognize your device. Cookies we place ourselves are called "first-party cookies," and cookies placed by other companies on our behalf are called "third-party cookies."\n\nSimilar technologies include web beacons/conversion pixels (small graphics used in emails and web pages to track whether a message was opened or a page visited) and local storage, which work alongside cookies for the same purposes described below.\n\nDepending on your settings, cookies and similar technologies may collect: your device identifier, IP address, browser/operating system information, and general location information (to the extent permitted under applicable Indian law)`,
       },
       {
         icon: Eye,
@@ -43,18 +43,18 @@ export const cookieContent: LocalizedLegalContent = {
       },
       {
         icon: BarChart2,
-        title: "3. Do We Use Cookies for Marketing and Analytics?",
+        title: "3. Do we Use Cookies for Marketing and Analytics?",
         content: `Yes, where you have consented, cookies may be used to personalise Website content, improve user experience and understand browsing preferences. We do not use cookies to infer health conditions or pregnancy status for behavioural advertising or targeted marketing. In some cases, we may associate cookie data with an identifiable individual. For example:`,
         listItems: [
           "If we send you a program update or newsletter email containing web beacons or tracking pixels, we will know whether you opened, read, or clicked through the message.",
           "When you click a link in a marketing email from us, a cookie may log which pages you subsequently view on our Website, even before you register or log in.",
-          "Combining data: We may combine information solely for improving our Services, user experience, platform functionality and communications, and not for profiling users for automated decision-making. We do not combine this data with health information you share in consultations for advertising purposes.",
+          "Combining data: We may combine information solely for improving our Services, user experience, platform functionality and communications, and not for profiling users for automated decision-making. We do not combine this data with health information you share in consultations for advertising purposes (see Section 6).",
         ],
       },
       {
         icon: Globe,
-        title: "4. Do We Use Third Party Cookies?",
-        content: `Yes. Some cookies, pixels, and tracking technologies on our Platform are placed by third-party companies who provide us with analytics, payment processing, communication, or advertising services. These companies use code to collect information about how you interact with our Platform — such as pages visited, links clicked, and time spent — only while you are on our Platform (or, if you have consented, across your devices).`,
+        title: "4. Do we Use Third Party Cookies?",
+        content: `Yes. Some cookies, pixels, and tracking technologies on our Platform are placed by third-party companies who provide us with analytics, payment processing, communication, or advertising services. These companies use code to collect information about how you interact with our Platform such as pages visited, links clicked, and time spent only while you are on our Platform (or, if you have consented, across your devices where you are logged into their services, e.g., Google).`,
         tableRows: [
           { purpose: "Website Analytics", providers: "Google Analytics" },
           { purpose: "Payment Processing", providers: "Razorpay / PayU / Cashfree (or similar RBI-authorised gateway)" },
@@ -64,34 +64,34 @@ export const cookieContent: LocalizedLegalContent = {
           { purpose: "Advertising & Retargeting", providers: "Google Ads, Meta Pixel" },
         ],
         tableFooter:
-          "The list above is illustrative and may change from time to time. An updated list of material third-party tracking providers will be maintained on the Platform. The Foundation does not control the cookies, tracking technologies, or data processing practices of third-party providers once Users interact directly with their websites or services.",
+          "We may share cookie and browsing data with these providers for the purposes listed above. The list above is illustrative and may change from time to time. An updated list of material third-party tracking providers will be maintained on the Platform. They may use this data, in accordance with their own privacy policies, to improve their own services and deliver relevant content. Where this data sharing falls within the meaning of \"processing\" under the DPDP Act, it is carried out under our instructions and, where required, with your consent (see Section 10).\n\nThe Foundation does not control the cookies, tracking technologies, or data processing practices of third-party providers once Users interact directly with their websites, applications, or services. Users are encouraged to review the privacy policies, cookie policies, and applicable terms of such third-party providers before using their services or consenting to their cookies.",
       },
       {
         icon: Eye,
         title: "5. Do We Use Tracking Technologies Similar to Cookies?",
-        content: `Yes. We may use web beacons (including conversion pixels) in marketing emails, our newsletter, or on the Platform for similar purposes as cookies — for example, to determine whether an email was opened or a link was clicked. Web beacons do not place information directly on your device but often work together with cookies to monitor engagement. Everything in this Policy about cookies applies equally to web beacons and similar technologies, unless stated otherwise.`,
+        content: `Yes. We may use web beacons (including conversion pixels) in marketing emails, our newsletter, or on the Platform for similar purposes as cookies for example, to determine whether an email was opened or a link was clicked. Web beacons do not place information directly on your device but often work together with cookies to monitor engagement. Everything in this Policy about cookies applies equally to web beacons and similar technologies, unless stated otherwise.`,
       },
       {
         icon: Baby,
-        title: "6. Sensitive Personal Data and Health-Related Information",
+        title: "6. Sensitive Personal Data and Health Related Information",
         content: `Because our Services relate to pregnancy, prenatal care, and family well-being, information you share with us through enrollment forms, consultation bookings, or chat may include details that qualify as Sensitive Personal Data or Information (SPDI) under the SPDI Rules, 2011, such as physical, physiological, and mental health information, medical history relevant to Garbh Sanskar counselling, and pregnancy-related details.\n\nWe do not use cookies to infer, track, or target advertising based on health conditions or pregnancy status. Any sensitive information you provide through forms (not cookies) is handled under the stricter safeguards described in our Privacy Policy, including explicit consent before collection, need-to-know access restrictions, and reasonable security practices mandated under Section 43A of the IT Act and the SPDI Rules.`,
       },
       {
         icon: Settings,
         title: "7. What Types of Cookies Does This Platform Use?",
-        content: `Not every cookie listed below is necessarily active on every page. The categories used on our Platform are:`,
+        content: `Not every cookie listed below is necessarily active on everypage. The categories used on our Platform are:`,
         categoryRows: [
           {
             name: "Strictly Necessary Cookies",
-            desc: "Essential to let you move around the Platform and use its features such as logging in, enrolling in a program, or completing payment for a consultation. Without these, requested services cannot be provided, and they cannot be switched off. These cookies do not require separate consent.",
+            desc: "Essential to let you move around the Platform and use its features such as logging in, enrolling in a program, or completing payment for a consultation. Without these, requested services cannot be provided, and they cannot be switched off. These cookies are processed on the basis that they are necessary for the operation, security, authentication and integrity of the Platform and therefore do not require separate consent.",
           },
           {
             name: "Analytics Cookies",
-            desc: "Let us measure and improve Platform performance and understand how visitors engage with our Garbh Sanskar content. May be processed by providers such as Google Analytics. Although generally aggregated or pseudonymised, they may constitute personal data where linkable to an identifiable individual.",
+            desc: "Let us measure and improve Platform performance and understand how visitors engage with our Garbh Sanskar content, so we can make it more relevant. May be processed by providers such as Google Analytics. Although analytics data is generally aggregated or pseudonymised, it may constitute personal data under applicable law where it can reasonably be linked to an identifiable individual.",
           },
           {
             name: "Performance Cookies",
-            desc: "Typically third-party cookies that collect information about your visit — such as which pages you visit most — without identifying you personally. Used only to improve how the Platform works.",
+            desc: "Typically third-party cookies that collect information about your visit such as which pages you visit most and whether you encounter errors without identifying you personally. Used only to improve how the Platform works.",
           },
           {
             name: "Functionality Cookies",
@@ -99,7 +99,7 @@ export const cookieContent: LocalizedLegalContent = {
           },
           {
             name: "Advertising & Social Media Cookies",
-            desc: "Used to show you more relevant advertisements about our programs, limit repeat ad views, measure campaign effectiveness, enable retargeting, and understand engagement after viewing an ad.",
+            desc: "Used to (1) show you more relevant advertisements about our programs, (2) limit repeat ad views, (3) measure campaign effectiveness, (4) enable retargeting to our Platform, and (5) understand engagement after viewing an ad. Usually placed by advertising networks with our permission. If disabled, you may not be able to use certain sharing tools or watch embedded videos.",
           },
         ],
       },
@@ -119,11 +119,11 @@ export const cookieContent: LocalizedLegalContent = {
           { category: "Functionality Cookies", retention: "Up to 12 months, or until preferences change" },
         ],
         tableFooter:
-          "Actual retention periods may vary depending upon browser configuration, user preferences, technical requirements and third-party provider settings. Personal data collected through forms in connection with sensitive services is retained under our Privacy Policy and applicable statutory requirements.",
+          "Note: Actual retention periods may vary depending upon browser configuration, user preferences, technical requirements and third-party provider settings. Personal data collected through forms in connection with sensitive services (e.g., consultation records) is retained under our Privacy Policy and applicable statutory requirements, and deleted or anonymised once no longer necessary.",
       },
       {
         icon: Settings,
-        title: "10. What If I Don't Want Cookies or Similar Technologies?",
+        title: "10. What If I Don’t Want Cookies or Similar Technologies?",
         content: `You have several options:`,
         subsections: [
           {
@@ -134,7 +134,7 @@ export const cookieContent: LocalizedLegalContent = {
           {
             heading: "b) Browser Settings",
             content:
-              "• Google Chrome: Settings > Privacy and Security > Cookies and other site data\n• Mozilla Firefox: Settings > Privacy & Security > Cookies and Site Data\n• Safari: Preferences > Privacy > Manage Website Data\n• Microsoft Edge: Settings > Cookies and site permissions\n\nDeleting or blocking cookies may affect your experience — for example, preventing login, program enrollment, or payment.",
+              "• Google Chrome: Settings > Privacy and Security > Cookies and other site data\n• Mozilla Firefox: Settings > Privacy & Security > Cookies and Site Data\n• Safari: Preferences > Privacy > Manage Website Data\n• Microsoft Edge: Settings > Cookies and site permissions\n\nDeleting or blocking cookies may affect your experience for example, preventing login, program enrollment, or payment.",
           },
           {
             heading: "c) Opting Out of Specific Providers",
@@ -144,7 +144,7 @@ export const cookieContent: LocalizedLegalContent = {
           {
             heading: "d) Your Rights as a Data Principal under the DPDP Act",
             content:
-              "To the extent cookies process your personal data, you are entitled to:\n• Right to Access a summary of personal data we hold and how it is processed\n• Right to Correction and Erasure — correction of inaccurate data, or erasure once no longer necessary\n• Right to Grievance Redressal — raise concerns with our Grievance Officer (Section 13)\n• Right to Nominate — nominate someone to exercise your rights in case of death or incapacity\n• Right to Withdraw Consent — withdraw consent for non-essential cookies at any time, as easily as it was given\n\nThe above rights are more elaborately discussed under our Privacy Policy.",
+              "As the DPDP Act's substantive provisions come into force, and to the extent cookies process your personal data, you are entitled (and we already honour these on a best-efforts basis) to:\n• Right to Access a summary of personal data we hold and how it is processed\n• Right to Correction and Erasure correction of inaccurate data, or erasure once no longer necessary\n• Right to Grievance Redressal raise concerns with our Grievance Officer (Section 13)\n• Right to Nominate nominate someone to exercise your rights in case of death or incapacity\n• Right to Withdraw Consent withdraw consent for non-essential cookies at any time, as easily as it was given\n\nThe above rights are more elaborately discussed and mentioned under our Privacy Policy.",
           },
         ],
       },
@@ -159,7 +159,7 @@ export const cookieContent: LocalizedLegalContent = {
           "Contractual safeguards with all data processors",
         ],
         footerContent:
-          "In the event of a personal data breach affecting cookie-derived or other personal data, we will notify the Data Protection Board of India and affected users as required under the DPDP Rules, without undue delay. We periodically review our technical and organisational measures to ensure they remain appropriate.",
+          "In the event of a personal data breach affecting cookie-derived or other personal data, we will notify the Data Protection Board of India and affected users as required under the DPDP Rules, without undue delay.\n\nWe periodically review our technical and organisational measures to ensure they remain appropriate having regard to the nature of the personal data processed and evolving cybersecurity risks.",
       },
       {
         icon: Baby,
@@ -169,24 +169,24 @@ export const cookieContent: LocalizedLegalContent = {
       {
         icon: UserCheck,
         title: "13. Grievance Officer / Contact Us",
-        content: `For any questions, concerns, or complaints relating to this Cookie Policy or our use of cookies and tracking technologies, please contact our Grievance Officer:`,
+        content: ``,
         listItems: [
-          "Grievance Officer: [Name]",
-          "Designation: [Designation]",
-          "Email: [Insert Email]",
-          "Phone: [Insert Phone]",
-          "Registered Address: [Insert Address]",
+          "Grievance Officer: Grievance Officer",
+          "Designation: Grievance Officer",
+          "Email: santanprakalp@gmail.com",
+          "Phone: +91 94257 93409",
+          "Registered Address: 2/1, R.S. Bhandari Marg, Veer Savarkar Chauraha (Janjeerwala), Indore (M.P.) 452001",
         ],
       },
       {
         icon: RefreshCw,
         title: "14. Changes to This Cookie Policy",
-        content: `We may update this Policy periodically to reflect changes in technology, our practices, or Indian law (including the phased implementation of the DPDP Act and Rules). The "Last Updated" date reflects the most recent revision. Material changes will, where required, be notified through the consent banner or other reasonable means.`,
+        content: `We may update this Policy periodically to reflect changes in technology, our practices, or Indian law (including the phased implementation of the DPDP Act and Rules). The "Last Updated" date above reflects the most recent revision. Material changes will, where required, be notified through the consent banner or other reasonable means.`,
       },
       {
         icon: Scale,
         title: "15. Governing Law and Jurisdiction",
-        content: `This Policy shall be governed by the laws of India. Any disputes arising out of or relating to this Policy shall be subject to the dispute resolution mechanism set out in the Terms of Service & User Agreement. Subject thereto, the courts of [Insert City/State] shall have exclusive jurisdiction.`,
+        content: `This Policy shall be governed by the laws of India. Any disputes arising out of or relating to this Policy shall be subject to the dispute resolution mechanism set out in the Terms of Service & User Agreement. Subject thereto, the courts at Indore shall have exclusive jurisdiction.\n\nEffective Date: [●]\nLast updated: [●]`,
       },
     ],
   },
@@ -344,11 +344,11 @@ export const cookieContent: LocalizedLegalContent = {
         title: "13. शिकायत अधिकारी / हमसे संपर्क करें",
         content: `इस कुकी नीति या कुकीज़ और ट्रैकिंग तकनीकों के हमारे उपयोग के बारे में किसी भी प्रश्न, चिंता या शिकायत के लिए, कृपया हमारे शिकायत अधिकारी से संपर्क करें:`,
         listItems: [
-          "शिकायत अधिकारी: [नाम]",
-          "पदनाम: [पदनाम]",
-          "ईमेल: [ईमेल डालें]",
-          "फ़ोन: [फ़ोन डालें]",
-          "पंजीकृत पता: [पता डालें]",
+          "शिकायत अधिकारी: शिकायत अधिकारी",
+          "पदनाम: शिकायत अधिकारी",
+          "ईमेल: santanprakalp@gmail.com",
+          "फ़ोन: +91 94257 93409",
+          "पंजीकृत पता: 2/1, R.S. Bhandari Marg, Veer Savarkar Chauraha (Janjeerwala), Indore (M.P.) 452001",
         ],
       },
       {
@@ -359,7 +359,7 @@ export const cookieContent: LocalizedLegalContent = {
       {
         icon: Scale,
         title: "15. शासी कानून और अधिकार क्षेत्र",
-        content: `यह नीति भारत के कानूनों द्वारा शासित होगी। इस नीति से उत्पन्न या संबंधित किसी भी विवाद को सेवा की शर्तें और उपयोगकर्ता समझौते में निर्धारित विवाद समाधान तंत्र के अधीन किया जाएगा। तदाधीन, इंदौर के न्यायालयों का विशेष अधिकार क्षेत्र होगा।\n\nप्रभावी तिथि: [●]\nअंतिम अपडेट: [●]`,
+        content: `यह नीति भारत के कानूनों द्वारा शासित होगी। इस नीति से उत्पन्न या संबंधित किसी भी विवाद को सेवा की शर्तें और उपयोगकर्ता समझौते में निर्धारित विवाद समाधान तंत्र के अधीन किया जाएगा। तदाधीन, इंदौर के न्यायालयों का विशेष अधिकार क्षेत्र होगा।`,
       },
     ],
   },

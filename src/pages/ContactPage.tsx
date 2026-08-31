@@ -11,7 +11,7 @@ import { getDictionary, useI18n } from "@/i18n";
 const CONTACT_VALUES: Record<string, string> = {
   email: CONTACT_DETAILS.email,
   phone: CONTACT_DETAILS.phone,
-  office: "Indore, Madhya Pradesh, India",
+  office: "Plot No. 294-A, 2nd Floor, Scheme No. 78 Part-2, Near Prestige College, Vijay Nagar, Indore, Madhya Pradesh - 452010, India",
 };
 
 export default function ContactPage() {
