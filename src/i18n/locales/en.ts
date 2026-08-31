@@ -2161,7 +2161,7 @@ export const en = {
         body: "An important milestone in the journey of Divya Santan Foundation was the association and support of renowned businessman, entrepreneur, philanthropist, and donor Shri Vinod Ji Agarwal. His guidance, vision, financial support, and provision of essential infrastructure played a significant role in strengthening and expanding the initiative.",
       },
       {
-        title: "Garbh Sanskar Ka Vigyan",
+        title: "The Science of Garbh Sanskar",
         body: "To make the subject available in a comprehensive, structured, and scientifically explained form, Dr. Anil Kumar Garg and Dr. Seema Garg authored the book 'Garbh Sanskar Ka Vigyan', a nearly 400-page, full-colour publication integrating ancient Indian wisdom with contemporary scientific understanding. It was formally launched at a grand event at Daly College Auditorium, Indore, graced by Shri Bhaiyyaji Joshi Ji and the Hon'ble Chief Minister of Madhya Pradesh, Dr. Mohan Yadav Ji.",
       },
       {
