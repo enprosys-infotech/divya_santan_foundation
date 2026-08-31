@@ -10,15 +10,7 @@ import FreeServicesPage from "./pages/FreeServicesPage";
 import GarbhSanskarPage from "./pages/GarbhSanskarPage";
 import JoinPage from "./pages/JoinPage";
 import KnowledgePage from "./pages/KnowledgePage";
-<<<<<<< HEAD
-import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
-import GrievancePolicyPage from "./pages/GrievancePolicyPage";
-import CookiePolicyPage from "./pages/CookiePolicyPage";
-import ResearchPage from "./pages/ResearchPage";
-import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
-=======
 import LegalPage from "./pages/LegalPage";
->>>>>>> 991914af058012d05d41159d000012610b4ee31f
 import NotFoundPage from "./pages/NotFoundPage";
 import ResearchPage from "./pages/ResearchPage";
 
@@ -35,12 +27,6 @@ export default function App() {
           <Route path="/garbh-sanskar" element={<GarbhSanskarPage />} />
           <Route path="/join" element={<JoinPage />} />
           <Route path="/knowledge" element={<KnowledgePage />} />
-<<<<<<< HEAD
-          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="/grievance-policy" element={<GrievancePolicyPage />} />
-          <Route path="/cookie-policy" element={<CookiePolicyPage />} />
-=======
->>>>>>> 991914af058012d05d41159d000012610b4ee31f
           <Route path="/research" element={<ResearchPage />} />
           <Route path="/privacy-policy" element={<LegalPage />} />
           <Route path="/terms-and-conditions" element={<LegalPage />} />

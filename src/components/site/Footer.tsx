@@ -110,21 +110,6 @@ export function Footer() {
             <Link to="/grievance-redressal" className="transition-colors hover:text-gold">
               {t.legal.grievance.title}
             </Link>
-            <span aria-hidden="true" className="text-indigo-foreground/30">
-              •
-            </span>
-            <Link to="/cookie-policy" className="transition-colors hover:text-gold">
-              Cookie Policy
-            </Link>
-            <span aria-hidden="true" className="text-indigo-foreground/30">
-              •
-            </span>
-            <Link to="/grievance-policy" className="transition-colors hover:text-gold">
-              Grievance Policy
-            </Link>
-            <span aria-hidden="true" className="text-indigo-foreground/30">
-              •
-            </span>
             <Link to="/terms-and-conditions" className="transition-colors hover:text-gold">
               {t.legal.terms.title}
             </Link>
