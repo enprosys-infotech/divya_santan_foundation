@@ -103,6 +103,9 @@ export type FooterLinkId = (typeof FOOTER_COLUMNS)[number]["links"][number]["id"
 export const CONTACT_DETAILS = {
   email: "santanprakalp@gmail.com",
   phone: "+91 94257 93409",
+<<<<<<< HEAD
   address: "2/1, R.S. Bhandari Marg, Veer Savarkar Chauraha (Janjeerwala), Indore (M.P.) 452001",
+=======
+>>>>>>> 991914af058012d05d41159d000012610b4ee31f
   socialLinks: { facebook: "#", instagram: "#", youtube: "#" },
 } as const;

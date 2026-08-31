@@ -85,14 +85,14 @@ export default function FreeServicesPage() {
           ))}
 
           {/* Ask Shree AI — opens widget */}
-          <button
+          {/* <button
             type="button"
             onClick={openChat}
             className="ml-auto flex cursor-pointer items-center gap-2 rounded-full border border-primary/40 bg-primary/8 px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-primary/15 active:scale-95"
           >
             <Sparkles className="h-3.5 w-3.5" />
             Ask Shree AI
-          </button>
+          </button> */}
         </div>
       </Section>
 
@@ -157,7 +157,7 @@ export default function FreeServicesPage() {
 
           {/* ── Subtab Navigation ── */}
           <Section className="pb-0">
-            <div className="flex gap-1 rounded-2xl border border-border bg-warm p-1.5 sm:w-fit">
+            <div className="flex flex-wrap gap-1 rounded-2xl border border-border bg-warm p-1.5 sm:w-fit">
               {(["onlineClasses", "opd"] as FreeTab[]).map((tab) => {
                 const labels = copy.subtabs;
                 const TabIcon = tab === "onlineClasses" ? Video : Building2;
@@ -519,10 +519,10 @@ export default function FreeServicesPage() {
           <Section className="pt-0">
             <div className="rounded-3xl border border-primary/20 bg-gradient-to-r from-secondary/5 to-primary/5 px-6 py-10 text-center">
               <p className="text-xs uppercase tracking-[0.22em] text-secondary">{copy.askShree.eyebrow}</p>
-              <h2 className="mt-2 text-2xl text-ink sm:text-3xl">{copy.askShree.title}</h2>
+              {/* <h2 className="mt-2 text-2xl text-ink sm:text-3xl">{copy.askShree.title}</h2>
               <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
                 {copy.askShree.body}
-              </p>
+              </p> */}
               <div className="mt-6 grid gap-4 sm:grid-cols-3 max-w-2xl mx-auto mb-8">
                 {ASK_SHREE_FEATURES.map((feature) => (
                   <div key={feature.id} className="surface-card p-4 text-left">
