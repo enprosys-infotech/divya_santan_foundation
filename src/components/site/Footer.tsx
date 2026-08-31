@@ -96,13 +96,25 @@ export function Footer() {
           </p>
           <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-indigo-foreground/60">
             <Link to="/privacy-policy" className="transition-colors hover:text-gold">
-              Privacy Policy
+              {t.legal.privacy.title}
+            </Link>
+            <span aria-hidden="true" className="text-indigo-foreground/30">
+              •
+            </span>
+            <Link to="/cookie-policy" className="transition-colors hover:text-gold">
+              {t.legal.cookie.title}
+            </Link>
+            <span aria-hidden="true" className="text-indigo-foreground/30">
+              •
+            </span>
+            <Link to="/grievance-redressal" className="transition-colors hover:text-gold">
+              {t.legal.grievance.title}
             </Link>
             <span aria-hidden="true" className="text-indigo-foreground/30">
               •
             </span>
             <Link to="/terms-and-conditions" className="transition-colors hover:text-gold">
-              Terms & Conditions
+              {t.legal.terms.title}
             </Link>
           </div>
           <p className="mt-2 text-xs text-indigo-foreground/50">

@@ -10,10 +10,9 @@ import FreeServicesPage from "./pages/FreeServicesPage";
 import GarbhSanskarPage from "./pages/GarbhSanskarPage";
 import JoinPage from "./pages/JoinPage";
 import KnowledgePage from "./pages/KnowledgePage";
-import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
-import ResearchPage from "./pages/ResearchPage";
-import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
+import LegalPage from "./pages/LegalPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import ResearchPage from "./pages/ResearchPage";
 
 export default function App() {
   return (
@@ -28,9 +27,11 @@ export default function App() {
           <Route path="/garbh-sanskar" element={<GarbhSanskarPage />} />
           <Route path="/join" element={<JoinPage />} />
           <Route path="/knowledge" element={<KnowledgePage />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/research" element={<ResearchPage />} />
-          <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
+          <Route path="/privacy-policy" element={<LegalPage />} />
+          <Route path="/terms-and-conditions" element={<LegalPage />} />
+          <Route path="/grievance-redressal" element={<LegalPage />} />
+          <Route path="/cookie-policy" element={<LegalPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Route>

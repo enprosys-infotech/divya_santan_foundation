@@ -101,7 +101,7 @@ export type FooterLinkId = (typeof FOOTER_COLUMNS)[number]["links"][number]["id"
 
 /** Contact details are language independent. */
 export const CONTACT_DETAILS = {
-  email: "contact@divyasantan.org",
-  phone: "+91 00000 00000",
+  email: "santanprakalp@gmail.com",
+  phone: "+91 94257 93409",
   socialLinks: { facebook: "#", instagram: "#", youtube: "#" },
 } as const;

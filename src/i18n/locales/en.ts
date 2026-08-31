@@ -190,6 +190,51 @@ export const en = {
     },
   },
 
+  legal: {
+    eyebrow: "Legal",
+    lastUpdated: "Last Updated:",
+
+    privacy: {
+      title: "Privacy Policy",
+      subtitle:
+        "Your privacy is important to us. This Policy explains what data we collect, why we collect it, and how we protect it in accordance with the Digital Personal Data Protection Act, 2023.",
+      preamble:
+        "PLEASE READ THIS PRIVACY POLICY CAREFULLY BEFORE USING THE PLATFORM AND/OR THE SERVICES. THIS POLICY EXPLAINS WHAT DATA WE COLLECT, WHY WE COLLECT IT, AND WHAT WE DO WITH IT. BY USING OUR SERVICES, YOU CONFIRM THAT YOU HAVE READ, UNDERSTOOD, AND AGREED TO THIS POLICY.",
+      grievanceLink: "View Grievance Redressal Policy →",
+    },
+
+    cookie: {
+      title: "Cookie Policy",
+      subtitle:
+        "This Cookie Policy explains what cookies and similar tracking technologies are, how and why we use them, and your rights under applicable Indian law.",
+      preamble:
+        'This Cookie Policy is issued by Divya Santan Prakalp Foundation ("we," "us," "our," "Foundation"), operating the website divyasantanfoundation.com (the "Platform"). This Policy forms an integral part of the Foundation\'s Privacy Framework and should be read together with the Privacy Policy and the Terms of Service & User Agreement.',
+      thirdPartyTable: {
+        purposeHeader: "Purpose",
+        providersHeader: "Example Providers",
+      },
+      categoryTable: {
+        categoryHeader: "Category",
+        descHeader: "Description",
+      },
+      retentionTable: {
+        categoryHeader: "Cookie Category",
+        retentionHeader: "Typical Retention",
+      },
+    },
+
+    grievance: {
+      title: "Grievance Redressal Policy",
+      subtitle:
+        "Our commitment to fair, transparent, and timely resolution of all grievances relating to the Platform, Services, and Personal Data processing.",
+    },
+
+    terms: {
+      title: "Terms & Conditions",
+      subtitle: "Please read these terms carefully before using our website and services.",
+    },
+  },
+
   home: {
     meta: {
       title: "Divya Santan Foundation — ONE STEP TOWARDS DIVINE BABY",
