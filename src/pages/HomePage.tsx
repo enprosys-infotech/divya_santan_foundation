@@ -183,11 +183,10 @@ export default function HomePage() {
             <p className="text-[0.68rem] uppercase tracking-[0.3em] text-secondary">
               {copy.hero.eyebrow}
             </p>
-            <h1 className="animate-rise mt-5 text-5xl leading-tight text-ink sm:text-5xl lg:text-6xl">
+            <h1 className="animate-rise mt-5 text-5xl leading-tight text-ink sm:text-5xl lg:text-[5.9vh]">
               {copy.hero.title}
             </h1>
-            <p className="font-deva mt-4 text-lg text-primary/85">{copy.hero.native}</p>
-            <p className="mt-5 max-w-xl text-base-readable text-muted-foreground">
+            <p className="mt-3 max-w-xl text-base-readable text-muted-foreground">
               {copy.hero.subtitle}
             </p>
             <p className="mt-3 text-xs uppercase tracking-[0.25em] text-secondary/60">
@@ -578,25 +577,6 @@ export default function HomePage() {
             <div className="surface-card flex flex-col items-center p-6 text-center">
               <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-primary/30 shadow-md">
                 <img
-                  src="/anil-sir.png"
-                  alt={copy.leadership.members.anil.name}
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <h3 className="mt-4 text-base font-medium text-ink">
-                {copy.leadership.members.anil.name}
-              </h3>
-              <p className="mt-1 text-xs uppercase tracking-[0.2em] text-secondary">
-                {copy.leadership.members.anil.role}
-              </p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                {copy.leadership.members.anil.bio}
-              </p>
-            </div>
-            <div className="surface-card flex flex-col items-center p-6 text-center">
-              <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-primary/30 shadow-md">
-                <img
                   src="/vinod-sir.png"
                   alt={copy.leadership.members.vinod.name}
                   className="h-full w-full object-cover"
@@ -611,6 +591,25 @@ export default function HomePage() {
               </p>
               <p className="mt-3 text-sm text-muted-foreground">
                 {copy.leadership.members.vinod.bio}
+              </p>
+            </div>
+             <div className="surface-card flex flex-col items-center p-6 text-center">
+              <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-primary/30 shadow-md">
+                <img
+                  src="/anil-sir.png"
+                  alt={copy.leadership.members.anil.name}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <h3 className="mt-4 text-base font-medium text-ink">
+                {copy.leadership.members.anil.name}
+              </h3>
+              <p className="mt-1 text-xs uppercase tracking-[0.2em] text-secondary">
+                {copy.leadership.members.anil.role}
+              </p>
+              <p className="mt-3 text-sm text-muted-foreground">
+                {copy.leadership.members.anil.bio}
               </p>
             </div>
           </div>

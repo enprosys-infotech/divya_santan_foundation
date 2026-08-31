@@ -483,15 +483,15 @@ export const en = {
           role: "Chief Patron",
           bio: "Spiritual guidance & cultural preservation",
         },
-        anil: {
-          name: "Dr. Anil Garg",
-          role: "Founder & Managing Director",
-          bio: "MBBS, MS, MCh · Integrating medicine with ancient wisdom",
-        },
         vinod: {
           name: "Shree Vinod Agarwal",
           role: "Founder & Chairman",
           bio: "Philanthropist driving the institutional foundation",
+        },
+         anil: {
+          name: "Dr. Anil Garg",
+          role: "Founder & Managing Director",
+          bio: "MBBS, MS, MCh · Integrating medicine with ancient wisdom",
         },
       },
     },
@@ -519,7 +519,7 @@ export const en = {
       eyebrow: "Access Garbh Sanskar Anywhere",
       title: "Take the Journey",
       titleAccent: "in Your Pocket",
-      native: "गर्भ संस्कार ऐप",
+      native: "",
       description:
         "Access free classes, Ask Shree AI, month-by-month guides, and your personal learning journey — all in Hindi and English.",
       downloadLabel: "Download the app:",
@@ -1020,7 +1020,7 @@ export const en = {
     header: {
       eyebrow: "Videos & Lectures",
       title: "Learn through video",
-      native: "वीडियो के माध्यम से सीखें",
+      native: "",
       intro:
         "Access our comprehensive video library covering Garbh Sanskar fundamentals, month-by-month guidance, and expert lectures.",
     },
@@ -1048,7 +1048,7 @@ export const en = {
     header: {
       eyebrow: "Events & Activities",
       title: "Join our community",
-      native: "हमारे समुदाय से जुड़ें",
+      native: "",
       intro:
         "Participate in workshops, seminars, and community events to deepen your Garbh Sanskar practice and connect with like-minded families.",
     },
@@ -1078,7 +1078,7 @@ export const en = {
     header: {
       eyebrow: "Success Stories",
       title: "Families share their journey",
-      native: "परिवार अपनी यात्रा साझा करते हैं",
+      native: "",
       intro:
         "Read heartfelt testimonials from parents who experienced the transformative practice of Garbh Sanskar.",
     },
@@ -1252,7 +1252,7 @@ export const en = {
     journeys: {
       planningCouple: {
         title: "Couple Planning Pregnancy",
-        native: "गर्भधारण की तैयारी",
+        native: "",
         body: "Begin months before conception — preparing body, mind, and environment as a couple for a conscious and sacred start.",
         steps: [
           "Planning Pregnancy",
@@ -1265,7 +1265,7 @@ export const en = {
       },
       pregnantWoman: {
         title: "I Am Pregnant",
-        native: "मैं गर्भवती हूँ",
+        native: "",
         body: "Month-by-month guidance on diet, yoga, music, Garbh Samvad, and precautions — everything a pregnant mother needs.",
         steps: [
           "I Am Pregnant",
@@ -1277,19 +1277,19 @@ export const en = {
       },
       socialWorker: {
         title: "Social Worker",
-        native: "सामाजिक कार्यकर्ता",
+        native: "",
         body: "Learn Garbh Sanskar, complete the Foundation Course, become a trained Prerak, and serve your community.",
         steps: ["Learn Garbh Sanskar", "Foundation Course", "Become Prerak", "Serve Society"],
       },
       academicPerson: {
         title: "Academic Person",
-        native: "शोधकर्ता",
+        native: "",
         body: "Explore scientific evidence, research publications, academic courses, and collaboration opportunities.",
         steps: ["Research", "Scientific Evidence", "Publications", "Courses", "Collaboration"],
       },
       consultant: {
         title: "Consultant",
-        native: "परामर्शदाता",
+        native: "",
         body: "Join the mission as a qualified Garbh Sanskar consultant — apply, get verified, train, and begin practice.",
         steps: ["Join the Mission", "Apply as Consultant", "Verification", "Training", "Practice"],
       },
@@ -2244,7 +2244,7 @@ export const en = {
       ],
       executiveCouncil: [
         "Shri Vinod Birla",
-        "Shri C. Chandramohan Dubey",
+        "Shri Chandramohan Dubey",
         "Shri Rakesh Dubey",
         "Shri Pranjal",
         "Shri Vikas Mishra",
@@ -2262,7 +2262,7 @@ export const en = {
   learnPage: {
     hero: {
       eyebrow: "Learn Garbh Sanskar",
-      nativeEyebrow: "गर्भ संस्कार",
+      nativeEyebrow: "",
       headline1: "Nurturing begins",
       headline2: "before birth.",
       intro:
@@ -2278,16 +2278,16 @@ export const en = {
       headline1: "Two Sanskrit words.",
       headline2: "One transformative idea.",
       intro:
-        "Garbh (गर्भ) means womb. Sanskar (संस्कार) means refinement, cultivation, and positive transformation. Together they describe a holistic way of consciously nurturing the unborn child through healthy lifestyle, positive thoughts, prayer, mantra, meditation, yoga, music, good conduct, and family harmony.",
+        "Garbh Sanskar means womb (Garbh) refinement and positive transformation (Sanskar). Together they describe a holistic way of consciously nurturing the unborn child through healthy lifestyle, positive thoughts, prayer, mantra, meditation, yoga, music, good conduct, and family harmony.",
       principleQuote:
         "The baby is not merely in the mother's womb — the baby is with the mother every moment.",
       principleLabel: "Core principle of Garbh Sanskar",
       disclaimer:
         "Garbh Sanskar is complementary to modern medical care, not a substitute. Always remain under the guidance of your gynecologist.",
       tabs: {
-        garbh: { label: "Garbh", native: "गर्भ" },
-        sanskar: { label: "Sanskar", native: "संस्कार" },
-        together: { label: "Together", native: "मिलकर" },
+        garbh: { label: "Garbh", native: "" },
+        sanskar: { label: "Sanskar", native: "" },
+        together: { label: "Together", native: "" },
       },
       content: {
         garbh: {
@@ -2367,10 +2367,10 @@ export const en = {
       reference:
         'Reference: Chapter 13 — "Pre-Conception Counseling" · The Science of Garbh Sanskar',
       elements: {
-        ritukala: { native: "\u0943\u0924\u0941\u0915\u093e\u0932", desc: "Healthy Ovulation", detail: "Regular menstrual cycles" },
-        kshetra: { native: "\u0915\u094d\u0937\u0947\u0924\u094d\u0930", desc: "Healthy Uterus", detail: "Optimal uterine environment" },
-        ambu: { native: "\u0905\u092e\u094d\u092c\u0941", desc: "Proper Nutrition", detail: "Nourishment for all nine months" },
-        beej: { native: "\u092c\u0940\u091c", desc: "Healthy Seeds", detail: "High-quality ovum and sperm" },
+        ritukala: { native: "", desc: "Healthy Ovulation", detail: "Regular menstrual cycles" },
+        kshetra: { native: "", desc: "Healthy Uterus", detail: "Optimal uterine environment" },
+        ambu: { native: "", desc: "Proper Nutrition", detail: "Nourishment for all nine months" },
+        beej: { native: "", desc: "Healthy Seeds", detail: "High-quality ovum and sperm" },
       },
       steps: {
         physical: {
@@ -2421,7 +2421,7 @@ export const en = {
       stages: {
         garbhadhan: {
           label: "Garbhadhana",
-          native: "\u0917\u0930\u094d\u092d\u093e\u0927\u093e\u0928",
+          native: "",
           subtitle: "The Divine Process of Conception",
           timing: "At the time of conception",
           purpose: "Inviting a conscious soul",
@@ -2431,7 +2431,7 @@ export const en = {
         },
         punswan: {
           label: "Punsavana",
-          native: "\u092a\u0941\u0902\u0938\u0935\u0928",
+          native: "",
           subtitle: "For the Physical Well-being of the Fetus",
           timing: "2\u20133 months after conception",
           purpose: "Physical health and protection",
@@ -2441,7 +2441,7 @@ export const en = {
         },
         simantonayan: {
           label: "Simantonnayana",
-          native: "\u0938\u0940\u092e\u0928\u094d\u0924\u094b\u0928\u094d\u0928\u092f\u0928",
+          native: "",
           subtitle: "For the Mental Development of the Unborn Child",
           timing: "Later months of pregnancy",
           purpose: "Cognitive and emotional nurturing",

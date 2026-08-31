@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import dspImage from "@/assets/DivyasantanLogo.png";
+import dspImage from "@/assets/DspNewlogo.jpg";
 import bsvafImage from "@/assets/BalajiLogo.png";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
