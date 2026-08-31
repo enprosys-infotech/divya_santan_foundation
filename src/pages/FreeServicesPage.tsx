@@ -303,24 +303,21 @@ export default function FreeServicesPage() {
                           <QrCode className="h-5 w-5" strokeWidth={1.5} />
                         </span>
                         <p className="text-[0.68rem] uppercase tracking-[0.3em] text-secondary">
-                          {copy.onlineClasses.qrSectionLabel}
+                          {copy.qrSection.eyebrow}
                         </p>
                       </div>
                       <h3 className="text-2xl leading-snug text-ink sm:text-3xl">
-                        {copy.onlineClasses.qrScan}
+                        {copy.qrSection.title}
                       </h3>
 
                       <div className="mt-8 space-y-5">
-                        {copy.onlineClasses.qrSteps.map(({ title, body }, i) => (
+                        {[copy.qrSection.step1, copy.qrSection.step2].map((step, i) => (
                           <div key={i} className="flex gap-4">
                             <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">
                               {i + 1}
                             </span>
                             <div>
-                              <p className="text-sm font-medium text-ink">{title}</p>
-                              <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">
-                                {body}
-                              </p>
+                              <p className="text-sm font-medium text-ink">{step}</p>
                             </div>
                           </div>
                         ))}

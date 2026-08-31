@@ -171,6 +171,7 @@ export type KnowledgeCategoryId = (typeof KNOWLEDGE_CATEGORIES)[number]["id"];
 
 export const KNOWLEDGE_ARTICLES = defineItems([
   { id: "whatIsGarbhSanskar", category: "foundations" },
+  { id: "ritualOrScience", category: "science" },
   { id: "monthByMonth", category: "pregnancy" },
   { id: "garbhSamvad", category: "practice" },
   { id: "scienceResearch", category: "science" },
@@ -180,6 +181,42 @@ export const KNOWLEDGE_ARTICLES = defineItems([
   { id: "sanskarsThroughAges", category: "culture" },
 ] as const satisfies readonly { id: string; category: KnowledgeCategoryId }[]);
 export type KnowledgeArticleId = (typeof KNOWLEDGE_ARTICLES)[number]["id"];
+
+/* ── Knowledge Centre: Step-by-Step Guides ──────────────────────────────── */
+
+export const KNOWLEDGE_GUIDES = defineItems([
+  { id: "preMarriage" },
+  { id: "preConceptionPrep" },
+  { id: "garbhadhanaSanskar" },
+  { id: "pregnancyMonthByMonth" },
+  { id: "postnatalCare" },
+]);
+export type KnowledgeGuideId = (typeof KNOWLEDGE_GUIDES)[number]["id"];
+
+/* ── Knowledge Centre: Q & A ────────────────────────────────────────────── */
+
+export const KNOWLEDGE_QA = defineItems([
+  { id: "whenToStart", tag: "planning" },
+  { id: "whatIsGarbhSamvad", tag: "practice" },
+  { id: "dietDuringPregnancy", tag: "nutrition" },
+  { id: "fatherParticipation", tag: "family" },
+  { id: "scientificBasis", tag: "science" },
+  { id: "modernMedicineCompat", tag: "medical" },
+  { id: "vedicSanskars", tag: "culture" },
+]);
+export type KnowledgeQAId = (typeof KNOWLEDGE_QA)[number]["id"];
+
+/* ── Knowledge Centre: Scientific References ────────────────────────────── */
+
+export const SCIENTIFIC_REFERENCES = defineItems([
+  { id: "kalyani2011" },
+  { id: "bernardi2001" },
+  { id: "streeter2012" },
+  { id: "epigeneticsLipton" },
+  { id: "prenatalPsychologyVerny" },
+  { id: "maternalStressGluckman" },
+]);
+export type ScientificReferenceId = (typeof SCIENTIFIC_REFERENCES)[number]["id"];
 
 /* ── Research fields ────────────────────────────────────────────────────── */
 

@@ -33,6 +33,30 @@ export interface ArticleCopy {
   readTime: string;
 }
 
+/** A stage or phase in a step-by-step Garbh Sanskar guide. */
+export interface GuideStageCopy {
+  label: string;
+  title: string;
+  subtitle: string;
+  body: string;
+  steps: string[];
+}
+
+/** A question-and-answer pair in the Q\u0026A section. */
+export interface QACopy {
+  question: string;
+  answer: string;
+  tag: string;
+}
+
+/** A peer-reviewed scientific reference with an editorial summary. */
+export interface ScientificRefCopy {
+  field: string;
+  citation: string;
+  summary: string;
+  year: string;
+}
+
 export interface ResearchTopicCopy {
   field: string;
   topic: string;
