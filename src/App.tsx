@@ -11,6 +11,8 @@ import GarbhSanskarPage from "./pages/GarbhSanskarPage";
 import JoinPage from "./pages/JoinPage";
 import KnowledgePage from "./pages/KnowledgePage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import GrievancePolicyPage from "./pages/GrievancePolicyPage";
+import CookiePolicyPage from "./pages/CookiePolicyPage";
 import ResearchPage from "./pages/ResearchPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -29,6 +31,8 @@ export default function App() {
           <Route path="/join" element={<JoinPage />} />
           <Route path="/knowledge" element={<KnowledgePage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/grievance-policy" element={<GrievancePolicyPage />} />
+          <Route path="/cookie-policy" element={<CookiePolicyPage />} />
           <Route path="/research" element={<ResearchPage />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
 

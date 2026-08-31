@@ -148,7 +148,7 @@ export const en = {
   footer: {
     about:
       "We educate, train, create awareness and support research so that every family can nurture healthy, cultured and compassionate generations.",
-    office: "Divya Santan Foundation, Indore, Madhya Pradesh, India",
+    office: "2/1, R.S. Bhandari Marg, Veer Savarkar Chauraha (Janjeerwala), Indore (M.P.) 452001",
     copyright:
       "Divya Santan Foundation · Supported by Balaji Sewarth Vinod Agarwal Foundation",
     columnTitles: {

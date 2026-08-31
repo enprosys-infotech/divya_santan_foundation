@@ -249,10 +249,10 @@ export function AskShreeChatWidget({ children }: { children: React.ReactNode }) 
             prev.map((m) =>
               m.id === assistantId
                 ? {
-                    ...m,
-                    text: `I encountered an issue: ${errorMsg}\n\nPlease try again or contact Divya Santan Foundation directly at contact@divyasantan.org`,
-                    status: "error",
-                  }
+                  ...m,
+                  text: `I encountered an issue: ${errorMsg}\n\nPlease try again or contact Divya Santan Foundation directly at santanprakalp@gmail.com`,
+                  status: "error",
+                }
                 : m,
             ),
           );
@@ -401,8 +401,8 @@ export function AskShreeChatWidget({ children }: { children: React.ReactNode }) 
                   msg.role === "user"
                     ? "rounded-br-sm bg-primary text-primary-foreground"
                     : msg.status === "error"
-                    ? "rounded-bl-sm bg-destructive/10 text-destructive border border-destructive/20"
-                    : "rounded-bl-sm bg-accent text-accent-foreground",
+                      ? "rounded-bl-sm bg-destructive/10 text-destructive border border-destructive/20"
+                      : "rounded-bl-sm bg-accent text-accent-foreground",
                 )}
               >
                 {msg.role === "user" ? (
