@@ -12,13 +12,11 @@ import type {
   AskShreeQuestionId,
   AudiencePillId,
   ClassScheduleId,
-  ContactDetailId,
-  ContactTopicId,
   CourseId,
   CourseStepId,
+  CompletedEventId,
   FreeServiceId,
   GarbhBasicId,
-  GlobalStatId,
   InstaReelId,
   JoinProcessStepId,
   JoinRoleId,
@@ -27,16 +25,19 @@ import type {
   KnowledgeCategoryId,
   KnowledgeGuideId,
   KnowledgeQAId,
+  KnowledgeResourceId,
   ScientificReferenceId,
   LearnTopicId,
   MissionPointId,
   PillarId,
   ResearchCommitmentId,
   ResearchTopicId,
-  ScienceStatId,
+  ResultsStatId,
+  SuccessStoryId,
   SynergyPillarId,
   TestimonialId,
   TimelineId,
+  VideoCategoryId,
   VideoId,
 } from "@/content/registry";
 import type {
@@ -46,24 +47,29 @@ import type {
   NavGroupId,
   NavLinkId,
 } from "@/content/navigation";
+import avdheshanandPortrait from "@/assets/avdheshanand.jpg";
 import type {
   AccentedCopy,
   ArticleCopy,
   CourseCopy,
+  CompletedEventCopy,
   GuideStageCopy,
   InstaReelCopy,
   JourneyCopy,
   NavLinkCopy,
   QACopy,
   ResearchTopicCopy,
+  ResourceCopy,
   ScheduleCopy,
   ScientificRefCopy,
   StatCopy,
+  SuccessStoryCardContent,
   SynergyCopy,
   TestimonialCopy,
   TitledCopy,
   VideoCopy,
 } from "../types";
+import { CONSULTANTS } from "@/content/consultants";
 
 export const en = {
   brand: {
@@ -92,12 +98,17 @@ export const en = {
   },
 
   cta: {
-    joinFree: "Join Free Classes",
+    joinFree: "Available Services",
     askShree: "Ask Shree AI",
     guidance: "Get Guidance",
-    learn: "Learn Garbh Sanskar",
+    learn: "Knowledge Center",
     needGuidance: "Need Personal Guidance?",
     joinMission: "Join the Mission",
+    services: {
+      title: "Continue with the right support",
+      body: "Explore free classes, educational guidance, videos and community services for your next step.",
+      action: "Explore available services",
+    },
   },
 
   nav: {
@@ -105,14 +116,13 @@ export const en = {
     links: {
       home: "Home",
       about: "About Us",
-      garbhSanskar: "Garbh Sanskar",
       contact: "Contact Us",
     } satisfies Record<NavLinkId, string>,
     mega: { explore: "Explore" },
     groups: {
       knowledge: "Knowledge",
       training: "Training",
-      freeServices: "Free Services",
+      freeServices: "Services",
       research: "Research",
       joinMission: "Join the Mission",
     } satisfies Record<NavGroupId, string>,
@@ -128,7 +138,7 @@ export const en = {
         note: "Foundation course, Prerak training",
       },
       freeServices: {
-        label: "Free Services",
+        label: "Available Services",
         native: "",
         note: "Classes, videos, books & AI guidance",
       },
@@ -149,8 +159,7 @@ export const en = {
     about:
       "We educate, train, create awareness and support research so that every family can nurture healthy, cultured and compassionate generations.",
     office: "2/1, R.S. Bhandari Marg, Veer Savarkar Chauraha (Janjeerwala), Indore (M.P.) 452001",
-    copyright:
-      "Divya Santan Foundation · Supported by Balaji Sewarth Vinod Agarwal Foundation",
+    copyright: "Divya Santan Foundation · Supported by Balaji Sewarth Vinod Agarwal Foundation",
     columnTitles: {
       learn: "Learn",
       knowledge: "Knowledge",
@@ -265,210 +274,60 @@ export const en = {
       pills: {
         planningCouple: { label: "Planning Pregnancy", sub: "Pre-conception guidance" },
         pregnantWoman: { label: "Pregnant Woman", sub: "Month-by-month journey" },
-        socialWorker: { label: "Social Worker", sub: "Become a Prerak" },
-        academicPerson: { label: "Academic / Researcher", sub: "Research & evidence" },
-        consultant: { label: "Consultant", sub: "Join the mission" },
+        socialWorker: { label: "Volunteer", sub: "Become a Prerak" },
+        academicPerson: { label: "Institutional Collaborator", sub: "Shared Purpose" },
+        consultant: { label: "Consultant", sub: "Contribute your knowledge" },
       } satisfies Record<AudiencePillId, { label: string; sub: string }>,
     },
-    stats: {
-      criticalDays: {
-        label: "Days",
-        sub: "The critical window from conception to age 2",
+    resultsProof: {
+      stories: {
+        eyebrow: "Real Families, Real Results",
+        title: "True Success Stories from Our Community",
+        subtitle:
+          "Meet the families who embraced Garbh Sanskar and experienced its transformative impact. These are authentic journeys of hope, preparation, and beautiful outcomes.",
       },
-      brainDevelopment: {
-        label: "Brain Development",
-        sub: "Occurs before birth and in first 2 years",
-      },
-      studies: {
-        label: "Peer-reviewed studies",
-        sub: "On prenatal environment and child outcomes",
-      },
-      trimesters: { label: "Trimesters", sub: "Fetal senses active from week 8" },
-    } satisfies Record<ScienceStatId, StatCopy>,
-    whoBenefits: {
-      eyebrow: "Your Path Starts Here",
-      title: "Who Can Benefit?",
-      subtitle:
-        "Five different visitors — five clear journeys. Find yours below and follow it step by step.",
-    },
-    foundations: {
-      eyebrow: "Foundations & Approach",
-      title: "What is Garbh Sanskar & Our 5 Pillars",
-      subtitle:
-        "Combining ancient intra-uterine nurturing wisdom with a structured 5-pillar educational framework.",
-      pillarsLabel: "Our 5 Pillars of Action",
-      whatIs: {
-        title: "What is Garbh Sanskar?",
-        definition:
-          "Garbh Sanskar is derived from two Sanskrit words — Garbh, meaning womb, and Sanskar, meaning refinement, cultivation, and positive transformation.",
-        philosophy:
-          "In Vedic philosophy, the womb is regarded as a sacred space where a new life develops physically, mentally, emotionally, and spiritually. Sanskar represents the nurturing of positive thoughts, values, habits, emotions, and consciousness.",
-        approach:
-          "Garbh Sanskar is therefore a holistic way of caring for and nurturing the unborn child during pregnancy through healthy lifestyle, nutritious food, positive thoughts, prayer, mantra, meditation, yoga, music, good conduct, family harmony, and appropriate Vedic practices.",
-        science:
-          "Modern science also recognizes that the mother's nutrition, health, emotional state, stress levels, lifestyle, and environment can influence pregnancy and fetal development. Practices such as meditation, chanting, relaxation, and positive maternal interaction can help create a peaceful and supportive environment for both mother and baby.",
-        principle: {
-          title: "A Simple Principle",
-          body: "The baby is not merely in the mother's womb — the baby is with the mother every moment. The mother's food, emotions, daily routine, surroundings, conversations, and experiences together create the environment in which the unborn child develops.",
-          conclusion:
-            "Garbh Sanskar therefore encourages the mother and family to consciously create a healthy, peaceful, positive, and value-based environment throughout pregnancy.",
-        },
-        quote:
-          "Garbh Sanskar is the process of nurturing the unborn child with health, positive values, knowledge, emotions, and consciousness from within the womb.",
-        disclaimer:
-          "Garbh Sanskar is complementary to modern medical care and not a substitute for it. Every pregnant woman should remain under regular guidance of her gynecologist and follow appropriate medical advice, examinations, investigations, and treatment.",
-        source: "Source: The Science of Garbh Sanskar — Dr. Anil Kumar Garg & Dr. Seema Garg",
-        whyMatters: {
-          title: "Why it matters",
-          body: "The aim of Garbh Sanskar is to nurture a baby who is physically, mentally, emotionally, socially, and spiritually healthy. In the modern era, pregnancy is increasingly influenced by stress, unhealthy lifestyle, poor nutrition, environmental toxins, substance exposure, and disturbed family environments. These factors can adversely affect maternal well-being and may also influence fetal growth, brain development, immunity, and long-term health. Garbh Sanskar promotes a holistic approach to pregnancy by integrating physical health, proper nutrition, emotional balance, positive thinking, social harmony, spiritual practices, and appropriate medical care.",
-        },
-      },
-    },
-    hub: {
-      eyebrow: "Comprehensive Learning & Support Hub",
-      title: "Everything You Need — Free & Consultation",
-      subtitle:
-        "Videos, classes, books, courses, AI guidance and expert consultation — all organized in one place.",
-      tabs: {
-        videos: "Videos",
-        freeServices: "Free Services",
-        courses: "Courses",
-        knowledge: "Knowledge",
-        consultation: "Consultation",
+      stats: {
+        eyebrow: "Our Impact",
+        title: "By The Numbers",
+        items: {
+          healthyBirths: {
+            label: "Healthy Births",
+            sub: "Through Garbh Sanskar guidance",
+          },
+          couplesTrained: {
+            label: "Couples Trained",
+            sub: "Across India and globally",
+          },
+          satisfaction: {
+            label: "Satisfaction Rate",
+            sub: "From participating families",
+          },
+          volunteers: {
+            label: "Active Volunteers",
+            sub: "Certified Preraks serving communities",
+          },
+        } satisfies Record<ResultsStatId, StatCopy>,
       },
       videos: {
-        description:
-          "Educational Garbh Sanskar reference YouTube videos. Click any video card to play directly in-page.",
-        cta: "Watch All Videos",
-        instagramDescription:
-          "Follow our Instagram reels for short, inspiring Garbh Sanskar moments. Click any card to watch.",
-        instagramCta: "Follow on Instagram",
-        youtubeHeading: "YouTube Videos",
-        instagramHeading: "Instagram Reels",
+        eyebrow: "Watch & Learn",
+        title: "Educational Videos & Success Stories",
+        subtitle:
+          "Knowledge sessions, Garbh Sanskar Foundation classes, and testimonials from families who practiced Garbh Sanskar. Watch directly in-page.",
+        categories: {
+          all: "All",
+          knowledge: "Knowledge",
+          garbhSanskarFoundation: "Garbh Sanskar Foundation",
+          testimonials: "Testimonials",
+        } satisfies Record<VideoCategoryId, string>,
+        cta: "View Full YouTube Channel",
       },
-      freeServices: {
-        title: "Always Free — Core Education",
-        description:
-          "Our core Garbh Sanskar educational services are, and will remain, 100% free to all families.",
-        items: [
-          {
-            icon: "classes",
-            title: "Free Online Guidance Classes",
-            body: "Twice-a-month live sessions by Garbh Sanskar counsellors, yoga therapists, music therapists, and nutrition advisors.",
-          },
-          {
-            icon: "ai",
-            title: "Ask Shree AI",
-            body: "AI companion based on 'Garbh Sanskar Ka Vigyan' by Dr. Anil & Dr. Seema Garg. Get personalized answers for your situation.",
-          },
-          {
-            icon: "booklet",
-            title: "Monthly Guidance Booklet",
-            body: "Free PDF guiding pregnant women through all 9 months — lifestyle, nutrition, yoga, music, mantras and precautions.",
-          },
-          {
-            icon: "book",
-            title: "Garbh Sanskar Ka Vigyan (Book)",
-            body: "Comprehensive 400-page book by Dr. Anil & Dr. Seema Garg explaining the science, practices and month-by-month guidance. Available on Amazon.",
-          },
-          {
-            icon: "youtube",
-            title: "YouTube Video Series",
-            body: "Free scientific video series in Hindi and English. Subscribe to get notified about new educational content.",
-          },
-          {
-            icon: "instagram",
-            title: "Instagram Reels",
-            body: "Short, inspiring Garbh Sanskar moments and daily wisdom. Follow for bite-sized learning.",
-          },
-        ],
-        schedule: {
-          title: "Upcoming Free Classes",
-          subtitle: "Join our weekly live sessions — no registration fee, open to all families.",
-          sessions: [
-            {
-              day: "Every Sunday",
-              topic: "Introduction to Garbh Sanskar",
-              duration: "Hindi · 60 min",
-            },
-            {
-              day: "Every Wednesday",
-              topic: "Garbh Samvad Practice Circle",
-              duration: "Hindi & English · 45 min",
-            },
-            {
-              day: "First Saturday",
-              topic: "Fathers & Family Session",
-              duration: "English · 60 min",
-            },
-            {
-              day: "Monthly",
-              topic: "Community Awareness Programme",
-              duration: "Regional languages",
-            },
-          ],
-          cta: "Register for Free Class",
-        },
+      reels: {
+        eyebrow: "Community Moments",
+        title: "Follow Our Journey on Instagram",
+        subtitle:
+          "Short, inspiring moments from our Garbh Sanskar community — daily wisdom, celebrations, and real-life experiences.",
+        cta: "Follow Us on Instagram",
       },
-      courses: {
-        description:
-          "Structured learning tracks certified for parents, educators, Preraks, and academic faculty.",
-        cta: "View All Courses",
-      },
-      knowledge: {
-        description:
-          "Concise articles based on cultural wisdom and verified developmental science.",
-        cta: "Browse Knowledge Base",
-      },
-      consultation: {
-        badge: "Expert Support",
-        title: "Divyankur — Online Consultation Platform",
-        tagline: "Affordable & Convenient Expert Guidance",
-        description:
-          "For those who need personalized expert guidance, Divyankur connects you with qualified Garbh Sanskar consultants through our mobile app. Download, register, choose a consultation package and connect with an expert.",
-        steps: ["Download App", "Register", "Choose Package", "Connect with Expert"],
-        note: "Consultation is a supportive service. All core education remains free.",
-        cta: "Download Divyankur App",
-        androidLabel: "Get it on Google Play",
-        iosLabel: "Download on App Store",
-      },
-    },
-    ai: {
-      eyebrow: "Learning companion & guidance",
-      title: "Ask Shree AI or Get Personal Support",
-      subtitle:
-        "Your educational companion for Garbh Sanskar. Ask what to learn, or connect with qualified educational consultants.",
-      openFull: "Open Full Ask Shree AI",
-      bookConsultation: "Book Consultation Guidance",
-    },
-    ecosystem: {
-      eyebrow: "Global Movement & Community",
-      title: "Participate, Collaborate & Connect",
-      subtitle:
-        "Discover how educators, researchers, volunteers, and institutions build the Garbh Sanskar ecosystem together.",
-      tabs: {
-        join: "Join the Mission",
-        global: "Global Reach",
-        research: "Research & Evidence",
-        testimonials: "Testimonials",
-      },
-    },
-    socialMission: {
-      eyebrow: "Our Social Mission",
-      title: "A World of Peace, Health & Divine Harmony",
-      vasudhaiva: "Vasudhaiva Kutumbakam",
-      vasudhaivaMeaning: "The entire world is one family.",
-      body: "The primary objective of the Divine Santan Foundation is to foster a world characterized by peace, love, compassion, happiness, health, prosperity, and ultimately, divine harmony. Through a comprehensive approach, we aim to uplift humanity and create a global community where every individual thrives in spiritual fulfillment and material well-being.",
-      epigenetics:
-        "The Divine Santan Foundation utilizes the principles of epigenetics to influence the phenotypic expression of genes during pregnancy. By implementing a series of lifestyle, dietary, and spiritual practices, we aim to cultivate a divine environment for the unborn child — nurturing holistic development encompassing physical, mental, emotional, and spiritual dimensions.",
-      pillars: [
-        { icon: "peace", label: "Peace & Harmony" },
-        { icon: "love", label: "Love & Compassion" },
-        { icon: "health", label: "Health & Wellness" },
-        { icon: "epigenetics", label: "Epigenetics Applied" },
-        { icon: "global", label: "Vasudhev Kutumbakam" },
-      ],
-      cta: "Learn About Our Foundation",
     },
     leadership: {
       eyebrow: "Guided by Vision & Wisdom",
@@ -488,32 +347,12 @@ export const en = {
           role: "Founder & Chairman",
           bio: "Philanthropist driving the institutional foundation",
         },
-         anil: {
+        anil: {
           name: "Dr. Anil Garg",
           role: "Founder & Managing Director",
           bio: "MBBS, MS, MCh · Integrating medicine with ancient wisdom",
         },
       },
-    },
-    global: {
-      title: "Global Movement & Network",
-      stats: {
-        regions: "States & regions",
-        volunteers: "Volunteers enrolled",
-        languages: "Languages, more coming",
-      } satisfies Record<GlobalStatId, string>,
-    },
-    research: {
-      windowTitle: "The First 1,000 Days Window",
-      windowDesc:
-        "Developmental neuroscience acknowledges conception through age two as the primary window for lifelong health, cognition and emotional resilience.",
-      cta: "View Full Research & Science",
-    },
-    finalCta: {
-      title: "Begin with knowledge, not obligation",
-      body: "Start with a free class, explore the Knowledge Centre, or ask Shree AI where to begin. Personal guidance is always available if you need it.",
-      primary: "Join Free Classes",
-      secondary: "Get Guidance",
     },
     mobileApp: {
       eyebrow: "Access Garbh Sanskar Anywhere",
@@ -792,9 +631,11 @@ export const en = {
         "Carefully written articles, stage-wise guides, answered questions and peer-reviewed science — all in one place, always free.",
     },
     tabs: {
+      scienceOfGarbhSanskar: "Science of Garbh Sanskar",
       articles: "Articles \u0026 Blogs",
       guides: "Step-by-Step Guides",
       qa: "Q \u0026 A",
+      resources: "Books \u0026 Resources",
       scientific: "Scientific References",
     },
     articlesSection: {
@@ -828,11 +669,31 @@ export const en = {
         "These references are educational summaries. Always consult a qualified medical professional for personal health decisions. Garbh Sanskar complements, not replaces, modern obstetric care.",
       viewSource: "View source",
     },
+    resourcesSection: {
+      eyebrow: "Books \u0026 Resources",
+      title: "Knowledge to keep, share and revisit",
+      subtitle:
+        "Download practical PDFs for your journey, browse supporting documents, or find books available to purchase online.",
+      filterLabel: "Browse by format",
+      filters: {
+        all: "All resources",
+        books: "Books",
+        documents: "Word documents",
+      },
+      types: {
+        book: "Book",
+        document: "Word document",
+      },
+      download: "Download Word file",
+      purchase: "Purchase online",
+      view: "View resource",
+      note: "Use these resources for learning and reflection. The educational material does not replace advice from a qualified medical professional.",
+    },
     cta: {
       title: "Have a question while reading?",
       body: "Ask Shree AI to point you to the right lesson or article.",
       primary: "Ask Shree AI",
-      secondary: "Learn Garbh Sanskar",
+      secondary: "Explore the science of Garbh Sanskar",
     },
   },
 
@@ -870,7 +731,8 @@ export const en = {
     onlineClasses: {
       eyebrow: "Online Classes",
       title: "Learn from anywhere",
-      intro: "Join our weekly interactive sessions covering pregnancy care, fetal development, and early childhood.",
+      intro:
+        "Join our weekly interactive sessions covering pregnancy care, fetal development, and early childhood.",
       sessionInfo: "Our sessions are conducted in Hindi and English.",
       qAndA: "Live Q&A with experts",
       free: "Always free for everyone",
@@ -898,7 +760,8 @@ export const en = {
     opd: {
       eyebrow: "Charitable OPD",
       title: "Holistic care in person",
-      intro: "A dedicated centre offering guidance, counseling, and medical advice aligned with Garbh Sanskar principles.",
+      intro:
+        "A dedicated centre offering guidance, counseling, and medical advice aligned with Garbh Sanskar principles.",
       servicesHeading: "Available Services",
       services: [
         { label: "Pregnancy Counseling" },
@@ -968,6 +831,150 @@ export const en = {
       body: "Share your details and we will send joining instructions in your preferred language.",
       primary: "Register Now",
       secondary: "See Courses",
+    },
+  },
+
+  servicesPage: {
+    meta: {
+      title: "Available Services | Divya Santan Foundation",
+      description:
+        "Explore online guidance, Foundation learning, Indore services, Ask Shree AI and upcoming activities.",
+    },
+    header: {
+      eyebrow: "Services",
+      title: "Available Services",
+      intro:
+        "Find guidance, learning, local support and digital assistance through the Divya Santan Foundation's educational and social mission around Garbh Sanskar.",
+    },
+    tabs: {
+      guidance: { label: "Online Guidance for Pregnant Women", shortLabel: "Online Guidance" },
+      learning: {
+        label: "Foundation for Couples & Volunteers",
+        shortLabel: "Foundation Learning",
+      },
+      local: { label: "Outdoor Services", shortLabel: "Outdoor Services" },
+      askShree: { label: "Ask Shree AI", shortLabel: "Ask Shree AI" },
+      upcoming: { label: "Upcoming", shortLabel: "Upcoming" },
+    },
+    guidance: {
+      eyebrow: "Online Guidance for Pregnant Women",
+      title: "Online Guidance for Pregnant Women",
+      intro:
+        "Divya Santaan Foundation conducts free online Garbh Sanskar guidance classes twice every month for pregnant women.",
+      sessions:
+        "These sessions provide stage-wise guidance during pregnancy by a team of specialists, including Garbh Sanskar Counsellors and other experts, covering maternal wellbeing, healthy lifestyle, emotional balance, prenatal bonding, yoga, nutrition, and related aspects of pregnancy.",
+      freeOfCost:
+        "The classes are completely free of cost and are designed to support expectant mothers and families with practical and structured guidance throughout pregnancy.",
+      registration:
+        "For registration, please contact us by phone, WhatsApp, or email using the details given below.",
+      registrationAction: "Contact us",
+    },
+    learning: {
+      eyebrow: "Learn • Practice • Serve",
+      title: "Structured learning for families, volunteers and Preraks",
+      subtitle:
+        "The Foundation Course is designed to spread scientific and practical knowledge of Garbh Sanskar through a structured learning journey.",
+      courseEyebrow: "Foundation Course",
+      courseIntro:
+        "A three-month program with 12 weekly classes, with one one-hour session every week.",
+      courseDescription:
+        "It is designed for volunteers, social workers, interested individuals, couples planning pregnancy, and pregnant mothers who wish to understand the science, philosophy and practical application of Garbh Sanskar.",
+      audiences: ["Volunteers", "Social workers", "Couples", "Pregnant mothers"],
+      courseCta: "Explore Foundation Course",
+      pathways: [
+        {
+          eyebrow: "01 / Couple education",
+          title: "Pregnant Couple",
+          body: "Join free online classes for pregnant couples and families, and learn about healthy pregnancy, lifestyle, nutrition, emotional well-being, yoga, meditation and Baby Talk.",
+        },
+        {
+          eyebrow: "02 / Foundation course",
+          title: "Learn Systematically",
+          body: "Understand the science, philosophy and practical application of Garbh Sanskar through a three-month, 12-class foundation course.",
+        },
+        {
+          eyebrow: "03 / Serve society",
+          title: "Become a Prerak",
+          body: "Learn Garbh Sanskar, complete the Foundation Course, become a Prerak, and contribute to awareness, local programs and guidance in society.",
+        },
+      ],
+    },
+    local: {
+      eyebrow: "Education in Indore",
+      title: "Garbh Sanskar guidance for families in Indore",
+      subtitle:
+        "The Foundation's current local OPD and guidance work is based in Indore, bringing education and support closer to pregnant women, couples and families.",
+      locationEyebrow: "Currently in Indore",
+      locationTitle: "Geeta Bhawan Charitable Hospital",
+      locationBody:
+        "Regular free Garbh Sanskar OPD and guidance services are currently running here for pregnant women and couples.",
+      locationAction: "Contact Us about Indore Guidance",
+      blocks: {
+        opd: {
+          eyebrow: "Free OPD",
+          title: "Free OPD & Guidance",
+          action: "Contact Us",
+          body: "Trained Garbh Sanskar specialists provide guidance to expectant mothers on healthy pregnancy, lifestyle, nutrition, emotional well-being, yoga, meditation, Baby Talk and other important aspects of Garbh Sanskar.",
+        },
+        awareness: {
+          eyebrow: "Indore community",
+          title: "Awareness Programs in Indore",
+          action: "Contact the Foundation",
+          body: "Connect with the Foundation about seminars and educational sessions with local organizations, NGOs, social groups, hospitals and volunteers in Indore.",
+        },
+        centre: {
+          eyebrow: "Future collaboration",
+          title: "Start a Garbh Sanskar Centre",
+          action: "Discuss an Indore Centre",
+          body: "Suitable hospitals, healthcare institutions, NGOs and community organizations in Indore may work with the Foundation to establish a Garbh Sanskar Centre or OPD in association with trained professionals.",
+        },
+      },
+    },
+    askShree: {
+      eyebrow: "Ask Shree",
+      title: "Ask Shree",
+      intro:
+        "Ask Shree is an AI-based guidance chatbot developed by Divya Santaan Foundation to provide personalized support to couples during pregnancy.",
+      basis:
+        "The chatbot is based on the book \u201cGarbh Sanskar Ka Vigyan\u201d by Dr. Anil Garg and Dr. Seema Garg. Users can ask questions related to nutrition, yoga, lifestyle, Garbh Sanskar practices, maternal wellbeing, and other common pregnancy-related concerns, and Ask Shree provides guidance drawn from the book.",
+      topics: [
+        "Nutrition",
+        "Yoga",
+        "Lifestyle",
+        "Garbh Sanskar practices",
+        "Maternal wellbeing",
+        "Other common pregnancy-related concerns",
+      ],
+      service:
+        "This complimentary service is designed to make reliable Garbh Sanskar guidance easily accessible whenever couples need it.",
+      action: "Ask Shree AI",
+      disclaimer:
+        "For medical problems, emergencies, diagnosis, or treatment decisions, consultation with a qualified healthcare professional is essential.",
+    },
+    upcoming: {
+      eyebrow: "Upcoming",
+      title: "Nothing scheduled here yet.",
+      body: "Please check again soon for upcoming classes, awareness programs and Foundation activities.",
+      categories: ["Workshops", "Online Classes", "Conferences", "Book Launches"],
+    },
+    start: {
+      eyebrow: "Start where you are",
+      title: "Choose the next step that feels right",
+      subtitle:
+        "The Foundation supports couples, pregnant women, families, learners and volunteers at different points in the Garbh Sanskar journey.",
+      pathways: [
+        { label: "I'm Pregnant", description: "Select a pregnancy journey" },
+        { label: "I Want to Learn", description: "Explore Garbh Sanskar" },
+        { label: "I Need Local Support", description: "Find local guidance" },
+        { label: "I Have a Question", description: "Ask Shree AI" },
+      ],
+    },
+    cta: {
+      eyebrow: "A shared beginning",
+      title: "Begin your journey with us",
+      body: "Explore Garbh Sanskar, ask a question, or connect with the Foundation for guidance and collaboration.",
+      explore: "Explore Garbh Sanskar",
+      contact: "Contact Us",
     },
   },
 
@@ -1116,6 +1123,342 @@ export const en = {
         "This movement grows through people. Choose the role that fits your time, skill and intent.",
     },
     roles: { eyebrow: "Roles", title: "Ways to contribute" },
+    navigation: {
+      joinMission: "Join the Mission",
+      volunteers: "Become a volunteer",
+      events: "Events & activities",
+      testimonials: "Experiences",
+    },
+    categories: {
+      eyebrow: "Ways to contribute",
+      title: "Choose your place in the movement",
+      subtitle:
+        "Whether you serve families, build an institution, practise as a consultant, or advance research, there is a focused path for your contribution.",
+      items: {
+        volunteer: {
+          title: "Volunteer / Prerak",
+          body: "Learn the Foundation Course, carry responsible Garbh Sanskar education into your community, and serve with care.",
+        },
+        institutionalCollaboration: {
+          title: "Institutional Collaboration",
+          body: "Partner as a hospital, university, NGO, school, charitable organisation, or community body.",
+        },
+        consultant: {
+          title: "Become a Consultant",
+          body: "Explore the consultant directory, apply through the consultation platform, or follow the academic route.",
+        },
+        academicResearcher: {
+          title: "Academic / Researcher",
+          body: "Stay connected with upcoming research, academic programmes, conferences, and evidence-led collaboration.",
+        },
+      },
+    },
+    pages: {
+      volunteer: {
+        title: "Volunteer with Divya Santan Foundation",
+        intro:
+          "Individuals who wish to contribute to this noble and meaningful cause are warmly invited to join Divya Santan Foundation as volunteers.",
+        preparationEyebrow: "Before you begin",
+        preparationTitle: "Learn the subject properly",
+        preparationBody:
+          "We encourage volunteers to first read the book \u201cGarbh Sanskar Ka Vigyan\u201d and attend the free Garbh Sanskar Foundation Course conducted by Divya Santan Foundation. This helps them understand the subject properly before creating awareness among friends, relatives, neighbors, and the wider community.",
+        contributionEyebrow: "Ways to contribute",
+        contributionTitle: "Serve in the way that suits you",
+        contributionBody:
+          "Volunteers may contribute in their individual capacity by spreading awareness, or they may formally associate with the Foundation and support its various programmes and activities.",
+        individualTitle: "Individual capacity",
+        individualBody: "Spread awareness among friends, relatives, neighbors, and the wider community.",
+        associationTitle: "Formal association",
+        associationBody: "Associate with the Foundation and support its various programmes and activities.",
+        contactEyebrow: "Join the Foundation",
+        contactTitle: "Would you like to volunteer?",
+        contactBody:
+          "If you would like to volunteer or become a part of Divya Santan Foundation, please contact us by WhatsApp or email using the details given below. We warmly welcome your contribution.",
+        contactAction: "Contact us by WhatsApp or email",
+      },
+      institutionalCollaboration: {
+        title: "Institutional Collaboration",
+        eyebrow: "Institutional Collaboration",
+        intro:
+          "Divya Santaan Foundation aims to promote the noble cause of Garbh Sanskar across the world and warmly welcomes collaboration with institutions, NGOs, professionals, community groups, and individuals who share the same vision.",
+        narrative: "Institutional Collaboration",
+        imageAlt: "Institutional collaboration for Garbh Sanskar",
+        roleMeta: "",
+        meaningEyebrow: "A shared purpose",
+        meaningTitle: "Work independently. Join hands for a common purpose.",
+        meaningBody:
+          "There is no need to merge with or work under the banner of Divya Santaan Foundation. Every organisation or individual can continue working independently under their own identity while joining hands for a common purpose.",
+        networkEyebrow: "Shared work",
+        networkTitle: "Together, we can reach more families.",
+        networkBody:
+          "By sharing knowledge, resources, awareness activities, training, and community initiatives, we can collectively strengthen the Garbh Sanskar movement and help more families benefit from a conscious and value-based approach to parenthood.",
+        networkNodes: [
+          { title: "Knowledge", body: "" },
+          { title: "Resources", body: "" },
+          { title: "Awareness activities", body: "" },
+          { title: "Training", body: "" },
+          { title: "Community initiatives", body: "" },
+        ],
+        contributionEyebrow: "03 / Shared possibilities",
+        contributionTitle: "Where shared purpose can become reach",
+        contributionBody:
+          "By sharing knowledge, resources, awareness activities, training, and community initiatives, we can collectively strengthen the Garbh Sanskar movement.",
+        contributionItems: [
+          {
+            title: "Awareness programs",
+            body: "Bring responsible Garbh Sanskar learning into communities.",
+          },
+          {
+            title: "Educational workshops",
+            body: "Create spaces for families, educators and professionals to learn together.",
+          },
+          {
+            title: "Research",
+            body: "Support careful study, data collection and scientific validation.",
+          },
+          {
+            title: "Training",
+            body: "Build capacity among volunteers, educators and relevant specialists.",
+          },
+          {
+            title: "Academic courses",
+            body: "Explore structured learning with universities and institutions.",
+          },
+          {
+            title: "Community outreach",
+            body: "Extend practical education to local groups and underserved families.",
+          },
+          {
+            title: "Free guidance",
+            body: "Help make appropriate support more accessible through public-benefit initiatives.",
+          },
+          {
+            title: "Garbh Sanskar OPDs",
+            body: "Explore guidance services with suitable charitable or healthcare partners.",
+          },
+          {
+            title: "Publications",
+            body: "Develop and share carefully prepared educational resources.",
+          },
+          {
+            title: "Digital education",
+            body: "Use digital formats to widen access to authentic knowledge.",
+          },
+        ],
+        routeEyebrow: "04 / Opening the conversation",
+        routeTitle: "There is no single model for meaningful collaboration.",
+        routeBody:
+          "Interested institutions can contact the Foundation to understand one another, explore the opportunity and shape an appropriate collaborative model together.",
+        routeSteps: ["Contact", "Explore", "Shape a model", "Collaborate"],
+        fitEyebrow: "05 / A shared starting point",
+        fitTitle: "Could this be a useful meeting of efforts?",
+        fitBody:
+          "A conversation may be worth beginning when your organisation has a relevant community, capability or area of expertise and shares the Foundation's public-benefit purpose.",
+        fitItems: [
+          "You represent an institution or organisation with a relevant community or area of expertise.",
+          "You want to support education, awareness, research, training or family guidance.",
+          "You are open to exploring a model shaped around the real opportunity.",
+          "You value authentic, scientifically informed and ethically responsible work.",
+        ],
+        ctaEyebrow: "Join the shared mission",
+        ctaTitle: "We warmly welcome you to join this shared mission.",
+        ctaBody:
+          "If you or your organisation would like to collaborate with Divya Santaan Foundation, please contact us by WhatsApp, phone, or email using the details given below.",
+        ctaPrimary: "Contact us by WhatsApp, phone or email",
+        partnershipEyebrow: "Work together",
+        partnershipTitle: "A network built around public benefit",
+        partnershipBody:
+          "We work with organisations that share a commitment to maternal wellbeing, conscious parenthood, education, and healthier future generations.",
+        partnerships: [
+          {
+            title: "Hospitals & OPDs",
+            body: "Develop free or accessible Garbh Sanskar guidance, prenatal education, and community OPD programmes.",
+          },
+          {
+            title: "Universities & research centres",
+            body: "Create academic courses, studies, publications, and evidence-led learning pathways.",
+          },
+          {
+            title: "NGOs & charitable organisations",
+            body: "Extend awareness, classes, publications, and trained support into underserved communities.",
+          },
+          {
+            title: "Schools & community groups",
+            body: "Host talks and workshops that introduce young people and families to conscious parenthood.",
+          },
+        ],
+        opportunitiesEyebrow: "Possible collaboration",
+        opportunitiesTitle: "Ways to begin together",
+        opportunities: [
+          "Garbh Sanskar awareness programmes and workshops",
+          "Free guidance services and charitable OPDs",
+          "Volunteer and specialist training",
+          "Academic courses, research, and publications",
+          "Digital education and community outreach",
+          "Starting a Garbh Sanskar Centre in your city",
+        ],
+      },
+      consultant: {
+        title: "Consultants",
+        eyebrow: "Consultants",
+        intro:
+          "Divya Santaan Foundation welcomes qualified consultants and specialists who are directly or indirectly contributing to conscious conception, healthy pregnancy, maternal wellbeing, prenatal care, maternal–fetal attachment, and Garbh Sanskar education. Our consultant network may include Garbh Sanskar Counsellors, gynaecologists and obstetricians, Ayurvedic doctors, endocrinologists, psychiatrists, psychologists, hypnotherapists, yoga therapists, nutritionists, music specialists, and other professionals whose expertise can support couples during preconception and pregnancy.",
+        narrative: "Contribute your knowledge to conscious parenthood.",
+        imageAlt: "Qualified consultants supporting Garbh Sanskar education",
+        roleMeta: "",
+        meaningEyebrow: "01 / The role",
+        meaningTitle: "Professional knowledge, offered responsibly.",
+        meaningBody:
+          "The Foundation welcomes qualified professionals who want to contribute knowledge and expertise to Garbh Sanskar and prenatal wellness. Association is grounded in appropriate qualification, verification and professional and ethical standards.",
+        mapLabels: ["Expertise", "Guidance", "Knowledge", "Impact"],
+        contributionEyebrow: "02 / Where expertise can travel",
+        contributionTitle: "Turn a discipline into a shared resource",
+        contributionBody:
+          "Professionals interested in contributing to this initiative may apply through WhatsApp or email, or by registering as a consultant through our Online Consultation platform.",
+        contributionItems: [
+          {
+            title: "Online classes",
+            body: "Share structured learning with couples, families and wider audiences through online education.",
+          },
+          {
+            title: "Counselling",
+            body: "Offer guidance within your qualification and scope, with responsible boundaries around medical advice.",
+          },
+          {
+            title: "Workshops & awareness",
+            body: "Participate in workshops, community awareness programmes and conversations that make the subject accessible.",
+          },
+          {
+            title: "Training & research",
+            body: "Support specialist training, educational content, research and the careful development of the field.",
+          },
+        ],
+        standardsEyebrow: "03 / A responsible association",
+        standardsTitle: "Trust is part of the contribution.",
+        standardsBody:
+          "The consultant route is for qualified professionals who are ready to contribute within their expertise and uphold the Foundation's professional and ethical standards.",
+        standardsItems: [
+          "Appropriate qualification or relevant professional expertise",
+          "Review and verification by the Foundation",
+          "Professional, ethical and responsible communication",
+          "A willingness to contribute through education, guidance, training or research",
+        ],
+        ctaEyebrow: "Join the mission",
+        ctaTitle: "We warmly welcome qualified professionals.",
+        ctaBody:
+          "We warmly welcome qualified professionals who wish to contribute their knowledge and expertise to the mission of Divya Santaan Foundation.",
+        ctaPrimary: "Contact us by WhatsApp or email",
+        ctaSecondary: "Open Online Consultation platform",
+        tabs: {
+          directory: "Our consultants",
+          application: "Become a consultant",
+          academic: "Diploma, degree & PhD",
+        },
+        panels: {
+          directory: {
+            eyebrow: "Our consultants",
+            title: "Qualified professionals supporting families",
+            body: "Our consultant network may include Garbh Sanskar Counsellors, gynaecologists and obstetricians, Ayurvedic doctors, endocrinologists, psychiatrists, psychologists, hypnotherapists, yoga therapists, nutritionists, music specialists, and other professionals whose expertise can support couples during preconception and pregnancy.",
+            tableHeaders: {
+              name: "Full Name",
+              qualification: " Highest Qualification",
+              specializedCourses: "Specialized Courses / Certifications",
+            },
+            consultants: CONSULTANTS,
+          },
+          application: {
+            eyebrow: "Become a consultant",
+            title: "Choose how you would like to apply",
+            body: "Professionals interested in contributing to this initiative may apply by contacting us through WhatsApp or email, or by registering themselves as a consultant through our Online Consultation platform. After registration, our team will contact them for further communication and verification.",
+            steps: [
+              "Contact us through WhatsApp or email.",
+              "Register as a consultant through the Online Consultation platform.",
+              "After registration, our team will contact you for further communication and verification.",
+            ],
+            androidLabel: "Open Online Consultation platform",
+            iosLabel: "Get the iOS app",
+          },
+          academic: {
+            eyebrow: "Academic pathway",
+            title: "Diploma, degree and PhD opportunities",
+            body: "The Foundation is working toward structured academic pathways that connect Garbh Sanskar with medicine, psychology, yoga, nutrition, music, research, and other allied fields.",
+            programs: [
+              {
+                title: "Diploma programmes",
+                body: "Structured professional learning for people who want a deeper foundation in Garbh Sanskar.",
+              },
+              {
+                title: "Degree pathways",
+                body: "Future university collaborations can connect Garbh Sanskar with allied academic disciplines.",
+              },
+              {
+                title: "PhD & research",
+                body: "Evidence-led research opportunities will examine prenatal wellbeing, education, and social impact.",
+              },
+            ],
+          },
+        },
+      },
+      academicResearcher: {
+        title: "Research",
+        eyebrow: "Research",
+        intro:
+          "Advancing the science of Garbh Sanskar through careful research, collaboration, and responsible evidence building.",
+        contentEyebrow: "Research vision",
+        contentTitle: "Advancing the Science of Garbh Sanskar",
+        paragraphs: [
+          "Divya Santaan Foundation has a long-term vision to promote and support scientific research in Garbh Sanskar and prenatal wellbeing. Our aim is to better understand how different interventions may influence maternal wellbeing, stress, maternal–fetal attachment, and the prenatal developmental environment.",
+          "We also encourage carefully designed longitudinal research to explore whether such structured prenatal programmes are associated with infant and childhood developmental outcomes, including cognitive development, while recognizing that these outcomes are influenced by many biological, environmental, and social factors.",
+          "Together, let us build a stronger scientific evidence base for Garbh Sanskar—for healthier mothers, stronger maternal–fetal bonding, and healthier future generations.",
+        ],
+        focusEyebrow: "Areas of interest",
+        focusTitle: "A wide, responsible research lens",
+        focusAreas: [
+          {
+            title: "Nutrition",
+            body: "Pregnancy-appropriate nutrition and its relationship to maternal and prenatal wellbeing.",
+          },
+          {
+            title: "Meditation & mindfulness",
+            body: "Practices that may support maternal calm, stress regulation, and emotional wellbeing.",
+          },
+          {
+            title: "Yoga, music & relaxation",
+            body: "Accessible prenatal practices and their possible influence on the developmental environment.",
+          },
+          {
+            title: "Bhavana & maternal–fetal communication",
+            body: "The role of intention, attachment, and communication in the prenatal experience.",
+          },
+        ],
+        invitationEyebrow: "An open invitation",
+        invitation:
+          "We warmly invite researchers, doctors, psychologists, yoga professionals, academicians, universities, research scholars, and students interested in conducting high-quality research in this field. Divya Santaan Foundation welcomes research collaborations and will support suitable scientific projects wherever feasible.",
+        contactEyebrow: "Research with us",
+        contactTitle: "Propose a research project",
+        contactBody:
+          "If you are interested in collaborating with us or proposing a research project, please reach out through the contact details below.",
+        contactLabels: {
+          email: "Email us",
+          phone: "Call the Foundation",
+          whatsapp: "Message on WhatsApp",
+        },
+      },
+    },
+    contactCta: {
+      eyebrow: "Continue the conversation",
+      title: "Ready to join or collaborate?",
+      body: "Tell us how you would like to connect, and our team will guide you to the right next step.",
+      action: "Contact Us",
+    },
+    volunteer: {
+      eyebrow: "Become a volunteer / Prerak",
+      title: "Carry the learning into your community",
+      body: "A Prerak helps families discover a scientific, practical and value-based approach to conscious parenthood. Start by learning, then share the work in a way that fits your time, skills and community.",
+      primary: "Become a Prerak",
+      secondary: "Explore the Foundation Course",
+      note: "Learn first. Serve with care.",
+    },
     process: {
       eyebrow: "Process",
       title: "From interest to service",
@@ -1125,6 +1468,90 @@ export const en = {
         training: "Training",
         serve: "Serve your community",
       } satisfies Record<JoinProcessStepId, string>,
+    },
+    events: {
+      eyebrow: "Events & activities",
+      title: "Learning becomes a shared practice",
+      subtitle:
+        "Meet the people carrying Garbh Sanskar education forward through workshops, classes, conferences and community awareness.",
+      comingSoonLabel: "Upcoming",
+      comingSoonTitle: "The next gathering is taking shape",
+      comingSoonBody:
+        "New workshops, online classes and awareness programmes are being scheduled. Connect with the team to hear when the next learning circle opens.",
+      contactCta: "Ask about the next event",
+      formatsLabel: "The activity index",
+      catalogue: {
+        workshops: {
+          title: "Workshops",
+          body: "Practical sessions for couples, families, educators and community groups.",
+        },
+        onlineClasses: {
+          title: "Online classes",
+          body: "Accessible learning with Garbh Sanskar counsellors and subject experts.",
+        },
+        conferences: {
+          title: "Conferences",
+          body: "Conversations that bring medical, academic and social perspectives together.",
+        },
+        bookLaunches: {
+          title: "Book launches",
+          body: "New resources that make careful Garbh Sanskar learning easier to carry home.",
+        },
+        awareness: {
+          title: "Awareness programmes",
+          body: "Local talks and outreach with hospitals, NGOs, schools and community partners.",
+        },
+      },
+      archiveTitle: "Keep exploring the movement",
+      archiveBody:
+        "Past activities, photo and video galleries, and news will gather here as the archive grows.",
+      archiveLinks: ["Past activities", "Photo gallery", "Video gallery", "News & media"],
+      completed: {
+        eyebrow: "Completed events",
+        title: "The work, remembered in moments",
+        subtitle:
+          "A growing archive of workshops, learning circles and social outreach. Each story can later be populated directly from the CMS.",
+        previous: "Previous gallery image",
+        next: "Next gallery image",
+        goTo: "Go to gallery image",
+        viewDetails: "View event details",
+        close: "Close event details",
+        items: {
+          workshopsSocialOutreach: {
+            category: "Workshops & social outreach",
+            title: "Workshops & Social Outreach",
+            date: "GS-2, GS-3 & GS-4 workshops",
+            location: "Divya Santan Foundation programmes",
+            summary:
+              "A visual record of the first Garbh Sanskar workshop series across GS-2, GS-3 and GS-4.",
+            details:
+              "The sessions brought educators, families and community participants together to share practical, scientific and value-based learning around conscious parenthood.",
+            photoAlts: [
+              "First GS workshop stage programme",
+              "First GS workshop inauguration",
+              "First GS workshop lamp lighting ceremony",
+              "First GS workshop community session",
+            ],
+          },
+          udaipurOutreach: {
+            category: "Workshops & social outreach",
+            title: "Udaipur Garbh Sanskar Workshop",
+            date: "10 August 2024",
+            location: "Udaipur, Rajasthan",
+            summary:
+              "A community workshop bringing Garbh Sanskar awareness and shared learning to Udaipur.",
+            details:
+              "The Udaipur programme created a space for local families, educators and community members to learn together about prenatal care, conscious parenthood and the Foundation's social mission.",
+            photoAlts: ["Udaipur Garbh Sanskar workshop speakers", "Udaipur workshop audience"],
+          },
+        } satisfies Record<CompletedEventId, CompletedEventCopy>,
+      },
+    },
+    testimonialSection: {
+      eyebrow: "Experiences",
+      title: "What participation feels like",
+      subtitle:
+        "These reflections show the movement from different sides: families learning, students studying, volunteers serving and faculty teaching.",
     },
     cta: {
       title: "Tell us how you'd like to help",
@@ -1148,36 +1575,85 @@ export const en = {
         "Ask about classes, courses, volunteering or collaboration. Educational guidance is always free.",
     },
     intro: {
-      title: "Let's Connect",
+      eyebrow: "A conversation starts here",
+      title: "Reach us in the way that feels right.",
       subtitle:
-        "Have a question, want to learn more, or wish to be part of the movement? We'd love to hear from you.",
-      support: "Learn • Participate • Collaborate • Grow",
+        "Whether you are looking for guidance, joining as a Prerak, or exploring a collaboration, our team is ready to help you find the right next step.",
+      support: "Write • Call • Visit • Connect",
     },
-    form: {
-      name: "Name",
-      contactPoint: "Email or phone",
-      subject: "I am writing about",
-      message: "Message",
-      submit: "Send message",
-      success:
-        "Thank you — this is a demo form, so nothing was sent. In the live site our team replies within two working days.",
-      topics: {
-        freeClasses: "Free classes",
-        courses: "Courses & training",
-        volunteering: "Volunteering / Prerak",
-        research: "Research collaboration",
-        other: "Something else",
-      } satisfies Record<ContactTopicId, string>,
+    availability: {
+      eyebrow: "A warm welcome",
+      title: "Questions are welcome.",
+      body: "For educational guidance, class details, or joining the movement, reach out through any channel below. We will help you find the right person and pathway.",
     },
-    details: {
-      email: "Email",
-      phone: "Phone",
-      office: "Office",
-    } satisfies Record<ContactDetailId, string>,
-    officeAddress: "Indore, Madhya Pradesh, India",
+    channels: {
+      eyebrow: "Choose your channel",
+      title: "Let’s make it easy to reach us.",
+      body: "Use the channel that suits your question. A short note about what you are looking for helps us guide you faster.",
+      items: {
+        email: {
+          eyebrow: "For a considered reply",
+          title: "Write by email",
+          body: "Share your question, role of interest, or collaboration idea with the Foundation team.",
+          action: "Open email",
+        },
+        whatsapp: {
+          eyebrow: "For a quick conversation",
+          title: "Call or WhatsApp",
+          body: "Reach the team directly for class information, guidance, or the next practical step.",
+          action: "Open WhatsApp",
+        },
+        app: {
+          eyebrow: "For learning on the move",
+          title: "Connect through the app",
+          body: "Find classes, reminders, guidance, and Ask Shree in the Divya Santan mobile app.",
+          action: "See app options",
+        },
+        visit: {
+          eyebrow: "For an in-person connection",
+          title: "Reach our office",
+          body: "Visit us in Indore for Foundation conversations, local guidance, and collaboration discussions.",
+          action: "Get directions",
+        },
+      },
+    },
+    roles: {
+      eyebrow: "Joining the movement",
+      title: "Tell us the role you are stepping into.",
+      body: "You do not need a form to begin. Explore the route that feels closest to your intention, then contact us with a little context about yourself.",
+      note: "Every meaningful contribution starts with a conversation.",
+      items: [
+        {
+          title: "Volunteer / Prerak",
+          body: "Learn deeply, then help families and communities access thoughtful guidance.",
+          action: "Explore this route",
+        },
+        {
+          title: "Consultant",
+          body: "Bring your qualified professional knowledge to the Navankur consultation journey.",
+          action: "Explore this route",
+        },
+        {
+          title: "Researcher",
+          body: "Explore academic exchange, evidence, and research collaboration with the Foundation.",
+          action: "Explore this route",
+        },
+        {
+          title: "Institution / NGO",
+          body: "Discuss awareness programmes, OPD services, centres, or a collaboration shaped together.",
+          action: "Explore this route",
+        },
+      ],
+    },
     note: {
-      title: "A note on guidance",
-      body: "Our guidance is educational. For any medical question or concern during pregnancy, please consult your doctor or a qualified healthcare professional.",
+      eyebrow: "Before you reach out",
+      title: "Start with the kind of help you need.",
+      body: "Our guidance is educational. For medical questions or concerns during pregnancy, please consult your doctor or a qualified healthcare professional. For classes, resources, and free services, begin here.",
+      action: "Explore free services",
+    },
+    office: {
+      title: "Foundation office · Indore",
+      action: "Open in Maps",
     },
     movement: {
       title: "Be Part of the Movement",
@@ -1282,10 +1758,10 @@ export const en = {
         steps: ["Learn Garbh Sanskar", "Foundation Course", "Become Prerak", "Serve Society"],
       },
       academicPerson: {
-        title: "Academic Person",
+        title: "Institutional Collaborator",
         native: "",
-        body: "Explore scientific evidence, research publications, academic courses, and collaboration opportunities.",
-        steps: ["Research", "Scientific Evidence", "Publications", "Courses", "Collaboration"],
+        body: "Collaborate with the mission through research, evidence, and shared initiatives.",
+        steps: ["Collaborate with the Mission"],
       },
       consultant: {
         title: "Consultant",
@@ -1362,74 +1838,140 @@ export const en = {
     } satisfies Record<FreeServiceId, AccentedCopy>,
 
     videos: {
-      intro: {
-        title: "Introduction to Garbh Sanskar",
+      garbhSanskarClass1: {
+        title: "Garbh Sanskar Foundation — Class 1",
+        native: "",
+        description: "Essential foundations and introduction to Garbh Sanskar principles.",
+        category: "Garbh Sanskar Foundation",
+      },
+      garbhSanskarClass2: {
+        title: "Garbh Sanskar Foundation — Class 2",
+        native: "",
+        description: "Deepen your understanding of conscious prenatal nurturing practices.",
+        category: "Garbh Sanskar Foundation",
+      },
+      garbhSanskarClass3: {
+        title: "Garbh Sanskar Foundation — Class 3",
+        native: "",
+        description: "Advanced practices and integration into daily life during pregnancy.",
+        category: "Garbh Sanskar Foundation",
+      },
+      personalityNationBuilding: {
+        title:
+          "गर्भ में व्यक्तित्व निर्माण से राष्ट्र निर्माण | How to Make Your Baby Intelligent During Pregnancy?",
         native: "",
         description:
-          "A foundational overview of conscious prenatal nurturing, Vedic traditions & modern science.",
-        category: "Foundations",
+          "Understand how conscious prenatal nurturing can support your baby's personality and development.",
+        category: "Knowledge",
       },
-      garbhSamvad: {
-        title: "Garbh Samvad — Talking to Your Baby",
+      divyaSantanSpecialSession: {
+        title: "Divya Santan Prakalp Special Session",
         native: "",
-        description:
-          "Daily guide on how to establish a deep, loving connection with your unborn child.",
-        category: "Practice",
-      },
-      musicMantra: {
-        title: "Music & Mantra in Pregnancy",
-        native: "",
-        description:
-          "The science and tradition behind acoustic resonance and Vedic mantras during pregnancy.",
-        category: "Music & Mantras",
-      },
-      first1000Days: {
-        title: "First 1,000 Days & Epigenetics",
-        native: "",
-        description:
-          "Scientific research on how prenatal atmosphere and maternal state shape fetal brain growth.",
-        category: "Science",
-      },
-      nutrition: {
-        title: "Nutrition & Sattvic Diet",
-        native: "",
-        description: "Dietary principles for a healthy pregnancy rooted in Ayurveda.",
-        category: "Nutrition",
-      },
-      fatherRole: {
-        title: "Role of the Father in Garbh Sanskar",
-        native: "",
-        description: "Why the father's involvement is central to the practice.",
-        category: "Family",
-      },
-      prenatalYoga: {
-        title: "Prenatal Yoga & Pranayama",
-        native: "",
-        description: "Safe breathing and movement practices for every trimester.",
-        category: "Wellness",
+        description: "A special Garbh Sanskar session for expecting families.",
+        category: "Knowledge",
       },
     } satisfies Record<VideoId, VideoCopy>,
 
     instagramReels: {
       reelGarbhSanskar: {
-        title: "Quick Guide to Garbh Sanskar",
+        title: "The Science of Garbh Sanskar - Part 1",
         native: "",
-        description: "Short overview of how to start your Garbh Sanskar journey.",
-        category: "Foundations",
+        description:
+          "Explore the scientific foundation of Garbh Sanskar in the first part of this series.",
+        category: "Science",
       },
       reelMantras: {
-        title: "Mantras for Pregnancy",
+        title: "The Science of Garbh Sanskar - Part 2",
         native: "",
-        description: "Calming mantras you can practice daily during pregnancy.",
-        category: "Practice",
+        description:
+          "Learn more about the science behind Garbh Sanskar in the second part of this series.",
+        category: "Science",
       },
       reelNutrition: {
-        title: "Sattvic Nutrition Tips",
+        title: "The Science of Garbh Sanskar - Part 3",
         native: "",
-        description: "Simple dietary tips for a healthy pregnancy rooted in Ayurveda.",
-        category: "Nutrition",
+        description:
+          "Discover further scientific insights into Garbh Sanskar in the third part of this series.",
+        category: "Science",
       },
     } satisfies Record<InstaReelId, InstaReelCopy>,
+
+    successStories: {
+      ritaAjay: {
+        name: "Rita & Ajay Patel",
+        location: "Mumbai, Maharashtra",
+        category: "Planning Couple",
+        photo: "/success-stories/rita-ajay.jpg",
+        quote:
+          "We began learning Garbh Sanskar six months before conceiving. The practice brought us closer as a couple and helped us prepare emotionally and physically.",
+        journey:
+          "Attended free classes for 3 months, followed pre-conception guidelines including diet, yoga, and meditation together as a couple.",
+        outcome:
+          "Healthy baby girl born in April 2023. Rita had a smooth pregnancy with minimal complications.",
+      },
+      priyaSharma: {
+        name: "Priya Sharma",
+        location: "Indore, Madhya Pradesh",
+        category: "Pregnant Mother",
+        photo: "/success-stories/priya-sharma.jpg",
+        quote:
+          "Garbh Samvad changed everything for me. I could feel my baby responding to my voice and music. It created such a beautiful bond even before birth.",
+        journey:
+          "Joined during 4th month of pregnancy, practiced daily Garbh Samvad, followed Sattvic diet, attended weekly online classes.",
+        outcome:
+          "Baby boy born healthy with excellent reflexes. Priya reports feeling calm and connected throughout pregnancy.",
+      },
+      meenaRaj: {
+        name: "Meena & Raj Kumar",
+        location: "Delhi",
+        category: "First-time Parents",
+        photo: "/success-stories/meena-raj.jpg",
+        quote:
+          "As first-time parents, we were anxious. The foundation gave us knowledge, confidence, and a community of support.",
+        journey:
+          "Completed Foundation Course together, joined couple education program, practiced together daily for 7 months.",
+        outcome:
+          "Twin daughters born healthy in June 2024. Both parents felt prepared and empowered throughout the journey.",
+      },
+      anushkaVinod: {
+        name: "Anushka Desai",
+        location: "Pune, Maharashtra",
+        category: "Working Mother",
+        photo: "/success-stories/anushka-vinod.jpg",
+        quote:
+          "I was worried about balancing work and pregnancy. Garbh Sanskar taught me to prioritize what matters and stay connected to my baby despite my busy schedule.",
+        journey:
+          "Followed modified schedule for working women, practiced morning and evening Garbh Samvad, used Ask Shree AI for quick guidance.",
+        outcome:
+          "Healthy baby boy, managed to work until 8th month comfortably, smooth delivery, quick recovery.",
+      },
+    } satisfies Record<SuccessStoryId, SuccessStoryCardContent>,
+
+    videoCategories: {
+      all: "All",
+      knowledge: "Knowledge",
+      garbhSanskarFoundation: "Garbh Sanskar Foundation",
+      testimonials: "Testimonials",
+    } satisfies Record<VideoCategoryId, string>,
+
+    resultsStats: {
+      healthyBirths: {
+        label: "Healthy Births",
+        sub: "Through Garbh Sanskar guidance",
+      },
+      couplesTrained: {
+        label: "Couples Trained",
+        sub: "Across India and globally",
+      },
+      satisfaction: {
+        label: "Satisfaction Rate",
+        sub: "From participating families",
+      },
+      volunteers: {
+        label: "Active Volunteers",
+        sub: "Certified Preraks serving communities",
+      },
+    } satisfies Record<ResultsStatId, StatCopy>,
 
     courses: {
       foundation: {
@@ -1487,7 +2029,7 @@ export const en = {
 
     knowledgeArticles: {
       whatIsGarbhSanskar: {
-        title: "What is Garbh Sanskar?",
+        title: "The Science of Garbh Sanskar",
         readTime: "6 min read",
         body: "An introduction to intra-uterine nurturing as an educational and cultural practice rooted in Vedic wisdom and supported by modern science.",
       },
@@ -1532,6 +2074,44 @@ export const en = {
         body: "Cultural continuity of nurturing rituals — from Garbhadhan to Simantonayan — across Indian traditions.",
       },
     } satisfies Record<KnowledgeArticleId, ArticleCopy>,
+
+    knowledgeResources: {
+      garbhSanskarKaVigyan: {
+        title: "The Science of Garbh Sanskar",
+        body: "The Foundation's comprehensive book connecting traditional Garbh Sanskar wisdom with contemporary scientific understanding.",
+        meta: "Book · 400 pages",
+      },
+      garbhSanskarSection1: {
+        title: "Garbh Sanskar Resource — Section 1",
+        body: "Download the first section of the Foundation's Garbh Sanskar resource as an editable Word document.",
+        meta: "Section 1 · DOCX",
+      },
+      garbhSanskarSection2: {
+        title: "Garbh Sanskar Resource — Section 2",
+        body: "Download the second section of the Foundation's Garbh Sanskar resource as an editable Word document.",
+        meta: "Section 2 · DOCX",
+      },
+      garbhSanskarSection3: {
+        title: "Garbh Sanskar Resource — Section 3",
+        body: "Download the third section of the Foundation's Garbh Sanskar resource as an editable Word document.",
+        meta: "Section 3 · DOCX",
+      },
+      garbhSanskarSection4: {
+        title: "Garbh Sanskar Resource — Section 4",
+        body: "Download the fourth section of the Foundation's Garbh Sanskar resource as an editable Word document.",
+        meta: "Section 4 · DOCX",
+      },
+      garbhSanskarSection5: {
+        title: "Garbh Sanskar Resource — Section 5",
+        body: "Download the fifth section of the Foundation's Garbh Sanskar resource as an editable Word document.",
+        meta: "Section 5 · DOCX",
+      },
+      garbhSanskarSection6: {
+        title: "Garbh Sanskar Resource — Section 6",
+        body: "Download the sixth section of the Foundation's Garbh Sanskar resource as an editable Word document.",
+        meta: "Section 6 · DOCX",
+      },
+    } satisfies Record<KnowledgeResourceId, ResourceCopy>,
 
     knowledgeGuides: {
       preMarriage: {
@@ -1609,39 +2189,296 @@ export const en = {
     } satisfies Record<KnowledgeGuideId, GuideStageCopy>,
 
     knowledgeQA: {
+      // Part I: Understanding Garbh Sanskar - Scientific & Practical FAQs
+      // Ordered by: science, ayurveda, medical, planning, practice, foundation
+
+      // ═══════════════════════════════════════════════════════════
+      // SCIENCE
+      // ═══════════════════════════════════════════════════════════
+      scientificBasis: {
+        question: "What is the modern scientific basis of Garbh Sanskar?",
+        answer:
+          "During pregnancy, various factors such as nutrition, stress levels, exposure to toxins, maternal health, lifestyle, and the emotional state of the mother can influence the developing fetus. The term 'epigenetics of pregnancy' refers to the study of how environmental factors and lifestyle choices during pregnancy may influence the expression of genes in the developing fetus. Epigenetics involves changes in gene activity without changing the underlying DNA sequence itself. For example, maternal nutrition during pregnancy may influence the epigenetic regulation of genes involved in metabolism. Similarly, exposure to prolonged maternal stress may influence biological pathways involved in stress responses and later health. While modern science may not validate every traditional Garbh Sanskar practice, many evidence-based principles related to nutrition, stress reduction, emotional well-being, healthy lifestyle, and prenatal care are consistent with the broader philosophy of Garbh Sanskar.",
+        tag: "Science",
+      },
+      scientificRationale: {
+        question: "What is the scientific rationale for Garbh Sanskar according to modern science?",
+        answer:
+          "From the perspective of modern science, Garbh Sanskar can be understood as a form of holistic prenatal care and conscious parenting that encourages practices supporting the health and well-being of both mother and developing fetus. Scientific evidence supports the importance of several factors emphasized in Garbh Sanskar, including: appropriate maternal nutrition, regular antenatal care, stress management, emotional well-being, healthy physical activity, adequate sleep, avoidance of tobacco, alcohol, drugs, and harmful environmental exposures, positive family and social support, and appropriate meditation and relaxation practices. Modern science may not validate every traditional Garbh Sanskar practice. Therefore, traditional wisdom should be approached thoughtfully and integrated with evidence-based prenatal care.",
+        tag: "Science",
+      },
+      epigeneticInfluence: {
+        question: "Do epigenetic factors influence the concept of Garbh Sanskar?",
+        answer:
+          "Yes. Epigenetics is highly relevant to understanding how the environment during preconception and pregnancy may influence biological development. Epigenetics refers to changes in gene expression or gene activity without altering the underlying DNA sequence. Factors such as nutrition, lifestyle, stress, environmental exposures, maternal health, and certain emotional or physiological conditions may influence epigenetic processes before and during pregnancy. Therefore, practices associated with Garbh Sanskar—particularly healthy nutrition, stress reduction, positive emotional experiences, healthy lifestyle, and avoidance of harmful exposures—can be understood in the broader context of creating a favourable prenatal environment.",
+        tag: "Science",
+      },
+
+      // ═══════════════════════════════════════════════════════════
+      // AYURVEDA
+      // ═══════════════════════════════════════════════════════════
+      ayurvedicPerspective: {
+        question: "What is Garbh Sanskar according to Ayurvedic science?",
+        answer:
+          "Garbh Sanskar is a concept rooted in Ayurvedic tradition that focuses on prenatal education, care, and the well-being of both mother and child. According to Ayurveda, the physical, mental, emotional, and spiritual state of the mother during pregnancy can influence the environment in which the unborn child develops. Garbh Sanskar therefore includes practices related to diet, meditation, yoga, music, chanting, prayer, positive thinking, and spiritual reading. Ancient scriptures also describe examples such as Prahlada and his mother Kayadhu, who, according to traditional accounts, received spiritual teachings from Rishi Narada during pregnancy.",
+        tag: "Ayurveda",
+      },
+
+      // ═══════════════════════════════════════════════════════════
+      // MEDICAL
+      // ═══════════════════════════════════════════════════════════
+      importantToKnow: {
+        question: "What is important for me to know before following Garbh Sanskar?",
+        answer:
+          "While some practices associated with Garbh Sanskar have been scientifically studied and may have potential benefits in promoting maternal well-being and reducing stress during pregnancy, they should be followed thoughtfully and appropriately. The response to different practices may vary from person to person. Most importantly, Garbh Sanskar is not a substitute for medical care during pregnancy. Every pregnant woman should remain under the regular supervision of her gynecologist or other qualified healthcare professional and follow all necessary medical advice, examinations, investigations, medicines, and treatment.",
+        tag: "Medical",
+      },
+
+      // ═══════════════════════════════════════════════════════════
+      // PLANNING
+      // ═══════════════════════════════════════════════════════════
       whenToStart: {
-        question: "When should a couple begin Garbh Sanskar?",
-        answer: "Ideally, Garbh Sanskar begins before pregnancy — even before marriage. Pre-conception preparation of at least 3 months is advised. If you are already pregnant, you can begin at any stage. It is never too early or too late to create a positive environment for your child.",
+        question: "When should the Garbh Sanskar program begin?",
+        answer:
+          "Garbh Sanskar may ideally begin before conception, when both partners start preparing themselves physically, mentally, emotionally, and spiritually for pregnancy. If pregnancy has already occurred, Garbh Sanskar practices can be started from the first trimester and continued throughout pregnancy. The aim is to support the physical, mental, emotional, and spiritual well-being of the mother while creating a healthy and positive environment for the developing baby. It is never too early or too late to create a positive environment for your child.",
         tag: "Planning",
       },
+      benefits: {
+        question: "What are the benefits of Garbh Sanskar?",
+        answer:
+          "Expected benefits include: Supporting Maternal and Fetal Health (healthy nutrition, appropriate yoga, physical activity, and balanced lifestyle), Supporting Emotional Well-being (meditation, relaxation, prayer, love, and peaceful environment), Creating a Positive Developmental Environment, Promoting Peace and Balance, and Strengthening Parent-Baby Bonding (loving communication and conscious interaction). Garbh Sanskar should be practised as part of a healthy lifestyle and always alongside appropriate medical care.",
+        tag: "Planning",
+      },
+      threeMonthPrep: {
+        question:
+          "What is advised during the three months before conception according to Garbh Sanskar?",
+        answer:
+          "During the three months before conception, Garbh Sanskar emphasizes preparing both partners physically, mentally, emotionally, and spiritually. Recommended measures include: Healthy Diet (nutritious and balanced for both partners), Maintain Healthy Weight, Regular Exercise, Avoid Harmful Substances (smoking, alcohol, recreational drugs, excessive caffeine), Stress Management (meditation, yoga, breathing exercises), Preconception Medical Check-Up (blood tests, fertility and hormonal assessment), Preconception Supplements (folic acid and vitamins as per medical guidance), Emotional Connection (strengthen communication and bonding), Spiritual Practices (meditation, prayer, chanting), and Reducing Environmental Exposure (minimize pollutants and toxic chemicals). From a physiological perspective, it takes approximately 74 days for healthy sperm development and about 90 days total for mature gametes.",
+        tag: "Planning",
+      },
+      astrologerRole: {
+        question:
+          "Is there any role of an astrologer in planning conception according to Garbh Sanskar?",
+        answer:
+          "In some traditions of Garbh Sanskar, couples may consult an astrologer for guidance regarding conception or pregnancy. According to traditional beliefs, astrology may be used to identify auspicious timings or favourable periods for conception. However, the role of astrology in conception and pregnancy is not universally accepted or scientifically proven. Families who value astrology for cultural or spiritual reasons may choose to include it as one aspect of their journey, but medical decisions related to conception and pregnancy should be based on appropriate professional healthcare advice. Personal beliefs, cultural traditions, and medical recommendations can be considered respectfully while making informed decisions.",
+        tag: "Planning",
+      },
+      abstinenceAdvice: {
+        question:
+          "Is it advisable to avoid sexual contact between partners for three months before conception according to Garbh Sanskar?",
+        answer:
+          "In some interpretations of Garbh Sanskar, a period of discipline or abstinence before planned conception may be suggested as part of preparing the body, mind, and emotions for pregnancy. The traditional intention is to encourage both partners to focus on physical purification, mental preparation, emotional stability, and spiritual well-being before conception. However, there is currently no established scientific evidence that abstaining from sexual intercourse for a specific period before conception will produce a 'divine' or spiritually superior child. Sexual intercourse is a natural and essential part of conception. Decisions regarding sexual activity should be based on the couple's personal beliefs, circumstances, comfort, mutual understanding, and medical considerations. Open communication, mutual respect, and shared decision-making between partners are important.",
+        tag: "Planning",
+      },
+      whomToConsult: {
+        question:
+          "I want to plan my baby according to Garbh Sanskar. When and whom should I consult?",
+        answer:
+          "You may seek guidance from: Garbh Sanskar Practitioner or Counsellor (for structured guidance on lifestyle, diet, emotional well-being, spiritual practices), Ayurvedic Practitioner (for Ayurvedic diet, lifestyle, practices), Yoga Instructor (qualified prenatal yoga professional), Spiritual Guide or Mentor (for particular spiritual or cultural practices), Obstetrician/Gynecologist (essential for preconception and pregnancy-related medical care), and Counsellor or Psychologist (for stress, anxiety, relationship concerns, or emotional challenges). Before consulting any professional, consider their qualifications, credentials, training, and experience. Both partners should openly discuss their intentions and expectations.",
+        tag: "Planning",
+      },
+
+      // ═══════════════════════════════════════════════════════════
+      // PRACTICE
+      // ═══════════════════════════════════════════════════════════
+      whatIsDone: {
+        question: "What is actually done in Garbh Sanskar?",
+        answer:
+          "The term Garbh Sanskar is derived from Sanskrit. Garbh means the womb or unborn child, while Sanskar refers to refinement, positive impressions, and transformation. Garbh Sanskar includes various practices such as healthy diet, meditation, yoga, music, chanting, prayer, reading spiritual and inspirational literature, positive thinking, and maintaining a peaceful family environment. The purpose is to create positive physical, mental, emotional, and spiritual influences during pregnancy.",
+        tag: "Practice",
+      },
+      howItWorks: {
+        question: "How does Garbh Sanskar work?",
+        answer:
+          "According to Ayurvedic and traditional principles, the environment surrounding the mother—both physical and emotional—is important for the developing fetus. Therefore, Garbh Sanskar emphasizes creating a peaceful, healthy, loving, and harmonious atmosphere during pregnancy. Positive thoughts, emotions, experiences, good nutrition, healthy behaviour, and appropriate spiritual practices are encouraged to support the overall well-being of the mother and the developing child.",
+        tag: "Practice",
+      },
+      commonPractices: {
+        question: "What are the common practices followed in Garbh Sanskar?",
+        answer:
+          "Common practices include: Healthy Diet (nutritious and balanced), Meditation and Yoga (appropriate practices for relaxation and stress reduction), Listening to Music (soothing classical, devotional, or peaceful compositions), Reading Spiritual and Inspirational Texts (prayers and positive affirmations), and Avoiding Negative Influences (minimizing exposure to disturbing media, arguments, excessive stress).",
+        tag: "Practice",
+      },
+      mantraImportance: {
+        question: "What is the importance of Mantra during pregnancy?",
+        answer:
+          "The Sanskrit word Mantra refers to a structured combination of sounds, syllables, and words traditionally used for spiritual practice, meditation, prayer, and mental concentration. In Indian tradition, pregnant women have often been encouraged to listen to or recite prayers, Stotras, and sacred texts. Regular chanting involves rhythm, repetition, controlled breathing, attention, and concentration. These features may help create a sense of calmness, relaxation, mental focus, and emotional stability. Studies on OM chanting, mantra meditation, repetitive prayer, and related practices have explored their effects on relaxation, autonomic regulation, attention, anxiety, and mental well-being. From the perspective of Garbh Sanskar, Mantra may therefore be used as a supportive practice to help the mother maintain a peaceful, positive, and spiritually enriching environment during pregnancy.",
+        tag: "Practice",
+      },
+
+      // ═══════════════════════════════════════════════════════════
+      // FOUNDATION
+      // ═══════════════════════════════════════════════════════════
+      aimAndInterest: {
+        question: "What is your aim in promoting Garbh Sanskar, and why are you interested in it?",
+        answer:
+          "The primary objective of Divya Santan Foundation is to contribute towards a world characterized by peace, love, compassion, happiness, health, prosperity, and ultimately, harmony. Through a comprehensive approach to Garbh Sanskar, we aim to contribute to the upliftment of humanity and help create a global community where individuals can grow in both spiritual fulfilment and material well-being.",
+        tag: "Foundation",
+      },
+      howToAchieve: {
+        question: "How are you going to achieve this? What is your method?",
+        answer:
+          "Garbh Sanskar, or the Science of Holistic Prenatal Nurturing, brings together lifestyle, nutrition, emotional well-being, and spiritual practices to create a positive environment for the developing child. Modern concepts such as the epigenetics of pregnancy help us understand how maternal health, nutrition, stress, lifestyle, and environmental influences may affect gene expression and fetal development. Garbh Sanskar therefore aims at the holistic nurturing of the unborn child across physical, mental, emotional, social, and spiritual dimensions. Divya Santan Foundation represents an initiative to integrate the ancient wisdom of Garbh Sanskar with relevant modern scientific understanding and promote the concepts of conscious conception and conscious parenting.",
+        tag: "Foundation",
+      },
+
+      // Part II: About Foundation - Joining, Learning & Supporting
+      learnSystematically: {
+        question: "How can I learn Garbh Sanskar in a systematic way?",
+        answer:
+          "Divya Santan Foundation conducts a Garbh Sanskar Foundation Course, designed to provide a structured understanding of the scientific, practical, and philosophical aspects of Garbh Sanskar. The course runs for approximately three months, with one online class of about one hour every week, making a total of 12 sessions. It is useful for couples, pregnant mothers, volunteers, social workers, and anyone interested in learning Garbh Sanskar in depth.",
+        tag: "Learning",
+      },
+      whatIsPrerak: {
+        question: "What is a Prerak?",
+        answer:
+          "A Prerak is a volunteer who wishes to support the mission of Divya Santan Foundation and help spread awareness about Garbh Sanskar in society. A Prerak may help organize awareness programs, connect pregnant couples with appropriate guidance, support community activities, distribute educational material, and encourage families to understand the scientific and practical principles of Garbh Sanskar.",
+        tag: "Volunteer",
+      },
+      becomePrerak: {
+        question: "How can I become a Prerak or volunteer?",
+        answer:
+          "Anyone who has an interest in this cause and wishes to serve society can contact Divya Santan Foundation. We recommend that aspiring Preraks first complete the Garbh Sanskar Foundation Course so that they develop a basic scientific and practical understanding of the subject. After completing the course, they may contact the Foundation through the Contact Us section and express their interest in volunteering.",
+        tag: "Volunteer",
+      },
+      needToBeDoctorPrerak: {
+        question: "Do I need to be a doctor to become a Prerak?",
+        answer:
+          "No. A Prerak does not necessarily have to be a doctor or healthcare professional. Any sincere and socially committed person who is willing to learn, follow the ethical principles of the Foundation, and contribute time toward spreading awareness can become associated as a volunteer. Medical advice, however, should always be given only by appropriately qualified healthcare professionals.",
+        tag: "Volunteer",
+      },
+      becomeCounsellor: {
+        question: "How can I become a Garbh Sanskar counsellor?",
+        answer:
+          "Those who wish to work as Garbh Sanskar counsellors should have appropriate education, training, qualification, or relevant experience in Garbh Sanskar or related areas. Interested individuals may submit their qualifications and professional details to Divya Santan Foundation. The Foundation will review their credentials and guide them regarding suitable opportunities for training, counselling, teaching, or other activities.",
+        tag: "Professional",
+      },
+      facultyMember: {
+        question: "Who can become a faculty member of Divya Santan Foundation?",
+        answer:
+          "The Foundation welcomes qualified professionals from different disciplines related to maternal health, prenatal wellness, education, and Garbh Sanskar. These may include Garbh Sanskar counsellors, allopathic doctors, Ayurvedic doctors, obstetricians and gynecologists, nutritionists, psychologists, yoga specialists, meditation experts, music specialists, astrologers, Pandits/Purohits, educators, researchers, and other suitable professionals. Association with the Foundation is subject to appropriate qualifications, experience, verification, and adherence to its professional and ethical standards.",
+        tag: "Professional",
+      },
+      joinAsFaculty: {
+        question: "How can I join Divya Santan Foundation as a faculty member or expert?",
+        answer:
+          "There are two main ways: You may contact Divya Santan Foundation directly through the Contact Us section and submit your professional details, or you may apply to become associated as an expert through our Navankur online consultation platform. After reviewing your qualifications and area of expertise, our team will contact you regarding further possibilities.",
+        tag: "Professional",
+      },
+      foundationCourse: {
+        question: "What is the Garbh Sanskar Foundation Course?",
+        answer:
+          "The Garbh Sanskar Foundation Course is a short-term educational program of approximately three months. It consists of 12 weekly classes of approximately one hour each, followed by a written assessment. The academic content is primarily based on 'Garbh Sanskar Ka Vigyan' by Dr. Anil Kumar Garg and Dr. Seema Garg. The main purpose of the course is to spread scientific knowledge of Garbh Sanskar and develop informed volunteers and interested individuals who can contribute to society.",
+        tag: "Learning",
+      },
+      freeClassesForCouples: {
+        question: "Are there free classes for pregnant couples?",
+        answer:
+          "Yes. Divya Santan Foundation conducts free online Garbh Sanskar classes twice every month for pregnant couples and families. A team of specialists provides practical guidance, and participants can also ask questions and clarify their doubts during the sessions. For the latest schedule and joining details, please contact the Foundation through the website.",
+        tag: "Learning",
+      },
+      freePersonalGuidance: {
+        question: "Does Divya Santan Foundation provide free personal guidance?",
+        answer:
+          "Yes. The Foundation is working to provide free Garbh Sanskar OPD and counselling services through charitable hospitals and collaborating institutions. At present, regular free Garbh Sanskar guidance is available at Geeta Bhawan Charitable Hospital, Indore, where trained specialists provide guidance to pregnant women and families. The Foundation plans to expand similar services to other cities.",
+        tag: "Learning",
+      },
+      whatIsNavankur: {
+        question: "What is Navankur?",
+        answer:
+          "Navankur is an online consultation platform associated with Divya Santan Foundation. Through Navankur, couples can seek guidance from professionals from different disciplines related to Garbh Sanskar, pregnancy, nutrition, yoga, Ayurveda, emotional well-being, music, and other relevant areas. Users can download the app, register themselves, and select the available consultation options according to their needs.",
+        tag: "Consultation",
+      },
+      whatIsAskShree: {
+        question: "What is Ask Shree AI?",
+        answer:
+          "Ask Shree AI is an AI-based educational guidance system developed using the knowledge framework of 'Garbh Sanskar Ka Vigyan', written by Dr. Anil Kumar Garg and Dr. Seema Garg. Users can ask questions according to their stage of pregnancy, circumstances, or areas of concern and receive relevant educational guidance. Ask Shree AI does not replace medical consultation, diagnosis, or treatment by a qualified healthcare professional.",
+        tag: "Consultation",
+      },
+      hospitalCollaboration: {
+        question: "Can a hospital or organization collaborate with Divya Santan Foundation?",
+        answer:
+          "Yes. Divya Santan Foundation welcomes collaboration with hospitals, universities, educational institutions, NGOs, charitable organizations, research institutions, community groups, and other suitable organizations. Collaboration may include Garbh Sanskar awareness programs, training, research, educational activities, community outreach, free OPD services, and establishment of Garbh Sanskar centres. Interested institutions may contact the Foundation to discuss an appropriate collaborative model.",
+        tag: "Collaboration",
+      },
+      organizeAwareness: {
+        question: "Can we organize a Garbh Sanskar awareness program in our city?",
+        answer:
+          "Yes. Local organizations, NGOs, hospitals, social groups, and institutions may invite Divya Santan Foundation to organize an awareness program. Subject to availability and mutual planning, our team of specialists can conduct educational sessions on the scientific and practical aspects of Garbh Sanskar. Local volunteers and organizations can play an important role in helping such programs reach families in their communities.",
+        tag: "Collaboration",
+      },
+      startCenter: {
+        question: "Can we start a Garbh Sanskar Centre or OPD in our city?",
+        answer:
+          "Yes. One of the long-term objectives of Divya Santan Foundation is to expand Garbh Sanskar Centres and guidance services to different cities. Charitable hospitals, healthcare institutions, NGOs, or suitable organizations interested in establishing a centre or OPD may contact the Foundation. Our team can discuss training, professional support, educational material, and the operational framework according to local needs.",
+        tag: "Collaboration",
+      },
+      supportFoundation: {
+        question: "How can I support Divya Santan Foundation?",
+        answer:
+          "There are many ways to support the mission. You may contribute through: voluntary service, professional expertise, educational support, community networking, infrastructure, research collaboration, sponsorship, or financial assistance. Support received by the Foundation can help expand activities such as free Garbh Sanskar OPDs, online classes, community awareness programs, educational publications, volunteer training, research, and outreach to underserved families.",
+        tag: "Support",
+      },
+      supportWithoutVolunteering: {
+        question: "Can I support the Foundation even if I cannot volunteer regularly?",
+        answer:
+          "Yes. Every contribution is valuable. You may help by spreading awareness, connecting the Foundation with hospitals or organizations, supporting educational activities, sponsoring outreach programs, contributing professional expertise, or providing financial or infrastructural assistance.",
+        tag: "Support",
+      },
+      studentsParticipate: {
+        question: "How can students and young people participate?",
+        answer:
+          "Students and young professionals interested in maternal health, psychology, yoga, Ayurveda, nutrition, social service, research, or Indian knowledge systems may connect with the Foundation. They may participate in educational programs, awareness activities, volunteer initiatives, research-related work, and other suitable projects according to their qualifications and interests.",
+        tag: "Support",
+      },
+      universityResearch: {
+        question: "Does Divya Santan Foundation collaborate with universities and researchers?",
+        answer:
+          "Yes. Promoting scientific research and academic development in Garbh Sanskar and prenatal wellness is an important objective of the Foundation. We welcome collaboration with universities, medical colleges, hospitals, research institutions, scientists, and academicians interested in conducting research, developing educational programs, organizing scientific meetings, or contributing to academic publications.",
+        tag: "Collaboration",
+      },
+      religiousInclusion: {
+        question: "Is Garbh Sanskar meant only for people of a particular religion?",
+        answer:
+          "Garbh Sanskar has deep roots in Vedic and Sanatan traditions, but many of its practical principles—healthy nutrition, emotional well-being, positive family relationships, yoga, meditation, responsible lifestyle, and conscious parenting—have wider relevance. Divya Santan Foundation seeks to share this knowledge respectfully and responsibly while allowing every family to follow its own beliefs, traditions, and medical advice.",
+        tag: "Philosophy",
+      },
+      furtherInformation: {
+        question: "Where can I get further information?",
+        answer:
+          "Please visit the Contact Us section of the Divya Santan Foundation website and submit your query. Our office team will guide you regarding Garbh Sanskar classes, Foundation Course, volunteering, counselling, faculty association, Navankur consultations, free OPD services, institutional collaboration, awareness programs, or support to the Foundation.",
+        tag: "Contact",
+      },
+
+      // Original questions (keeping for backward compatibility)
       whatIsGarbhSamvad: {
         question: "What is Garbh Samvad and how do we practise it?",
-        answer: "Garbh Samvad means conscious communication with the unborn child. From around Month 4\u20135, the fetus can hear external sounds. Parents can sing gently, read inspiring stories, speak words of love, or simply sit quietly in loving awareness. Even 10\u201315 minutes daily makes a difference.",
+        answer:
+          "Garbh Samvad means conscious communication with the unborn child. From around Month 4–5, the fetus can hear external sounds. Parents can sing gently, read inspiring stories, speak words of love, or simply sit quietly in loving awareness. Even 10–15 minutes daily makes a difference.",
         tag: "Practice",
       },
       dietDuringPregnancy: {
         question: "What kind of diet is recommended during pregnancy?",
-        answer: "Ayurveda recommends a Sattvic diet — fresh, seasonal, unprocessed, nutritious and easy to digest. Modern nutrition also emphasises iron, folate, protein, calcium and healthy fats. Avoid heavy, processed or extremely spiced foods. Always follow your gynecologist\u2019s specific dietary advice.",
+        answer:
+          "Ayurveda recommends a Sattvic diet — fresh, seasonal, unprocessed, nutritious and easy to digest. Modern nutrition also emphasises iron, folate, protein, calcium and healthy fats. Avoid heavy, processed or extremely spiced foods. Always follow your gynecologist's specific dietary advice.",
         tag: "Nutrition",
       },
       fatherParticipation: {
         question: "How can the father participate in Garbh Sanskar?",
-        answer: "The father\u2019s role is vital. He can participate by reading aloud to the unborn child, singing mantras or gentle songs, maintaining a calm and positive home environment, managing family stress, attending antenatal classes together, and supporting the mother\u2019s emotional well-being.",
+        answer:
+          "The father's role is vital. He can participate by reading aloud to the unborn child, singing mantras or gentle songs, maintaining a calm and positive home environment, managing family stress, attending antenatal classes together, and supporting the mother's emotional well-being.",
         tag: "Family",
-      },
-      scientificBasis: {
-        question: "What is the scientific basis of Garbh Sanskar?",
-        answer: "Modern science supports many Garbh Sanskar principles. Epigenetics shows that maternal nutrition, stress and lifestyle influence gene expression. Prenatal psychology confirms fetal responsiveness to voice and music from Month 5. fMRI studies confirm that mantra chanting reduces limbic (stress) activity. Maternal cortisol from stress passes through the placenta and can affect fetal brain development.",
-        tag: "Science",
       },
       modernMedicineCompat: {
         question: "Is Garbh Sanskar compatible with modern medical care?",
-        answer: "Absolutely. Garbh Sanskar is complementary to modern obstetric care, not a substitute for it. Every pregnant woman must remain under the regular guidance of her gynecologist and follow all recommended medical examinations, medicines and treatments. Garbh Sanskar adds a holistic dimension to pregnancy, addressing mental, emotional and spiritual well-being alongside physical health.",
+        answer:
+          "Absolutely. Garbh Sanskar is complementary to modern obstetric care, not a substitute for it. Every pregnant woman must remain under the regular guidance of her gynecologist and follow all recommended medical examinations, medicines and treatments. Garbh Sanskar adds a holistic dimension to pregnancy, addressing mental, emotional and spiritual well-being alongside physical health.",
         tag: "Medical",
       },
       vedicSanskars: {
         question: "What are the Vedic Sanskars performed during pregnancy?",
-        answer: "Three principal Vedic Samskaras are traditionally performed before birth. Garbhadhana Sanskar marks the moment of conscious conception. Punsavana Sanskar is performed in the 2nd\u20133rd month to bless and protect the developing fetus. Simantonayan Sanskar is a ceremony of joy and blessing conducted in the 5th\u20137th month. Couples may follow these according to their faith and tradition.",
+        answer:
+          "Three principal Vedic Samskaras are traditionally performed before birth. Garbhadhana Sanskar marks the moment of conscious conception. Punsavana Sanskar is performed in the 2nd–3rd month to bless and protect the developing fetus. Simantonayan Sanskar is a ceremony of joy and blessing conducted in the 5th–7th month. Couples may follow these according to their faith and tradition.",
         tag: "Culture",
       },
     } satisfies Record<KnowledgeQAId, QACopy>,
@@ -1649,38 +2486,50 @@ export const en = {
     scientificRefs: {
       kalyani2011: {
         field: "Neuroscience",
-        citation: "Kalyani, B. G., Venkatasubramanian, G., et al. (2011). Neurohemodynamic correlates of \u2018OM\u2019 chanting: A pilot fMRI study. International Journal of Yoga, 4(1), 3\u20136.",
-        summary: "fMRI study demonstrating bilateral deactivation of limbic regions\u2014including the amygdala, hippocampus and orbitofrontal cortex\u2014during OM chanting, similar in effect to vagal nerve stimulation. Indicates a neurological basis for the calming effect of mantra practice.",
+        citation:
+          "Kalyani, B. G., Venkatasubramanian, G., et al. (2011). Neurohemodynamic correlates of \u2018OM\u2019 chanting: A pilot fMRI study. International Journal of Yoga, 4(1), 3\u20136.",
+        summary:
+          "fMRI study demonstrating bilateral deactivation of limbic regions\u2014including the amygdala, hippocampus and orbitofrontal cortex\u2014during OM chanting, similar in effect to vagal nerve stimulation. Indicates a neurological basis for the calming effect of mantra practice.",
         year: "2011",
       },
       bernardi2001: {
         field: "Autonomic Physiology",
-        citation: "Bernardi, L., Sleight, P., et al. (2001). Effect of rosary prayer and yoga mantras on autonomic cardiovascular rhythms. BMJ, 323, 1446\u20131449.",
-        summary: "Demonstrates enhanced vagal tone, reduced respiration rate and improved autonomic balance with mantra-based chanting. Provides a cardiovascular mechanism for the parasympathetic (rest-and-digest) effects of rhythmic prayer and mantra.",
+        citation:
+          "Bernardi, L., Sleight, P., et al. (2001). Effect of rosary prayer and yoga mantras on autonomic cardiovascular rhythms. BMJ, 323, 1446\u20131449.",
+        summary:
+          "Demonstrates enhanced vagal tone, reduced respiration rate and improved autonomic balance with mantra-based chanting. Provides a cardiovascular mechanism for the parasympathetic (rest-and-digest) effects of rhythmic prayer and mantra.",
         year: "2001",
       },
       streeter2012: {
         field: "Mind-Body Medicine",
-        citation: "Streeter, C. C., Gerbarg, P. L., et al. (2012). Effects of yoga on the autonomic nervous system, gamma-aminobutyric acid, and allostasis. Medical Hypotheses, 78(5), 571\u2013579.",
-        summary: "Proposes a neurochemical explanation: increased parasympathetic tone and GABAergic activity correlate with anxiety reduction in yoga practice. Directly relevant to the recommendation of yoga and pranayama during pregnancy for maternal stress management.",
+        citation:
+          "Streeter, C. C., Gerbarg, P. L., et al. (2012). Effects of yoga on the autonomic nervous system, gamma-aminobutyric acid, and allostasis. Medical Hypotheses, 78(5), 571\u2013579.",
+        summary:
+          "Proposes a neurochemical explanation: increased parasympathetic tone and GABAergic activity correlate with anxiety reduction in yoga practice. Directly relevant to the recommendation of yoga and pranayama during pregnancy for maternal stress management.",
         year: "2012",
       },
       epigeneticsLipton: {
         field: "Epigenetics",
-        citation: "Lipton, B. H. (2005). The Biology of Belief: Unleashing the Power of Consciousness, Matter and Miracles. Mountain of Love Productions. (Reviewed alongside primary epigenetics literature.)",
-        summary: "The maternal environment\u2014including nutrition, stress hormones, thoughts and emotional state\u2014can influence gene expression in the developing fetus without altering the underlying DNA sequence. This mechanism, epigenetics, underlies the scientific rationale for Garbh Sanskar\u2019s emphasis on maternal lifestyle.",
+        citation:
+          "Lipton, B. H. (2005). The Biology of Belief: Unleashing the Power of Consciousness, Matter and Miracles. Mountain of Love Productions. (Reviewed alongside primary epigenetics literature.)",
+        summary:
+          "The maternal environment\u2014including nutrition, stress hormones, thoughts and emotional state\u2014can influence gene expression in the developing fetus without altering the underlying DNA sequence. This mechanism, epigenetics, underlies the scientific rationale for Garbh Sanskar\u2019s emphasis on maternal lifestyle.",
         year: "2005",
       },
       prenatalPsychologyVerny: {
         field: "Prenatal Psychology",
-        citation: "Verny, T., \u0026 Kelly, J. (1981). The Secret Life of the Unborn Child. Summit Books, New York.",
-        summary: "Foundational text in prenatal psychology, documenting fetal responsiveness to the mother\u2019s voice, emotional state and external stimuli from the second trimester onward. Supports Garbh Samvad and the importance of positive maternal emotional experiences during pregnancy.",
+        citation:
+          "Verny, T., \u0026 Kelly, J. (1981). The Secret Life of the Unborn Child. Summit Books, New York.",
+        summary:
+          "Foundational text in prenatal psychology, documenting fetal responsiveness to the mother\u2019s voice, emotional state and external stimuli from the second trimester onward. Supports Garbh Samvad and the importance of positive maternal emotional experiences during pregnancy.",
         year: "1981",
       },
       maternalStressGluckman: {
         field: "Developmental Biology",
-        citation: "Gluckman, P. D., \u0026 Hanson, M. A. (2005). The Fetal Matrix: Evolution, Development and Disease. Cambridge University Press.",
-        summary: "Documents how prenatal environmental signals\u2014including maternal stress, nutrition and hormonal milieu\u2014programme long-term health and disease susceptibility in the offspring. Provides the developmental biology foundation for preventive prenatal care through Garbh Sanskar.",
+        citation:
+          "Gluckman, P. D., \u0026 Hanson, M. A. (2005). The Fetal Matrix: Evolution, Development and Disease. Cambridge University Press.",
+        summary:
+          "Documents how prenatal environmental signals\u2014including maternal stress, nutrition and hormonal milieu\u2014programme long-term health and disease susceptibility in the offspring. Provides the developmental biology foundation for preventive prenatal care through Garbh Sanskar.",
         year: "2005",
       },
     } satisfies Record<ScientificReferenceId, ScientificRefCopy>,
@@ -1748,11 +2597,6 @@ export const en = {
         title: "Institutional Collaboration",
         native: "",
         body: "Universities, hospitals and cultural institutions working with us.",
-      },
-      csr: {
-        title: "CSR Collaboration",
-        native: "",
-        body: "Partner to take free education to underserved communities.",
       },
     } satisfies Record<JoinRoleId, AccentedCopy>,
 
@@ -2134,7 +2978,7 @@ export const en = {
       },
       {
         title: "Community & Leadership Support",
-        body: "Multiple meetings, detailed discussions, and extensive planning sessions were conducted with senior leaders and functionaries associated with RSS, HSSF, IMCTF, and allied organizations. Among those who contributed their valuable time, guidance, and deep thinking were Shri Yogendra Mahant, Shri Vinod Birla, Shri C. Chandramohan Dubey, Shri Rakesh Dubey, Shri Pranjal, Shri Vikas Mishra, Shri Manish Nigam, Dr. Jagdish Joshi, Mrs. Anu Purohit, Dr. Radhika Maheshwari, Shri Vinod Bandy, Mrs. Romsa Sirkanungo, Mrs. Priyanka Vedi, and many other dedicated well-wishers.",
+        body: "Multiple meetings, detailed discussions, and extensive planning sessions were conducted with senior leaders and functionaries associated with RSS, HSSF, IMCTF, and allied organizations. Among those who contributed their valuable time, guidance, and deep thinking were Shri Yogendra Mahant, Shri Vinod Birla, Shri Chandramohan Dubey, Shri Rakesh Dubey, Shri Pranjal Mattha, Shri Vikas Mishra, Shri Manish Nigam, Dr. Jagdish Joshi, Mrs. Anu Purohit, Dr. Radhika Maheshwari, Shri Vinod Bandy, Mrs. Romsa Sirkanungo, Mrs. Priyanka Vedi, and many other dedicated well-wishers.",
       },
       {
         title: "From Interest to Academic Commitment",
@@ -2174,7 +3018,7 @@ export const en = {
         {
           name: "Pujya Swami Avdheshanand Giri Ji Maharaj",
           role: "Chief Patron",
-          img: "Avdheshanand-maharaj.png",
+          img: avdheshanandPortrait,
           contributions: [
             "Spiritual Patronage",
             "National Awareness Support",
@@ -2206,7 +3050,7 @@ export const en = {
           role: "Founder & Managing Director",
           credentials:
             "MBBS, MS, MCh Plastic Surgery, MA-Yog, ABHRS, ISHRS, Diploma in Garbh Sanskar",
-          img: "doctor-anil.png",
+          img: "anil-sir.png",
           desc: "Medical visionary integrating clinical expertise with ancient Garbh Sanskar wisdom for a comprehensive prenatal system.",
         },
         {
@@ -2246,9 +3090,10 @@ export const en = {
         "Shri Vinod Birla",
         "Shri Chandramohan Dubey",
         "Shri Rakesh Dubey",
-        "Shri Pranjal",
+        "Shri Pranjal Mattha",
         "Shri Vikas Mishra",
         "Shri Manish Nigam",
+        "Dr. Seema Garg",
         "Dr. Jagdish Joshi",
         "Mrs. Anu Purohit",
         "Dr. Radhika Maheshwari",
@@ -2256,6 +3101,218 @@ export const en = {
         "Mrs. Romsa Sirkanungo",
         "Mrs. Priyanka Vedi",
       ],
+    },
+  },
+
+  sciencePage: {
+    meta: {
+      title: "The Science of Garbh Sanskar | Divya Santan Foundation",
+      description:
+        "Understand Garbh Sanskar through its Sanskrit meaning, prenatal science, research questions and responsible practice.",
+    },
+    hero: {
+      eyebrow: "The Science of Garbh Sanskar",
+      title: "A living bridge between wisdom and evidence.",
+      intro:
+        "Garbh Sanskar brings together a way of seeing life before birth, the biology of the prenatal environment, and a social commitment to healthier generations. This page helps you understand the connections without turning a complex field into promises.",
+      primaryAction: "Explore research",
+      secondaryAction: "Ask Shree AI",
+      mapLabel: "How to read this page",
+      map: [
+        {
+          label: "Meaning",
+          body: "The Sanskrit vocabulary gives the tradition its purpose: conscious cultivation, not fear or perfectionism.",
+        },
+        {
+          label: "Mechanism",
+          body: "Prenatal health, stress, nutrition, relationships and environment are the pathways that science can study.",
+        },
+        {
+          label: "Mission",
+          body: "Education, training and research turn individual insight into a long-term public good.",
+        },
+      ],
+    },
+    lenses: {
+      eyebrow: "Three lenses",
+      title: "A fuller picture needs more than one language.",
+      intro:
+        "The foundation's approach is neither a rejection of tradition nor a shortcut around evidence. Move through these three lenses to see how the ideas relate and where they should remain distinct.",
+      items: {
+        meaning: {
+          label: "Meaning",
+          kicker: "The cultural lens",
+          title: "Garbh is a relationship, not only a location.",
+          body: "Garbh means the womb and the developing life within it. Sanskar points to refinement, cultivation and the formation of qualities. Together, the phrase asks families to treat the prenatal period as a time of care, intention, values and relationship - not merely as a medical interval.",
+        },
+        mechanism: {
+          label: "Mechanism",
+          kicker: "The biological lens",
+          title: "The environment around a pregnancy is part of the story.",
+          body: "Nutrition, sleep, stress physiology, emotional support, movement, exposure to substances and access to medical care can influence maternal well-being and fetal development. These are testable pathways, while the size and meaning of any effect must be studied carefully rather than assumed.",
+        },
+        mission: {
+          label: "Mission",
+          kicker: "The social lens",
+          title: "Knowledge becomes useful when it reaches families responsibly.",
+          body: "The draft's larger vision is a movement: educate families, train practitioners, support communities, build research capacity and bring prenatal well-being into public conversation. Garbh Sanskar is presented here as a shared responsibility, not a product or a promise of a perfect child.",
+        },
+      },
+    },
+    domains: {
+      eyebrow: "The research map",
+      title: "Where tradition meets questions we can investigate.",
+      intro:
+        "The following domains come directly from the foundation's proposed research direction. Each one has a different evidence base, so the language of certainty should change with the question.",
+      researchAreas: {
+        epigenetics: {
+          title: "Epigenetics",
+          body: "Study how prenatal conditions may relate to gene expression, while keeping association distinct from certainty.",
+        },
+        fetalLearning: {
+          title: "Fetal learning",
+          body: "Study sensory experiences before birth without treating them as guaranteed learning outcomes.",
+        },
+        neuroscience: {
+          title: "Neuroscience",
+          body: "Explore brain development, stress biology, sensory experience and early relationships during the prenatal period.",
+        },
+        psychology: {
+          title: "Psychology",
+          body: "Investigate maternal mental health, emotional support, attachment and the family environment.",
+        },
+        yoga: {
+          title: "Yoga research",
+          body: "Evaluate the safety and health effects of yoga, breathing and relaxation practices.",
+        },
+        ayurveda: {
+          title: "Ayurvedic context",
+          body: "Study classical references and practices as cultural and historical sources, separately from clinical evidence.",
+        },
+      },
+      evidenceLabel: "What research can examine",
+      boundaryLabel: "What to hold carefully",
+      tabs: {
+        epigenetics: "Epigenetics & gene expression",
+        neuroscience: "Prenatal neuroscience",
+        wellbeing: "Maternal well-being",
+        tradition: "Practice & cultural meaning",
+      },
+      panels: {
+        epigenetics: {
+          kicker: "Biology and environment",
+          title: "Epigenetics asks how conditions shape expression.",
+          body: "The draft identifies epigenetics as one route for understanding how nutrition, stress and environmental exposures may affect gene regulation without changing the DNA sequence. It is a research field that can add precision to the conversation around prenatal life.",
+          evidence:
+            "Researchers can study measurable markers, maternal exposures, fetal development and later outcomes across well-designed cohorts.",
+          boundary:
+            "Epigenetic findings do not mean that a thought, mantra or single practice can determine a child's future. Association is not destiny, and individual outcomes are complex.",
+          source: "Research direction: epigenetics, prenatal health and long-term development.",
+        },
+        neuroscience: {
+          kicker: "Brain and relationship",
+          title: "The prenatal period is also a developmental window.",
+          body: "The foundation draft connects prenatal psychology, neurodevelopment and early sensory experience with the importance of a calm, responsive environment. This creates a useful meeting point for neuroscience, mental health and family education.",
+          evidence:
+            "Research can examine stress biology, sleep, voice and sound exposure, maternal mental health, attachment and early developmental measures.",
+          boundary:
+            "Sound, chanting and communication may be meaningful practices, but claims about intelligence or guaranteed neurological outcomes need stronger evidence than a compelling story.",
+          source: "Research direction: neuroscience, prenatal psychology and neuroendocrinology.",
+        },
+        wellbeing: {
+          kicker: "Health and prevention",
+          title: "A supported mother is part of a supported beginning.",
+          body: "Garbh Sanskar places nutrition, emotional steadiness, healthy routine, family harmony and appropriate medical care in one frame. The most immediate value is often practical: helping families notice stress, seek care and create a kinder home environment.",
+          evidence:
+            "Programs can evaluate maternal stress, nutrition, health behaviours, social support, participation and access to qualified care.",
+          boundary:
+            "Educational guidance cannot replace a gynecologist, mental-health professional, emergency care or an individualized treatment plan.",
+          source:
+            "Foundation principle: complementary education alongside regular medical guidance.",
+        },
+        tradition: {
+          kicker: "Texts, rituals and translation",
+          title: "Ancient language can generate questions without becoming proof.",
+          body: "Garbhadhana, Punsavana and Simantonnayana carry historical, ethical and relational meanings. Studying them today involves translation: identifying the value a practice expresses, then asking which parts can be interpreted, tested or adapted with care.",
+          evidence:
+            "Scholars can compare texts, document lived practice, study acceptability and test whether educational programs improve knowledge, support or well-being.",
+          boundary:
+            "Cultural importance and scientific validation are different kinds of authority. Respecting one does not require overstating the other.",
+          source:
+            "Source frame: Garbh Sanskar tradition, Ayurveda and the foundation's education mission.",
+        },
+      },
+    },
+    knowledgeCentre: {
+      eyebrow: "Garbh Sanskar knowledge centre",
+      title: "Simple guidance for everyday learning.",
+      intro:
+        "Clear articles and practical resources help families explore Garbh Sanskar with curiosity, care and respect for scientific boundaries.",
+      topics: [
+        {
+          title: "Pregnancy care",
+          body: "Foundational guidance for a supported and informed pregnancy.",
+        },
+        {
+          title: "Month-by-month",
+          body: "Step-by-step information for changing needs across pregnancy.",
+        },
+        {
+          title: "Yoga",
+          body: "Simple practices to discuss with qualified professionals.",
+        },
+        {
+          title: "Meditation",
+          body: "Accessible ways to understand steadiness, rest and emotional well-being.",
+        },
+        {
+          title: "Prayer",
+          body: "Reflective practices understood through personal and cultural meaning.",
+        },
+        {
+          title: "Nutrition",
+          body: "Nutritional information that complements individualized medical guidance.",
+        },
+        {
+          title: "Sanskar",
+          body: "Articles on values, relationships and conscious family life.",
+        },
+        {
+          title: "Scientific evidence",
+          body: "A clear view of what research can examine and where uncertainty remains.",
+        },
+      ],
+    },
+    practice: {
+      eyebrow: "A responsible way to learn",
+      title: "Keep the care. Lose the pressure.",
+      intro:
+        "The science of Garbh Sanskar should make families more informed and supported, not more anxious. These principles shape how the foundation can teach the subject with humility.",
+      principles: [
+        {
+          title: "Begin with the whole environment",
+          body: "Look beyond a single ritual or food. Health, relationships, rest, mental well-being, safety and medical access all belong in the picture.",
+        },
+        {
+          title: "Separate evidence from interpretation",
+          body: "Name what is established, what is promising and what is cultural or spiritual meaning. Clear boundaries build trust.",
+        },
+        {
+          title: "Protect the mother's agency",
+          body: "No family should be burdened with the belief that every outcome is caused by the mother's thoughts, discipline or devotion.",
+        },
+        {
+          title: "Turn curiosity into better questions",
+          body: "Research is not a stamp placed on tradition. It is a disciplined way to learn what helps, for whom, under which conditions and with what limits.",
+        },
+      ],
+    },
+    closing: {
+      eyebrow: "Continue the learning",
+      title: "From understanding to thoughtful action.",
+      body: "Read the foundation's wider research commitments or learn through structured courses designed for families, volunteers and educators.",
+      primaryAction: "View courses",
+      secondaryAction: "Research & commitments",
     },
   },
 
@@ -2298,7 +3355,8 @@ export const en = {
         sanskar: {
           title: "Refinement & Transformation",
           body: "Sanskar signifies the refinement of thoughts, behaviour, emotions, habits, values, and consciousness. The classical Ayurvedic tradition states: Sansk\u0101ro hi gu\u1e47\u0101ntar\u0101dh\u0101nam uchyate — Sanskar is the process through which qualities are refined and elevated. Just as gold is purified, human personality can be nurtured toward compassion, courage, and spiritual awareness.",
-          quote: "\u0938\u0902\u0938\u094d\u0915\u093e\u0930\u094b \u0939\u093f \u0917\u0941\u0923\u093e\u0928\u094d\u0924\u0930\u093e\u0927\u093e\u0928\u092e\u0941\u091a\u094d\u092f\u0924\u0947 \u2014 Sanskar transforms qualities into higher qualities.",
+          quote:
+            "\u0938\u0902\u0938\u094d\u0915\u093e\u0930\u094b \u0939\u093f \u0917\u0941\u0923\u093e\u0928\u094d\u0924\u0930\u093e\u0927\u093e\u0928\u092e\u0941\u091a\u094d\u092f\u0924\u0947 \u2014 Sanskar transforms qualities into higher qualities.",
         },
         together: {
           title: "Nurturing Before Birth",
@@ -2332,7 +3390,8 @@ export const en = {
         bonding: {
           title: "Maternal\u2013Fetal Bonding",
           body: "By the second trimester, the fetus responds to the mother's voice, emotions, and external sounds. Newborns can recognise sounds they heard during gestation, confirming that prenatal communication has real neurological basis.",
-          finding: "Fetuses begin hearing and responding to external sounds around weeks 18\u201324.",
+          finding:
+            "Fetuses begin hearing and responding to external sounds around weeks 18\u201324.",
           source: "Developmental neuroscience, fetal auditory research",
         },
         stress: {
@@ -2467,17 +3526,41 @@ export const en = {
         garbhSamvad: { label: "Garbh Samvad", desc: "Loving communication with the unborn child" },
         surya: { label: "Surya Sadhana", desc: "Solar practices and morning rituals" },
         family: { label: "Family\u2019s Role", desc: "Father, family, and home environment" },
-        ayurveda: { label: "Ayurveda & Lifestyle", desc: "Daily regimen aligned with classical texts" },
+        ayurveda: {
+          label: "Ayurveda & Lifestyle",
+          desc: "Daily regimen aligned with classical texts",
+        },
       },
       months: [
-        { focus: "Foundation", desc: "Sattvic diet, rest, positive thoughts. Fetal organs begin forming." },
-        { focus: "Nourishment", desc: "Nutrition intensive. Gentle yoga begins. Emotional bonding." },
+        {
+          focus: "Foundation",
+          desc: "Sattvic diet, rest, positive thoughts. Fetal organs begin forming.",
+        },
+        {
+          focus: "Nourishment",
+          desc: "Nutrition intensive. Gentle yoga begins. Emotional bonding.",
+        },
         { focus: "Punsavana Sanskar", desc: "Second Sanskar performed. Fetal heartbeat present." },
-        { focus: "Music & Mantra", desc: "Baby begins to hear. Garbh Samvad (talking to baby) begins." },
-        { focus: "Movement & Bonding", desc: "Baby moves. Father's role intensifies. Family harmony essential." },
-        { focus: "Simantonnayana", desc: "Third Sanskar. Mental development focus. Mind-body practices." },
-        { focus: "Strength & Calm", desc: "Rest increases. Pranayama and meditation for birth preparation." },
-        { focus: "Preparation", desc: "Gentle movement. Positive affirmations. Preparation for birth." },
+        {
+          focus: "Music & Mantra",
+          desc: "Baby begins to hear. Garbh Samvad (talking to baby) begins.",
+        },
+        {
+          focus: "Movement & Bonding",
+          desc: "Baby moves. Father's role intensifies. Family harmony essential.",
+        },
+        {
+          focus: "Simantonnayana",
+          desc: "Third Sanskar. Mental development focus. Mind-body practices.",
+        },
+        {
+          focus: "Strength & Calm",
+          desc: "Rest increases. Pranayama and meditation for birth preparation.",
+        },
+        {
+          focus: "Preparation",
+          desc: "Gentle movement. Positive affirmations. Preparation for birth.",
+        },
         { focus: "Welcome", desc: "Peace, prayer, and readiness. The soul prepares to arrive." },
       ],
     },
@@ -2618,9 +3701,18 @@ export const en = {
       ],
       deepDiveLabel: "Essential Guidance at Each Stage",
       tabs: {
-        premarital: { label: "Premarital Counselling", native: "\u0935\u093f\u0935\u093e\u0939 \u092a\u0942\u0930\u094d\u0935" },
-        dreamChild: { label: "Dream-Child Resolve", native: "\u0938\u094d\u0935\u092a\u094d\u0928-\u0936\u093f\u0936\u0941" },
-        astrology: { label: "Astrological Guidance", native: "\u091c\u094d\u092f\u094b\u0924\u093f\u0937" },
+        premarital: {
+          label: "Premarital Counselling",
+          native: "\u0935\u093f\u0935\u093e\u0939 \u092a\u0942\u0930\u094d\u0935",
+        },
+        dreamChild: {
+          label: "Dream-Child Resolve",
+          native: "\u0938\u094d\u0935\u092a\u094d\u0928-\u0936\u093f\u0936\u0941",
+        },
+        astrology: {
+          label: "Astrological Guidance",
+          native: "\u091c\u094d\u092f\u094b\u0924\u093f\u0937",
+        },
       },
       content: {
         premarital: {
@@ -2645,15 +3737,28 @@ export const en = {
           quote:
             "What you repeatedly see, think, and feel \u2014 you attract into your life. The dream you nurture today will illuminate your child\u2019s tomorrow.",
           dimensions: [
-            { label: "Physically Healthy", desc: "Strong body, disease-free, high immunity and endurance." },
-            { label: "Mentally & Emotionally Balanced", desc: "Calm, confident, creative, free from anxiety." },
-            { label: "Socially Healthy", desc: "Respectful, compassionate, connected, responsible citizen." },
-            { label: "Spiritually Aware", desc: "Rooted in values, gratitude, inner peace, and purpose." },
+            {
+              label: "Physically Healthy",
+              desc: "Strong body, disease-free, high immunity and endurance.",
+            },
+            {
+              label: "Mentally & Emotionally Balanced",
+              desc: "Calm, confident, creative, free from anxiety.",
+            },
+            {
+              label: "Socially Healthy",
+              desc: "Respectful, compassionate, connected, responsible citizen.",
+            },
+            {
+              label: "Spiritually Aware",
+              desc: "Rooted in values, gratitude, inner peace, and purpose.",
+            },
           ],
           practiceLabel: "How to Practice",
           practice:
             "Place an inspiring image of your dream child in your bedroom or meditation space. Each day, visualize your child with those qualities. Write a short paragraph describing your dream child \u2014 appearance, mind, heart, and future. This is your personal Sankalpa.",
-          source: "From: Dream-Child Questionnaire \xb7 The Science of Garbh Sanskar \xb7 Dr. Anil Garg & Dr. Seema Garg",
+          source:
+            "From: Dream-Child Questionnaire \xb7 The Science of Garbh Sanskar \xb7 Dr. Anil Garg & Dr. Seema Garg",
         },
         astrology: {
           title: "Astrological Guidance in Garbh Sanskar",

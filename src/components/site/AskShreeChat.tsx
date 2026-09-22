@@ -1,3 +1,4 @@
+// Legacy inline chatbot retained for reference only. It is no longer mounted.
 import { useEffect, useState } from "react";
 import { Send, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -80,7 +81,7 @@ export function AskShreeChat({
               key={id}
               type="button"
               onClick={() => ask(t.askShree.questions[id].question)}
-              className="cursor-pointer rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground transition-colors duration-300 hover:border-primary/50 hover:text-primary"
+              className="min-h-11 cursor-pointer rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground transition-colors duration-300 hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2"
             >
               {t.askShree.questions[id].question}
             </button>

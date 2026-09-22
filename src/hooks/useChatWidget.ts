@@ -1,3 +1,4 @@
+// Legacy local chatbot context retained for reference only. No active component imports it.
 /**
  * ChatWidgetContext — provides a shared open/close/toggle API for the
  * AskShree chat panel widget so any component on the page can trigger it.

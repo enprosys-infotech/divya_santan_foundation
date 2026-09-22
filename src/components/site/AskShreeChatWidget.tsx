@@ -1,3 +1,4 @@
+// Legacy Groq-powered chatbot retained for reference only. It is no longer mounted.
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Send, Sparkles, X, ChevronRight, RefreshCw, AlertCircle, Square } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -336,6 +337,8 @@ export function AskShreeChatWidget({ children }: { children: React.ReactNode }) 
         role="dialog"
         aria-modal="true"
         aria-label="Ask Shree AI chat"
+          aria-hidden={!isOpen}
+          inert={!isOpen}
         className={cn(
           "fixed left-0 top-0 z-50 flex h-full w-full max-w-[430px] flex-col",
           "bg-background shadow-[4px_0_40px_-8px_oklch(0.2_0.05_30/0.3)]",
@@ -368,7 +371,7 @@ export function AskShreeChatWidget({ children }: { children: React.ReactNode }) 
               onClick={clearChat}
               aria-label="Clear conversation"
               title="Clear conversation"
-              className="inline-flex h-7 w-7 cursor-pointer items-center justify-center rounded-full text-white/60 transition-colors hover:bg-white/15 hover:text-white"
+              className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full text-white/60 transition-colors hover:bg-white/15 hover:text-white"
             >
               <RefreshCw className="h-3.5 w-3.5" />
             </button>
@@ -377,7 +380,7 @@ export function AskShreeChatWidget({ children }: { children: React.ReactNode }) 
               type="button"
               onClick={() => setIsOpen(false)}
               aria-label="Close Ask Shree AI chat"
-              className="inline-flex h-7 w-7 cursor-pointer items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/15 hover:text-white"
+              className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/15 hover:text-white"
             >
               <X className="h-4 w-4" />
             </button>
@@ -441,7 +444,7 @@ export function AskShreeChatWidget({ children }: { children: React.ReactNode }) 
                 type="button"
                 disabled={isStreaming}
                 onClick={() => sendMessage(t.askShree.questions[id].question)}
-                className="cursor-pointer rounded-full border border-border bg-background px-3 py-1 text-[0.7rem] text-muted-foreground transition-all duration-200 hover:border-primary/50 hover:bg-primary/5 hover:text-primary active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
+                className="min-h-11 cursor-pointer rounded-full border border-border bg-background px-3 py-1 text-[0.7rem] text-muted-foreground transition-all duration-200 hover:border-primary/50 hover:bg-primary/5 hover:text-primary active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 {t.askShree.questions[id].question}
               </button>
@@ -465,7 +468,7 @@ export function AskShreeChatWidget({ children }: { children: React.ReactNode }) 
               placeholder={isStreaming ? "Shree AI is responding…" : chat.placeholder}
               aria-label={chat.inputLabel}
               disabled={isStreaming}
-              className="h-11 flex-1 rounded-full border border-input bg-muted/40 px-4 text-sm outline-none transition-colors focus:border-primary/60 focus:bg-background disabled:opacity-60"
+              className="h-11 flex-1 rounded-full border border-input bg-muted/40 px-4 text-sm outline-none transition-colors focus:border-primary/60 focus:bg-background focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 disabled:opacity-60"
             />
 
             {isStreaming ? (

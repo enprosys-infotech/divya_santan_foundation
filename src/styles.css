@@ -53,6 +53,7 @@
 
 :root {
   --radius: 0.75rem;
+  --navbar-height: 4rem;
 
   /* Background: warm cream tinted with #F1E5A1 hue */
   --background: oklch(0.972 0.022 94);
@@ -143,6 +144,11 @@
     touch-action: manipulation;
   }
 
+  :where(a, button, input, textarea, select, summary):focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 3px;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -184,11 +190,33 @@
 }
 
 @utility surface-card-hover {
+  cursor: pointer;
+
   &:hover {
     box-shadow: var(--shadow-lift);
     transform: translateY(-3px);
     /* Gold shimmer on hover — sacred, not a commercial orange flash */
     border-color: color-mix(in oklab, var(--color-gold) 45%, transparent);
+  }
+}
+
+@utility interactive-surface {
+  cursor: pointer;
+  transition:
+    box-shadow var(--transition-slow),
+    transform var(--transition-slow),
+    border-color var(--transition-slow),
+    background-color var(--transition-slow);
+
+  &:hover {
+    border-color: color-mix(in oklab, var(--color-primary) 45%, var(--color-border));
+    background-color: color-mix(in oklab, var(--color-primary) 4%, var(--color-card));
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.985);
   }
 }
 
@@ -318,4 +346,13 @@
 @utility text-base-readable {
   font-size: 1rem;
   line-height: 1.65;
+}
+
+/* Hide scrollbar for horizontal scrolling galleries */
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

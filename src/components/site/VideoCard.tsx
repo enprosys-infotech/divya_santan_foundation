@@ -32,7 +32,7 @@ export function VideoCard({
   return (
     <div
       className={cn(
-        "surface-card surface-card-hover group flex flex-col overflow-hidden rounded-2xl transition-all duration-300",
+        "surface-card group flex h-full w-full flex-col overflow-hidden rounded-2xl transition-all duration-300",
         isPlaying && "ring-2 ring-primary",
         className,
       )}
@@ -51,7 +51,7 @@ export function VideoCard({
             type="button"
             onClick={() => setIsPlaying(true)}
             aria-label={title}
-            className="group/btn relative flex h-full w-full cursor-pointer items-center justify-center"
+            className="group/btn relative flex h-full w-full cursor-pointer items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-inset"
           >
             <img
               src={`https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`}
@@ -81,24 +81,26 @@ export function VideoCard({
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-5">
+      <div className="flex min-h-[10rem] flex-1 flex-col p-5 sm:min-h-[11rem]">
         <div className="flex items-center justify-between gap-2">
-          <h4 className="text-base font-medium text-ink transition-colors group-hover:text-primary">
+          <h4 className="line-clamp-2 min-h-[3rem] text-base font-medium text-ink transition-colors group-hover:text-primary">
             {title}
           </h4>
           {isPlaying && (
             <button
               type="button"
               onClick={() => setIsPlaying(false)}
-              className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-accent text-muted-foreground hover:text-ink"
+              className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full bg-accent text-muted-foreground hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2"
               aria-label={t.common.continue}
             >
               <X className="h-4 w-4" />
             </button>
           )}
         </div>
-        {native && <p className="font-deva mt-1 text-xs text-primary/90">{native}</p>}
-        <p className="mt-2.5 flex-1 text-xs leading-relaxed text-muted-foreground">{description}</p>
+        {native && <p className="font-deva mt-1 line-clamp-1 text-xs text-primary/90">{native}</p>}
+        <p className="mt-2.5 line-clamp-3 flex-1 text-xs leading-relaxed text-muted-foreground">
+          {description}
+        </p>
       </div>
     </div>
   );

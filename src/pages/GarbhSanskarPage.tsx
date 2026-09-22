@@ -82,7 +82,7 @@ const MONTH_COLORS: Array<{ color: string; bg: string }> = [
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export default function GarbhSanskarPage() {
+export default function GarbhSanskarPage({ embedded = false }: { embedded?: boolean }) {
   const { t } = useI18n();
   const copy = t.learnPage;
 
@@ -96,9 +96,10 @@ export default function GarbhSanskarPage() {
   const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
 
   useEffect(() => {
+    if (embedded) return;
     const meta = getDictionary().learn.meta;
     document.title = meta.title;
-  }, []);
+  }, [embedded]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

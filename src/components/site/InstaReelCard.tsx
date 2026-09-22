@@ -32,7 +32,7 @@ export function InstaReelCard({
   return (
     <div
       className={cn(
-        "surface-card surface-card-hover group flex flex-col overflow-hidden rounded-2xl transition-all duration-300",
+        "surface-card group flex flex-col overflow-hidden rounded-2xl transition-all duration-300",
         isPlaying && "ring-2 ring-primary",
         className,
       )}
@@ -40,7 +40,7 @@ export function InstaReelCard({
       <div className="relative aspect-[9/16] w-full overflow-hidden bg-black/90">
         {isPlaying ? (
           <iframe
-            src={`https://www.instagram.com/p/${reelId}/embed`}
+            src={`https://www.instagram.com/reel/${reelId}/embed`}
             title={title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -51,7 +51,7 @@ export function InstaReelCard({
             type="button"
             onClick={() => setIsPlaying(true)}
             aria-label={title}
-            className="group/btn relative flex h-full w-full cursor-pointer items-center justify-center"
+            className="group/btn relative flex h-full w-full cursor-pointer items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-inset"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-pink-600/20 via-purple-600/30 to-orange-600/20" />
             <img
@@ -88,7 +88,7 @@ export function InstaReelCard({
             <button
               type="button"
               onClick={() => setIsPlaying(false)}
-              className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-accent text-muted-foreground hover:text-ink"
+              className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full bg-accent text-muted-foreground hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2"
               aria-label={t.common.continue}
             >
               <X className="h-4 w-4" />

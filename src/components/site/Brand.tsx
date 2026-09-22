@@ -7,11 +7,15 @@ import { cn } from "@/lib/utils";
 export function BrandLock({
   className,
   compact = false,
+  variant = "light",
 }: {
   className?: string;
   compact?: boolean;
+  variant?: "light" | "dark";
 }) {
   const { t } = useI18n();
+
+  const isDark = variant === "dark";
 
   return (
     <Link to="/" className={cn("group flex items-center gap-2.5", className)}>
@@ -24,20 +28,40 @@ export function BrandLock({
       />
 
       <span className="flex flex-col justify-center leading-tight">
-        <span className="font-display text-[0.88rem] tracking-wide text-ink sm:text-[0.93rem]">
+        <span
+          className={cn(
+            "font-display text-[0.88rem] tracking-wide sm:text-[0.93rem]",
+            isDark ? "text-indigo-foreground" : "text-ink"
+          )}
+        >
           {t.brand.prakalp}
         </span>
-        <span className="text-[0.5rem] tracking-wide text-muted-foreground/70 sm:text-[0.52rem]">
+        <span
+          className={cn(
+            "text-[0.5rem] tracking-wide sm:text-[0.52rem]",
+            isDark ? "text-indigo-foreground/70" : "text-muted-foreground/70"
+          )}
+        >
           {t.brand.supportedBy}
         </span>
         {!compact && (
-          <span className="text-[0.53rem] uppercase tracking-[0.15em] text-muted-foreground">
+          <span
+            className={cn(
+              "text-[0.53rem] uppercase tracking-[0.15em]",
+              isDark ? "text-indigo-foreground/80" : "text-muted-foreground"
+            )}
+          >
             {t.brand.name}
           </span>
         )}
       </span>
 
-      <span className="h-6 w-px bg-border" />
+      <span
+        className={cn(
+          "h-6 w-px",
+          isDark ? "bg-indigo-foreground/20" : "bg-border"
+        )}
+      />
 
       <img
         src={bsvafImage}

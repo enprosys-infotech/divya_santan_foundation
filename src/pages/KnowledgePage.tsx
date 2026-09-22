@@ -1,29 +1,43 @@
 import { useEffect, useRef, useState } from "react";
 import {
   BookOpen,
+  BookOpenText,
   ChevronDown,
   ChevronUp,
+  Download,
+  ExternalLink,
+  FileText,
   FlaskConical,
+  LibraryBig,
   Map,
   MessageCircleQuestion,
+  ShoppingBag,
   Sparkles,
 } from "lucide-react";
 import { CTASection } from "@/components/site/Cards";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section } from "@/components/site/SectionHeading";
+import ScienceOfGarbhSanskarPage from "@/pages/ScienceOfGarbhSanskarPage";
 import {
   KNOWLEDGE_ARTICLES,
   KNOWLEDGE_CATEGORIES,
   KNOWLEDGE_GUIDES,
   KNOWLEDGE_QA,
+  KNOWLEDGE_RESOURCES,
   SCIENTIFIC_REFERENCES,
 } from "@/content/registry";
 import { getDictionary, useI18n } from "@/i18n";
-import { useChatWidget } from "@/hooks/useChatWidget";
+import { useExternalAskShree } from "@/hooks/useExternalAskShree";
 import { cn } from "@/lib/utils";
 
 /* ── Types ─────────────────────────────────────────────────────────────── */
-type KnowledgeTab = "articles" | "guides" | "qa" | "scientific";
+type KnowledgeTab =
+  | "scienceOfGarbhSanskar"
+  | "articles"
+  | "guides"
+  | "qa"
+  | "resources"
+  | "scientific";
 
 /* ── Tab config ─────────────────────────────────────────────────────────── */
 const TABS: {
@@ -34,6 +48,14 @@ const TABS: {
   bg: string;
   text: string;
 }[] = [
+  {
+    id: "scienceOfGarbhSanskar",
+    icon: BookOpenText,
+    accent: "var(--color-primary)",
+    border: "border-primary",
+    bg: "bg-primary/8",
+    text: "text-primary",
+  },
   {
     id: "articles",
     icon: BookOpen,
@@ -59,6 +81,14 @@ const TABS: {
     text: "text-gold",
   },
   {
+    id: "resources",
+    icon: LibraryBig,
+    accent: "var(--color-secondary)",
+    border: "border-secondary",
+    bg: "bg-secondary/8",
+    text: "text-secondary",
+  },
+  {
     id: "scientific",
     icon: FlaskConical,
     accent: "var(--color-indigo)",
@@ -67,6 +97,10 @@ const TABS: {
     text: "text-indigo",
   },
 ];
+
+function ScienceOfGarbhSanskarTab() {
+  return <ScienceOfGarbhSanskarPage />;
+}
 
 /* ──────────────────────────────────────────────────────────────────────────
    ArticlesTab
@@ -92,16 +126,12 @@ function ArticlesTab() {
         <p className="text-[0.65rem] uppercase tracking-[0.22em] text-primary">
           {copy.articlesSection.eyebrow}
         </p>
-        <h2 className="mt-2 text-2xl text-ink sm:text-3xl">
-          {copy.articlesSection.title}
-        </h2>
+        <h2 className="mt-2 text-2xl text-ink sm:text-3xl">{copy.articlesSection.title}</h2>
       </div>
 
       {/* Category filter chips */}
       <div>
-        <p className="mb-3 text-xs text-muted-foreground">
-          {copy.articlesSection.filterLabel}
-        </p>
+        <p className="mb-3 text-xs text-muted-foreground">{copy.articlesSection.filterLabel}</p>
         <div className="flex flex-wrap gap-2">
           {KNOWLEDGE_CATEGORIES.map((cat) => (
             <button
@@ -122,35 +152,32 @@ function ArticlesTab() {
       </div>
 
       {/* Hero article */}
-      {heroArticle && (() => {
-        const heroData = content.knowledgeArticles[heroArticle.id];
-        const catLabel = content.knowledgeCategories[heroArticle.category];
-        return (
-          <div className="surface-card relative overflow-hidden p-0">
-            {/* Accent lane */}
-            <div className="absolute left-0 top-0 h-full w-1.5 bg-primary" />
-            <div className="p-7 pl-9 sm:flex sm:items-start sm:gap-8">
-              <div className="flex-1">
-                <span className="inline-block rounded-full border border-primary/30 bg-primary/8 px-3 py-1 text-[0.62rem] uppercase tracking-widest text-primary">
-                  {copy.articlesSection.heroLabel}
-                </span>
-                <p className="mt-3 text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
-                  {catLabel}
-                </p>
-                <h3 className="mt-2 text-xl text-ink sm:text-2xl">
-                  {heroData.title}
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                  {heroData.body}
-                </p>
-                <p className="mt-5 text-xs text-muted-foreground">
-                  {heroData.readTime}
-                </p>
+      {heroArticle &&
+        (() => {
+          const heroData = content.knowledgeArticles[heroArticle.id];
+          const catLabel = content.knowledgeCategories[heroArticle.category];
+          return (
+            <div className="surface-card relative overflow-hidden p-0">
+              {/* Accent lane */}
+              <div className="absolute left-0 top-0 h-full w-1.5 bg-primary" />
+              <div className="p-7 pl-9 sm:flex sm:items-start sm:gap-8">
+                <div className="flex-1">
+                  <span className="inline-block rounded-full border border-primary/30 bg-primary/8 px-3 py-1 text-[0.62rem] uppercase tracking-widest text-primary">
+                    {copy.articlesSection.heroLabel}
+                  </span>
+                  <p className="mt-3 text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+                    {catLabel}
+                  </p>
+                  <h3 className="mt-2 text-xl text-ink sm:text-2xl">{heroData.title}</h3>
+                  <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                    {heroData.body}
+                  </p>
+                  <p className="mt-5 text-xs text-muted-foreground">{heroData.readTime}</p>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })()}
+          );
+        })()}
 
       {/* Rest grid */}
       {restArticles.length > 0 && (
@@ -159,16 +186,11 @@ function ArticlesTab() {
             const articleData = content.knowledgeArticles[article.id];
             const catLabel = content.knowledgeCategories[article.category];
             return (
-              <div
-                key={article.id}
-                className="surface-card surface-card-hover flex flex-col p-6"
-              >
+              <div key={article.id} className="surface-card surface-card-hover flex flex-col p-6">
                 <p className="text-[0.62rem] uppercase tracking-[0.22em] text-secondary">
                   {catLabel}
                 </p>
-                <h3 className="mt-3 flex-1 text-base leading-snug text-ink">
-                  {articleData.title}
-                </h3>
+                <h3 className="mt-3 flex-1 text-base leading-snug text-ink">{articleData.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {articleData.body}
                 </p>
@@ -197,8 +219,18 @@ function GuidesTab() {
     { border: "border-primary", bg: "bg-primary/8", text: "text-primary", dot: "bg-primary" },
     { border: "border-green", bg: "bg-green/8", text: "text-green", dot: "bg-green" },
     { border: "border-gold", bg: "bg-gold/15", text: "text-gold-foreground", dot: "bg-gold" },
-    { border: "border-secondary", bg: "bg-secondary/8", text: "text-secondary", dot: "bg-secondary" },
-    { border: "border-indigo", bg: "bg-indigo/8", text: "text-indigo-foreground", dot: "bg-indigo" },
+    {
+      border: "border-secondary",
+      bg: "bg-secondary/8",
+      text: "text-secondary",
+      dot: "bg-secondary",
+    },
+    {
+      border: "border-indigo",
+      bg: "bg-indigo/8",
+      text: "text-indigo-foreground",
+      dot: "bg-indigo",
+    },
   ];
 
   return (
@@ -208,9 +240,7 @@ function GuidesTab() {
         <p className="text-[0.65rem] uppercase tracking-[0.22em] text-green">
           {copy.guidesSection.eyebrow}
         </p>
-        <h2 className="mt-2 text-2xl text-ink sm:text-3xl">
-          {copy.guidesSection.title}
-        </h2>
+        <h2 className="mt-2 text-2xl text-ink sm:text-3xl">{copy.guidesSection.title}</h2>
         <p className="mt-3 max-w-2xl text-base text-muted-foreground">
           {copy.guidesSection.subtitle}
         </p>
@@ -249,19 +279,11 @@ function GuidesTab() {
                   {guideData.label}
                 </span>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-base font-normal text-ink sm:text-lg">
-                    {guideData.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {guideData.subtitle}
-                  </p>
+                  <h3 className="text-base font-normal text-ink sm:text-lg">{guideData.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{guideData.subtitle}</p>
                 </div>
                 <span className="ml-2 mt-1 shrink-0 text-muted-foreground">
-                  {isOpen ? (
-                    <ChevronUp className="h-5 w-5" />
-                  ) : (
-                    <ChevronDown className="h-5 w-5" />
-                  )}
+                  {isOpen ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
                 </span>
               </button>
 
@@ -274,15 +296,8 @@ function GuidesTab() {
                   <ul className="mt-5 space-y-2.5">
                     {guideData.steps.map((step, stepIdx) => (
                       <li key={stepIdx} className="flex items-start gap-3">
-                        <span
-                          className={cn(
-                            "mt-1.5 h-2 w-2 shrink-0 rounded-full",
-                            colors.dot,
-                          )}
-                        />
-                        <span className="text-sm leading-relaxed text-ink">
-                          {step}
-                        </span>
+                        <span className={cn("mt-1.5 h-2 w-2 shrink-0 rounded-full", colors.dot)} />
+                        <span className="text-sm leading-relaxed text-ink">{step}</span>
                       </li>
                     ))}
                   </ul>
@@ -303,7 +318,7 @@ function QATab() {
   const { t } = useI18n();
   const copy = t.knowledge;
   const content = t.content;
-  const { open: openChat } = useChatWidget();
+  const { open: openExternalAskShree } = useExternalAskShree();
   const [openId, setOpenId] = useState<string | null>(null);
 
   return (
@@ -313,18 +328,21 @@ function QATab() {
         <p className="text-[0.65rem] uppercase tracking-[0.22em] text-gold">
           {copy.qaSection.eyebrow}
         </p>
-        <h2 className="mt-2 text-2xl text-ink sm:text-3xl">
-          {copy.qaSection.title}
-        </h2>
-        <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-          {copy.qaSection.subtitle}
-        </p>
+        <h2 className="mt-2 text-2xl text-ink sm:text-3xl">{copy.qaSection.title}</h2>
+        <p className="mt-3 max-w-2xl text-base text-muted-foreground">{copy.qaSection.subtitle}</p>
       </div>
 
       {/* Q&A Accordion */}
       <div className="space-y-3">
         {KNOWLEDGE_QA.map((qa) => {
           const qaData = content.knowledgeQA[qa.id];
+
+          // Safety check: skip if qaData is undefined
+          if (!qaData) {
+            console.warn(`Q&A data not found for ID: ${qa.id}`);
+            return null;
+          }
+
           const isOpen = openId === qa.id;
 
           return (
@@ -349,19 +367,13 @@ function QATab() {
                   {qaData.question}
                 </p>
                 <span className="ml-2 mt-0.5 shrink-0 text-muted-foreground">
-                  {isOpen ? (
-                    <ChevronUp className="h-4 w-4" />
-                  ) : (
-                    <ChevronDown className="h-4 w-4" />
-                  )}
+                  {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                 </span>
               </button>
 
               {isOpen && (
                 <div className="journey-panel-content border-t border-border bg-accent/40 px-5 pb-6 pt-4">
-                  <p className="text-sm leading-[1.75] text-ink/90">
-                    {qaData.answer}
-                  </p>
+                  <p className="text-sm leading-[1.75] text-ink/90">{qaData.answer}</p>
                 </div>
               )}
             </div>
@@ -377,12 +389,144 @@ function QATab() {
         </p>
         <button
           type="button"
-          onClick={openChat}
+          onClick={openExternalAskShree}
           className="flex shrink-0 cursor-pointer items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:opacity-90 active:scale-95"
         >
           <Sparkles className="h-3.5 w-3.5" />
           {copy.qaSection.askShreeLabel}
         </button>
+      </div>
+    </div>
+  );
+}
+
+type ResourceFilter = "all" | "books" | "documents";
+
+function ResourcesTab() {
+  const { t } = useI18n();
+  const copy = t.knowledge;
+  const content = t.content;
+  const [activeFilter, setActiveFilter] = useState<ResourceFilter>("all");
+
+  const filterMatchers: Record<
+    ResourceFilter,
+    (resource: (typeof KNOWLEDGE_RESOURCES)[number]) => boolean
+  > = {
+    all: () => true,
+    books: (resource) => resource.type === "book",
+    documents: (resource) => resource.type === "document",
+  };
+  const visibleResources = KNOWLEDGE_RESOURCES.filter(filterMatchers[activeFilter]);
+  const actionLabels = {
+    download: copy.resourcesSection.download,
+    purchase: copy.resourcesSection.purchase,
+    external: copy.resourcesSection.view,
+  };
+  const actionIcons = {
+    download: Download,
+    purchase: ShoppingBag,
+    external: ExternalLink,
+  };
+
+  return (
+    <div className="animate-rise space-y-10">
+      <div className="max-w-3xl">
+        <p className="text-[0.65rem] uppercase tracking-[0.22em] text-secondary">
+          {copy.resourcesSection.eyebrow}
+        </p>
+        <h2 className="mt-2 text-2xl text-ink sm:text-3xl">{copy.resourcesSection.title}</h2>
+        <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+          {copy.resourcesSection.subtitle}
+        </p>
+      </div>
+
+      <div className="flex flex-col gap-4 border-y border-border py-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
+          {copy.resourcesSection.filterLabel}
+        </p>
+        <div
+          className="flex flex-wrap gap-2"
+          role="group"
+          aria-label={copy.resourcesSection.filterLabel}
+        >
+          {(["all", "books", "documents"] as const).map((filter) => (
+            <button
+              key={filter}
+              type="button"
+              onClick={() => setActiveFilter(filter)}
+              className={cn(
+                "cursor-pointer rounded-full px-4 py-2 text-xs font-medium transition-all",
+                activeFilter === filter
+                  ? "bg-secondary text-secondary-foreground shadow-sm"
+                  : "border border-border text-muted-foreground hover:border-secondary/40 hover:text-ink",
+              )}
+              aria-pressed={activeFilter === filter}
+            >
+              {copy.resourcesSection.filters[filter]}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid gap-5 md:grid-cols-2">
+        {visibleResources.map((resource, index) => {
+          const resourceData = content.knowledgeResources[resource.id];
+          const ActionIcon = actionIcons[resource.access];
+          const isDownload = resource.access === "download";
+
+          return (
+            <article
+              key={resource.id}
+              className={cn(
+                "surface-card group relative flex flex-col overflow-hidden p-6",
+                index === 0 &&
+                  activeFilter === "all" &&
+                  "md:col-span-2 md:flex-row md:items-center md:gap-8",
+              )}
+            >
+              <div className="flex items-start gap-4">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary/8 text-secondary">
+                  {resource.type === "book" ? (
+                    <BookOpen className="h-5 w-5" strokeWidth={1.5} />
+                  ) : (
+                    <FileText className="h-5 w-5" strokeWidth={1.5} />
+                  )}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <p className="text-[0.62rem] uppercase tracking-[0.2em] text-secondary">
+                      {copy.resourcesSection.types[resource.type]}
+                    </p>
+                    <span className="rounded-full bg-muted px-2 py-0.5 text-[0.6rem] text-muted-foreground">
+                      {resourceData.meta}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-xl leading-snug text-ink">{resourceData.title}</h3>
+                </div>
+              </div>
+              <div className="mt-5 flex flex-1 flex-col sm:pl-16 md:mt-4 md:pl-0">
+                <p className="text-sm leading-relaxed text-muted-foreground">{resourceData.body}</p>
+                <a
+                  href={resource.href}
+                  target={isDownload ? undefined : "_blank"}
+                  rel={isDownload ? undefined : "noopener noreferrer"}
+                  download={isDownload ? true : undefined}
+                  className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-medium text-secondary transition-colors hover:text-primary"
+                >
+                  {actionLabels[resource.access]}
+                  <ActionIcon
+                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                    strokeWidth={1.7}
+                  />
+                </a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <div className="rounded-xl border border-secondary/20 bg-secondary/5 px-5 py-4">
+        <p className="text-xs leading-relaxed text-muted-foreground">{copy.resourcesSection.note}</p>
       </div>
     </div>
   );
@@ -403,9 +547,7 @@ function ScientificTab() {
         <p className="text-[0.65rem] uppercase tracking-[0.22em] text-indigo-foreground/70">
           {copy.scientificSection.eyebrow}
         </p>
-        <h2 className="mt-2 text-2xl text-ink sm:text-3xl">
-          {copy.scientificSection.title}
-        </h2>
+        <h2 className="mt-2 text-2xl text-ink sm:text-3xl">{copy.scientificSection.title}</h2>
         <p className="mt-3 max-w-2xl text-base text-muted-foreground">
           {copy.scientificSection.subtitle}
         </p>
@@ -455,23 +597,24 @@ function ScientificTab() {
 export default function KnowledgePage() {
   const { t } = useI18n();
   const copy = t.knowledge;
-  const { open: openChat } = useChatWidget();
-  const [activeTab, setActiveTab] = useState<KnowledgeTab>("articles");
+  const { open: openExternalAskShree } = useExternalAskShree();
+  const [activeTab, setActiveTab] = useState<KnowledgeTab>("scienceOfGarbhSanskar");
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const meta = getDictionary().knowledge.meta;
+    const dictionary = getDictionary();
+    const meta =
+      activeTab === "scienceOfGarbhSanskar"
+        ? dictionary.sciencePage.meta
+        : dictionary.knowledge.meta;
     document.title = meta.title;
-  }, []);
+  }, [activeTab]);
 
   const handleTabChange = (tab: KnowledgeTab) => {
     setActiveTab(tab);
     if (contentRef.current) {
       const yOffset = -160;
-      const y =
-        contentRef.current.getBoundingClientRect().top +
-        window.scrollY +
-        yOffset;
+      const y = contentRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
@@ -501,11 +644,7 @@ export default function KnowledgePage() {
                       ? `${tab.bg} ${tab.text} shadow-sm`
                       : "text-muted-foreground hover:text-ink",
                   )}
-                  style={
-                    isActive
-                      ? { borderBottom: `2px solid ${tab.accent}` }
-                      : undefined
-                  }
+                  style={isActive ? { borderBottom: `2px solid ${tab.accent}` } : undefined}
                 >
                   <Icon className="h-4 w-4 shrink-0" strokeWidth={1.5} />
                   <span className="whitespace-nowrap">{copy.tabs[tab.id]}</span>
@@ -557,9 +696,11 @@ export default function KnowledgePage() {
 
         <Section className="py-12 lg:py-16">
           <div className="lg:pl-6">
+            {activeTab === "scienceOfGarbhSanskar" && <ScienceOfGarbhSanskarTab />}
             {activeTab === "articles" && <ArticlesTab />}
             {activeTab === "guides" && <GuidesTab />}
             {activeTab === "qa" && <QATab />}
+            {activeTab === "resources" && <ResourcesTab />}
             {activeTab === "scientific" && <ScientificTab />}
           </div>
         </Section>
@@ -570,8 +711,11 @@ export default function KnowledgePage() {
         <CTASection
           title={copy.cta.title}
           body={copy.cta.body}
-          primary={{ onClick: openChat, label: copy.cta.primary }}
-          secondary={{ to: "/learn", label: copy.cta.secondary }}
+          primary={{ onClick: openExternalAskShree, label: copy.cta.primary }}
+          secondary={{
+            onClick: () => handleTabChange("scienceOfGarbhSanskar"),
+            label: copy.cta.secondary,
+          }}
         />
       </Section>
     </>

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from "lucide-react";
-import dspImage from "@/assets/image.png";
-import bsvafImage from "@/assets/image1.png";
 import { CONTACT_DETAILS, FOOTER_COLUMNS } from "@/content/navigation";
 import { useI18n } from "@/i18n";
+import { BrandLock } from "@/components/site/Brand";
+import { useExternalAskShree } from "@/hooks/useExternalAskShree";
 
 const SOCIAL_LINKS = [
   { id: "facebook", icon: Facebook, href: CONTACT_DETAILS.socialLinks.facebook },
@@ -13,31 +13,14 @@ const SOCIAL_LINKS = [
 
 export function Footer() {
   const { t } = useI18n();
+  const { open: openExternalAskShree } = useExternalAskShree();
 
   return (
     <footer className="mandala-veil border-t border-indigo/20 bg-indigo">
       <div className="mx-auto w-full max-w-6xl px-5 py-16 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.15fr_2fr]">
           <div>
-            <div className="flex items-center gap-4">
-              <img
-                src={dspImage}
-                alt={t.brand.logoAlt}
-                width={56}
-                height={56}
-                loading="lazy"
-                className="h-14 w-14 rounded-sm object-contain"
-              />
-              <img
-                src={bsvafImage}
-                alt={t.brand.partnerLogoAlt}
-                width={48}
-                height={48}
-                loading="lazy"
-                className="h-12 w-12 rounded-sm object-contain"
-              />
-            </div>
-            <h3 className="mt-6 text-xl text-indigo-foreground">{t.brand.name}</h3>
+            <BrandLock className="mb-6" variant="dark" />
             <p className="mt-3 max-w-sm text-base leading-relaxed text-indigo-foreground/80">
               {t.brand.positioning}. {t.footer.about}
             </p>
@@ -58,7 +41,7 @@ export function Footer() {
                   key={id}
                   href={href}
                   aria-label={t.common.socialMedia}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-indigo-foreground/20 text-indigo-foreground/60 transition-colors duration-300 hover:border-gold/50 hover:text-gold"
+                  className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full border border-indigo-foreground/20 text-indigo-foreground/60 transition-colors duration-300 hover:border-gold/50 hover:text-gold"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -75,12 +58,22 @@ export function Footer() {
                 <ul className="mt-4 space-y-2.5">
                   {column.links.map((link) => (
                     <li key={link.id}>
-                      <Link
-                        to={link.to}
-                        className="text-sm text-indigo-foreground/60 transition-colors duration-300 hover:text-gold"
-                      >
-                        {t.footer.links[link.id]}
-                      </Link>
+                      {link.id === "askShree" ? (
+                        <button
+                          type="button"
+                          onClick={openExternalAskShree}
+                          className="cursor-pointer text-left text-sm text-indigo-foreground/60 transition-colors duration-300 hover:text-gold"
+                        >
+                          {t.footer.links[link.id]}
+                        </button>
+                      ) : (
+                        <Link
+                          to={link.to}
+                          className="text-sm text-indigo-foreground/60 transition-colors duration-300 hover:text-gold"
+                        >
+                          {t.footer.links[link.id]}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>

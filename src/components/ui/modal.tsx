@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, type ReactNode } from "react";
+import { useCallback, useEffect, useId, useRef, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -19,6 +19,8 @@ export interface ModalProps {
   closeLabel: string;
   children: ReactNode;
   className?: string;
+  contentClassName?: string;
+  fullScreen?: boolean;
 }
 
 /**
@@ -36,9 +38,12 @@ export function Modal({
   closeLabel,
   children,
   className,
+  contentClassName,
+  fullScreen = false,
 }: ModalProps) {
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreFocusRef = useRef<HTMLElement | null>(null);
+  const titleId = useId();
 
   const trapFocus = useCallback((event: KeyboardEvent) => {
     const panel = panelRef.current;
@@ -83,23 +88,27 @@ export function Modal({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-end justify-center bg-ink/60 p-0 backdrop-blur-sm sm:items-center sm:p-6"
+      className={cn(
+        "fixed inset-0 z-[100] flex items-end justify-center bg-ink/60 p-0 backdrop-blur-sm sm:items-center sm:p-6",
+        fullScreen && "sm:p-0",
+      )}
       onMouseDown={(event) => event.target === event.currentTarget && onClose()}
     >
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
-        aria-label={typeof title === "string" ? title : undefined}
+        aria-labelledby={titleId}
         className={cn(
           "flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-3xl bg-background shadow-[var(--shadow-lift)]",
           "sm:max-h-[88dvh] sm:max-w-3xl sm:rounded-3xl",
+          fullScreen && "h-[100dvh] max-h-none rounded-none sm:max-h-none sm:max-w-none",
           className,
         )}
       >
         <header className="flex items-start gap-3 border-b border-border bg-background/95 px-5 py-4 sm:px-7 sm:py-5">
           <div className="min-w-0 flex-1">
-            <h2 className="font-display text-lg font-bold leading-snug text-primary sm:text-xl">
+            <h2 id={titleId} className="font-display text-lg font-bold leading-snug text-primary sm:text-xl">
               {title}
             </h2>
             {description && (
@@ -112,13 +121,18 @@ export function Modal({
             type="button"
             onClick={onClose}
             aria-label={closeLabel}
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
+            className="inline-flex min-h-11 min-w-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
           >
             <X className="h-4 w-4" />
           </button>
         </header>
 
-        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-5 sm:px-7 sm:py-6">
+        <div
+          className={cn(
+            "min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-5 sm:px-7 sm:py-6",
+            contentClassName,
+          )}
+        >
           {children}
         </div>
 

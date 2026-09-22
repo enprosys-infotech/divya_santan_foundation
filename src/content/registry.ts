@@ -74,23 +74,37 @@ export type PillarId = (typeof PILLARS)[number]["id"];
 
 /* ── Audience journeys — exactly 5, matching the client's user categories ── */
 
+export const AUDIENCE_JOURNEY_ROUTES = {
+  planningCouple: "/journeys/planning-pregnancy",
+  pregnantWoman: "/journeys/pregnant-woman",
+} as const;
+export type AudienceJourneyPageId = keyof typeof AUDIENCE_JOURNEY_ROUTES;
+
+export const MISSION_ROUTES = {
+  volunteer: "/join/volunteer",
+  institutionalCollaboration: "/join/institutional-collaboration",
+  consultant: "/join/consultant",
+  academicResearcher: "/join/academic-researcher",
+} as const;
+export type MissionPageId = keyof typeof MISSION_ROUTES;
+
 export const JOURNEYS = defineItems([
-  { id: "planningCouple", to: "/learn" },
-  { id: "pregnantWoman", to: "/knowledge" },
-  { id: "socialWorker", to: "/join" },
-  { id: "academicPerson", to: "/research" },
-  { id: "consultant", to: "/join" },
+  { id: "planningCouple", to: AUDIENCE_JOURNEY_ROUTES.planningCouple },
+  { id: "pregnantWoman", to: AUDIENCE_JOURNEY_ROUTES.pregnantWoman },
+  { id: "socialWorker", to: MISSION_ROUTES.volunteer   },
+  { id: "academicPerson", to: MISSION_ROUTES.institutionalCollaboration },
+  { id: "consultant", to: MISSION_ROUTES.consultant },
 ]);
 export type JourneyId = (typeof JOURNEYS)[number]["id"];
 
-/* ── Hero audience pills — same 5 categories, linked to #who-can-benefit ── */
+/* ── Hero audience pills — same 5 categories, routed to their next step ── */
 
 export const AUDIENCE_PILLS = defineItems([
-  { id: "planningCouple", to: "/#who-can-benefit" },
-  { id: "pregnantWoman", to: "/#who-can-benefit" },
-  { id: "socialWorker", to: "/#who-can-benefit" },
-  { id: "academicPerson", to: "/#who-can-benefit" },
-  { id: "consultant", to: "/#who-can-benefit" },
+  { id: "planningCouple", to: AUDIENCE_JOURNEY_ROUTES.planningCouple },
+  { id: "pregnantWoman", to: AUDIENCE_JOURNEY_ROUTES.pregnantWoman },
+  { id: "socialWorker", to: MISSION_ROUTES.volunteer   },
+  { id: "academicPerson", to: MISSION_ROUTES.institutionalCollaboration },
+  { id: "consultant", to: MISSION_ROUTES.consultant },
 ]);
 export type AudiencePillId = (typeof AUDIENCE_PILLS)[number]["id"];
 
@@ -120,14 +134,20 @@ export type FreeServiceId = (typeof FREE_SERVICES)[number]["id"];
 
 /* ── Video library ──────────────────────────────────────────────────────── */
 
+export const VIDEO_CATEGORIES = defineItems([
+  { id: "all" },
+  { id: "knowledge" },
+  { id: "garbhSanskarFoundation" },
+  { id: "testimonials" },
+]);
+export type VideoCategoryId = (typeof VIDEO_CATEGORIES)[number]["id"];
+
 export const VIDEOS = defineItems([
-  { id: "intro", youtubeId: "J27Wc4r5yA0", duration: "14:20" },
-  { id: "garbhSamvad", youtubeId: "N1_S7CjPz8k", duration: "18:45" },
-  { id: "musicMantra", youtubeId: "2OEL4P1rub0", duration: "25:10" },
-  { id: "first1000Days", youtubeId: "ws_4kFm5mZg", duration: "12:30" },
-  { id: "nutrition", youtubeId: "dQw4w9WgXcQ", duration: "15:00" },
-  { id: "fatherRole", youtubeId: "dQw4w9WgXcQ", duration: "16:15" },
-  { id: "prenatalYoga", youtubeId: "dQw4w9WgXcQ", duration: "20:00" },
+  { id: "garbhSanskarClass1", youtubeId: "17hrYEs1y8U", duration: "class 1", category: "garbhSanskarFoundation" as const },
+  { id: "garbhSanskarClass2", youtubeId: "nXnWU7fghoU", duration: "class 2", category: "garbhSanskarFoundation" as const },
+  { id: "garbhSanskarClass3", youtubeId: "k_AHbfulzq8", duration: "class 3", category: "garbhSanskarFoundation" as const },
+  { id: "personalityNationBuilding", youtubeId: "1niF9R9A9AM", category: "knowledge" as const },
+  { id: "divyaSantanSpecialSession", youtubeId: "SwYsQR0MymA", category: "knowledge" as const },
 ]);
 export type VideoId = (typeof VIDEOS)[number]["id"];
 
@@ -136,9 +156,9 @@ export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@DivyaSantanPrakalp"
 /* ── Instagram Reels library ────────────────────────────────────────────── */
 
 export const INSTAGRAM_REELS = defineItems([
-  { id: "reelGarbhSanskar", reelId: "C0example001", duration: "0:58" },
-  { id: "reelMantras", reelId: "C0example002", duration: "1:02" },
-  { id: "reelNutrition", reelId: "C0example003", duration: "0:45" },
+  { id: "reelGarbhSanskar", reelId: "DWA72A0iNsL", duration: "0:58" },
+  { id: "reelMantras", reelId: "DWOKBTUjXJy", duration: "1:02" },
+  { id: "reelNutrition", reelId: "DWs14UAkbpL", duration: "0:45" },
 ]);
 export type InstaReelId = (typeof INSTAGRAM_REELS)[number]["id"];
 
@@ -196,15 +216,122 @@ export type KnowledgeGuideId = (typeof KNOWLEDGE_GUIDES)[number]["id"];
 /* ── Knowledge Centre: Q & A ────────────────────────────────────────────── */
 
 export const KNOWLEDGE_QA = defineItems([
+  // Part I: Understanding Garbh Sanskar - Scientific & Practical FAQs
+  // Ordered by: science, ayurveda, medical, planning, practice, foundation
+  
+  // Science
+  { id: "scientificBasis", tag: "science" },
+  { id: "scientificRationale", tag: "science" },
+  { id: "epigeneticInfluence", tag: "science" },
+  
+  // Ayurveda
+  { id: "ayurvedicPerspective", tag: "ayurveda" },
+  
+  // Medical
+  { id: "importantToKnow", tag: "medical" },
+  
+  // Planning
   { id: "whenToStart", tag: "planning" },
+  { id: "benefits", tag: "planning" },
+  { id: "threeMonthPrep", tag: "planning" },
+  { id: "astrologerRole", tag: "planning" },
+  { id: "abstinenceAdvice", tag: "planning" },
+  { id: "whomToConsult", tag: "planning" },
+  
+  // Practice
+  { id: "whatIsDone", tag: "practice" },
+  { id: "howItWorks", tag: "practice" },
+  { id: "commonPractices", tag: "practice" },
+  { id: "mantraImportance", tag: "practice" },
+  
+  // Foundation
+  { id: "aimAndInterest", tag: "foundation" },
+  { id: "howToAchieve", tag: "foundation" },
+  
+  // Part II: About Foundation - Joining, Learning & Supporting
+  { id: "learnSystematically", tag: "learning" },
+  { id: "whatIsPrerak", tag: "volunteer" },
+  { id: "becomePrerak", tag: "volunteer" },
+  { id: "needToBeDoctorPrerak", tag: "volunteer" },
+  { id: "becomeCounsellor", tag: "professional" },
+  { id: "facultyMember", tag: "professional" },
+  { id: "joinAsFaculty", tag: "professional" },
+  { id: "foundationCourse", tag: "learning" },
+  { id: "freeClassesForCouples", tag: "learning" },
+  { id: "freePersonalGuidance", tag: "learning" },
+  { id: "whatIsNavankur", tag: "consultation" },
+  { id: "whatIsAskShree", tag: "consultation" },
+  { id: "hospitalCollaboration", tag: "collaboration" },
+  { id: "organizeAwareness", tag: "collaboration" },
+  { id: "startCenter", tag: "collaboration" },
+  { id: "supportFoundation", tag: "support" },
+  { id: "supportWithoutVolunteering", tag: "support" },
+  { id: "studentsParticipate", tag: "support" },
+  { id: "universityResearch", tag: "collaboration" },
+  { id: "religiousInclusion", tag: "philosophy" },
+  { id: "furtherInformation", tag: "contact" },
+  
+  // Original questions (keeping for compatibility)
   { id: "whatIsGarbhSamvad", tag: "practice" },
   { id: "dietDuringPregnancy", tag: "nutrition" },
   { id: "fatherParticipation", tag: "family" },
-  { id: "scientificBasis", tag: "science" },
   { id: "modernMedicineCompat", tag: "medical" },
   { id: "vedicSanskars", tag: "culture" },
 ]);
 export type KnowledgeQAId = (typeof KNOWLEDGE_QA)[number]["id"];
+
+/* ── Knowledge Centre: Books and resources ──────────────────────────────── */
+
+export const KNOWLEDGE_RESOURCES = defineItems([
+  {
+    id: "garbhSanskarKaVigyan",
+    type: "book",
+    access: "purchase",
+    href: "https://amzn.in/d/0hJTxeEv",
+  },
+  {
+    id: "garbhSanskarSection1",
+    type: "document",
+    access: "download",
+    href: "https://docs.google.com/document/d/1ENZAA7osX5VResVHCCkuH2lLei2z_ovk/export?format=docx",
+  },
+  {
+    id: "garbhSanskarSection2",
+    type: "document",
+    access: "download",
+    href: "https://docs.google.com/document/d/14pbNwBllehAulHvDXjWDOLL4_lqFkQVj/export?format=docx",
+  },
+  {
+    id: "garbhSanskarSection3",
+    type: "document",
+    access: "download",
+    href: "https://docs.google.com/document/d/1OCJnQHgCOqpvzB1WJ1_xszM3-hSWrZML/export?format=docx",
+  },
+  {
+    id: "garbhSanskarSection4",
+    type: "document",
+    access: "download",
+    href: "https://docs.google.com/document/d/1Qfi49biqqXR_TCPqr3PzA-w5ll-cNWxv/export?format=docx",
+  },
+  {
+    id: "garbhSanskarSection5",
+    type: "document",
+    access: "download",
+    href: "https://docs.google.com/document/d/1Z4sZ3M7hGchTzcESiDaV2w-g-U22zxC3/export?format=docx",
+  },
+  {
+    id: "garbhSanskarSection6",
+    type: "document",
+    access: "download",
+    href: "https://docs.google.com/document/d/1sNYR2KId4FeeQPloSobr2IxRyfI88ldg/export?format=docx",
+  },
+] as const satisfies readonly {
+  id: string;
+  type: "book" | "document";
+  access: "download" | "purchase" | "external";
+  href: string;
+}[]);
+export type KnowledgeResourceId = (typeof KNOWLEDGE_RESOURCES)[number]["id"];
 
 /* ── Knowledge Centre: Scientific References ────────────────────────────── */
 
@@ -239,7 +366,6 @@ export const JOIN_ROLES = defineItems([
   { id: "faculty", icon: GraduationCap },
   { id: "consultant", icon: UserCheck },
   { id: "institutional", icon: Building2 },
-  { id: "csr", icon: Handshake },
 ]);
 export type JoinRoleId = (typeof JOIN_ROLES)[number]["id"];
 
@@ -260,6 +386,45 @@ export const TESTIMONIALS = defineItems([
   { id: "faculty" },
 ]);
 export type TestimonialId = (typeof TESTIMONIALS)[number]["id"];
+
+/* ── Completed events ───────────────────────────────────────────────────── */
+
+export const COMPLETED_EVENTS = defineItems([
+  {
+    id: "workshopsSocialOutreach",
+    photos: [
+      "/first workshop of GS.jpg",
+      "/first workshop of GS-2.jpg",
+      "/first workshop of GS-3.jpg.png",
+      "/first workshop of GS-4.jpg",
+    ],
+  },
+  {
+    id: "udaipurOutreach",
+    photos: ["/udaipur-1.jpg", "/udaipur-2.jpg"],
+  },
+]);
+export type CompletedEventId = (typeof COMPLETED_EVENTS)[number]["id"];
+
+/* ── Success Stories (Results-oriented testimonials with photos) ─────────── */
+
+export const SUCCESS_STORIES = defineItems([
+  { id: "ritaAjay", category: "couple", hasPhoto: true },
+  { id: "priyaSharma", category: "pregnantWoman", hasPhoto: true },
+  { id: "meenaRaj", category: "couple", hasPhoto: true },
+  { id: "anushkaVinod", category: "pregnantWoman", hasPhoto: true },
+]);
+export type SuccessStoryId = (typeof SUCCESS_STORIES)[number]["id"];
+
+/* ── Results & Impact Statistics ────────────────────────────────────────── */
+
+export const RESULTS_STATS = defineItems([
+  { id: "healthyBirths", value: "500+", icon: Baby },
+  { id: "couplesTrained", value: "1,000+", icon: Users },
+  { id: "satisfaction", value: "95%", icon: HeartHandshake },
+  { id: "volunteers", value: "100+", icon: HandHeart },
+]);
+export type ResultsStatId = (typeof RESULTS_STATS)[number]["id"];
 
 /* ── Ancient wisdom ↔ modern science synergy pillars ────────────────────── */
 

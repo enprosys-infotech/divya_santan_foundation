@@ -34,7 +34,7 @@ export function ImportantNotesStrip({
                 key={doc.id}
                 type="button"
                 onClick={() => setActiveModalId(doc.id)}
-                className="inline-flex items-center gap-2 rounded-xl border border-primary/20 bg-white px-4 py-2 text-sm font-medium text-primary shadow-sm transition-all hover:bg-primary/5 hover:shadow-md"
+                className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-xl border border-primary/20 bg-white px-4 py-2 text-sm font-medium text-primary shadow-sm transition-all hover:bg-primary/5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2"
               >
                 <Icon className="h-4 w-4" strokeWidth={2} />
                 {content.title}

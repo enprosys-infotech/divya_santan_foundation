@@ -48,6 +48,7 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
       {/* ── Left: Identity selector tabs ───────────────────────────────── */}
       <nav
         aria-label="Who can benefit — select your journey"
+        role="tablist"
         className="grid grid-cols-2 border-b border-border sm:grid-cols-3 lg:grid-cols-1 lg:w-[38%] lg:border-b-0 lg:border-r"
       >
         {journeys.map((j, idx) => {
@@ -62,10 +63,11 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
               role="tab"
               aria-selected={isActive}
               aria-controls="journey-panel"
+              tabIndex={isActive ? 0 : -1}
               onClick={() => selectJourney(j.id)}
               className={cn(
                 // base — stacked (icon above text) on mobile, side-by-side on desktop
-                "group relative flex cursor-pointer flex-col items-center gap-2 px-3 py-4 text-center transition-all duration-200 focus-visible:outline-2 focus-visible:outline-primary sm:flex-row sm:gap-4 sm:px-5 sm:text-left lg:min-w-0 lg:flex-row lg:px-7 lg:py-6 lg:text-left",
+                "group relative flex min-h-11 cursor-pointer flex-col items-center gap-2 px-3 py-4 text-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 sm:flex-row sm:gap-4 sm:px-5 sm:text-left lg:min-w-0 lg:flex-row lg:px-7 lg:py-6 lg:text-left",
                 // grid cell borders — right border for left column items, bottom for all but last row
                 idx % 2 === 0 && "border-r border-border sm:border-r-0 lg:border-r-0",
                 idx < journeys.length - 2 && "border-b border-border sm:border-b-0 lg:border-b-0",
@@ -199,7 +201,7 @@ export function WhoCanBenefitPanel({ journeys, icons }: WhoCanBenefitPanelProps)
         <div key={`cta-${animKey}`} className="journey-panel-cta relative z-10">
           <Link
             to={active.to}
-            className="group inline-flex items-center gap-2 text-sm font-medium text-primary transition-all duration-200 hover:gap-3"
+            className="group inline-flex min-h-11 items-center gap-2 text-sm font-medium text-primary transition-all duration-200 hover:gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
           >
             <span className="border-b border-primary/0 transition-all duration-200 group-hover:border-primary/60">
               {t.common.startLearning}

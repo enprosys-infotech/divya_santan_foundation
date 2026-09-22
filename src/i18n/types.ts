@@ -57,6 +57,13 @@ export interface ScientificRefCopy {
   year: string;
 }
 
+/** A book or supporting document in the Knowledge Centre resource library. */
+export interface ResourceCopy {
+  title: string;
+  body: string;
+  meta: string;
+}
+
 export interface ResearchTopicCopy {
   field: string;
   topic: string;
@@ -68,6 +75,16 @@ export interface TestimonialCopy {
   quote: string;
   name: string;
   role: string;
+}
+
+export interface CompletedEventCopy {
+  category: string;
+  title: string;
+  date: string;
+  location: string;
+  summary: string;
+  details: string;
+  photoAlts: string[];
 }
 
 export interface VideoCopy {
@@ -82,6 +99,16 @@ export interface InstaReelCopy {
   native: string;
   description: string;
   category: string;
+}
+
+export interface SuccessStoryCardContent {
+  name: string;
+  location: string;
+  category: string;
+  photo: string;
+  quote: string;
+  journey: string;
+  outcome: string;
 }
 
 export interface SynergyCopy {

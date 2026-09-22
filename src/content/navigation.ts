@@ -6,7 +6,6 @@
 export const NAV_ITEMS = [
   { kind: "link", id: "home", to: "/" },
   { kind: "link", id: "about", to: "/about" },
-  { kind: "link", id: "garbhSanskar", to: "/garbh-sanskar" },
   {
     kind: "mega",
     id: "explore",
@@ -49,9 +48,9 @@ export const FOOTER_COLUMNS = [
   {
     id: "learn",
     links: [
-      { id: "learnGarbhSanskar", to: "/learn" },
-      { id: "journeys", to: "/learn" },
-      { id: "askShree", to: "#ask-shree-widget" },
+      { id: "learnGarbhSanskar", to: "/knowledge" },
+      { id: "journeys", to: "/knowledge" },
+        { id: "askShree", to: "/" },
     ],
   },
   {
@@ -104,5 +103,10 @@ export const CONTACT_DETAILS = {
   email: "santanprakalp@gmail.com",
   phone: "+91 94257 93409",
   address: "2/1, R.S. Bhandari Marg, Veer Savarkar Chauraha (Janjeerwala), Indore (M.P.) 452001",
+  whatsapp: "https://wa.me/919425793409",
+  app: {
+    android: "https://play.google.com/store",
+    ios: "https://apps.apple.com",
+  },
   socialLinks: { facebook: "#", instagram: "#", youtube: "#" },
 } as const;

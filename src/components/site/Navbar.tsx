@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,22 +7,45 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { NAV_ITEMS } from "@/content/navigation";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
-import { useChatWidget } from "@/hooks/useChatWidget";
+import { useExternalAskShree } from "@/hooks/useExternalAskShree";
 
 export function Navbar() {
   const { t } = useI18n();
-  const { open: openChat } = useChatWidget();
+  const { open: openExternalAskShree } = useExternalAskShree();
   const [openKey, setOpenKey] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
   const navRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setMobileOpen(false);
     setOpenKey(null);
+    setMobileExpanded(null);
   }, [pathname]);
+
+  useLayoutEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    const syncNavbarHeight = () => {
+      document.documentElement.style.setProperty(
+        "--navbar-height",
+        `${header.getBoundingClientRect().height}px`,
+      );
+    };
+
+    syncNavbarHeight();
+    const observer = new ResizeObserver(syncNavbarHeight);
+    observer.observe(header);
+
+    return () => {
+      observer.disconnect();
+      document.documentElement.style.removeProperty("--navbar-height");
+    };
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -41,6 +64,7 @@ export function Navbar() {
 
   return (
     <header
+      ref={headerRef}
       className={cn(
         "sticky top-0 z-50 w-full border-b transition-all duration-500",
         scrolled
@@ -65,6 +89,7 @@ export function Navbar() {
                 <Link
                   key={item.id}
                   to={item.to}
+                    aria-current={active ? "page" : undefined}
                   className={cn(
                     "rounded-full px-3.5 py-2 text-[0.82rem] transition-colors duration-300",
                     active ? "text-secondary" : "text-ink/75 hover:text-secondary",
@@ -152,7 +177,7 @@ export function Navbar() {
             variant="outline"
             size="sm"
             className="hidden lg:inline-flex cursor-pointer"
-            onClick={openChat}
+            onClick={openExternalAskShree}
             aria-label="Open Ask Shree AI chat"
           >
             <Sparkles className="h-3.5 w-3.5" />
@@ -166,7 +191,8 @@ export function Navbar() {
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={t.nav.menu}
             aria-expanded={mobileOpen}
-            className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-border text-ink lg:hidden"
+            aria-controls="mobile-navigation"
+            className="inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full border border-border text-ink lg:hidden"
           >
             {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
@@ -174,7 +200,10 @@ export function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="animate-rise max-h-[80vh] overflow-y-auto border-t border-border bg-background px-4 pb-8 pt-3 lg:hidden">
+        <div
+          id="mobile-navigation"
+          className="animate-rise max-h-[80vh] overflow-y-auto border-t border-border bg-background px-4 pb-8 pt-3 lg:hidden"
+        >
           <nav className="flex flex-col" aria-label={t.common.mobileNavigation}>
             {NAV_ITEMS.map((item) => {
               if (item.kind === "link") {
@@ -182,7 +211,7 @@ export function Navbar() {
                   <Link
                     key={item.id}
                     to={item.to}
-                    className="border-b border-border/60 py-3 text-[0.95rem] text-ink"
+                    className="flex min-h-11 items-center border-b border-border/60 py-3 text-[0.95rem] text-ink"
                   >
                     {t.nav.links[item.id]}
                   </Link>
@@ -195,7 +224,7 @@ export function Navbar() {
                   <button
                     type="button"
                     onClick={() => setMobileExpanded(expanded ? null : item.id)}
-                    className="flex w-full items-center justify-between py-3 text-[0.95rem] text-ink"
+                    className="flex min-h-11 w-full items-center justify-between py-3 text-left text-[0.95rem] text-ink"
                   >
                     {t.nav.mega[item.id]}
                     <ChevronDown
@@ -216,7 +245,7 @@ export function Navbar() {
                             <Link
                               key={child.id}
                               to={child.to}
-                              className="block py-1.5 text-sm text-muted-foreground hover:text-secondary"
+                              className="flex min-h-11 items-center py-1.5 text-sm text-muted-foreground hover:text-secondary"
                             >
                               {t.nav.children[child.id].label}
                             </Link>
@@ -230,8 +259,8 @@ export function Navbar() {
             })}
             <button
               type="button"
-              onClick={() => { setMobileOpen(false); openChat(); }}
-              className="cursor-pointer border-b border-border/60 py-3 text-left text-[0.95rem] text-ink flex items-center gap-2 w-full"
+              onClick={() => { setMobileOpen(false); openExternalAskShree(); }}
+              className="flex min-h-11 w-full cursor-pointer items-center gap-2 border-b border-border/60 py-3 text-left text-[0.95rem] text-ink"
             >
               <Sparkles className="h-4 w-4 text-primary" />
               {t.cta.askShree}

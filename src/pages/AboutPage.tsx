@@ -53,15 +53,24 @@ export default function AboutPage() {
       <PageHeader {...copy.header} />
 
       {/* Tabs Navigation */}
-      <div className="sticky top-[58px] sm:top-[68px] lg:top-[74px] z-40 w-full border-b border-border bg-background/80 py-4 backdrop-blur-md">
+      <div
+        className="sticky top-[var(--navbar-height)] z-40 w-full border-b border-border bg-background/80 py-4 backdrop-blur-md"
+        role="tablist"
+        aria-label="About Divya Santan Foundation"
+      >
         <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-2 px-5">
           {(Object.keys(tabs) as AboutTab[]).map((tab) => (
             <button
               key={tab}
               type="button"
               onClick={() => handleTabClick(tab)}
+              id={`about-tab-${tab}`}
+              role="tab"
+              aria-selected={activeTab === tab}
+              aria-controls="about-tabpanel"
+              tabIndex={activeTab === tab ? 0 : -1}
               className={cn(
-                "cursor-pointer rounded-full px-5 py-2.5 text-sm font-medium transition-all",
+                "min-h-11 cursor-pointer rounded-full px-5 py-2.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
                 activeTab === tab
                   ? "bg-secondary text-secondary-foreground shadow"
                   : "border border-border bg-background text-muted-foreground hover:border-secondary/40 hover:text-ink",
@@ -73,7 +82,13 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div ref={contentRef} className="relative overflow-hidden bg-background min-h-[50vh]">
+      <div
+        ref={contentRef}
+        id="about-tabpanel"
+        role="tabpanel"
+        aria-labelledby={`about-tab-${activeTab}`}
+        className="relative min-h-[50vh] overflow-hidden bg-background"
+      >
         {/* Subtle decorative background SVGs */}
         <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.03]">
           <Leaf className="absolute -left-12 top-20 h-64 w-64 text-green" />
@@ -283,26 +298,26 @@ export default function AboutPage() {
                   subtitle={aboutData.labels.patronsSubtitle}
                   eyebrowVariant="gold"
                 />
-                <div className="mt-10 grid gap-5 sm:grid-cols-3">
+                <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                   {aboutData.leadership.patrons.map(({ name, role, img, contributions }) => (
-                    <article key={name} className="surface-card surface-card-hover flex gap-4 p-5">
-                      <div className="relative shrink-0">
-                        <span
-                          aria-hidden
-                          className="pointer-events-none absolute -inset-1 rounded-full bg-gold/12 blur-md"
-                        />
+                    <article
+                      key={name}
+                      className="surface-card surface-card-hover flex min-h-48 flex-col overflow-hidden p-0 sm:flex-row"
+                    >
+                      <div className="relative h-64 shrink-0 bg-muted/20 sm:h-auto sm:w-40">
                         <img
                           src={img}
                           alt={`Portrait of ${name}`}
                           className={cn(
-                            "relative size-16 rounded-2xl object-cover ring-2 ring-gold/30",
+                            "absolute inset-0 h-full w-full object-top",
+                            img === "hitesh-sir.png" ? "object-contain" : "object-cover",
                           )}
-                          style={{ boxShadow: "var(--shadow-lift)" }}
                           loading="lazy"
                         />
+                        <div className="absolute left-0 top-0 h-1 w-full bg-gold/60 sm:h-full sm:w-1" />
                       </div>
-                      <div className="min-w-0 flex flex-col justify-center">
-                        <h3 className="text-sm font-medium leading-snug text-ink">{name}</h3>
+                      <div className="flex min-w-0 flex-1 flex-col justify-center p-5">
+                        <h3 className="text-base font-medium leading-snug text-ink">{name}</h3>
                         <p className="mt-0.5 text-[0.62rem] uppercase tracking-[0.18em] text-gold-foreground">
                           {role}
                         </p>
@@ -326,7 +341,7 @@ export default function AboutPage() {
                       key={name}
                       className="surface-card surface-card-hover flex flex-col sm:flex-row overflow-hidden p-0 h-full"
                     >
-                      <div className="relative h-48 sm:h-full sm:w-40 shrink-0 bg-muted/20">
+                      <div className="relative h-64 sm:h-full sm:w-40 shrink-0 bg-muted/20">
                         <img
                           src={img}
                           alt={`Portrait of ${name}`}
@@ -370,15 +385,18 @@ export default function AboutPage() {
                     {aboutData.leadership.advisors.map(({ name, role, img }) => (
                       <article
                         key={name}
-                        className="surface-card surface-card-hover flex gap-4 border-l-2 border-l-primary/40 p-5"
+                        className="surface-card surface-card-hover flex min-h-48 flex-col overflow-hidden border-l-2 border-l-primary/40 p-0 sm:flex-row"
                       >
-                        <img
-                          src={img}
-                          alt={`Portrait of ${name}`}
-                          className="size-16 shrink-0 rounded-2xl object-cover ring-1 ring-primary/15"
-                          loading="lazy"
-                        />
-                        <div className="min-w-0 flex flex-col justify-center">
+                        <div className="relative h-64 shrink-0 bg-muted/20 sm:h-auto sm:w-40">
+                          <img
+                            src={img}
+                            alt={`Portrait of ${name}`}
+                            className="absolute inset-0 h-full w-full object-cover object-top"
+                            loading="lazy"
+                          />
+                          <div className="absolute left-0 top-0 h-1 w-full bg-primary/60 sm:h-full sm:w-1" />
+                        </div>
+                        <div className="flex min-w-0 flex-1 flex-col justify-center p-5">
                           <h3 className="text-base font-medium text-ink">{name}</h3>
                           <p className="text-[0.62rem] uppercase tracking-[0.18em] text-primary">
                             {role}
@@ -420,7 +438,7 @@ export default function AboutPage() {
         <CTASection
           title={copy.cta.title}
           body={copy.cta.body}
-          primary={{ to: "/learn", label: copy.cta.primary }}
+          primary={{ to: "/knowledge", label: copy.cta.primary }}
           secondary={{ to: "/join", label: copy.cta.secondary }}
         />
       </Section>

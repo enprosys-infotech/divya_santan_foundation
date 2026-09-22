@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, type LucideIcon } from "lucide-react";
+import { ArrowRight, ExternalLink, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SPIRITUAL_ICONS, type SpiritualIconKey } from "@/content/spiritual-icons";
 import { cn } from "@/lib/utils";
@@ -14,6 +14,17 @@ export { MobileAppCTA } from "./MobileAppCTA";
 
 type LinkTo = { to: string; label: string };
 
+export function CardLinkIndicator() {
+  return (
+    <span
+      aria-hidden="true"
+      className="pointer-events-none absolute right-2.5 top-2.5 inline-flex h-6 w-6 items-center justify-center rounded-md border border-primary/20 bg-primary/5 text-primary transition-colors group-hover:border-primary/40 group-hover:bg-primary/10"
+    >
+      <ExternalLink className="h-3 w-3" strokeWidth={1.8} />
+    </span>
+  );
+}
+
 function CardShell({
   children,
   className,
@@ -23,13 +34,18 @@ function CardShell({
   className?: string | undefined;
   to?: string | undefined;
 }) {
+  const interactiveClasses = to
+    ? "interactive-surface group relative cursor-pointer pr-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-4"
+    : "";
   const cls = cn(
-    "surface-card surface-card-hover block h-full p-6 sm:p-7 active:scale-[0.98] transition-all duration-200 touch-manipulation",
+    "surface-card block h-full p-6 sm:p-7 touch-manipulation",
+    interactiveClasses,
     className,
   );
 
   return to ? (
     <Link to={to} className={cls}>
+      <CardLinkIndicator />
       {children}
     </Link>
   ) : (
