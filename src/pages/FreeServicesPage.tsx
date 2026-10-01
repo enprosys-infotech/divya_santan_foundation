@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CTASection } from "@/components/site/Cards";
+import { SmartImage } from "@/components/site/SmartImage";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Section, SectionHeading } from "@/components/site/SectionHeading";
 import { Button } from "@/components/ui/button";
@@ -244,7 +245,7 @@ export default function FreeServicesPage() {
                     <div className="flex justify-center">
                       <div className="relative">
                         <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-primary/20 to-secondary/10 blur-xl" />
-                        <img
+                        <SmartImage
                           src="/dsf-qr-whatsapp.png "
                           alt="Divya Santan Foundation QR Code – WhatsApp करें हमारा QR कोड Scan करें"
                           className="relative max-h-[480px] w-auto rounded-3xl shadow-[var(--shadow-lift)]"

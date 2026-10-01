@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Clock, Play, X } from "lucide-react";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
+import { SmartImage } from "@/components/site/SmartImage";
 
 export interface InstaReelCardProps {
   reelId: string;
@@ -54,7 +55,7 @@ export function InstaReelCard({
             className="group/btn relative flex h-full w-full cursor-pointer items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-inset"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-pink-600/20 via-purple-600/30 to-orange-600/20" />
-            <img
+            <SmartImage
               src={INSTAGRAM_THUMBNAIL_FALLBACK}
               alt={title}
               className="h-full w-full object-cover opacity-85 transition-all duration-500 group-hover/btn:scale-105 group-hover/btn:opacity-95"

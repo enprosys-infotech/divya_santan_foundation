@@ -25,6 +25,11 @@ export interface CourseCopy extends AccentedCopy {
   format: string;
   duration: string;
   level: string;
+  objective?: string;
+  whatYouLearn?: string[];
+  whoCanJoin?: string[];
+  features?: { label: string; detail: string }[];
+  ctaLabel?: string;
 }
 
 export interface ArticleCopy {
@@ -40,6 +45,10 @@ export interface GuideStageCopy {
   subtitle: string;
   body: string;
   steps: string[];
+  /** Optional DOs list — used for the Dos &amp; Don'ts card */
+  dos?: string[];
+  /** Optional DON'Ts list — used for the Dos &amp; Don'ts card */
+  donts?: string[];
 }
 
 /** A question-and-answer pair in the Q\u0026A section. */

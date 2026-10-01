@@ -14,6 +14,7 @@ import {
   Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SmartImage } from "@/components/site/SmartImage";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { SYNERGY_PILLARS, type SynergyPillarId } from "@/content/registry";
 import { getIconByPillarId, SPIRITUAL_ICONS } from "@/content/spiritual-icons";
@@ -64,12 +65,12 @@ export function AncientScienceBridge() {
 
   return (
     <section className="mandala-veil relative overflow-hidden bg-warm py-16 sm:py-24">
-      <img
+      <SmartImage
         src={SPIRITUAL_ICONS.om.src}
         alt={SPIRITUAL_ICONS.om.alt}
         className="pointer-events-none absolute -right-20 -top-20 select-none h-80 w-80 leading-none text-primary/4 blur-[1px] opacity-20"
       />
-      <img
+      <SmartImage
         src={SPIRITUAL_ICONS.lotus.src}
         alt={SPIRITUAL_ICONS.lotus.alt}
         className="pointer-events-none absolute -bottom-20 -left-20 select-none h-80 w-80 leading-none text-gold/6 blur-[1px] opacity-25"
@@ -113,7 +114,7 @@ export function AncientScienceBridge() {
                 )}
               >
                 {iconData && (
-                  <img src={iconData.src} alt={iconData.alt} className="h-4 w-4 object-contain" />
+                  <SmartImage src={iconData.src} alt={iconData.alt} className="h-4 w-4 object-contain" />
                 )}
                 <span>{pillarCopy(pillar.id).category}</span>
                 {selectedIndex === index && <Sparkles className="h-3 w-3 text-gold" />}
@@ -127,7 +128,7 @@ export function AncientScienceBridge() {
             <div className="flex items-center gap-3">
               {getIconByPillarId(selectedPillar.id) && (
                 <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary/8 shadow-xs overflow-hidden">
-                  <img
+                  <SmartImage
                     src={getIconByPillarId(selectedPillar.id)!.src}
                     alt={getIconByPillarId(selectedPillar.id)!.alt}
                     className="h-full w-full object-cover"

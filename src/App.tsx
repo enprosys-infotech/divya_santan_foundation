@@ -4,6 +4,8 @@ import { RootLayout } from "./components/layout/RootLayout";
 // Pages
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
+import BlogPage from "./pages/BlogPage";
+import BlogDetailPage from "./pages/BlogDetailPage";
 import ContactPage from "./pages/ContactPage";
 import CoursesPage from "./pages/CoursesPage";
 import JoinPage from "./pages/JoinMissionPage";
@@ -25,7 +27,7 @@ export default function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/services" element={<ServicesPage />} />
-          <Route path="/free-services" element={<ServicesPage />} />
+          <Route path="/available-services" element={<ServicesPage />} />
           <Route path="/join" element={<JoinPage />} />
           <Route path={MISSION_ROUTES.volunteer} element={<JoinPage pageId="volunteer" />} />
           <Route
@@ -41,6 +43,8 @@ export default function App() {
             path={MISSION_ROUTES.academicResearcher}
             element={<JoinPage pageId="academicResearcher" />}
           />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogDetailPage />} />
           <Route path="/knowledge" element={<KnowledgePage />} />
           <Route path="/research" element={<ResearchPage />} />
           <Route

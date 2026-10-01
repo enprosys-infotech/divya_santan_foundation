@@ -494,7 +494,7 @@ Knowledge Centre
 
 Search/filter UI with demo articles.
 
-/free-services
+/available-services
 
 Free Services
 

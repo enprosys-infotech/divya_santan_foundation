@@ -53,7 +53,7 @@ function ServiceTabRail({
   return (
     <nav
       aria-label="Services available"
-      className="border-y border-border bg-background/90 py-3 backdrop-blur-sm"
+      className="sticky top-[var(--navbar-height)] z-40 border-y border-border bg-background/90 py-3 backdrop-blur-sm"
     >
       <div
         className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-5 sm:px-8"
@@ -87,6 +87,10 @@ function ServiceTabRail({
             <span className="sm:hidden">{copy.tabs[id].shortLabel}</span>
           </button>
         ))}
+      </div>
+      <div className="mx-auto flex max-w-6xl items-center justify-end gap-1 px-5 pt-1 text-xs text-muted-foreground sm:hidden">
+        <span>{copy.tabScrollHint}</span>
+        <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
       </div>
     </nav>
   );

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ExternalLink, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SPIRITUAL_ICONS, type SpiritualIconKey } from "@/content/spiritual-icons";
+import { SmartImage } from "@/components/site/SmartImage";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/i18n";
 
@@ -93,7 +94,7 @@ export function FeatureCard({
             iconClasses[iconVariant || "primary"],
           )}
         >
-          <img
+          <SmartImage
             src={spiritualIconData.src}
             alt={spiritualIconData.alt}
             className="h-full w-full object-contain"

@@ -8,6 +8,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { Modal } from "@/components/ui/modal";
+import { SmartImage } from "@/components/site/SmartImage";
 import { useI18n } from "@/i18n";
 
 interface CompletedEventCardProps {
@@ -73,7 +74,7 @@ export function CompletedEventCard({
           className="group block min-h-11 w-full cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-inset"
         >
           <div className="relative aspect-[1.35/1] overflow-hidden bg-secondary/10">
-            <img
+            <SmartImage
               src={photos[0]}
               alt={photoAlts[0]}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -121,7 +122,7 @@ export function CompletedEventCard({
         <div className="grid gap-7 lg:grid-cols-[1.12fr_0.88fr] lg:items-start">
           <div className="relative aspect-[1.35/1] overflow-hidden rounded-2xl bg-secondary/10">
             {photos.map((photo, index) => (
-              <img
+              <SmartImage
                 key={photo}
                 src={photo}
                 alt={photoAlts[index]}

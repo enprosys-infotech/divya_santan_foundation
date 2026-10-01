@@ -19,6 +19,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { SmartImage } from "@/components/site/SmartImage";
 import { FeatureCard } from "@/components/site/Cards";
 import { CompletedEventCard } from "@/components/site/CompletedEventCard";
 import { TestimonialCard } from "@/components/site/Cards";
@@ -116,37 +117,7 @@ const RESEARCH_CONTACT_METHODS = [
   { id: "whatsapp", icon: MessageCircle, href: CONTACT_DETAILS.whatsapp },
 ] as const;
 
-type MissionTab = "mission" | "events" | "testimonials";
 
-const MISSION_TABS: Array<{
-  id: MissionTab;
-  icon: LucideIcon;
-  accent: string;
-  bg: string;
-  text: string;
-}> = [
-  {
-    id: "mission",
-    icon: HandHeart,
-    accent: "var(--color-secondary)",
-    bg: "bg-secondary/10",
-    text: "text-secondary",
-  },
-  {
-    id: "events",
-    icon: CalendarDays,
-    accent: "var(--color-primary)",
-    bg: "bg-primary/8",
-    text: "text-primary",
-  },
-  {
-    id: "testimonials",
-    icon: MessageCircle,
-    accent: "var(--color-gold)",
-    bg: "bg-gold/10",
-    text: "text-gold-foreground",
-  },
-];
 
 const EVENT_FORMATS = [
   { id: "workshops", icon: Presentation },
@@ -187,6 +158,41 @@ function MissionLandingPage({ copy, content }: PageProps) {
 
 function VolunteerPage({ copy, content }: PageProps) {
   const page = copy.pages.volunteer;
+  const [hoveredVolunteer, setHoveredVolunteer] = useState<number | null>(null);
+
+  // Volunteer photos configuration with positions and sizes
+  const volunteers = [
+    { 
+      img: '/volunteer/WhatsApp Image 2026-09-23 at 2.07.23 PM.jpeg',
+      name: 'Volunteer',
+      size: 'large',
+      position: { top: '5%', left: '8%' }
+    },
+    { 
+      img: '/volunteer/WhatsApp Image 2026-09-23 at 2.07.42 PM.jpeg',
+      name: 'Volunteer',
+      size: 'medium',
+      position: { top: '12%', right: '12%' }
+    },
+    { 
+      img: '/volunteer/WhatsApp Image 2026-09-23 at 2.07.43 PM.jpeg',
+      name: 'Volunteer',
+      size: 'small',
+      position: { top: '45%', left: '5%' }
+    },
+    { 
+      img: '/volunteer/WhatsApp Image 2026-09-23 at 2.07.44 PM.jpeg',
+      name: 'Volunteer',
+      size: 'medium',
+      position: { bottom: '8%', left: '15%' }
+    },
+    { 
+      img: '/volunteer/WhatsApp Image 2026-09-23 at 2.07.45 PM.jpeg',
+      name: 'Volunteer',
+      size: 'large',
+      position: { bottom: '15%', right: '8%' }
+    },
+  ];
 
   return (
     <>
@@ -203,16 +209,148 @@ function VolunteerPage({ copy, content }: PageProps) {
             <p className="mt-7 max-w-2xl text-base-readable text-muted-foreground">{page.intro}</p>
           </div>
 
-          <div className="relative mx-auto flex aspect-square w-full max-w-sm items-center justify-center lg:justify-self-end">
+          {/* Desktop: Orbital Photo Gallery */}
+          <div className="relative mx-auto hidden aspect-square w-full max-w-sm items-center justify-center lg:flex lg:justify-self-end">
+            {/* Background mandala with slow rotation */}
+            <div className="absolute inset-0 animate-[spin_60s_linear_infinite] opacity-5">
+              <svg viewBox="0 0 200 200" className="h-full w-full text-secondary">
+                <circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                <circle cx="100" cy="100" r="50" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                {[...Array(8)].map((_, i) => (
+                  <line
+                    key={i}
+                    x1="100"
+                    y1="100"
+                    x2={100 + Math.cos((i * Math.PI) / 4) * 90}
+                    y2={100 + Math.sin((i * Math.PI) / 4) * 90}
+                    stroke="currentColor"
+                    strokeWidth="0.5"
+                  />
+                ))}
+              </svg>
+            </div>
+
+            {/* Orbital rings */}
             <div className="absolute inset-5 rounded-full border border-primary/25" />
             <div className="absolute inset-12 rounded-full border border-secondary/20" />
-            <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-secondary text-secondary-foreground shadow-(--shadow-lift) sm:h-52 sm:w-52">
-              <HandHeart className="h-20 w-20 text-primary" strokeWidth={1.2} />
+
+            {/* Center heart icon - smaller, subtle */}
+            <div className="relative z-10 flex h-24 w-24 items-center justify-center rounded-full bg-secondary/20 text-secondary backdrop-blur-sm">
+              <HandHeart className="h-10 w-10 text-primary" strokeWidth={1.2} />
             </div>
-            <div className="absolute right-0 top-8 h-4 w-4 rounded-full bg-primary" />
-            <div className="absolute bottom-12 left-5 h-3 w-3 rounded-full bg-secondary" />
+
+            {/* Floating volunteer photos in orbital positions */}
+            {volunteers.map((volunteer, index) => {
+              const sizeClasses = {
+                small: 'h-16 w-16 sm:h-20 sm:w-20',
+                medium: 'h-20 w-20 sm:h-24 sm:w-24',
+                large: 'h-24 w-24 sm:h-28 sm:w-28'
+              };
+              const isHovered = hoveredVolunteer === index;
+              
+              return (
+                <div
+                  key={index}
+                  className="absolute cursor-pointer transition-all duration-300"
+                  style={{
+                    ...volunteer.position,
+                    transform: isHovered ? 'scale(1.15)' : 'scale(1)',
+                    zIndex: isHovered ? 20 : 10,
+                    animation: `float ${3 + index * 0.5}s ease-in-out infinite`,
+                    animationDelay: `${index * 0.3}s`
+                  }}
+                  onMouseEnter={() => setHoveredVolunteer(index)}
+                  onMouseLeave={() => setHoveredVolunteer(null)}
+                >
+                  <div
+                    className={cn(
+                      sizeClasses[volunteer.size as keyof typeof sizeClasses],
+                      'overflow-hidden rounded-full border-2 border-primary/40 bg-warm shadow-lg transition-all duration-300',
+                      isHovered && 'border-primary shadow-2xl'
+                    )}
+                  >
+                    <SmartImage
+                      src={volunteer.img}
+                      alt={volunteer.name}
+                      className={cn(
+                        'h-full w-full object-cover transition-all duration-300',
+                        !isHovered && 'grayscale-[30%] sepia-[20%]'
+                      )}
+                    />
+                  </div>
+                  {isHovered && (
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground shadow-lg">
+                      {volunteer.name}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            {/* Accent dots */}
+            <div className="absolute right-0 top-8 h-4 w-4 animate-pulse rounded-full bg-primary" />
+            <div className="absolute bottom-12 left-5 h-3 w-3 animate-pulse rounded-full bg-secondary" style={{ animationDelay: '0.5s' }} />
+          </div>
+
+          {/* Mobile: Masonry Grid */}
+          <div className="grid grid-cols-2 gap-3 lg:hidden">
+            {volunteers.map((volunteer, index) => (
+              <div
+                key={index}
+                className={cn(
+                  'group relative overflow-hidden rounded-2xl border-2 border-primary/30 bg-warm shadow-md transition-all duration-300 hover:border-primary hover:shadow-xl',
+                  index === 0 && 'col-span-2 aspect-[16/10]',
+                  index === 4 && 'col-span-2 aspect-[16/10]',
+                  (index === 1 || index === 2 || index === 3) && 'aspect-square'
+                )}
+                style={{
+                  animation: `fadeInUp 0.6s ease-out forwards`,
+                  animationDelay: `${index * 0.1}s`,
+                  opacity: 0
+                }}
+              >
+                <SmartImage
+                  src={volunteer.img}
+                  alt={volunteer.name}
+                  className="h-full w-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:grayscale-0 group-hover:sepia-0 grayscale-[30%] sepia-[20%]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute bottom-0 left-0 right-0 translate-y-full p-3 transition-transform duration-300 group-hover:translate-y-0">
+                  <p className="text-sm font-medium text-secondary-foreground">{volunteer.name}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
+
+        {/* Custom animations */}
+        <style>{`
+          @keyframes float {
+            0%, 100% {
+              transform: translateY(0px) translateX(0px);
+            }
+            25% {
+              transform: translateY(-8px) translateX(4px);
+            }
+            50% {
+              transform: translateY(-4px) translateX(-4px);
+            }
+            75% {
+              transform: translateY(-12px) translateX(2px);
+            }
+          }
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}</style>
       </section>
 
       <Section className="py-16 sm:py-20">
@@ -294,11 +432,25 @@ function VolunteerPage({ copy, content }: PageProps) {
 }
 function InstitutionalPage({ copy }: PageProps) {
   const page = copy.pages.institutionalCollaboration;
+  const [activeImage, setActiveImage] = useState<number>(0);
+
+  const collaborations = [
+    { 
+      img: '/Institutional Collab/WhatsApp Image 2026-09-23 at 2.28.50 PM.jpeg',
+      title: 'Collaborative Excellence',
+      subtitle: 'Building Bridges'
+    },
+    { 
+      img: '/Institutional Collab/WhatsApp Image 2026-09-23 at 2.28.52 PM.jpeg',
+      title: 'Institutional Partnership',
+      subtitle: 'Shared Vision'
+    },
+  ];
 
   return (
     <>
       <section className="mandala-veil relative overflow-hidden border-b border-border bg-warm px-5 pb-16 pt-16 sm:px-8 sm:pb-24 sm:pt-20">
-        <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+        <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="animate-rise">
             <p className="text-[0.68rem] uppercase tracking-[0.28em] text-secondary">{page.eyebrow}</p>
             <h1 className="mt-5 max-w-3xl text-4xl leading-[1.08] text-ink sm:text-5xl lg:text-[4.2rem]">
@@ -307,16 +459,194 @@ function InstitutionalPage({ copy }: PageProps) {
             <div className="mt-6 h-1 w-16 bg-primary" />
             <p className="mt-6 max-w-2xl text-base-readable text-muted-foreground">{page.intro}</p>
           </div>
-          <div className="relative mx-auto flex aspect-square w-full max-w-sm items-center justify-center lg:justify-self-end">
-            <div className="absolute inset-5 rounded-full border border-primary/25" />
-            <div className="absolute inset-12 rounded-full border border-secondary/20" />
-            <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-secondary text-secondary-foreground shadow-(--shadow-lift) sm:h-52 sm:w-52">
-              <Building2 className="h-20 w-20 text-primary" strokeWidth={1.2} />
+
+          {/* Desktop: Split Narrative - Layered Cards */}
+          <div className="relative mx-auto hidden aspect-[4/3] w-full max-w-lg lg:flex lg:justify-self-end">
+            {/* Background geometric elements */}
+            <div className="absolute -left-6 -top-6 h-24 w-24 border-2 border-primary/20" />
+            <div className="absolute -bottom-6 -right-6 h-32 w-32 border-2 border-secondary/20" />
+            
+            {/* Animated connection line */}
+            <svg className="absolute left-1/4 top-1/2 h-3/4 w-3/4 -translate-y-1/2" viewBox="0 0 100 100">
+              <path
+                d="M 10 30 Q 50 10, 90 50"
+                fill="none"
+                stroke="var(--color-primary)"
+                strokeWidth="0.5"
+                strokeDasharray="2,3"
+                className="animate-pulse"
+                opacity="0.3"
+              />
+            </svg>
+
+            {/* First Image - Larger, Background */}
+            <div
+              className={cn(
+                'absolute left-0 top-6 w-[65%] cursor-pointer transition-all duration-700',
+                activeImage === 0 ? 'z-20 scale-105' : 'z-10 scale-100'
+              )}
+              onMouseEnter={() => setActiveImage(0)}
+            >
+              <div className="group relative overflow-hidden rounded-2xl shadow-2xl">
+                {/* Glowing border effect */}
+                <div
+                  className={cn(
+                    'absolute -inset-[2px] rounded-2xl bg-gradient-to-br from-primary/60 via-secondary/40 to-primary/60 transition-opacity duration-500',
+                    activeImage === 0 ? 'opacity-100 animate-pulse' : 'opacity-0'
+                  )}
+                  style={{ animationDuration: '3s' }}
+                />
+                
+                <div className="relative overflow-hidden rounded-2xl border-2 border-primary/30">
+                  <SmartImage
+                    src={collaborations[0].img}
+                    alt={collaborations[0].title}
+                    className={cn(
+                      'aspect-[4/3] w-full object-cover transition-all duration-700',
+                      activeImage === 0 ? 'scale-100 grayscale-0' : 'scale-95 grayscale-[50%]'
+                    )}
+                  />
+                  
+                  {/* Overlay with info */}
+                  <div className={cn(
+                    'absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent transition-opacity duration-500',
+                    activeImage === 0 ? 'opacity-100' : 'opacity-0'
+                  )}>
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <div className="text-[0.65rem] uppercase tracking-[0.24em] text-primary font-semibold">
+                        {collaborations[0].subtitle}
+                      </div>
+                      <div className="mt-1 text-lg font-medium text-secondary-foreground">
+                        {collaborations[0].title}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Number badge */}
+                  <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-lg bg-secondary/90 backdrop-blur-sm">
+                    <span className="text-sm font-bold text-primary">01</span>
+                  </div>
+                </div>
+
+                {/* Corner frame accents */}
+                <div className={cn(
+                  'absolute -left-2 -top-2 h-8 w-8 border-l-2 border-t-2 transition-all duration-500',
+                  activeImage === 0 ? 'border-primary' : 'border-primary/30'
+                )} />
+                <div className={cn(
+                  'absolute -bottom-2 -left-2 h-8 w-8 border-b-2 border-l-2 transition-all duration-500',
+                  activeImage === 0 ? 'border-primary' : 'border-primary/30'
+                )} />
+              </div>
             </div>
-            <div className="absolute right-0 top-8 h-4 w-4 rounded-full bg-primary" />
-            <div className="absolute bottom-12 left-5 h-3 w-3 rounded-full bg-secondary" />
+
+            {/* Second Image - Overlapping, Foreground */}
+            <div
+              className={cn(
+                'absolute bottom-0 right-0 w-[65%] cursor-pointer transition-all duration-700',
+                activeImage === 1 ? 'z-20 scale-105' : 'z-10 scale-100'
+              )}
+              onMouseEnter={() => setActiveImage(1)}
+            >
+              <div className="group relative overflow-hidden rounded-2xl shadow-2xl">
+                {/* Glowing border effect */}
+                <div
+                  className={cn(
+                    'absolute -inset-[2px] rounded-2xl bg-gradient-to-br from-secondary/60 via-primary/40 to-secondary/60 transition-opacity duration-500',
+                    activeImage === 1 ? 'opacity-100 animate-pulse' : 'opacity-0'
+                  )}
+                  style={{ animationDuration: '3s' }}
+                />
+                
+                <div className="relative overflow-hidden rounded-2xl border-2 border-secondary/30">
+                  <SmartImage
+                    src={collaborations[1].img}
+                    alt={collaborations[1].title}
+                    className={cn(
+                      'aspect-[4/3] w-full object-cover transition-all duration-700',
+                      activeImage === 1 ? 'scale-100 grayscale-0' : 'scale-95 grayscale-[50%]'
+                    )}
+                  />
+                  
+                  {/* Overlay with info */}
+                  <div className={cn(
+                    'absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent transition-opacity duration-500',
+                    activeImage === 1 ? 'opacity-100' : 'opacity-0'
+                  )}>
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <div className="text-[0.65rem] uppercase tracking-[0.24em] text-primary font-semibold">
+                        {collaborations[1].subtitle}
+                      </div>
+                      <div className="mt-1 text-lg font-medium text-secondary-foreground">
+                        {collaborations[1].title}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Number badge */}
+                  <div className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-lg bg-secondary/90 backdrop-blur-sm">
+                    <span className="text-sm font-bold text-primary">02</span>
+                  </div>
+                </div>
+
+                {/* Corner frame accents */}
+                <div className={cn(
+                  'absolute -right-2 -top-2 h-8 w-8 border-r-2 border-t-2 transition-all duration-500',
+                  activeImage === 1 ? 'border-secondary' : 'border-secondary/30'
+                )} />
+                <div className={cn(
+                  'absolute -bottom-2 -right-2 h-8 w-8 border-b-2 border-r-2 transition-all duration-500',
+                  activeImage === 1 ? 'border-secondary' : 'border-secondary/30'
+                )} />
+              </div>
+            </div>
+
+            {/* Central connection point indicator */}
+            {/* <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
+              <div className="relative flex h-12 w-12 items-center justify-center">
+                <div className="absolute inset-0 animate-ping rounded-full bg-primary/40" style={{ animationDuration: '2s' }} />
+                <div className="relative rounded-full bg-primary p-2">
+                  <Building2 className="h-5 w-5 text-secondary-foreground" strokeWidth={2} />
+                </div>
+              </div>
+            </div> */}
+
+            {/* Floating accent elements */}
+            <div className="absolute right-8 top-4 h-3 w-3 animate-pulse rounded-full bg-primary" style={{ animationDelay: '0s' }} />
+            <div className="absolute bottom-8 left-8 h-2 w-2 animate-pulse rounded-full bg-secondary" style={{ animationDelay: '1s' }} />
+          </div>
+
+          {/* Mobile: Clean Simple Cards */}
+          <div className="grid gap-6 lg:hidden">
+            {collaborations.map((collab, index) => (
+              <div
+                key={index}
+                className="relative overflow-hidden rounded-2xl"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border-2 border-primary/30 bg-card shadow-lg">
+                  <SmartImage
+                    src={collab.img}
+                    alt={collab.title}
+                    className="h-full w-full object-cover"
+                  />
+                  
+                  {/* Minimal gradient overlay - only at bottom */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-secondary/70 via-secondary/30 to-transparent">
+                    <div className="p-5">
+                      <div className="text-[0.65rem] uppercase tracking-[0.24em] text-primary font-semibold">
+                        {collab.subtitle}
+                      </div>
+                      <div className="mt-2 text-xl font-medium text-secondary-foreground">
+                        {collab.title}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
+
       </section>
 
       <Section>
@@ -356,6 +686,176 @@ function InstitutionalPage({ copy }: PageProps) {
         </div>
       </section>
 
+      {/* ── DPES School Events Gallery ──────────────────────────────────── */}
+      <section className="border-y border-border bg-warm px-5 py-16 sm:px-8 sm:py-20">
+        <div className="mx-auto w-full max-w-6xl">
+
+          {/* Header */}
+          <div className="mb-10 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div>
+              <p className="text-[0.65rem] uppercase tracking-[0.32em] text-secondary">Partner Institution</p>
+              <h2 className="mt-3 text-2xl font-semibold leading-tight text-ink sm:text-3xl lg:text-4xl">
+                DPES School — Events &amp; Outreach
+              </h2>
+              <div className="mt-3 h-[3px] w-10 rounded-full bg-primary" />
+              <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground">
+                A curated glimpse into the collaborative programmes, cultural events, and awareness
+                drives conducted through our partnership with DPES School.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 rounded-2xl border border-secondary/20 bg-secondary/8 px-5 py-3 lg:self-end">
+              <Building2 className="h-4 w-4 shrink-0 text-secondary" strokeWidth={1.6} />
+              <span className="text-xs font-medium text-secondary/80">5 Featured Moments</span>
+            </div>
+          </div>
+
+          {/* Bento mosaic — Desktop */}
+          <div className="hidden lg:grid lg:grid-cols-3 lg:grid-rows-[280px_280px] lg:gap-3">
+
+            {/* [0] — Hero tile: col-span-1 row-span-2 (tall left column) */}
+            <div className="group relative col-span-1 row-span-2 overflow-hidden rounded-2xl border border-border bg-card shadow-md">
+              <SmartImage
+                src="/Institutional Collab/DPES-1.png"
+                alt="DPES School Event — 1"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+              {/* Numbered badge */}
+              <div className="absolute left-4 top-4 flex h-8 w-8 items-center justify-center rounded-lg bg-secondary/90 backdrop-blur-sm">
+                <span className="text-xs font-bold text-primary">01</span>
+              </div>
+              {/* Corner accents */}
+              <div className="absolute left-3 top-3 h-6 w-6 border-l-2 border-t-2 border-primary/60 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute bottom-3 right-3 h-6 w-6 border-b-2 border-r-2 border-primary/60 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              {/* Label */}
+              <div className="absolute inset-x-0 bottom-0 translate-y-2 p-5 opacity-0 transition-all duration-400 group-hover:translate-y-0 group-hover:opacity-100">
+                <p className="text-[0.6rem] uppercase tracking-[0.24em] text-primary/80">DPES School</p>
+                <p className="mt-1 text-sm font-semibold text-white">School Event — I</p>
+              </div>
+            </div>
+
+            {/* [1] — Top middle */}
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-md">
+              <SmartImage
+                src="/Institutional Collab/DPES-2.png"
+                alt="DPES School Event — 2"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-108"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute left-3 top-3 flex h-7 w-7 items-center justify-center rounded-md bg-secondary/85 backdrop-blur-sm">
+                <span className="text-[0.65rem] font-bold text-primary">02</span>
+              </div>
+              <div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-400 group-hover:translate-y-0">
+                <p className="text-xs font-semibold text-white">School Event — II</p>
+              </div>
+            </div>
+
+            {/* [2] — Top right */}
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-md">
+              <SmartImage
+                src="/Institutional Collab/DPES-3.png"
+                alt="DPES School Event — 3"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-108"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-md bg-secondary/85 backdrop-blur-sm">
+                <span className="text-[0.65rem] font-bold text-primary">03</span>
+              </div>
+              <div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-400 group-hover:translate-y-0">
+                <p className="text-xs font-semibold text-white">School Event — III</p>
+              </div>
+            </div>
+
+            {/* [3] — Bottom middle */}
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-md">
+              <SmartImage
+                src="/Institutional Collab/DPES-4.png"
+                alt="DPES School Event — 4"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-108"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute left-3 top-3 flex h-7 w-7 items-center justify-center rounded-md bg-secondary/85 backdrop-blur-sm">
+                <span className="text-[0.65rem] font-bold text-primary">04</span>
+              </div>
+              <div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-400 group-hover:translate-y-0">
+                <p className="text-xs font-semibold text-white">School Event — IV</p>
+              </div>
+            </div>
+
+            {/* [4] — Bottom right */}
+            <div className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-md">
+              <SmartImage
+                src="/Institutional Collab/DPES-5.png"
+                alt="DPES School Event — 5"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-108"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-md bg-secondary/85 backdrop-blur-sm">
+                <span className="text-[0.65rem] font-bold text-primary">05</span>
+              </div>
+              {/* "Partnership" pill on last card */}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 translate-y-8 rounded-full bg-white/10 px-3 py-1.5 backdrop-blur-md ring-1 ring-white/20 transition-all duration-400 group-hover:translate-y-0">
+                <span className="text-[0.6rem] font-semibold uppercase tracking-widest text-white">In Partnership</span>
+              </div>
+              <div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-400 group-hover:translate-y-0">
+                <p className="text-xs font-semibold text-white">School Event — V</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile layout — stacked with feature-first */}
+          <div className="grid grid-cols-2 gap-3 lg:hidden">
+            {/* Hero full-width */}
+            <div className="group relative col-span-2 aspect-[16/9] overflow-hidden rounded-2xl border border-border bg-card shadow-md">
+              <SmartImage
+                src="/Institutional Collab/DPES-MobilePic-1.png"
+                alt="DPES School Event — 1"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute left-3 top-3 flex h-7 w-7 items-center justify-center rounded-md bg-secondary/85 backdrop-blur-sm">
+                <span className="text-[0.65rem] font-bold text-primary">01</span>
+              </div>
+              <div className="absolute inset-x-0 bottom-0 p-4">
+                <p className="text-[0.6rem] uppercase tracking-widest text-primary/80">DPES School</p>
+                <p className="mt-0.5 text-sm font-semibold text-white">School Event — I</p>
+              </div>
+            </div>
+            {/* 2 × 2 grid for remaining 4 */}
+            {[
+              { src: "/Institutional Collab/DPES-2.png", label: "School Event — II",   n: "02" },
+              { src: "/Institutional Collab/DPES-3.png", label: "School Event — III",  n: "03" },
+              { src: "/Institutional Collab/DPES-4.png", label: "School Event — IV",   n: "04" },
+              { src: "/Institutional Collab/DPES-5.png", label: "School Event — V",    n: "05" },
+            ].map(({ src, label, n }) => (
+              <div key={n} className="group relative aspect-square overflow-hidden rounded-xl border border-border bg-card shadow">
+                <SmartImage src={src} alt={label} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute left-2 top-2 flex h-6 w-6 items-center justify-center rounded-md bg-secondary/85 backdrop-blur-sm">
+                  <span className="text-[0.58rem] font-bold text-primary">{n}</span>
+                </div>
+                <div className="absolute inset-x-0 bottom-0 translate-y-full p-3 transition-transform duration-300 group-hover:translate-y-0">
+                  <p className="text-[0.65rem] font-semibold text-white">{label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Footer ambient strip */}
+          <div className="mt-8 flex items-center gap-4">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
+            <div className="flex items-center gap-2 rounded-full border border-secondary/20 bg-background px-4 py-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary/60" />
+              <span className="text-[0.6rem] uppercase tracking-[0.28em] text-muted-foreground">DPES School Partnership</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-primary/60" />
+            </div>
+            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
+          </div>
+
+        </div>
+      </section>
+      {/* ────────────────────────────────────────────────────────────────────── */}
+
       <section className="border-y border-primary/25 bg-background px-5 py-16 text-secondary sm:px-8 sm:py-20">
         <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div>
@@ -387,7 +887,8 @@ function ConsultantPage({ copy }: PageProps) {
   return (
     <>
       <section className="mandala-veil relative overflow-hidden border-b border-border bg-warm px-5 pb-14 pt-12 sm:px-8 sm:pb-16 sm:pt-14">
-        <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+        <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
+          {/* Left: text */}
           <div className="animate-rise">
             <p className="text-[0.68rem] uppercase tracking-[0.28em] text-secondary">{page.eyebrow}</p>
             <h1 className="mt-4 max-w-2xl text-3xl leading-[1.06] text-ink sm:text-4xl lg:text-[3.25rem]">
@@ -395,15 +896,117 @@ function ConsultantPage({ copy }: PageProps) {
             </h1>
             <div className="mt-5 h-1 w-14 bg-primary" />
             <p className="mt-5 max-w-xl text-base-readable text-muted-foreground">{page.intro}</p>
-          </div>
-          <div className="relative mx-auto flex aspect-square w-full max-w-xs items-center justify-center lg:justify-self-end">
-            <div className="absolute inset-5 rounded-full border border-primary/25" />
-            <div className="absolute inset-12 rounded-full border border-secondary/20" />
-            <div className="relative flex h-40 w-40 items-center justify-center rounded-full bg-secondary text-secondary-foreground shadow-(--shadow-lift) sm:h-44 sm:w-44">
-              <UserRoundCheck className="h-16 w-16 text-primary" strokeWidth={1.2} />
+            {/* small count indicator */}
+            <div className="mt-8 flex items-center gap-3">
+              <span className="text-2xl font-semibold text-ink">{directoryPanel.consultants.length}</span>
+              <span className="text-sm text-muted-foreground">qualified consultants &amp; specialists</span>
             </div>
-            <div className="absolute right-0 top-8 h-4 w-4 rounded-full bg-primary" />
-            <div className="absolute bottom-12 left-5 h-3 w-3 rounded-full bg-secondary" />
+          </div>
+
+          {/* Right: Staggered Expert Wall */}
+          <div className="lg:justify-self-end lg:w-full">
+            {/* Desktop grid — featured card (row-span-2) + 8 smaller slots */}
+            <div className="hidden lg:grid lg:grid-cols-4 lg:gap-2.5 lg:auto-rows-[80px]">
+              {/* Featured card — Dr. Seema Garg, spans 2 cols × 2 rows */}
+              {(() => {
+                const featured = directoryPanel.consultants[0]!;
+                const initials = featured.name.replace(/^Dr\.?\s*/i, '').split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+                return (
+                  <div className="col-span-2 row-span-2 group relative overflow-hidden rounded-2xl border border-primary bg-secondary shadow-md">
+                    {featured.photo ? (
+                      <SmartImage src={featured.photo} alt={featured.name} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-secondary">
+                        <span className="text-3xl font-semibold text-primary/60 select-none">{initials}</span>
+                      </div>
+                    )}
+                    {/* Name strip on hover */}
+                    <div className="absolute inset-x-0 bottom-0 translate-y-full bg-gradient-to-t from-secondary/95 via-secondary/70 to-transparent p-3 transition-transform duration-300 group-hover:translate-y-0">
+                      <p className="text-[0.6rem] uppercase tracking-widest text-primary">Expert</p>
+                      <p className="mt-0.5 text-sm font-medium leading-tight text-secondary-foreground">{featured.name}</p>
+                    </div>
+                    {/* Verified badge */}
+                    <div className="absolute right-2.5 top-2.5 flex items-center gap-1 rounded-full bg-secondary/90 px-2 py-1 backdrop-blur-sm">
+                      <UserRoundCheck className="h-3 w-3 text-primary" strokeWidth={2} />
+                      <span className="text-[0.6rem] font-semibold text-primary">Verified</span>
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {/* Remaining consultant cards */}
+              {directoryPanel.consultants.slice(1).map((consultant) => {
+                const initials = consultant.name.replace(/^Dr\.?\s*/i, '').split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+                return (
+                  <div
+                    key={consultant.name}
+                    className="group relative overflow-hidden rounded-xl border border-primary bg-card transition-all duration-300 hover:border-primary hover:shadow-md"
+                  >
+                    {consultant.photo ? (
+                      <SmartImage src={consultant.photo} alt={consultant.name} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-110" />
+                    ) : (
+                      /* Monogram placeholder */
+                      <div className="flex h-full w-full flex-col items-center justify-center gap-1 bg-gradient-to-br from-warm to-card">
+                        {/* subtle dot pattern */}
+                        <div className="absolute inset-0 opacity-[0.04]"
+                          style={{ backgroundImage: 'radial-gradient(circle, var(--color-secondary) 1px, transparent 1px)', backgroundSize: '8px 8px' }}
+                        />
+                        <span className="relative text-lg font-semibold text-secondary/50 select-none">{initials}</span>
+                      </div>
+                    )}
+                    {/* Tooltip name on hover */}
+                    <div className="absolute inset-x-0 bottom-0 translate-y-full bg-secondary/90 px-2 py-1.5 transition-transform duration-300 group-hover:translate-y-0">
+                      <p className="truncate text-center text-[0.58rem] font-medium leading-none text-secondary-foreground">{consultant.name.replace(/^Dr\.?\s*/i, 'Dr. ')}</p>
+                    </div>
+                  </div>
+                );
+              })}
+
+            </div>
+
+            {/* Mobile grid — 3 columns, featured spans 2 cols */}
+            <div className="grid grid-cols-3 gap-2 lg:hidden">
+              {/* Featured — 2 col × 2 row */}
+              {(() => {
+                const featured = directoryPanel.consultants[0]!;
+                const initials = featured.name.replace(/^Dr\.?\s*/i, '').split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+                return (
+                  <div className="col-span-2 row-span-2 relative overflow-hidden rounded-xl border border-primary bg-secondary" style={{ aspectRatio: '1 / 1' }}>
+                    {featured.photo ? (
+                      <SmartImage src={featured.photo} alt={featured.name} className="h-full w-full object-cover object-top" />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center">
+                        <span className="text-2xl font-semibold text-primary/60 select-none">{initials}</span>
+                      </div>
+                    )}
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-secondary/90 to-transparent p-2.5">
+                      <p className="text-[0.6rem] font-medium text-secondary-foreground leading-tight">{featured.name}</p>
+                    </div>
+                  </div>
+                );
+              })()}
+
+              {/* Remaining consultants */}
+              {directoryPanel.consultants.slice(1).map((consultant) => {
+                const initials = consultant.name.replace(/^Dr\.?\s*/i, '').split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+                return (
+                  <div
+                    key={consultant.name}
+                    className="relative overflow-hidden rounded-xl border border-primary bg-card"
+                    style={{ aspectRatio: '1 / 1' }}
+                  >
+                    {consultant.photo ? (
+                      <SmartImage src={consultant.photo} alt={consultant.name} className="h-full w-full object-cover object-top" />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-warm to-card">
+                        <span className="text-base font-semibold text-secondary/40 select-none">{initials}</span>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+
+            </div>
           </div>
         </div>
       </section>
@@ -461,7 +1064,29 @@ function ConsultantPage({ copy }: PageProps) {
                     {directoryPanel.consultants.map((consultant) => (
                       <tr key={consultant.name} className="align-top transition-colors hover:bg-warm/60">
                         <th scope="row" className="border-r border-border px-5 py-5 text-sm font-semibold leading-relaxed text-ink">
-                          {consultant.name}
+                          <div className="flex items-center gap-3">
+                            {/* Photo thumbnail / monogram */}
+                            <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-border bg-gradient-to-br from-warm to-card">
+                              {consultant.photo ? (
+                                <SmartImage
+                                  src={consultant.photo}
+                                  alt={consultant.name}
+                                  className="h-full w-full object-cover object-top"
+                                />
+                              ) : (
+                                <span className="flex h-full w-full items-center justify-center text-xs font-semibold text-secondary/50 select-none">
+                                  {consultant.name
+                                    .replace(/^Dr\.?\s*/i, '')
+                                    .split(' ')
+                                    .map((w) => w[0])
+                                    .join('')
+                                    .slice(0, 2)
+                                    .toUpperCase()}
+                                </span>
+                              )}
+                            </div>
+                            <span>{consultant.name}</span>
+                          </div>
                         </th>
                         <td className="border-r border-border px-5 py-5 text-sm leading-relaxed text-muted-foreground">
                           {consultant.qualification}
@@ -475,6 +1100,120 @@ function ConsultantPage({ copy }: PageProps) {
                 </table>
               </div>
             </div>
+
+            {/* ── OPD Clinic Showcase ─────────────────────────────────────────── */}
+            <div className="mt-16">
+              {/* Section header */}
+              <div className="mb-10 flex flex-col items-center text-center">
+                <p className="text-[0.65rem] uppercase tracking-[0.3em] text-primary">Our Clinics</p>
+                <h3 className="mt-3 text-2xl font-semibold leading-tight text-ink sm:text-3xl">
+                  OPD Consultation Centres
+                </h3>
+                <div className="mt-3 h-[3px] w-10 rounded-full bg-primary" />
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                  A glimpse inside our dedicated consultation spaces — designed for privacy, comfort,
+                  and the highest standard of holistic care.
+                </p>
+              </div>
+
+              {/* Photo duo */}
+              <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">
+                {/* Card 1 */}
+                <div className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-(--shadow-soft) transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
+                  {/* Subtle glow ring on hover */}
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-transparent transition-all duration-500 group-hover:ring-primary/20" />
+
+                  {/* Image */}
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <SmartImage
+                      src="/OPD consultation/OPD-1.jfif"
+                      alt="OPD Consultation Centre — View 1"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+
+                    {/* Badge */}
+                    <div className="absolute left-4 top-4 flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 backdrop-blur-md ring-1 ring-white/20">
+                      <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
+                      <span className="text-[0.6rem] font-semibold uppercase tracking-widest text-white">Active Clinic</span>
+                    </div>
+
+                    {/* Bottom label */}
+                    <div className="absolute inset-x-0 bottom-0 p-5">
+                      <p className="text-[0.6rem] uppercase tracking-[0.22em] text-primary-foreground/70">OPD Centre</p>
+                      <p className="mt-1 text-base font-semibold leading-snug text-white">Consultation Suite — I</p>
+                    </div>
+                  </div>
+
+                  {/* Footer strip */}
+                  <div className="flex items-center justify-between px-5 py-4">
+                    <div className="flex items-center gap-2">
+                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
+                        <svg className="h-4 w-4 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg>
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold text-ink">Consultation Room</p>
+                        <p className="text-[0.65rem] text-muted-foreground">Expert-led OPD sessions</p>
+                      </div>
+                    </div>
+                    <span className="rounded-full bg-primary/8 px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-wider text-primary">View I</span>
+                  </div>
+                </div>
+
+                {/* Card 2 */}
+                <div className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-(--shadow-soft) transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-transparent transition-all duration-500 group-hover:ring-primary/20" />
+
+                  {/* Image */}
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <SmartImage
+                      src="/OPD consultation/OPD-2.jfif"
+                      alt="OPD Consultation Centre — View 2"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+
+                    {/* Badge */}
+                    <div className="absolute left-4 top-4 flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 backdrop-blur-md ring-1 ring-white/20">
+                      <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
+                      <span className="text-[0.6rem] font-semibold uppercase tracking-widest text-white">Active Clinic</span>
+                    </div>
+
+                    {/* Bottom label */}
+                    <div className="absolute inset-x-0 bottom-0 p-5">
+                      <p className="text-[0.6rem] uppercase tracking-[0.22em] text-primary-foreground/70">OPD Centre</p>
+                      <p className="mt-1 text-base font-semibold leading-snug text-white">Consultation Suite — II</p>
+                    </div>
+                  </div>
+
+                  {/* Footer strip */}
+                  <div className="flex items-center justify-between px-5 py-4">
+                    <div className="flex items-center gap-2">
+                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
+                        <svg className="h-4 w-4 text-primary" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg>
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold text-ink">Consultation Room</p>
+                        <p className="text-[0.65rem] text-muted-foreground">Holistic wellness &amp; guidance</p>
+                      </div>
+                    </div>
+                    <span className="rounded-full bg-primary/8 px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-wider text-primary">View II</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom ambient strip */}
+              <div className="mt-8 flex items-center justify-center gap-3">
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
+                <p className="text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground">
+                  Trusted by families across India
+                </p>
+                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
+              </div>
+            </div>
+            {/* ────────────────────────────────────────────────────────────────── */}
+
           </div>
         )}
 
@@ -736,66 +1475,12 @@ function TestimonialsTab({ copy, content }: PageProps) {
 }
 
 function JoinMissionHub({ copy, content }: PageProps) {
-  const [activeTab, setActiveTab] = useState<MissionTab>("mission");
-  const contentRef = useRef<HTMLDivElement>(null);
-  const activeTabConfig = MISSION_TABS.find((tab) => tab.id === activeTab) ?? MISSION_TABS[0]!;
-  const tabLabels: Record<MissionTab, string> = {
-    mission: copy.navigation.joinMission,
-    events: copy.navigation.events,
-    testimonials: copy.navigation.testimonials,
-  };
-
-  const handleTabChange = (tab: MissionTab) => {
-    setActiveTab(tab);
-    if (contentRef.current) {
-      const yOffset = -160;
-      const y = contentRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-  };
-
   return (
     <>
       <PageHeader {...copy.header} />
-
-      <div className="sticky top-[58px] z-40 w-full border-b border-border bg-background/85 backdrop-blur-md sm:top-[68px] lg:top-[74px]">
-        <div className="mx-auto max-w-6xl px-4">
-          <div role="tablist" aria-label={copy.header.title} className="flex gap-1 overflow-x-auto py-2 lg:py-3">
-            {MISSION_TABS.map((tab) => {
-              const Icon = tab.icon;
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  onClick={() => handleTabChange(tab.id)}
-                  className={cn(
-                    "flex min-h-11 shrink-0 cursor-pointer items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-all",
-                    isActive ? `${tab.bg} ${tab.text} shadow-sm` : "text-muted-foreground hover:text-ink",
-                  )}
-                  style={isActive ? { borderBottom: `2px solid ${tab.accent}` } : undefined}
-                >
-                  <Icon className="h-4 w-4 shrink-0" strokeWidth={1.5} />
-                  <span className="whitespace-nowrap">{tabLabels[tab.id]}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+      <div className="relative bg-background">
+        <MissionLandingPage copy={copy} content={content} />
       </div>
-
-      <div ref={contentRef} className="relative bg-background">
-        <div
-          className="pointer-events-none absolute left-0 top-0 hidden h-full w-1 lg:block"
-          style={{ backgroundColor: activeTabConfig.accent, opacity: 0.35 }}
-        />
-        {activeTab === "mission" && <MissionLandingPage copy={copy} content={content} />}
-        {activeTab === "events" && <EventsTab copy={copy} />}
-        {activeTab === "testimonials" && <TestimonialsTab copy={copy} content={content} />}
-      </div>
-
       <ContactCTA copy={copy.contactCta} />
     </>
   );

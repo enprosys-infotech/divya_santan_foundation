@@ -3,7 +3,6 @@ import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from "lucide-react"
 import { CONTACT_DETAILS, FOOTER_COLUMNS } from "@/content/navigation";
 import { useI18n } from "@/i18n";
 import { BrandLock } from "@/components/site/Brand";
-import { useExternalAskShree } from "@/hooks/useExternalAskShree";
 
 const SOCIAL_LINKS = [
   { id: "facebook", icon: Facebook, href: CONTACT_DETAILS.socialLinks.facebook },
@@ -13,7 +12,6 @@ const SOCIAL_LINKS = [
 
 export function Footer() {
   const { t } = useI18n();
-  const { open: openExternalAskShree } = useExternalAskShree();
 
   return (
     <footer className="mandala-veil border-t border-indigo/20 bg-indigo">
@@ -58,22 +56,12 @@ export function Footer() {
                 <ul className="mt-4 space-y-2.5">
                   {column.links.map((link) => (
                     <li key={link.id}>
-                      {link.id === "askShree" ? (
-                        <button
-                          type="button"
-                          onClick={openExternalAskShree}
-                          className="cursor-pointer text-left text-sm text-indigo-foreground/60 transition-colors duration-300 hover:text-gold"
-                        >
-                          {t.footer.links[link.id]}
-                        </button>
-                      ) : (
-                        <Link
-                          to={link.to}
-                          className="text-sm text-indigo-foreground/60 transition-colors duration-300 hover:text-gold"
-                        >
-                          {t.footer.links[link.id]}
-                        </Link>
-                      )}
+                      <Link
+                        to={link.to}
+                        className="text-sm text-indigo-foreground/60 transition-colors duration-300 hover:text-gold"
+                      >
+                        {t.footer.links[link.id]}
+                      </Link>
                     </li>
                   ))}
                 </ul>

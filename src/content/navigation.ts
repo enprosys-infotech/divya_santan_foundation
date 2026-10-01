@@ -20,7 +20,7 @@ export const NAV_ITEMS = [
       },
       {
         id: "freeServices",
-        children: [{ id: "freeServices", to: "/free-services" }],
+        children: [{ id: "freeServices", to: "/available-services" }],
       },
       {
         id: "research",
@@ -48,49 +48,34 @@ export const FOOTER_COLUMNS = [
   {
     id: "learn",
     links: [
-      { id: "learnGarbhSanskar", to: "/knowledge" },
-      { id: "journeys", to: "/knowledge" },
-        { id: "askShree", to: "/" },
+      { id: "pregnantMother", to: "/journeys/pregnant-woman" },
+      { id: "planningPregnancy", to: "/journeys/planning-pregnancy" },
     ],
   },
   {
     id: "knowledge",
     links: [
-      { id: "knowledgeCentre", to: "/knowledge" },
-      { id: "monthByMonth", to: "/knowledge" },
-      { id: "garbhSamvad", to: "/knowledge" },
+      { id: "scienceOfGarbhSanskar", to: "/knowledge?tab=scienceOfGarbhSanskar" },
+      { id: "articlesAndBlogs", to: "/knowledge?tab=articles" },
+      { id: "stepByStepGuides", to: "/knowledge?tab=guides" },
+      { id: "qna", to: "/knowledge?tab=qa" },
+      { id: "booksAndResources", to: "/knowledge?tab=resources" },
+      { id: "scientificRef", to: "/knowledge?tab=scientific" },
     ],
   },
   {
     id: "courses",
     links: [
       { id: "foundationCourse", to: "/courses" },
-      { id: "prerakTraining", to: "/courses" },
-      { id: "certification", to: "/courses" },
-    ],
-  },
-  {
-    id: "freeServices",
-    links: [
-      { id: "freeClasses", to: "/free-services" },
-      { id: "educationalVideos", to: "/free-services" },
-      { id: "publications", to: "/free-services" },
-    ],
-  },
-  {
-    id: "research",
-    links: [
-      { id: "researchScience", to: "/research" },
-      { id: "researchTopics", to: "/research" },
-      { id: "collaboration", to: "/contact" },
     ],
   },
   {
     id: "joinMission",
     links: [
-      { id: "becomePrerak", to: "/join" },
-      { id: "volunteer", to: "/join" },
-      { id: "institutionalCsr", to: "/join" },
+      { id: "becomeVolunteer", to: "/join/volunteer" },
+      { id: "institutionalCollab", to: "/join/institutional-collaboration" },
+      { id: "consultant", to: "/join/consultant" },
+      { id: "researcher", to: "/join/academic-researcher" },
     ],
   },
 ] as const;

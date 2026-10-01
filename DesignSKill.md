@@ -1,6 +1,6 @@
 ---
 name: creative-website-designer
-description: Use this skill whenever the task is to design or generate a website, landing page, portfolio, agency site, non-profit/movement site, or any front-end template that needs to feel modern, fancy, engaging, and premium — not a generic templated AI look. Trigger for requests like "design a website," "make a landing page," "build a portfolio site," "create a template," or anything involving hero sections, brand sites, or creative studio/agency pages. Also trigger for content-heavy sites (multi-audience platforms, institutional/foundation sites, knowledge hubs, course/program catalogs) where large volumes of information must be organized and made scannable without becoming a generic wall of cards — and for any of the above where mobile and desktop are both real, primary surfaces, not one derived from the other.
+description: Use this skill whenever the task is to design or generate a website, landing page, portfolio, agency site, non-profit/movement site, or any front-end template that needs to feel modern, fancy, engaging, and premium — not a generic templated AI look. Trigger for requests like "design a website," "make a landing page," "build a portfolio site," "create a template," or anything involving hero sections, brand sites, or creative studio/agency pages. Also trigger for content-heavy sites (multi-audience platforms, institutional/foundation sites, knowledge hubs, course/program catalogs) where large volumes of information must be organized and made scannable without becoming a generic wall of cards — and for any of the above where mobile and desktop are both real, primary surfaces, not one derived from the other. Explicitly trigger for spiritual, wellness, parenting, pregnancy-care, Garbh Sanskar, yoga/meditation, ashram, foundation/trust, and other "sacred mission" sites — this skill includes a dedicated playbook (Step 3D) for that space, because it is the single most common source of "average, monotonous, dull, not happening" client feedback.
 ---
 
 # Creative Website Designer
@@ -9,9 +9,10 @@ You are the design lead at a small, in-demand studio. Clients hire you specifica
 
 "Modern, fancy, engaging, premium" is not a style — it's a bar. Premium sites feel expensive because of restraint and precision, not decoration. Cheap sites over-decorate; premium sites make three or four decisions extremely well and leave everything else quiet.
 
-**Two things break this bar most often, and both get their own discipline below:**
+**Three things break this bar most often, and each gets its own discipline below:**
 - Designing for desktop first and letting mobile be a shrunken afterthought (or vice versa) — see Step 3B.
 - Sites with genuinely large amounts of content (multiple audiences, deep navigation, dozens of topics) collapsing into generic card-grid soup because there was no real information architecture — see Step 3C.
+- Spiritual, wellness, foundation, and "sacred mission" briefs collapsing into either generic devotional clip-art or sterile corporate-wellness sameness, because the emotional subject matter didn't get translated into real design decisions — see Step 3D.
 
 ---
 
@@ -25,6 +26,10 @@ Before touching color or layout, answer:
 
 Pull distinctive material from the subject's own world — its materials, vocabulary, imagery, industry or cultural conventions. Generic briefs produce generic sites; specific inputs produce specific design decisions. If the brief is thin, invent one concrete detail (a material, a ritual, a number, a place) and build from it rather than defaulting to stock abstraction. If the brief is rich (a full content/context doc), mine it for the specific nouns, numbers, and rituals that are unique to this subject — those are your raw material, not the generic category the subject belongs to.
 
+**Redesign note — if this is an existing brand, not a blank slate:** never treat an existing site as a blank slate just because it looks dated. Find and note the client's actual current brand marks first — logo file, favicon, any hex codes in their existing CSS, dominant color in their header/logo. Pick one anchor hue to carry forward for continuity, then build the fuller token system in Step 3 *around* that anchor. "Different colors that still feel like us" is the single most common redesign request, and it is answered by evolution, not replacement — see Step 3D for the exact palette method when the brand is in the spiritual/wellness space.
+
+If the brief is a spiritual, wellness, parenting, pregnancy-care, or foundation/trust site, read **Step 3D** before drafting the token plan — it's a superset of Steps 2–5 for this specific subject matter, not a replacement for them.
+
 ---
 
 ## Step 2 — Avoid the AI-default looks
@@ -36,6 +41,21 @@ Right now, AI-generated design clusters around a few tells. Do **not** default t
 3. Broadsheet layout: hairline rules, zero border-radius, dense newspaper-style columns
 
 Other tells to avoid unless truly earned by the content: numbered markers (01 / 02 / 03) on content that isn't actually sequential; generic gradient blobs; a big stat + small label + gradient hero as the automatic opener; stock "glassmorphism" cards with no real reason for the blur; bullet-point feature grids with identical icon-title-paragraph blocks; a homepage that is just every section of the site stacked in one long scroll with no routing logic when the brief actually has multiple distinct audiences (that's the content-heavy equivalent of a generic tell — see Step 3C).
+
+### 2B — The "average NGO / spiritual foundation" tells (a distinct failure mode)
+
+Spiritual, wellness, and foundation sites have their own default look, and it's just as recognizable — and just as damaging to "premium" — as the AI-defaults above. Do not default to these:
+
+- A generic vector illustration of a pregnant woman / lotus / baby, in the same soft-pastel-outline style every stock-icon site uses
+- A pastel gradient hero (baby pink → baby blue, or cream → light gold) with a clip-art mandala or Om symbol dropped on top as decoration, unconnected to the layout around it
+- An icon-title-paragraph feature grid where every icon is a different flat-color circle badge — the spiritual-site equivalent of the AI bullet-grid tell
+- Long, dense paragraphs of mission/philosophy copy with no visual rhythm — no pull-quotes, no photography breaking up the text, no whitespace
+- Testimonials as plain text blocks with initials-in-a-circle instead of real photos or video
+- A static image carousel that autoplays with no other motion anywhere else on the page — one lonely animation doing all the work
+- Flat white or flat pale-pink backgrounds for the entire page, section after section, with no depth, no photography, and no color storytelling
+- A "Donate" or "Enroll" button that looks identical to every other link on the page — no visual weight given to the one action that matters
+
+If you catch the plan defaulting to any of the above, that's the signal this brief needs Step 3D, not just Step 2.
 
 If the brief pins down a direction (even one of the above), follow it exactly — the brief always wins. Where the brief leaves something open, spend that freedom on a real choice, not a default.
 
@@ -110,6 +130,68 @@ Some briefs aren't a 5-section landing page — they're an institution, platform
 
 ---
 
+## Step 3D — Playbook: Spiritual, Wellness, Parenting & Garbh-Sanskar / Pregnancy-Care Sites
+
+This niche gets its own step because it fails in a specific, repeatable way: the subject matter is emotional and sacred, but the execution defaults to either (a) generic devotional clip-art, or (b) sterile corporate-wellness sameness that could belong to any SaaS company. Neither reads as "happening." The fix is the same discipline as the rest of this skill, aimed at this subject matter specifically.
+
+**Apply this step in addition to Steps 1–5, not instead of them** — this is where "sacred" becomes a set of concrete design decisions instead of a mood word.
+
+### Color: evolve the existing brand, don't discard it
+
+If this is a redesign (see Step 1's redesign note), sample the client's actual current mark first. If it's greenfield, or the anchor color is genuinely weak, build from one of these directions instead of the banned AI-clay palette — pick one and commit, don't blend all three:
+
+- **Temple Night**: deep indigo/near-black-blue background (#151A33-ish) · warm marigold-gold accent (#D9A441-ish) · soft ivory text/surface (#F7F1E6-ish) · a single rose-blush highlight used only for one CTA family
+- **Sacred Warmth**: deep maroon/vermilion anchor (#7A1F2B-ish) · turmeric-gold accent (#E3A430-ish) · sandalwood cream surface (#F5EBDC-ish) · a small amount of deep peacock-teal for contrast in data/stat moments
+- **Dawn Ritual**: soft lotus-rose surface (#F7E7E1-ish) · deep forest-night text/anchor (#1F2E29-ish) · sacred-saffron accent (#E08A2C-ish) · muted gold for dividers and motif line-work
+
+In every direction, gold or metallic tone does the accent work a bright vermilion or acid-green would do in a SaaS palette — it reads as sacred and premium at once, but only when it's used sparingly (thin dividers, icon strokes, a button, a stat number) and never as a full-bleed background.
+
+### Typography
+
+- Display face: something with warmth and a little ceremony to it — a serif or a humanist display with real character, never a hard geometric grotesk (that reads corporate-tech, not sacred).
+- Body face: a highly readable, rounded-friendly sans for long-form guidance content (this niche has a lot of explanatory copy — FAQs, program details, philosophy).
+- If the brief is bilingual or multilingual (Hindi/Marathi/Gujarati/English, or similar), confirm the chosen faces have real Devanagari/regional-script support at the same weight and character as the Latin faces — a mismatched fallback font on the regional-language content is an instant "cheap" tell, and it's the single most common typography failure in this niche specifically.
+
+### Imagery: real warmth, not clip-art
+
+- Real photography or video of real mothers, couples, babies, and practitioners — golden-hour or warm-lit tones, soft natural light — does more emotional work here than any layout decision. If real photography isn't available, lean into the color/type/motif system rather than filling the gap with generic stock-vector pregnant-woman icons; a strong abstract treatment beats a weak literal one.
+- A muted, looping ambient video (a diya flame, hands in meditation, a gentle ritual moment) as a hero background — subtle, slow, never distracting from the headline — reads as significantly more premium than a static image and costs little.
+- Treat photography with a consistent subtle grade (warm highlights, soft shadow lift) so images from different sources still feel like one brand, and layer a soft vignette or gradient-fade where photography meets text for guaranteed contrast — never rely on hoping the photo is dark enough at that one spot.
+
+### The sacred-motif system (use as structure, not stickers)
+
+- A mandala, lotus, Om, or diya motif rendered as fine line-art — not a filled clip-art icon — can do real structural work: a slowly-rotating background layer behind a hero (very low opacity, very slow, purely ambient), a section divider, a subtle frame around a stat or quote.
+- The test: if you removed the motif, would the layout break? If yes, it's structural (good). If the page looks identical without it, it's a sticker (cut it or redesign its role).
+- Never combine more than one motif family in the same viewport — one language of sacred geometry per section, used with the same restraint rule as any other accent in Step 4.
+
+### Signature motion ideas for this niche
+
+Pick one as the actual Step 3 "signature," not all of them:
+- A slow, continuous rotation on a background mandala layer (a few RPM at most — ambient, not attention-grabbing)
+- A gentle heartbeat-pulse animation on a single icon or stat (used once, meaningfully — e.g. next to a "days of the journey" counter)
+- Stat numbers that count up on scroll-into-view (mothers helped, years of research, countries reached) — cheap to build, reads as alive
+- A soft parallax drift on hero photography/motif layers as the visitor scrolls
+- A "streak" or "day X of your journey" progress element that animates in, if the product has a daily/sequential structure
+
+### Trust and proof components this niche runs on
+
+Content-heavy institutional sites in this space earn trust through *specific proof*, not adjectives. Build with these as first-class sections, not afterthoughts:
+
+- **Journey/audience selector** — if the org serves more than one audience (planning couples / expecting mothers / new parents / trainers-to-be / donors), a "choose your path" moment near the top of the homepage is higher-leverage than any hero animation. This is Step 3C's audience-routing principle applied directly.
+- **Hard-numbers trust bar** — mothers/families served, years of practice, countries reached, expert count, a rating — placed directly under the hero, not buried in an About page.
+- **Press-as-seen-in strip** — a quiet, marquee-style logo row of media mentions if they exist; skip it entirely rather than fake it if they don't.
+- **Expert/faculty grid** — real named people with photos and one-line credentials. This single-handedly does more credibility work than any amount of copy about "authenticity."
+- **Video testimonial wall** — real people, real voices, ideally in the languages the audience actually speaks — outperforms text-quote blocks by a wide margin in this niche.
+- **Workshop/event or program cards** — if there are live offerings, show them as real, dated, priced cards with a direct booking CTA per card. A visibly upcoming date (not a generic "coming soon") is what makes a site feel "happening" rather than static.
+- **Program/pricing tiers** — clear, comparable tiers if multiple offerings exist, styled with the same card system as everything else (see Step 3C's "one consistent module system" rule).
+- **FAQ as accordion, not a wall** — this niche generates a lot of legitimate parent/mother anxiety-driven questions; give them a dedicated, scannable, expandable home rather than dense paragraphs.
+
+### Self-critique for this niche specifically
+
+Before calling it done, ask: would this pass as a premium, modern wellness brand (think the visual confidence of a well-funded health/wellness app) while still feeling authentically rooted in its cultural and spiritual tradition — not generic-global and not clip-art-devotional? If the honest answer leans toward either extreme, the token system (Step 3) or the motif system above needs another pass, not more content.
+
+---
+
 ## Step 4 — Signals that read as "premium" (use selectively, not all at once)
 
 - **Micro-interactions**: buttons, links, and cards respond to hover/focus with subtle, fast (150–250ms) transitions — never jarring, never everywhere at once. On touch devices, give these a tap/active-state equivalent.
@@ -134,7 +216,13 @@ Adapt, don't apply all of these mechanically — only include what the brief's g
 - **Work/portfolio/content grid**: real hierarchy, not uniform cards — let the best or most important piece take more space. For large libraries, pair with category grouping and/or filter.
 - **Sequential/stage content module** (course curricula, month-by-month programs, process steps): one consistent, learnable template with intentional variation per stage, paired with a stepper/tab/sidebar nav on both platforms.
 - **About/story**: specific, human copy — not generic mission-statement language.
-- **Social proof / testimonials / credibility markers**: only if it earns its place; for institutional sites, real credentials, affiliations, or outcomes often serve this role better than testimonial quotes.
+- **Social proof / testimonials / credibility markers**: only if it earns its place; for institutional sites, real credentials, affiliations, or outcomes often serve this role better than testimonial quotes. For spiritual/wellness/pregnancy-care sites specifically, prefer a **video testimonial wall** over text quotes where content exists.
+- **Trust stat bar** (spiritual/wellness/foundation/institutional sites): a row of hard numbers — people served, years of practice, countries, expert count, rating — placed high on the page, ideally with a count-up animation on scroll.
+- **Press/media logo strip** (institutional/foundation sites with real coverage): a quiet marquee row of "as seen in" logos — never fabricated.
+- **Expert/faculty grid** (wellness/education/institutional sites): named people, real photos, one-line credentials.
+- **Workshop/event calendar card** (any site with live/dated offerings): date, venue, price, and a direct booking CTA per card — not a generic "see our events page" link.
+- **Program/pricing tiers**: comparable, clearly differentiated tiers using the same card system as the rest of the page.
+- **Sacred-motif background system** (spiritual/wellness sites, Step 3D): a line-art mandala/lotus/motif layer used structurally — as a divider, frame, or slow ambient background — never as a sticker.
 - **CTA section**: one clear, active-voice action, not a vague "Learn more." Multi-audience sites may need one CTA cluster, clearly differentiated per audience, rather than one generic CTA for everyone.
 - **Footer**: quiet, functional, on-brand — not an afterthought dumping ground; for large sites, the footer is often the sitemap's honest backup, so let it be genuinely comprehensive without being visually loud.
 
@@ -148,7 +236,7 @@ Words are part of the design, not decoration on top of it. When writing placehol
 - Use active voice: a button says exactly what happens when clicked ("Start your project," not "Submit"); keep that same word through the resulting confirmation.
 - Be specific over clever. A precise detail beats a punchy but vague line.
 - Empty and error states get direction, not personality-for-its-own-sake: say what happened and what to do next.
-- Keep register conversational and tuned to the brand's audience — no filler, no generic marketing-speak ("Unlock your potential," "Take it to the next level"). For institutional or mission-driven briefs, avoid corporate/promotional tone entirely if the brief calls for it (e.g. "educational, not commercial" is itself a design constraint on copy, not just content).
+- Keep register conversational and tuned to the brand's audience — no filler, no generic marketing-speak ("Unlock your potential," "Take it to the next level"). For institutional or mission-driven briefs, avoid corporate/promotional tone entirely if the brief calls for it (e.g. "educational, not commercial" is itself a design constraint on copy, not just content). For spiritual/wellness briefs specifically, avoid both bureaucratic-NGO language ("nurturing platform for awareness and training") and over-the-top devotional language in the same breath — pick a register (warm-and-human, or reverent-and-traditional) and hold it.
 - On content-dense pages, write summary/preview copy short and precise — its job is to help someone decide whether to go deeper, not to say everything at the top level.
 
 ---
@@ -167,13 +255,14 @@ Words are part of the design, not decoration on top of it. When writing placehol
 
 ## Step 8 — Process summary
 
-1. Ask (or infer from the brief) what the subject, audience(s), and page goal(s) are. If there are multiple audiences or a large content base, note that explicitly — it changes the plan from Step 3B/3C onward.
-2. Draft the token plan: color, type, layout (mobile **and** desktop), signature — as a short written plan before any code.
-3. If the brief is content-heavy or multi-audience, draft the information architecture: audience routing, category groupings, navigation pattern, sequential-content template — before layout details.
-4. Self-critique the plan against the "AI-default looks" list — revise anything generic. For content-heavy sites, also check against the Step 3C self-critique (can each audience find their path fast?).
-5. Build the page/template following the revised plan exactly, implementing real responsive behavior for both mobile and desktop compositions.
-6. Self-critique the build: does the signature element land on both platforms? Is there anything decorative that doesn't serve the brief? Cut it. Is dense content still scannable, or did it collapse into repetitive cards?
-7. Confirm the quality floor (responsive, accessible, motion-respecting, touch-friendly) before calling it done.
+1. Ask (or infer from the brief) what the subject, audience(s), and page goal(s) are. If there are multiple audiences or a large content base, note that explicitly — it changes the plan from Step 3B/3C onward. If the subject is spiritual/wellness/parenting/foundation, read Step 3D now.
+2. If this is a redesign of an existing brand, sample its actual current colors/logo first (Step 1's redesign note) — the new palette should evolve from it, not ignore it.
+3. Draft the token plan: color, type, layout (mobile **and** desktop), signature — as a short written plan before any code.
+4. If the brief is content-heavy or multi-audience, draft the information architecture: audience routing, category groupings, navigation pattern, sequential-content template — before layout details.
+5. Self-critique the plan against the "AI-default looks" list (Step 2) and, for this niche, the "average NGO/spiritual foundation" tells (Step 2B) — revise anything generic. For content-heavy sites, also check against the Step 3C self-critique (can each audience find their path fast?). For spiritual/wellness sites, check against the Step 3D self-critique (premium-modern *and* authentically rooted, not either extreme).
+6. Build the page/template following the revised plan exactly, implementing real responsive behavior for both mobile and desktop compositions.
+7. Self-critique the build: does the signature element land on both platforms? Is there anything decorative that doesn't serve the brief? Cut it. Is dense content still scannable, or did it collapse into repetitive cards? Would a sacred motif survive being removed as a test of whether it's structural or a sticker?
+8. Confirm the quality floor (responsive, accessible, motion-respecting, touch-friendly) before calling it done.
 
 ---
 
@@ -181,10 +270,12 @@ Words are part of the design, not decoration on top of it. When writing placehol
 
 ```
 Subject: [brand / product / person / studio / organization]
+Niche / sacred-cultural context (if any): [spiritual, wellness, parenting, pregnancy-care, foundation/trust, tradition or lineage to honor — triggers Step 3D]
 Audience(s): [who is landing here — list separately if there's more than one, with each one's goal]
 Primary goal(s): [the one action the page should drive, per audience if there's more than one]
 Content scale: [a handful of sections, or a large multi-topic/multi-journey site needing real IA?]
 Tone words: [3-4 adjectives, be specific — not just "modern"]
+Existing brand (if redesign): [current logo/colors to evolve from, not discard]
 Known constraints: [existing brand colors/fonts, must-have sections, platform/framework]
 Reference points (optional): [sites, art, or objects that capture the feel — not to copy, but to calibrate]
 ```

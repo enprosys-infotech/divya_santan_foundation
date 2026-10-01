@@ -955,7 +955,7 @@ export default function GarbhSanskarPage({ embedded = false }: { embedded?: bool
 
               <div className="mt-6">
                 <Button asChild variant="outline" size="sm">
-                  <Link to="/free-services" className="gap-1.5">
+                  <Link to="/available-services" className="gap-1.5">
                     {copy.monthJourney.joinClassesCta}{" "}
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
@@ -1088,7 +1088,7 @@ export default function GarbhSanskarPage({ embedded = false }: { embedded?: bool
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button asChild variant="hero" size="lg">
-              <Link to="/free-services">{copy.cta.freeClasses}</Link>
+              <Link to="/available-services">{copy.cta.freeClasses}</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
               <Link to="/courses">{copy.cta.courses}</Link>

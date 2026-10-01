@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { SmartImage } from "@/components/site/SmartImage";
 import dspImage from "@/assets/DspNewlogo.jpg";
 import bsvafImage from "@/assets/BalajiLogo.png";
 import { useI18n } from "@/i18n";
@@ -19,11 +20,12 @@ export function BrandLock({
 
   return (
     <Link to="/" className={cn("group flex items-center gap-2.5", className)}>
-      <img
+      <SmartImage
         src={dspImage}
         alt={t.brand.logoAlt}
         width={44}
         height={44}
+        loading="eager"
         className="h-10 w-10 shrink-0 rounded-sm object-contain sm:h-11 sm:w-11"
       />
 
@@ -63,11 +65,12 @@ export function BrandLock({
         )}
       />
 
-      <img
+      <SmartImage
         src={bsvafImage}
         alt={t.brand.partnerLogoAlt}
         width={44}
         height={44}
+        loading="eager"
         className="h-10 w-10 shrink-0 rounded-sm object-contain opacity-85 sm:h-11 sm:w-11"
       />
     </Link>

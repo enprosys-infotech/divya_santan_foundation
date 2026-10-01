@@ -48,7 +48,7 @@ const LENS_TONES: Record<LensId, string> = {
 
 const DOMAIN_TONES: Record<DomainId, string> = {
   epigenetics: "border-primary bg-primary/8 text-primary",
-  neuroscience: "border-indigo bg-indigo/8 text-indigo-foreground",
+  neuroscience: "border-indigo bg-indigo/8 text-indigo",
   wellbeing: "border-green bg-green/8 text-green",
   tradition: "border-gold bg-gold/10 text-gold-foreground",
 };
@@ -99,23 +99,6 @@ export default function ScienceOfGarbhSanskarPage() {
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-secondary-foreground/80">
               {copy.hero.intro}
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/research"
-                className="inline-flex min-h-11 items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-gold-foreground transition-transform hover:-translate-y-0.5"
-              >
-                {copy.hero.primaryAction}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <button
-                type="button"
-                onClick={openExternalAskShree}
-                className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-secondary-foreground/30 px-5 py-2.5 text-sm font-medium text-secondary-foreground transition-colors hover:border-gold hover:text-gold"
-              >
-                <Sparkles className="h-4 w-4" />
-                {copy.hero.secondaryAction}
-              </button>
-            </div>
           </div>
 
           <div className="rounded-2xl border border-secondary-foreground/20 bg-secondary-foreground/8 p-6 backdrop-blur-sm sm:p-7">
@@ -339,34 +322,6 @@ export default function ScienceOfGarbhSanskarPage() {
         </div>
       </section>
 
-      <section className="bg-secondary px-5 py-14 text-secondary-foreground sm:px-8 sm:py-18">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-7 sm:flex-row sm:items-center sm:justify-between">
-          <div className="max-w-2xl">
-            <p className="text-[0.68rem] uppercase tracking-[0.3em] text-gold">
-              {copy.closing.eyebrow}
-            </p>
-            <h2 className="mt-3 text-2xl sm:text-3xl">{copy.closing.title}</h2>
-            <p className="mt-3 text-sm leading-relaxed text-secondary-foreground/75">
-              {copy.closing.body}
-            </p>
-          </div>
-          <div className="flex shrink-0 flex-wrap gap-3">
-            <Link
-              to="/courses"
-              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-gold-foreground transition-transform hover:-translate-y-0.5"
-            >
-              {copy.closing.primaryAction}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              to="/research"
-              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-secondary-foreground/30 px-5 py-2.5 text-sm font-medium text-secondary-foreground transition-colors hover:border-gold hover:text-gold"
-            >
-              {copy.closing.secondaryAction}
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

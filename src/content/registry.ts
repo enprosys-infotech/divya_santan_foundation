@@ -148,6 +148,11 @@ export const VIDEOS = defineItems([
   { id: "garbhSanskarClass3", youtubeId: "k_AHbfulzq8", duration: "class 3", category: "garbhSanskarFoundation" as const },
   { id: "personalityNationBuilding", youtubeId: "1niF9R9A9AM", category: "knowledge" as const },
   { id: "divyaSantanSpecialSession", youtubeId: "SwYsQR0MymA", category: "knowledge" as const },
+  { id: "testimonial1", youtubeId: "tAJzRzqT5VY", category: "testimonials" as const, isShort: false },
+  { id: "testimonial2", youtubeId: "teLPFzxeKH0", category: "testimonials" as const, isShort: true },
+  { id: "testimonial3", youtubeId: "e0ZAnGEjWWc", category: "testimonials" as const, isShort: true },
+  { id: "testimonial4", youtubeId: "fIm7bzefHhk", category: "testimonials" as const, isShort: true },
+  { id: "testimonial5", youtubeId: "mVWcyGAMv7g", category: "testimonials" as const, isShort: true },
 ]);
 export type VideoId = (typeof VIDEOS)[number]["id"];
 
@@ -166,13 +171,7 @@ export const INSTAGRAM_PROFILE_URL = "https://www.instagram.com/divyasantanpraka
 
 /* ── Courses ────────────────────────────────────────────────────────────── */
 
-export const COURSES = defineItems([
-  { id: "foundation" },
-  { id: "coupleEducation" },
-  { id: "prerakTraining" },
-  { id: "recordedLibrary" },
-  { id: "educatorCertification" },
-]);
+export const COURSES = defineItems([{ id: "foundation" }]);
 export type CourseId = (typeof COURSES)[number]["id"];
 
 /* ── Knowledge centre ───────────────────────────────────────────────────── */
@@ -209,6 +208,9 @@ export const KNOWLEDGE_GUIDES = defineItems([
   { id: "preConceptionPrep" },
   { id: "garbhadhanaSanskar" },
   { id: "pregnancyMonthByMonth" },
+  { id: "dosAndDonts" },
+  { id: "punsavanaSanskar" },
+  { id: "simantonnayanaSanskar" },
   { id: "postnatalCare" },
 ]);
 export type KnowledgeGuideId = (typeof KNOWLEDGE_GUIDES)[number]["id"];
@@ -288,42 +290,6 @@ export const KNOWLEDGE_RESOURCES = defineItems([
     type: "book",
     access: "purchase",
     href: "https://amzn.in/d/0hJTxeEv",
-  },
-  {
-    id: "garbhSanskarSection1",
-    type: "document",
-    access: "download",
-    href: "https://docs.google.com/document/d/1ENZAA7osX5VResVHCCkuH2lLei2z_ovk/export?format=docx",
-  },
-  {
-    id: "garbhSanskarSection2",
-    type: "document",
-    access: "download",
-    href: "https://docs.google.com/document/d/14pbNwBllehAulHvDXjWDOLL4_lqFkQVj/export?format=docx",
-  },
-  {
-    id: "garbhSanskarSection3",
-    type: "document",
-    access: "download",
-    href: "https://docs.google.com/document/d/1OCJnQHgCOqpvzB1WJ1_xszM3-hSWrZML/export?format=docx",
-  },
-  {
-    id: "garbhSanskarSection4",
-    type: "document",
-    access: "download",
-    href: "https://docs.google.com/document/d/1Qfi49biqqXR_TCPqr3PzA-w5ll-cNWxv/export?format=docx",
-  },
-  {
-    id: "garbhSanskarSection5",
-    type: "document",
-    access: "download",
-    href: "https://docs.google.com/document/d/1Z4sZ3M7hGchTzcESiDaV2w-g-U22zxC3/export?format=docx",
-  },
-  {
-    id: "garbhSanskarSection6",
-    type: "document",
-    access: "download",
-    href: "https://docs.google.com/document/d/1sNYR2KId4FeeQPloSobr2IxRyfI88ldg/export?format=docx",
   },
 ] as const satisfies readonly {
   id: string;
@@ -409,10 +375,12 @@ export type CompletedEventId = (typeof COMPLETED_EVENTS)[number]["id"];
 /* ── Success Stories (Results-oriented testimonials with photos) ─────────── */
 
 export const SUCCESS_STORIES = defineItems([
+  { id: "mohiniMehra", category: "pregnantWoman", hasPhoto: true },
   { id: "ritaAjay", category: "couple", hasPhoto: true },
   { id: "priyaSharma", category: "pregnantWoman", hasPhoto: true },
   { id: "meenaRaj", category: "couple", hasPhoto: true },
   { id: "anushkaVinod", category: "pregnantWoman", hasPhoto: true },
+  
 ]);
 export type SuccessStoryId = (typeof SUCCESS_STORIES)[number]["id"];
 

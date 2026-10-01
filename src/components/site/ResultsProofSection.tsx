@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { VideoCard } from "@/components/site/VideoCard";
+import { YouTubeShortsCard } from "@/components/site/YouTubeShortsCard";
 import { InstaReelCard } from "@/components/site/InstaReelCard";
 import { Section, SectionHeading } from "@/components/site/SectionHeading";
 import {
@@ -22,6 +23,7 @@ import {
 } from "@/content/registry";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
+import { SmartImage } from "@/components/site/SmartImage";
 
 interface SuccessStoryCardProps {
   name: string;
@@ -43,9 +45,9 @@ function SuccessStoryCard({
   journey,
 }: SuccessStoryCardProps) {
   return (
-    <div className="surface-card flex h-full min-w-[280px] flex-col overflow-hidden rounded-3xl sm:min-w-[320px] lg:min-w-0">
+    <div className="surface-card flex h-full w-[280px] shrink-0 snap-start flex-col overflow-hidden rounded-3xl sm:w-[320px]">
       <div className="relative h-64 overflow-hidden bg-gradient-to-br from-secondary/10 to-primary/10">
-        <img
+        <SmartImage
           src={photo}
           alt={name}
           className="h-full w-full object-cover"
@@ -93,6 +95,7 @@ export function ResultsProofSection() {
   const copy = t.home.resultsProof;
 
   const [selectedVideoCategory, setSelectedVideoCategory] = useState<VideoCategoryId>("all");
+  const [showAllVideos, setShowAllVideos] = useState(false);
 
   const storiesScrollRef = useRef<HTMLDivElement>(null);
   const videosScrollRef  = useRef<HTMLDivElement>(null);
@@ -102,6 +105,9 @@ export function ResultsProofSection() {
     selectedVideoCategory === "all"
       ? VIDEOS
       : VIDEOS.filter((v) => v.category === selectedVideoCategory);
+
+  const displayedVideos = showAllVideos ? filteredVideos : filteredVideos.slice(0, 6);
+  const hasMoreVideos = filteredVideos.length > 6;
 
   const scroll = (ref: React.RefObject<HTMLDivElement>, direction: "left" | "right") => {
     if (!ref.current) return;
@@ -124,7 +130,10 @@ export function ResultsProofSection() {
             <button
               key={cat.id}
               type="button"
-              onClick={() => setSelectedVideoCategory(cat.id)}
+              onClick={() => {
+                setSelectedVideoCategory(cat.id);
+                setShowAllVideos(false);
+              }}
               className={cn(
                 "min-h-11 cursor-pointer rounded-full px-5 py-2.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2",
                 selectedVideoCategory === cat.id
@@ -156,22 +165,36 @@ export function ResultsProofSection() {
           </button> */}
 
           {selectedVideoCategory === "testimonials" ? (
-            <div className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-dashed border-border bg-background/60 py-20 text-center">
-              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10 text-secondary">
-                <Sparkles className="h-7 w-7" />
-              </span>
-              <p className="text-base font-medium text-ink">Testimonial videos coming soon</p>
-              <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-                We're collecting heartfelt stories from families. Check back shortly.
+            <>
+              <div className="flex gap-4 overflow-x-auto scroll-smooth pb-4 lg:grid lg:grid-cols-5 lg:overflow-visible">
+                {displayedVideos.map((v) => (
+                  <div key={v.id} className="min-w-[180px] sm:min-w-[200px] lg:min-w-0">
+                    <YouTubeShortsCard
+                      youtubeId={v.youtubeId}
+                      {...t.content.videos[v.id]}
+                      category={copy.videos.categories[v.category]}
+                    />
+                  </div>
+                ))}
+              </div>
+              {!showAllVideos && hasMoreVideos && (
+                <div className="mt-6 flex justify-center">
+                  <Button variant="outline" onClick={() => setShowAllVideos(true)} className="rounded-full">
+                    Show more <ChevronRight className="ml-1 h-4 w-4" />
+                  </Button>
+                </div>
+              )}
+              <p className="mt-4 text-center text-xs text-muted-foreground lg:hidden">
+                ← Swipe to see more testimonials →
               </p>
-            </div>
+            </>
           ) : (
             <>
               <div
                 ref={videosScrollRef}
                 className="scrollbar-hide flex gap-6 overflow-x-auto scroll-smooth pb-4 lg:grid lg:grid-cols-3 lg:overflow-visible"
               >
-                {filteredVideos.map((v) => (
+                {displayedVideos.map((v) => (
                   <div key={v.id} className="flex h-full min-w-[280px] sm:min-w-[320px] lg:min-w-0">
                     <VideoCard
                       youtubeId={v.youtubeId}
@@ -182,6 +205,14 @@ export function ResultsProofSection() {
                   </div>
                 ))}
               </div>
+              
+              {!showAllVideos && hasMoreVideos && (
+                <div className="mt-6 flex justify-center">
+                  <Button variant="outline" onClick={() => setShowAllVideos(true)} className="rounded-full">
+                    Show more <ChevronRight className="ml-1 h-4 w-4" />
+                  </Button>
+                </div>
+              )}
 
               <p className="mt-4 text-center text-xs text-muted-foreground lg:hidden">
                 ← Swipe to see more videos →
@@ -293,7 +324,7 @@ export function ResultsProofSection() {
               type="button"
               onClick={() => scroll(storiesScrollRef, "left")}
               aria-label="Previous stories"
-              className="absolute -left-4 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/90 text-ink shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:bg-background lg:flex"
+              className="absolute -left-14 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/90 text-ink shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 lg:flex"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -301,14 +332,13 @@ export function ResultsProofSection() {
               type="button"
               onClick={() => scroll(storiesScrollRef, "right")}
               aria-label="Next stories"
-              className="absolute -right-4 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/90 text-ink shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:bg-background lg:flex"
+              className="absolute -right-14 top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/90 text-ink shadow-lg backdrop-blur-sm transition-all hover:scale-110 hover:bg-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 lg:flex"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
-
             <div
               ref={storiesScrollRef}
-              className="scrollbar-hide flex gap-6 overflow-x-auto scroll-smooth pb-4 lg:grid lg:grid-cols-4 lg:overflow-visible"
+              className="scrollbar-hide flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-4"
             >
               {SUCCESS_STORIES.map((story) => (
                 <SuccessStoryCard

@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, Sparkles, X } from "lucide-react";
+import { BookOpen, ChevronDown, Menu, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandLock } from "./Brand";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -184,7 +184,10 @@ export function Navbar() {
             {t.cta.askShree}
           </Button>
           <Button asChild variant="hero" size="sm" className="hidden sm:inline-flex">
-            <Link to="/free-services">{t.cta.joinFree}</Link>
+            <Link to="/knowledge?tab=resources">
+              <BookOpen className="h-3.5 w-3.5" />
+              {t.cta.bookRef}
+            </Link>
           </Button>
           <button
             type="button"
@@ -268,7 +271,10 @@ export function Navbar() {
           </nav>
           <div className="mt-5 flex flex-col gap-3">
             <Button asChild variant="hero" size="lg">
-              <Link to="/free-services">{t.cta.joinFree}</Link>
+              <Link to="/knowledge?tab=resources">
+                <BookOpen className="h-4 w-4" />
+                {t.cta.bookRef}
+              </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
               <Link to="/contact">{t.cta.guidance}</Link>

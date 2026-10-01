@@ -1,4 +1,5 @@
 import { Smartphone } from "lucide-react";
+import { SmartImage } from "@/components/site/SmartImage";
 import androidBadge from "@/assets/DownloadAndroid.png";
 import iosBadge from "@/assets/DownloadIOS.png";
 import { cn } from "@/lib/utils";
@@ -72,13 +73,17 @@ export function MobileAppCTA({ className }: { className?: string }) {
                 <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-secondary/10 text-secondary">
                   ✓
                 </span>
-                <span>{copy.features.reminders}</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-secondary/10 text-secondary">
-                  ✓
+                <span>
+                  {copy.features.book}{" "}
+                  <a
+                    href={copy.features.bookLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-primary underline underline-offset-2 transition-opacity hover:opacity-75"
+                  >
+                    {copy.features.bookLinkLabel} →
+                  </a>
                 </span>
-                <span>{copy.features.tracking}</span>
               </li>
             </ul>
           </div>
@@ -96,7 +101,7 @@ export function MobileAppCTA({ className }: { className?: string }) {
                 className="block transition-transform duration-300 hover:scale-105 active:scale-95"
                 aria-label="Download on Google Play Store"
               >
-                <img
+                <SmartImage
                   src={androidBadge}
                   alt="Get it on Google Play"
                   className="h-18 w-auto rounded-lg "
@@ -111,7 +116,7 @@ export function MobileAppCTA({ className }: { className?: string }) {
                 className="block transition-transform duration-300 hover:scale-105 active:scale-95"
                 aria-label="Download on Apple App Store"
               >
-                <img
+                <SmartImage
                   src={iosBadge}
                   alt="Download on the App Store"
                   className="h-14 w-auto rounded-lg pl-3"
@@ -132,19 +137,23 @@ export function MobileAppCTA({ className }: { className?: string }) {
           </div>
         </div>
 
-        {/* Bottom Stats Bar */}
-        <div className="mt-12 grid grid-cols-3 gap-4 border-t border-border pt-8 text-center">
-          <div>
-            <p className="text-2xl font-semibold text-secondary">50K+</p>
-            <p className="mt-1 text-xs text-muted-foreground">{copy.stats.users}</p>
-          </div>
-          <div>
-            <p className="text-2xl font-semibold text-secondary">4.8★</p>
-            <p className="mt-1 text-xs text-muted-foreground">{copy.stats.rating}</p>
-          </div>
-          <div>
-            <p className="text-2xl font-semibold text-secondary">2+</p>
-            <p className="mt-1 text-xs text-muted-foreground">{copy.stats.languages}</p>
+        {/* Bottom Bar — Stats + Upcoming Badge */}
+        <div className="mt-12 border-t border-border pt-8">
+          <div className="flex items-center justify-center gap-6 sm:flex-row sm:items-center sm:justify-center">
+      
+            {/* Upcoming Apps Badge */}
+            <div className="flex items-center gap-3 rounded-full border border-primary/30 bg-primary/5 px-5 py-2.5">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
+              </span>
+              <span className="text-sm font-medium text-primary">
+                {copy.stats.upcoming}
+              </span>
+              <span className="text-xs text-muted-foreground">
+                — {copy.stats.upcomingLabel}
+              </span>
+            </div>
           </div>
         </div>
       </div>

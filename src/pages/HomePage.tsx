@@ -14,6 +14,7 @@ import heroWomb from "@/assets/hero-womb-to-world.jpg";
 import avdheshanand from "@/assets/avdheshanand.jpg";
 import { ResultsProofSection } from "@/components/site/ResultsProofSection";
 import { CardLinkIndicator, MobileAppCTA } from "@/components/site/Cards";
+import { SmartImage } from "@/components/site/SmartImage";
 import { Section } from "@/components/site/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { AUDIENCE_PILLS } from "@/content/registry";
@@ -29,6 +30,7 @@ export default function HomePage() {
 
   // Carousel state
   const [activeSlide, setActiveSlide] = useState(0);
+  const [previousSlide, setPreviousSlide] = useState<number | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
@@ -37,15 +39,24 @@ export default function HomePage() {
   }, []);
 
   const goToSlide = useCallback(
-    (index: number) => {
-      if (isTransitioning) return;
+    async (index: number) => {
+      if (isTransitioning || index === activeSlide) return;
       setIsTransitioning(true);
+      const nextImage = new window.Image();
+      nextImage.src = HERO_SLIDES[index];
+      try {
+        await nextImage.decode();
+      } catch {
+        // Let the image element show its normal error state if loading fails.
+      }
+      setPreviousSlide(activeSlide);
+      setActiveSlide(index);
       setTimeout(() => {
-        setActiveSlide(index);
+        setPreviousSlide(null);
         setIsTransitioning(false);
-      }, 300);
+      }, 700);
     },
-    [isTransitioning],
+    [activeSlide, isTransitioning],
   );
 
   const prevSlide = useCallback(() => {
@@ -57,21 +68,24 @@ export default function HomePage() {
   }, [activeSlide, goToSlide]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, SLIDE_INTERVAL);
-    return () => clearInterval(timer);
-  }, []);
+    const timer = setTimeout(
+      () => void goToSlide((activeSlide + 1) % HERO_SLIDES.length),
+      SLIDE_INTERVAL,
+    );
+    return () => clearTimeout(timer);
+  }, [activeSlide, goToSlide]);
 
   return (
     <>
       {/* ── Hero ────────────────────────────────────────────────────── */}
       <section className="mandala-veil relative overflow-hidden border-b border-border bg-warm px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-15">
-        <div
-          className="pointer-events-none absolute inset-0 block bg-cover bg-center bg-no-repeat opacity-25 lg:hidden"
-          style={{ backgroundImage: `url(${heroWomb})` }}
+        <SmartImage
+          src={heroWomb}
+          alt=""
           aria-hidden="true"
+          className="pointer-events-none absolute inset-0 block h-full w-full object-cover object-center opacity-25 lg:hidden"
         />
+        
         <div className="mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-[1fr_420px] lg:items-center">
           <div>
             <p className="text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-secondary lg:font-normal">
@@ -146,18 +160,21 @@ export default function HomePage() {
           >
             {/* Slides */}
             <div className="relative h-[480px] w-full">
-              {HERO_SLIDES.map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={`${copy.hero.imageAlt} ${i + 1}`}
-                  className={cn(
-                    "absolute inset-0 h-full w-full object-cover transition-opacity duration-700",
-                    i === activeSlide ? "opacity-100" : "opacity-0",
-                  )}
-                  loading={i === 0 ? "eager" : "lazy"}
-                />
-              ))}
+              {HERO_SLIDES.map((src, i) =>
+                i === activeSlide || i === previousSlide ? (
+                  <SmartImage
+                    key={i}
+                    src={src}
+                    alt={`${copy.hero.imageAlt} ${i + 1}`}
+                    className={cn(
+                      "absolute inset-0 h-full w-full object-cover transition-opacity duration-700",
+                      i === activeSlide ? "opacity-100" : "opacity-0",
+                    )}
+                    loading="eager"
+                    fetchPriority={i === 0 ? "high" : "auto"}
+                  />
+                ) : null,
+              )}
 
               {/* Gradient overlay at bottom */}
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background/40 to-transparent rounded-b-3xl" />
@@ -229,7 +246,7 @@ export default function HomePage() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <div className="surface-card flex flex-col items-center p-6 text-center">
               <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-gold/30 shadow-md">
-                <img
+                <SmartImage
                   src={avdheshanand}
                   alt={copy.leadership.members.avdheshanand.name}
                   className="h-full w-full object-cover"
@@ -248,7 +265,7 @@ export default function HomePage() {
             </div>
             <div className="surface-card flex flex-col items-center p-6 text-center">
               <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-primary/30 shadow-md">
-                <img
+                <SmartImage
                   src="/vinod-sir.png"
                   alt={copy.leadership.members.vinod.name}
                   className="h-full w-full object-cover"
@@ -267,7 +284,7 @@ export default function HomePage() {
             </div>
              <div className="surface-card flex flex-col items-center p-6 text-center">
               <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-primary/30 shadow-md">
-                <img
+                <SmartImage
                   src="/anil-sir.png"
                   alt={copy.leadership.members.anil.name}
                   className="h-full w-full object-cover"

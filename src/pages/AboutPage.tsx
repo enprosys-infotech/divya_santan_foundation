@@ -11,18 +11,20 @@ import {
   Users,
 } from "lucide-react";
 import { Section, SectionHeading } from "@/components/site/SectionHeading";
+import { SmartImage } from "@/components/site/SmartImage";
+import { JourneyTimeline } from "@/components/site/JourneyTimeline";
 import { PageHeader } from "@/components/site/PageHeader";
 import { CTASection } from "@/components/site/Cards";
 import { getDictionary, useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
 
-type AboutTab = "vision" | "pillars" | "journey" | "leadership";
+type AboutTab = "leadership" | "vision" | "pillars" | "journey";
 
 export default function AboutPage() {
   const { t } = useI18n();
   const copy = t.about;
   const aboutData = t.aboutPage;
-  const [activeTab, setActiveTab] = useState<AboutTab>("vision");
+  const [activeTab, setActiveTab] = useState<AboutTab>("leadership");
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -31,10 +33,10 @@ export default function AboutPage() {
   }, []);
 
   const tabs: Record<AboutTab, string> = {
+    leadership: aboutData.labels.tabs.leadership,
     vision: aboutData.labels.tabs.vision,
     pillars: aboutData.labels.tabs.pillars,
     journey: aboutData.labels.tabs.journey,
-    leadership: aboutData.labels.tabs.leadership,
   };
 
   const handleTabClick = (tab: AboutTab) => {
@@ -261,8 +263,9 @@ export default function AboutPage() {
           )}
 
           {activeTab === "journey" && (
-            <div className="mx-auto max-w-3xl space-y-12 animate-rise">
-              <div className="text-center mb-10">
+            <div className="animate-rise">
+              {/* Section heading */}
+              <div className="text-center mb-12">
                 <p className="text-[0.68rem] uppercase tracking-[0.2em] text-gold-foreground">
                   {aboutData.labels.historyEyebrow}
                 </p>
@@ -270,21 +273,14 @@ export default function AboutPage() {
                   {aboutData.labels.historyTitle}
                 </h2>
                 <span className="mx-auto mt-4 block h-px w-16 bg-gold/70" />
+                <p className="mt-5 text-sm text-muted-foreground max-w-xl mx-auto leading-relaxed">
+                  From a single inspiring thought to a national movement — scroll through the
+                  milestones that shaped Divya Santan Foundation.
+                </p>
               </div>
 
-              <div className="relative border-l border-primary/20 pl-6 sm:pl-10 space-y-10 py-4">
-                {aboutData.history.map((item, i) => (
-                  <div key={i} className="relative">
-                    <span className="absolute -left-[1.65rem] sm:-left-[2.65rem] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-background border-2 border-primary/40 ring-4 ring-background">
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                    </span>
-                    <h3 className="text-lg font-medium text-ink">{item.title}</h3>
-                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                      {item.body}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              {/* Snake / winding-road timeline */}
+              <JourneyTimeline items={aboutData.history} />
             </div>
           )}
 
@@ -305,7 +301,7 @@ export default function AboutPage() {
                       className="surface-card surface-card-hover flex min-h-48 flex-col overflow-hidden p-0 sm:flex-row"
                     >
                       <div className="relative h-64 shrink-0 bg-muted/20 sm:h-auto sm:w-40">
-                        <img
+                        <SmartImage
                           src={img}
                           alt={`Portrait of ${name}`}
                           className={cn(
@@ -342,7 +338,7 @@ export default function AboutPage() {
                       className="surface-card surface-card-hover flex flex-col sm:flex-row overflow-hidden p-0 h-full"
                     >
                       <div className="relative h-64 sm:h-full sm:w-40 shrink-0 bg-muted/20">
-                        <img
+                        <SmartImage
                           src={img}
                           alt={`Portrait of ${name}`}
                           className="absolute inset-0 h-full w-full object-cover object-top"
@@ -371,77 +367,121 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* Advisory & Executive */}
-              <div className="grid gap-12 lg:grid-cols-2">
-                <div>
-                  <SectionHeading
-                    eyebrow={aboutData.labels.advisorsEyebrow}
-                    title={aboutData.labels.advisorsTitle}
-                    subtitle={aboutData.labels.advisorsSubtitle}
-                    align="left"
-                    eyebrowVariant="primary"
-                  />
-                  <div className="mt-8 flex flex-col gap-4">
-                    {aboutData.leadership.advisors.map(({ name, role, img }) => (
-                      <article
-                        key={name}
-                        className="surface-card surface-card-hover flex min-h-48 flex-col overflow-hidden border-l-2 border-l-primary/40 p-0 sm:flex-row"
-                      >
-                        <div className="relative h-64 shrink-0 bg-muted/20 sm:h-auto sm:w-40">
-                          <img
-                            src={img}
-                            alt={`Portrait of ${name}`}
-                            className="absolute inset-0 h-full w-full object-cover object-top"
-                            loading="lazy"
-                          />
-                          <div className="absolute left-0 top-0 h-1 w-full bg-primary/60 sm:h-full sm:w-1" />
-                        </div>
-                        <div className="flex min-w-0 flex-1 flex-col justify-center p-5">
-                          <h3 className="text-base font-medium text-ink">{name}</h3>
-                          <p className="text-[0.62rem] uppercase tracking-[0.18em] text-primary">
-                            {role}
-                          </p>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
+              {/* Advisory Council */}
+              <div>
+                <SectionHeading
+                  eyebrow={aboutData.labels.advisorsEyebrow}
+                  title={aboutData.labels.advisorsTitle}
+                  subtitle={aboutData.labels.advisorsSubtitle}
+                  eyebrowVariant="primary"
+                />
+                <div className="mt-10 grid gap-5 sm:grid-cols-2">
+                  {aboutData.leadership.advisors.map(({ name, role, img }) => (
+                    <article
+                      key={name}
+                      className="surface-card surface-card-hover flex min-h-48 flex-col overflow-hidden border-l-2 border-l-primary/40 p-0 sm:flex-row"
+                    >
+                      <div className="relative h-64 shrink-0 bg-muted/20 sm:h-auto sm:w-40">
+                        <SmartImage
+                          src={img}
+                          alt={`Portrait of ${name}`}
+                          className="absolute inset-0 h-full w-full object-cover object-top"
+                          loading="lazy"
+                        />
+                        <div className="absolute left-0 top-0 h-1 w-full bg-primary/60 sm:h-full sm:w-1" />
+                      </div>
+                      <div className="flex min-w-0 flex-1 flex-col justify-center p-5">
+                        <h3 className="text-base font-medium text-ink">{name}</h3>
+                        <p className="mt-0.5 text-[0.62rem] uppercase tracking-[0.18em] text-primary">
+                          {role}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
                 </div>
+              </div>
 
-                <div>
-                  <SectionHeading
-                    eyebrow={aboutData.labels.councilEyebrow}
-                    title={aboutData.labels.councilTitle}
-                    subtitle={aboutData.labels.councilSubtitle}
-                    align="left"
-                    eyebrowVariant="secondary"
-                  />
-                  <div className="mt-8 surface-card p-6 bg-warm">
-                    <div className="flex flex-wrap gap-2">
-                      {aboutData.leadership.executiveCouncil.map((name, i) => (
-                        <span
-                          key={i}
-                          className="inline-flex items-center rounded-full border border-border bg-background px-3 py-1.5 text-xs text-ink shadow-sm hover:border-secondary/30 transition-colors"
-                        >
-                          {name}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+              {/* Executive Council / Operational Leadership */}
+              <div>
+                <SectionHeading
+                  eyebrow={aboutData.labels.councilEyebrow}
+                  title={aboutData.labels.councilTitle}
+                  subtitle={aboutData.labels.councilSubtitle}
+                  eyebrowVariant="secondary"
+                />
+
+                {/* All Executive Council cards — unified 2-col grid matching Founders layout */}
+                {(() => {
+                  const { lead, members } = aboutData.leadership.executiveCouncil;
+                  // Combine lead + members-with-photo into one array for the grid
+                  const allCards = [
+                    { name: lead.name, role: lead.role, credentials: lead.credentials, desc: lead.desc, img: lead.img },
+                    ...members.filter((m) => m.img),
+                  ];
+                  const nameOnly = members.filter((m) => !m.img);
+                  return (
+                    <>
+                      <div className="mt-10 grid gap-5 lg:grid-cols-2">
+                        {allCards.map((member, i) => (
+                          <article
+                            key={i}
+                            className="surface-card surface-card-hover flex flex-col sm:flex-row overflow-hidden p-0 h-full min-h-[11rem]"
+                          >
+                            <div className="relative h-64 sm:h-full sm:w-44 shrink-0 bg-muted/20">
+                              <SmartImage
+                                src={member.img}
+                                alt={`Portrait of ${member.name}`}
+                                className="absolute inset-0 h-full w-full object-cover object-top"
+                                loading="lazy"
+                              />
+                              <div className="absolute top-0 left-0 h-1 w-full bg-secondary/60 sm:h-full sm:w-1" />
+                            </div>
+                            <div className="flex flex-1 flex-col justify-center p-5 sm:p-6">
+                              <div>
+                                <p className="text-lg font-medium text-ink">{member.name}</p>
+                                {member.role && (
+                                  <p className="mt-1 text-[0.62rem] uppercase tracking-[0.2em] text-secondary">
+                                    {member.role}
+                                  </p>
+                                )}
+                                {member.credentials && (
+                                  <div className="mt-2 inline-block rounded-lg border border-secondary/20 bg-secondary/5 px-2 py-1 text-[0.55rem] leading-snug text-secondary">
+                                    {member.credentials}
+                                  </div>
+                                )}
+                              </div>
+                              {member.desc && (
+                                <p className="mt-3 flex-1 text-xs leading-relaxed text-muted-foreground">
+                                  {member.desc}
+                                </p>
+                              )}
+                            </div>
+                          </article>
+                        ))}
+                      </div>
+
+                      {/* Name-only badges */}
+                      {nameOnly.length > 0 && (
+                        <div className="mt-4 flex flex-wrap gap-2b ">
+                          {nameOnly.map((member, i) => (
+                            <span
+                              key={i}
+                              className="rounded-lg border border-border bg-card px-3.5 py-2 text-xs font-medium text-ink shadow-sm"
+                            >
+                              {member.name}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  );
+                })()}
               </div>
             </div>
           )}
         </Section>
       </div>
 
-      <Section className="pt-0">
-        <CTASection
-          title={copy.cta.title}
-          body={copy.cta.body}
-          primary={{ to: "/knowledge", label: copy.cta.primary }}
-          secondary={{ to: "/join", label: copy.cta.secondary }}
-        />
-      </Section>
     </>
   );
 }
